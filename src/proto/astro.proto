@@ -2,7 +2,9 @@ syntax = "proto3";
 
 // 开始校准
 message ReqStartCalibration {
-    
+    // APK 3.4.1 current observer coordinates, decimal degrees.
+    double lon = 1;
+    double lat = 2;
 }
 
 // 停止校准
@@ -30,9 +32,24 @@ message ReqStopGoto {
     
 }
 
-// 开始叠图
+// Start stacking (V3 extends the V2 empty request with filter selection).
 message ReqCaptureRawLiveStacking {
+    // DWARF mini V3: 1=Astro, 2=Duo-Band. Dark (3) uses CMD 11045.
+    int32 ir_index = 1;
+    bool force_start = 2;
+}
 
+// Protocol >=2.5 continuation after a recoverable dark-frame warning.
+message ReqContinueShooting {}
+
+// APK 3.4.1 start/continue shooting response.
+message ResAstroShooting {
+    int32 code = 1;
+    optional string exp_name = 2;
+    optional int32 gain = 3;
+    optional int32 resolution = 4;
+    optional int32 filter_type = 5;
+    optional int32 temp_threshold = 6;
 }
 
 // 停止叠图
@@ -129,19 +146,26 @@ message ReqStopTrackSpecialTarget {
 
 }
 
-// 一键Goto深空天体
+// 一键Goto深空天体 (V3: lon, lat, mode added)
 message ReqOneClickGotoDSO {
     double ra = 1;
     double dec = 2;
     string target_name = 3;
+    double lon = 4;
+    double lat = 5;
+    int32 shooting_mode = 6;
+    bool goto_only = 7;
+    optional int32 rotation = 8;
 }
 
-// 一键Goto太阳系
+// 一键Goto太阳系 (V3: mode added)
 message ReqOneClickGotoSolarSystem {
     int32 index = 1;
     double lon = 2;
     double lat = 3;
     string target_name = 4;
+    int32 shooting_mode = 5;
+    bool force_start = 6;
 }
 
 message ResOneClickGoto {
@@ -233,5 +257,29 @@ message ReqDelWideDarkFrameList {
 // 删除暗场的结果返回
 message ResDelWideDarkFrameList {
     int32 code = 1;
+}
+
+// APK 3.4.1: parameters embedded in CMD_ASTRO_START_ONE_CLICK_SHOOTING.
+message ReqOneClickShootingParam {
+    int32 horizontal_scale = 1;
+    int32 vertical_scale = 2;
+    int32 rotation = 3;
+    int32 camera_type = 4;
+    int32 exp_index = 5;
+    int32 gain = 6;
+    int32 filter_type = 7;
+    int32 cap_size = 8;
+    int32 resolution = 9;
+}
+
+// APK 3.4.1: either sub-message may be omitted by the app.
+message ReqOneClickShooting {
+    ReqOneClickGotoDSO goto_dso = 1;
+    ReqOneClickShootingParam shooting_param = 2;
+}
+
+// APK 3.4.1: calibration-frame info IDs to delete.
+message ReqDelCaliFrameList {
+    repeated int32 info_ids = 1;
 }
 

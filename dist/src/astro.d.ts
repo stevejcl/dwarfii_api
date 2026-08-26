@@ -4,9 +4,11 @@
 /**
  * 4.10.2 Start calibration
  * Create Encoded Packet for the command CMD_ASTRO_START_CALIBRATION
+ * @param {number} lon Observer longitude in decimal degrees
+ * @param {number} lat Observer latitude in decimal degrees
  * @returns {Uint8Array}
  */
-export function messageAstroStartCalibration(): Uint8Array;
+export function messageAstroStartCalibration(lon: number, lat: number): Uint8Array;
 /**
  * 4.10.3 Stop calibration
  * Create Encoded Packet for the command CMD_ASTRO_STOP_CALIBRATION
@@ -102,12 +104,17 @@ export function messageAstroGoLive(): Uint8Array;
 /**
  * 4.10.17 One-click GOTO deep space celestial body
  * Create Encoded Packet for the command CMD_ASTRO_START_ONE_CLICK_GOTO_DSO
- * @param {number} ra Right Ascension
+ * @param {number} ra Right Ascension in hours
  * @param {number} dec Declination
  * @param {string} target_name
+ * @param {number} lon Observer longitude in degrees
+ * @param {number} lat Observer latitude in degrees
+ * @param {number} shootingMode Shooting mode (2 for Deep Sky)
+ * @param {boolean} gotoOnly Skip calibration when true
+ * @param {number} [rotation] Optional target rotation
  * @returns {Uint8Array}
  */
-export function messageAstroStartOneClickGotoDso(ra: number, dec: number, target_name: string): Uint8Array;
+export function messageAstroStartOneClickGotoDso(ra: number, dec: number, target_name: string, lon: number, lat: number, shootingMode: number, gotoOnly?: boolean, rotation?: number): Uint8Array;
 /**
  * 4.10.18 One-click GOTO solar system target
  * Create Encoded Packet for the command CMD_ASTRO_START_ONE_CLICK_GOTO_SOLAR_SYSTEM
@@ -115,9 +122,11 @@ export function messageAstroStartOneClickGotoDso(ra: number, dec: number, target
  * @param {number} lon Longitude
  * @param {number} lat Lattitude
  * @param {string} targetName
+ * @param {number} shootingMode Shooting mode
+ * @param {boolean} forceStart Force the workflow to start
  * @returns {Uint8Array}
  */
-export function messageAstroStartOneClickGotoSolarSystem(index: number, lon: number, lat: number, targetName: string): Uint8Array;
+export function messageAstroStartOneClickGotoSolarSystem(index: number, lon: number, lat: number, targetName: string, shootingMode: number, forceStart?: boolean): Uint8Array;
 /**
  * 4.10.19 Stop one-click GOTO
  * Create Encoded Packet for the command CMD_ASTRO_STOP_ONE_CLICK_GOTO

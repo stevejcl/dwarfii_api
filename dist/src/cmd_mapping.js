@@ -83,6 +83,9 @@ export const cmdMapping = {
     11026: "ReqStopCaptureWideDarkFrame", // Stop shooting dark field with wide-angle specified parameters
     11027: "ReqCheckWideDarkFrame", // Query the list of wide-angle dark scenes taken
     11028: "ReqDelWideDarkFrame", // Delete the specified wide-angle dark field list
+    11042: "ReqOneClickShooting", // APK 3.4.1: combined GOTO and shooting request
+    11044: "ReqDelCaliFrameList", // APK 3.4.1: delete calibration frames by info ID
+    11050: "ReqContinueShooting", // APK 3.4.1: continue after a recoverable shooting warning
     12000: "ReqOpenCamera", // Turn on the camera
     12001: "ReqCloseCamera", // Turn off the camera
     12002: "ReqSetExpMode", // Set exposure mode
@@ -137,6 +140,9 @@ export const cmdMapping = {
     14009: "ReqDualCameraLinkage", // Dual camera linkage
     14010: "ReqMotorRunInPulse", // Motor run in pulse
     14011: "ReqMotorGetPosition", // Motor get Position
+    14014: "ReqMotorLevelCalibrationMove", // APK 3.4.1: move during level calibration
+    14015: "ReqMotorLevelCalibrationSave", // APK 3.4.1: save level calibration offset
+    14016: "ReqMotorLevelCalibrationResetDefault", // APK 3.4.1: reset level calibration
     14800: "ReqStartTrack", // Started tracking
     14801: "ReqStopTrack", // Stop tracking
     14802: "ReqStartSentryMode", // Start Sentinel Mode
@@ -155,6 +161,69 @@ export const cmdMapping = {
     15500: "ReqStartPanoramaByGrid", // Start panorama
     15501: "ReqStopPanorama", // Stop panorama
     15502: "ReqStartPanoramaByEulerRange", // Start panorama Euler Range
+    15506: "ReqGetUploadPredict", // APK 3.4.1: estimate panorama upload
+    15507: "ReqCompressPanorama", // APK 3.4.1: start panorama compression
+    15508: "ReqStopCompressPanorama", // APK 3.4.1: stop panorama compression
+    // V3 Commands
+    10050: "V3ReqOpenTeleCamera", // V3: Open/close tele camera
+    12036: "V3ReqOpenWideCamera", // V3: Open/close wide camera
+    11033: "V3ReqSaveStackedImage", // V3: Save stacked image
+    11034: "V3ReqListSavedImages", // V3: List saved images
+    11039: "V3ReqStatusPolling", // V3: Status polling
+    11040: "V3ReqGetAstroParams", // V3: Get astro parameters
+    11041: "V3ReqSetAstroParams", // V3: Set astro parameters
+    11043: "V3ReqGetExposurePresets", // V3: provisional; APK calls this calibration-frame list
+    11045: "V3ReqCaptureCaliFrame", // V3: Start calibration-frame capture
+    11046: "V3ReqStopCaptureCaliFrame", // V3: Stop calibration-frame capture
+    11047: "V3ReqSetObservationLocation", // V3: Set observation location
+    11048: "V3ReqConfirmObservation", // V3: Confirm observation
+    13010: "V3ReqSetGPSLocation", // V3: Set GPS location
+    15011: "V3ReqFocusInit", // V3: Focus init
+    16102: "ReqGetAllShootingSchedule", // V3: Get shooting schedule
+    16402: "V3ReqModeQuery", // V3: Mode query
+    16403: "V3ReqShootingModeSwitch", // V3: Shooting mode switch
+    16404: "V3ReqModeSwitch", // V3: Mode switch
+    16405: "ReqGetDeviceStateInfo", // Exact firmware/APK task_center.proto schema
+    16700: "V3ReqSetCameraParam", // V3: Set camera param
+    16701: "V3ReqSetExposureGain", // V3: Set exposure/gain
+    16702: "V3ReqUnknownCameraParam", // V3: Unknown camera param command (pcap-discovered)
+    16703: "V3ReqAdjustParam", // V3: Adjust camera param
+    16705: "ReqSetGeneralBoolParams", // APK 3.4.1: set general boolean parameter
+    16706: "V3ReqStreamControl", // V3: Stream control
+    16800: "ReqVoiceCommand", // APK 3.4.1: voice assistant status request
+    17000: "ReqLensDefog", // APK 3.4.1: lens defog switch
+    17001: "ReqAutoCooling", // APK 3.4.1: automatic cooling switch
+    17002: "ReqAutoShutdown", // APK 3.4.1: automatic shutdown switch
+    // APK 3.4.1 commands whose request protobufs already exist in this package.
+    // Response mappings are intentionally not guessed where the app only exposes
+    // an asynchronous notification or an obfuscated response handler.
+    11037: "ReqStopCaptureRawLiveStacking", // Fast stop tele live stacking
+    11038: "ReqStopCaptureRawLiveStacking", // Fast stop wide live stacking
+    12032: "ReqSetRtspBitRateType", // Set wide RTSP bitrate type
+    12035: "ReqSetWBSence", // Set wide white-balance scene
+    15014: "ReqNormalAutoFocus", // Wide normal autofocus
+    15015: "ReqManualSingleStepFocus", // Wide manual single-step focus
+    15016: "ReqManualContinuFocus", // Wide manual continuous focus
+    15017: "ReqStopManualContinuFocus", // Stop wide continuous focus
+    15018: "ReqAstroAutoFocus", // Wide astronomy autofocus
+    15019: "ReqStopAstroAutoFocus", // Stop wide astronomy autofocus
+    15029: "ReqManualSingleStepFocus", // Guide manual single-step focus
+    15030: "ReqManualContinuFocus", // Guide manual continuous focus
+    15031: "ReqStopManualContinuFocus", // Stop guide continuous focus
+    15032: "ReqAstroAutoFocus", // Guide astronomy autofocus
+    15034: "ReqStopAstroAutoFocus", // Stop guide astronomy autofocus
+    15503: "ReqStartPanoramaStitchUpload", // Start panorama stitch upload
+    15504: "ReqStopPanoramaStitchUpload", // Stop panorama stitch upload
+    15505: "ReqStopPanoramaStitchUpload", // Query current upload state (empty payload)
+    16100: "ReqSyncShootingSchedule", // Synchronize a shooting schedule
+    16101: "ReqCancelShootingSchedule", // Cancel a shooting schedule
+    16103: "ReqGetShootingTaskById", // Get schedule by ID
+    16105: "ReqReplaceShootingSchedule", // Replace a shooting schedule
+    16106: "ReqUnlockShootingSchedule", // Unlock a shooting schedule
+    16107: "ReqLockShootingSchedule", // Lock a shooting schedule
+    16108: "ReqDeleteShootingSchedule", // Delete a shooting schedule
+    16900: "ReqSetExp", // Set guide-camera exposure
+    16902: "ReqSetGain", // Set guide-camera gain
 };
 export const responseMapping = {
     // BLE Class Response
@@ -215,7 +284,7 @@ export const responseMapping = {
     11002: "ComResponse", // Start GOTO Deep Space Object
     11003: "ComResponse", // Start GOTO Solar System Target
     11004: "ComResponse", // Stop GOTO
-    11005: "ComResponse", // Start stacking
+    11005: "ResAstroShooting", // Start stacking; includes dark-temperature warning context
     11006: "ComResponse", // Stop overlay
     11007: "ComResponse", // Start shooting dark scenes
     11008: "ComResponse", // Stop filming darkfield
@@ -311,6 +380,33 @@ export const responseMapping = {
     15500: "ComResponse", // Start panorama
     15501: "ComResponse", // Stop panorama
     15502: "ComResponse", // Start panorama Euler Range
+    // V3 Responses
+    10050: "ComResponse", // V3: Open/close tele camera
+    12036: "ComResponse", // V3: Open/close wide camera
+    11033: "V3ResSaveStackedImage", // V3: Save stacked image
+    11034: "ComResponse", // V3: List saved images
+    11036: "ComResponse", // V3: Save complete
+    11039: "ComResponse", // V3: Status polling
+    11040: "V3ResGetAstroParams", // V3: Get astro parameters
+    11041: "V3ResSetAstroParams", // V3: Set astro parameters
+    11043: "V3ResGetExposurePresets", // V3: provisional; raw response needs validation
+    11045: "ComResponse", // V3: Start calibration-frame capture
+    11046: "ComResponse", // V3: Stop calibration-frame capture
+    11047: "ComResponse", // V3: Set observation location
+    11048: "ComResponse", // V3: Confirm observation
+    11050: "ComResponse", // V3: Continue after a recoverable shooting warning
+    13010: "ComResponse", // V3: Set GPS location
+    15011: "V3ResFocusInit", // V3: Focus init
+    16102: "ResGetAllShootingSchedule", // V3: Get shooting schedule
+    16402: "V3ResModeQuery", // V3: Mode query
+    16403: "V3ResShootingModeSwitch", // V3: Shooting mode switch
+    16404: "V3ResModeSwitch", // V3: Mode switch
+    16405: "ResGetDeviceStateInfo", // Exact firmware/APK task_center.proto schema
+    16700: "ComResponse", // V3: Set camera param
+    16701: "ComResponse", // V3: Set exposure/gain
+    16702: "ComResponse", // V3: Unknown camera param command (pcap-discovered)
+    16703: "ComResponse", // V3: Adjust camera param
+    16706: "ComResponse", // V3: Stream control
 };
 export const notifyMapping = {
     15200: "ResNotifyPictureMatching", // Telephoto wide-angle image matching
@@ -357,16 +453,39 @@ export const notifyMapping = {
     15241: "ResNotifyLongExpPhotoProgress", // Telephoto long exposure progress
     15242: "ResNotifyLongExpPhotoProgress", // Wide-angle long exposure progress
     15243: "ResNotifyTemperature", // Temperature
-    //  CMD_NOTIFY_PANORAMA_UPLOAD_COMPRESS_PROGRESS = 15244; //
-    //  CMD_NOTIFY_PANORAMA_UPLOAD_UPLOAD_PROGRESS = 15245; //
-    //  CMD_NOTIFY_PANORAMA_UPLOAD_COMPLETE = 15246; //
+    // 15244 is panorama compression progress. APK 3.4.1 assigns both panorama
+    // upload progress and upload complete to 15245, so a single static decoder
+    // cannot safely choose between their two protobuf schemas.
     15247: "ResNotifyOperationState", // Wide-angle dark field shooting state
     15248: "ResNotifyShootingScheduleResultAndState", // Shooting plan results and status notifications
     15249: "ResNotifyShootingTaskState", // Shooting task status notification
     15250: "ResNotifySkySeacherState", // Sky detection status
     //  CMD_NOTIFY_WIDE_MULTI_TRACK_RESULT = 15251; // Wide-angle multi-target box result notification
     //  CMD_NOTIFY_WIDE_TRACK_RESULT = 15252; // Wide-angle single target box result notification
+    15256: "CalibrationResult", // V3: successful mount calibration result (azi/alt)
     15257: "ResNotifyFocus", // Focus Position
+    // V3 Notifications
+    11036: "ComResponse", // V3: Save complete notification
+    15255: "V3ResNotifyExposureProgress", // V3: Per-frame exposure countdown
+    15261: "V3ResNotifyDeviceState", // V3: Device state notification
+    15262: "V3ResNotifyStateLatch", // V3: State latch (pcap-discovered)
+    15264: "V3ResNotifyCameraParamState", // V3: Camera parameter state
+    15267: "V3ResNotifyModeChange", // V3: Mode change notification
+    15270: "V3ResNotifyStackingData", // V3: Stacking data notification
+    15273: "V3ResNotifyPhotoState", // V3: Normal photo state
+    15274: "V3ResNotifyBurstState", // V3: Burst capture state
+    15275: "V3ResNotifyVideoState", // V3: Video recording state
+    15276: "V3ResNotifyTimelapseState", // V3: Timelapse state
+    15278: "V3ResNotifyAutoFocusState", // V3: AutoFocus state
+    15280: "V3ResNotifyAutoFocusStateAlt", // V3: AutoFocus state alternate (pcap-discovered)
+    15285: "V3ResNotifyPhotoBurstProgress", // V3: Photo/burst progress
+    15286: "V3ResNotifyVideoProgress", // V3: Video recording progress
+    15287: "V3ResNotifyTimelapseProgress", // V3: Timelapse progress
+    15288: "V3ResNotifyExposureDuration", // V3: Exposure duration telemetry (pcap-discovered)
+    15290: "V3ResNotifyCaliFrameState", // APK 3.4.1: calibration-frame state
+    15291: "V3ResNotifyCaliFrameProgress", // APK 3.4.1: calibration-frame progress
+    15292: "V3ResNotifyTemperature2", // V3: Temperature2
+    15296: "V3ResNotifyObservationState", // V3: Observation state
 };
 export const notifyResponseMapping = {
     10000: "ComResponse", // Turn on the camera
@@ -513,6 +632,17 @@ export const notifyResponseMapping = {
     15500: "ComResponse", // Start panorama
     15501: "ComResponse", // Stop panorama
     15502: "ComResponse", // Start panorama Euler Range
+    // V3 Notification Responses
+    10050: "ComResponse", // V3: Open/close tele camera
+    12036: "ComResponse", // V3: Open/close wide camera
+    11033: "V3ResSaveStackedImage", // V3: Save stacked image
+    11036: "ComResponse", // V3: Save complete
+    11048: "ComResponse", // V3: Confirm observation
+    16402: "V3ResModeQuery", // V3: Mode query
+    16403: "V3ResShootingModeSwitch", // V3: Shooting mode switch
+    16404: "V3ResModeSwitch", // V3: Mode switch
+    16702: "ComResponse", // V3: Unknown camera param command (pcap-discovered)
+    16703: "ComResponse", // V3: Adjust camera param
 };
 const classStateMappings = {
     "Dwarfii_Api.ResNotifyStateAstroGoto:0": "ASTRO_STATE_IDLE",

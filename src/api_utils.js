@@ -62,6 +62,31 @@ export function setDwarfDeviceID(deviceID) {
   }
 }
 
+var DwarfMinorVersion = Dwarfii_Api.WsMinorVersion.WS_MINOR_VERSION_NUMBER; // V2 default
+
+/** Set the protocol minor version for outgoing packets
+ * @param {number} version - Protocol minor version (9 for V2, 20 for V3)
+ * @returns {boolean}
+ */
+export function setDwarfMinorVersion(version) {
+  const supportedVersions = [
+    Dwarfii_Api.WsMinorVersion.WS_MINOR_VERSION_NUMBER, // 9 (V2)
+    Dwarfii_Api.WsMinorVersion.WS_MINOR_VERSION_V3, // 20 (V3)
+  ];
+  if (typeof version === "number" && supportedVersions.includes(version)) {
+    DwarfMinorVersion = version;
+    return true;
+  }
+  return false;
+}
+
+/** Get the current protocol minor version
+ * @returns {number}
+ */
+export function getDwarfMinorVersion() {
+  return DwarfMinorVersion;
+}
+
 /**
  * Returns the now UTC time as 'yyyy-mm-dd hh:mm:ss'
  * @returns {string}
@@ -137,7 +162,7 @@ export function createPacket(
   type_id
 ) {
   let major_version = Dwarfii_Api.WsMajorVersion.WS_MAJOR_VERSION_NUMBER;
-  let minor_version = Dwarfii_Api.WsMinorVersion.WS_MINOR_VERSION_NUMBER;
+  let minor_version = DwarfMinorVersion;
   let device_id = DwarfDeviceID;
   // message
   let message_buffer = undefined;
@@ -314,6 +339,40 @@ export function analyzePacket(message_buffer, input_data_log = true) {
       decoded_message.data[key] = Response_message[key];
     }
   }
+  // Convert Long objects (protobuf int64) to strings to preserve 64-bit precision
+  // in JSON.stringify output (e.g. paramId in V3 camera param notifications)
+  function convertLongs(obj) {
+    if (!obj || typeof obj !== "object") return;
+    for (let key in obj) {
+      const val = obj[key];
+      if (
+        val &&
+        typeof val === "object" &&
+        typeof val.low === "number" &&
+        typeof val.high === "number"
+      ) {
+        obj[key] =
+          val.toNumber !== undefined
+            ? val.high === 0 && val.low >= 0
+              ? val.toNumber()
+              : val.toString()
+            : String(val);
+      } else if (Array.isArray(val)) {
+        val.forEach((item, i) => {
+          if (item && typeof item === "object" && typeof item.low === "number" && typeof item.high === "number") {
+            val[i] = item.toNumber !== undefined
+              ? item.high === 0 && item.low >= 0 ? item.toNumber() : item.toString()
+              : String(item);
+          } else if (item && typeof item === "object") {
+            convertLongs(item);
+          }
+        });
+      } else if (val && typeof val === "object") {
+        convertLongs(val);
+      }
+    }
+  }
+  convertLongs(decoded_message.data);
   // add command in plain text
   let value = "";
   if (decoded_message.cmd) {

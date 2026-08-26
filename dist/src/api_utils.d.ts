@@ -8,6 +8,15 @@ export function setDwarfClientID(clientID: string): boolean;
  * @returns {boolean}
  */
 export function setDwarfDeviceID(deviceID: number): boolean;
+/** Set the protocol minor version for outgoing packets
+ * @param {number} version - Protocol minor version (9 for V2, 20 for V3)
+ * @returns {boolean}
+ */
+export function setDwarfMinorVersion(version: number): boolean;
+/** Get the current protocol minor version
+ * @returns {number}
+ */
+export function getDwarfMinorVersion(): number;
 /**
  * Returns the now UTC time as 'yyyy-mm-dd hh:mm:ss'
  * @returns {string}

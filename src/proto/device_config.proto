@@ -1,0 +1,93 @@
+syntax = "proto3";
+
+// V3 Module 14: Device Config
+
+// Mode query: CMD 16402
+message V3ReqModeQuery {
+    int32 target_mode = 1;
+}
+
+message V3ResModeQuery {
+    int32 code = 1;
+    int32 mode = 2;
+}
+
+// Shooting mode switch: CMD 16403
+message V3ReqShootingModeSwitch {
+    int32 mode_id = 1; // 1=photo, 3=burst, 4=video, 5=timelapse
+}
+
+message V3ResShootingModeSwitch {
+    int32 code = 1;
+    int32 mode_id = 2;
+}
+
+// Mode switch: CMD 16404
+message V3ReqModeSwitch {
+    int32 field1 = 1;
+    int32 field2 = 2;
+    V3ModeSwitchInner inner = 3;
+}
+
+message V3ModeSwitchInner {
+    int32 value = 1;
+}
+
+message V3ResModeSwitch {
+    int32 code = 1;
+    int32 mode = 2;
+}
+
+// Whole-device state query: CMD 16405. Recovered exactly from the embedded
+// task_center.proto descriptor in DWARF Mini firmware 1.1.3.2. This read-only
+// subset is wire-compatible with the complete message; protobuf preserves safe
+// forward compatibility by ignoring fields not yet represented here.
+message ReqGetDeviceStateInfo {
+}
+
+message CaptureRawState {
+    OperationState state = 1;
+    int32 camera_type = 2;
+}
+
+message ExclusiveCameraState {
+    oneof state {
+        CaptureRawState capture_raw_state = 1;
+    }
+}
+
+message TeleCameraStateInfo {
+    ExclusiveCameraState exclusive_state = 1;
+    double h_fov = 3;
+    double v_fov = 4;
+    uint32 resolution_width = 5;
+    uint32 resolution_height = 6;
+    CmosTemperature cmos_temperature = 7;
+}
+
+message CmosTemperature {
+    optional int32 temperature = 1;
+    int32 camera_type = 2;
+}
+
+message DeviceStateInfo {
+    CalibrationResult calibration_result = 10;
+}
+
+message ResGetDeviceStateInfo {
+    int32 shooting_mode = 1;
+    TeleCameraStateInfo tele_camera_state_info = 2;
+    DeviceStateInfo device_state_info = 6;
+    int32 code = 7;
+}
+
+// Deprecated compatibility declarations. New command mappings use the exact
+// names above. The empty request is byte-identical; the old response type is
+// retained only for source compatibility and must not be used to decode 16405.
+message V3ReqGetDeviceConfig {
+}
+
+message V3ResGetDeviceConfig {
+    int32 code = 1;
+    bytes config_data = 2;
+}

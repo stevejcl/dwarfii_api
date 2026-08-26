@@ -6,7 +6,11 @@ function sleep(ms) {
 }
 
 import { wsURL } from "./api_codes.js";
-import { setDwarfDeviceID, analyzePacket } from "./api_utils.js";
+import {
+  setDwarfDeviceID,
+  setDwarfMinorVersion,
+  analyzePacket,
+} from "./api_utils.js";
 
 class Queue {
   constructor(...elements) {
@@ -183,6 +187,28 @@ export class WebSocketHandler {
       console.error(
         "websocket_class : error setting the device ID of the Dwarf : ",
         deviceIdDwarf
+      );
+      return false;
+    }
+  }
+
+  /**
+   * Set the protocol minor version used for outgoing packets
+   * @param {number} minorVersion ; Set the protocol minor version (9 for V2, 20 for V3).
+   * @returns {boolean} status
+   */
+  setMinorVersionDwarf(minorVersion) {
+    console.debug("websocket_class : setMinorVersionDwarf : ", minorVersion);
+    if (setDwarfMinorVersion(minorVersion)) {
+      console.debug(
+        "websocket_class : success setting the minor version : ",
+        minorVersion
+      );
+      return true;
+    } else {
+      console.error(
+        "websocket_class : error setting the minor version : ",
+        minorVersion
       );
       return false;
     }

@@ -72,6 +72,9 @@ web_modules/
 # Yarn Integrity file
 .yarn-integrity
 
+# v3-probe captures (large pcap/binary files)
+tools/v3-probe/captures/
+
 # dotenv environment variable files
 .env
 .env.development.local
@@ -127,3 +130,4 @@ out
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+tools/v3-probe/pcaps/*

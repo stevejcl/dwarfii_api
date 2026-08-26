@@ -1,19 +1,10 @@
 /** @module websocket_class */
 /* eslint no-unused-vars: 0 */
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
 function sleep(ms) {
     return new Promise((resolve) => setTimeout(resolve, ms));
 }
 import { wsURL } from "./api_codes.js";
-import { setDwarfDeviceID, analyzePacket } from "./api_utils.js";
+import { setDwarfDeviceID, setDwarfMinorVersion, analyzePacket, } from "./api_utils.js";
 class Queue {
     constructor(...elements) {
         // Initializing the queue with given arguments
@@ -101,17 +92,15 @@ export class WebSocketHandler {
      * @param {string} IPDwarf ; Set the IP address of the Dwarf to connect to, force another one that was configured when calling the constructor.
      * @returns {Promise<void>}
      */
-    setNewIpDwarf(IPDwarf) {
-        return __awaiter(this, void 0, void 0, function* () {
-            console.debug("websocket_class : setIpDwarf : ", IPDwarf);
-            if (IPDwarf != this.IPDwarf) {
-                console.debug("websocket_class : new IP received, closing old one: ", this.IPDwarf);
-                this.close();
-                yield sleep(1000);
-            }
-            this.IPDwarf = IPDwarf;
-            console.debug("websocket_class : new Ip: ", this.IPDwarf);
-        });
+    async setNewIpDwarf(IPDwarf) {
+        console.debug("websocket_class : setIpDwarf : ", IPDwarf);
+        if (IPDwarf != this.IPDwarf) {
+            console.debug("websocket_class : new IP received, closing old one: ", this.IPDwarf);
+            this.close();
+            await sleep(1000);
+        }
+        this.IPDwarf = IPDwarf;
+        console.debug("websocket_class : new Ip: ", this.IPDwarf);
     }
     /**
      * Set the URL address of the proxy uses to connect to the dwarf,
@@ -119,40 +108,36 @@ export class WebSocketHandler {
      * @param {string} proxyURL ; Set the URL address of the Proxy the Dwarf to connect to.
      * @returns {Promise<void>}
      */
-    setProxyUrl(proxyURL = undefined) {
-        return __awaiter(this, void 0, void 0, function* () {
-            if (!proxyURL)
-                console.debug("websocket_class : Resetting Proxy URL value");
-            else
-                console.debug("websocket_class : Setting Proxy URL: ", proxyURL);
-            if (proxyURL != this.proxyURL) {
-                console.debug("websocket_class : new Proxy Url received, closing connection: ", this.proxyURL);
-                this.close();
-                yield sleep(1000);
-            }
-            this.proxyURL = proxyURL;
-            if (this.proxyURL)
-                console.debug("websocket_class : Using Proxy URL: ", this.proxyURL);
-            else
-                console.debug("websocket_class : Proxy URL reset");
-        });
+    async setProxyUrl(proxyURL = undefined) {
+        if (!proxyURL)
+            console.debug("websocket_class : Resetting Proxy URL value");
+        else
+            console.debug("websocket_class : Setting Proxy URL: ", proxyURL);
+        if (proxyURL != this.proxyURL) {
+            console.debug("websocket_class : new Proxy Url received, closing connection: ", this.proxyURL);
+            this.close();
+            await sleep(1000);
+        }
+        this.proxyURL = proxyURL;
+        if (this.proxyURL)
+            console.debug("websocket_class : Using Proxy URL: ", this.proxyURL);
+        else
+            console.debug("websocket_class : Proxy URL reset");
     }
     /**
      * Set the Https mode of the proxy connection, the Dwarf connect to
      * @param {boolean} useHttps ; true if Https, then wss should be used with a proxy connection
      * @returns {Promise<void>}
      */
-    setHttpsMode(useHttps) {
-        return __awaiter(this, void 0, void 0, function* () {
-            console.debug("websocket_class : setHttpsMode : ", useHttps);
-            if (useHttps !== this.useHttps) {
-                console.debug("websocket_class : change Https mode, closing connection. Previous  mode : ", this.useHttps ? "on" : "off");
-                this.close();
-                yield sleep(1000);
-            }
-            this.useHttps = useHttps;
-            console.debug("websocket_class : Updated HTTPS mode : ", this.useHttps ? "on" : "off");
-        });
+    async setHttpsMode(useHttps) {
+        console.debug("websocket_class : setHttpsMode : ", useHttps);
+        if (useHttps !== this.useHttps) {
+            console.debug("websocket_class : change Https mode, closing connection. Previous  mode : ", this.useHttps ? "on" : "off");
+            this.close();
+            await sleep(1000);
+        }
+        this.useHttps = useHttps;
+        console.debug("websocket_class : Updated HTTPS mode : ", this.useHttps ? "on" : "off");
     }
     /**
      * Set the device ID of the Dwarf connected (readen from the Dwarf or from the config file on the Dwarf)
@@ -167,6 +152,22 @@ export class WebSocketHandler {
         }
         else {
             console.error("websocket_class : error setting the device ID of the Dwarf : ", deviceIdDwarf);
+            return false;
+        }
+    }
+    /**
+     * Set the protocol minor version used for outgoing packets
+     * @param {number} minorVersion ; Set the protocol minor version (9 for V2, 20 for V3).
+     * @returns {boolean} status
+     */
+    setMinorVersionDwarf(minorVersion) {
+        console.debug("websocket_class : setMinorVersionDwarf : ", minorVersion);
+        if (setDwarfMinorVersion(minorVersion)) {
+            console.debug("websocket_class : success setting the minor version : ", minorVersion);
+            return true;
+        }
+        else {
+            console.error("websocket_class : error setting the minor version : ", minorVersion);
             return false;
         }
     }
@@ -212,104 +213,102 @@ export class WebSocketHandler {
      * Main function, to call after prepare function, send the message and start dialogue with the Dwarf
      * @returns {Promise<boolean>} false if the IP has not been set or if old Socket can't be closed
      */
-    run() {
-        return __awaiter(this, void 0, void 0, function* () {
-            // Check if ipDwarf is defined before calling wsURL
-            if (!this.IPDwarf) {
-                console.error("IPDwarf is undefined. Unable to create WebSocket.");
-                return false;
+    async run() {
+        // Check if ipDwarf is defined before calling wsURL
+        if (!this.IPDwarf) {
+            console.error("IPDwarf is undefined. Unable to create WebSocket.");
+            return false;
+        }
+        console.debug("websocket_class : running function starting...");
+        try {
+            await sleep(10);
+            this.keep_connection = false;
+            if (this.socket && this.socket.readyState === WebSocket.OPEN) {
+                console.log("Keep old Websocket opened");
+                this.keep_connection = true;
             }
-            console.debug("websocket_class : running function starting...");
-            try {
-                yield sleep(10);
-                this.keep_connection = false;
-                if (this.socket && this.socket.readyState === WebSocket.OPEN) {
-                    console.log("Keep old Websocket opened");
-                    this.keep_connection = true;
+            else {
+                if (this.socket && this.socket.readyState !== WebSocket.OPEN) {
+                    // Socket still hangs, hard close
+                    console.log("Old Websocket force close");
+                    this.cleanup_socket();
+                    await sleep(100);
                 }
-                else {
-                    if (this.socket && this.socket.readyState !== WebSocket.OPEN) {
-                        // Socket still hangs, hard close
-                        console.log("Old Websocket force close");
-                        this.cleanup_socket();
-                        yield sleep(100);
-                    }
-                }
-                if (this.keep_connection) {
-                    // Need Stopping Ping
-                    yield this.wait_ping_stop();
-                    // Start manually no open event
-                    this.start();
-                }
-                else {
-                    // restarting
-                    // verify Stopping Ping
-                    yield this.wait_ping_stop();
-                    this.is_stopping = false;
-                    this.is_opened = false;
-                    // Create WebSocket
-                    this.socket = undefined;
-                    let new_socket = undefined;
-                    new_socket = new WebSocket(wsURL(this.IPDwarf, this.proxyURL, this.useHttps));
-                    console.log("Launch open new Socket");
-                    // Socket Binary Mode
-                    new_socket.binaryType = "arraybuffer";
-                    new_socket.onopen = () => {
-                        if (new_socket) {
-                            this.socket = new_socket;
-                            console.debug("new socket created", new_socket);
-                            this.is_opened = true;
-                            if (!this.proxyURL)
-                                console.debug(`websocket_class : open... on IP : ${this.IPDwarf}`);
-                            else {
-                                console.debug(`websocket_class: open... on IP: ${this.IPDwarf} using proxy: ${this.proxyURL || "none"}${this.useHttps ? " (HTTPS on)" : ""}`);
-                            }
-                            console.debug("class instance open:", this);
-                            // Start on the open event
-                            this.start();
-                        }
-                        else {
-                            console.debug(`websocket_class : open error socket undefined`);
-                        }
-                    };
-                    new_socket.onmessage = (event) => __awaiter(this, void 0, void 0, function* () {
-                        console.debug("websocket_class : onmessage function...");
-                        while (this.is_sending || this.is_buffered) {
-                            yield sleep(10);
-                        }
-                        console.debug("websocket_class : onmessage function starting...");
-                        this.is_receiving = true;
-                        yield this.handleMessage(event);
-                        this.is_receiving = false;
-                        console.debug("websocket_class : onmessage function ending...");
-                    });
-                    new_socket.onerror = (message) => {
-                        if (this.is_opened) {
-                            this.handleError(message);
-                        }
-                    };
-                    new_socket.onclose = (message) => __awaiter(this, void 0, void 0, function* () {
-                        if (this.is_opened) {
-                            yield this.handleClose(message);
-                        }
-                        // Cleanup event handlers after disconnection
-                        yield this.cleanup();
-                        if (false && new_socket) {
-                            new_socket.onopen = null;
-                            new_socket.onerror = null;
-                            new_socket.onclose = null;
-                        }
-                    });
-                }
-                console.debug("class instance :", this);
-                return true;
             }
-            catch (error) {
-                console.error("websocket_class Exception Error creating WebSocket:", error);
+            if (this.keep_connection) {
+                // Need Stopping Ping
+                await this.wait_ping_stop();
+                // Start manually no open event
+                this.start();
+            }
+            else {
+                // restarting
+                // verify Stopping Ping
+                await this.wait_ping_stop();
+                this.is_stopping = false;
+                this.is_opened = false;
+                // Create WebSocket
                 this.socket = undefined;
-                return false;
+                let new_socket = undefined;
+                new_socket = new WebSocket(wsURL(this.IPDwarf, this.proxyURL, this.useHttps));
+                console.log("Launch open new Socket");
+                // Socket Binary Mode
+                new_socket.binaryType = "arraybuffer";
+                new_socket.onopen = () => {
+                    if (new_socket) {
+                        this.socket = new_socket;
+                        console.debug("new socket created", new_socket);
+                        this.is_opened = true;
+                        if (!this.proxyURL)
+                            console.debug(`websocket_class : open... on IP : ${this.IPDwarf}`);
+                        else {
+                            console.debug(`websocket_class: open... on IP: ${this.IPDwarf} using proxy: ${this.proxyURL || "none"}${this.useHttps ? " (HTTPS on)" : ""}`);
+                        }
+                        console.debug("class instance open:", this);
+                        // Start on the open event
+                        this.start();
+                    }
+                    else {
+                        console.debug(`websocket_class : open error socket undefined`);
+                    }
+                };
+                new_socket.onmessage = async (event) => {
+                    console.debug("websocket_class : onmessage function...");
+                    while (this.is_sending || this.is_buffered) {
+                        await sleep(10);
+                    }
+                    console.debug("websocket_class : onmessage function starting...");
+                    this.is_receiving = true;
+                    await this.handleMessage(event);
+                    this.is_receiving = false;
+                    console.debug("websocket_class : onmessage function ending...");
+                };
+                new_socket.onerror = (message) => {
+                    if (this.is_opened) {
+                        this.handleError(message);
+                    }
+                };
+                new_socket.onclose = async (message) => {
+                    if (this.is_opened) {
+                        await this.handleClose(message);
+                    }
+                    // Cleanup event handlers after disconnection
+                    await this.cleanup();
+                    if (false && new_socket) {
+                        new_socket.onopen = null;
+                        new_socket.onerror = null;
+                        new_socket.onclose = null;
+                    }
+                };
             }
-        });
+            console.debug("class instance :", this);
+            return true;
+        }
+        catch (error) {
+            console.error("websocket_class Exception Error creating WebSocket:", error);
+            this.socket = undefined;
+            return false;
+        }
     }
     start() {
         console.debug("websocket_class : start function ...");
@@ -333,185 +332,177 @@ export class WebSocketHandler {
      * @param {function} callbackReconnect ; Callback Fonction (const customReconnectHandler = ()) called after a socket reconnection.
      * @returns {Promise<void>}
      */
-    prepare(WS_Packet, // can be an array of Packets
+    async prepare(WS_Packet, // can be an array of Packets
     senderId, expectedResponseCmd = [], callbackMessage = function () { }, callbackConnectState = function () { }, callbackError = function () { }, callbackReconnect = undefined) {
-        return __awaiter(this, void 0, void 0, function* () {
-            console.debug("websocket_class : prepare function...");
-            while (this.is_sending || this.is_receiving) {
-                yield sleep(10);
-            }
-            console.debug("websocket_class : prepare function starting...");
-            this.is_buffered = true;
-            // Store the callback function and expected response types for later use
-            if (senderId) {
-                if (callbackMessage && typeof callbackMessage === "function") {
-                    if (!this.packetCallbackMessages[senderId]) {
-                        this.packetCallbackMessages[senderId] = {};
-                    }
-                    expectedResponseCmd.forEach((idCmd) => {
-                        console.log(` -> Prepare for  ${senderId} => ${idCmd}`);
-                        // empty the tab if exist : just one callback function per command
-                        this.packetCallbackMessages[senderId][idCmd] = [];
-                        this.packetCallbackMessages[senderId][idCmd].push(callbackMessage);
-                    });
+        console.debug("websocket_class : prepare function...");
+        while (this.is_sending || this.is_receiving) {
+            await sleep(10);
+        }
+        console.debug("websocket_class : prepare function starting...");
+        this.is_buffered = true;
+        // Store the callback function and expected response types for later use
+        if (senderId) {
+            if (callbackMessage && typeof callbackMessage === "function") {
+                if (!this.packetCallbackMessages[senderId]) {
+                    this.packetCallbackMessages[senderId] = {};
                 }
-                if (callbackConnectState && typeof callbackConnectState === "function") {
-                    // empty the tab if exist : just one callback function per sender
-                    this.packetCallbackConnectStates[senderId] = [];
-                    this.packetCallbackConnectStates[senderId].push(callbackConnectState);
-                }
-                if (callbackError && typeof callbackError === "function") {
-                    // empty the tab if exist : just one callback function per sender
-                    this.packetCallbackErrors[senderId] = [];
-                    this.packetCallbackErrors[senderId].push(callbackError);
-                }
-                if (callbackReconnect && typeof callbackReconnect === "function") {
-                    // empty the tab if exist : just one callback Reconnect function
-                    this.callbackReconnectFunction = callbackReconnect;
-                    console.log(` -> Add a callbackReconnect function => ${callbackReconnect}`);
-                }
-                this.verifyCallBacks();
+                expectedResponseCmd.forEach((idCmd) => {
+                    console.log(` -> Prepare for  ${senderId} => ${idCmd}`);
+                    // empty the tab if exist : just one callback function per command
+                    this.packetCallbackMessages[senderId][idCmd] = [];
+                    this.packetCallbackMessages[senderId][idCmd].push(callbackMessage);
+                });
             }
-            if (Array.isArray(WS_Packet)) {
-                console.log(` -> Prepare ${WS_Packet.length} packets for ${senderId}`);
-                this.sendingQueue.push(...WS_Packet);
+            if (callbackConnectState && typeof callbackConnectState === "function") {
+                // empty the tab if exist : just one callback function per sender
+                this.packetCallbackConnectStates[senderId] = [];
+                this.packetCallbackConnectStates[senderId].push(callbackConnectState);
             }
-            else {
-                console.log(` -> Prepare one packet for ${senderId}`);
-                this.sendingQueue.push(WS_Packet);
+            if (callbackError && typeof callbackError === "function") {
+                // empty the tab if exist : just one callback function per sender
+                this.packetCallbackErrors[senderId] = [];
+                this.packetCallbackErrors[senderId].push(callbackError);
             }
-            yield sleep(50);
-            this.is_buffered = false;
-            console.debug("websocket_class : prepare function ending...");
-        });
+            if (callbackReconnect && typeof callbackReconnect === "function") {
+                // empty the tab if exist : just one callback Reconnect function
+                this.callbackReconnectFunction = callbackReconnect;
+                console.log(` -> Add a callbackReconnect function => ${callbackReconnect}`);
+            }
+            this.verifyCallBacks();
+        }
+        if (Array.isArray(WS_Packet)) {
+            console.log(` -> Prepare ${WS_Packet.length} packets for ${senderId}`);
+            this.sendingQueue.push(...WS_Packet);
+        }
+        else {
+            console.log(` -> Prepare one packet for ${senderId}`);
+            this.sendingQueue.push(WS_Packet);
+        }
+        await sleep(50);
+        this.is_buffered = false;
+        console.debug("websocket_class : prepare function ending...");
     }
-    pingDwarf() {
-        return __awaiter(this, void 0, void 0, function* () {
-            console.debug("websocket_class : init ping function...");
-            this.is_ping_stopped = false;
-            yield sleep(10);
-            while (!this.is_running) {
-                yield sleep(10);
-            }
-            console.debug("websocket_class : ping function...");
-            console.debug("websocket_class : is_running...", this.is_running);
-            console.debug("websocket_class : is_stopping...", this.is_stopping);
-            console.debug("websocket_class : signal_ping_stop...", this.signal_ping_stop);
-            console.debug("websocket_class : is_stopping...", this.is_stopping);
-            console.debug("websocket_class : is_pong_received...", this.is_pong_received);
-            this.is_sending = false;
-            this.nb_ping_error = this.nb_ping_error_default;
-            let interval_no_ping = this.ping_interval * 10 + 1;
-            let interval = this.ping_interval;
-            let ping_send = false;
-            while (!this.is_stopping && !this.signal_ping_stop) {
-                yield sleep(100);
-                if (!this.is_sending && this.is_pong_received && this.isConnected()) {
-                    console.debug("websocket_class : ping function starting...");
-                    this.is_sending = true;
-                    // reset interval_no_ping
-                    interval_no_ping = this.ping_interval * 10 + 1;
-                    this.nb_ping_error = this.nb_ping_error_default;
-                    // Send Command:
-                    this.is_pong_received = false;
-                    //this.socket.ping("");
-                    this.socket.send("ping");
-                    console.log("websocket_class : sending ping");
-                    this.is_sending = false;
-                    ping_send = true;
-                    console.debug("websocket_class : ping function waiting...");
-                    interval = this.ping_interval;
-                    console.debug(`websocket_class : ping interval wait : ${interval}`);
-                    while (interval > 0 && !this.is_stopping && !this.signal_ping_stop) {
-                        yield sleep(1000);
-                        interval = interval - 1;
-                    }
-                    console.debug(`websocket_class : ping interval: ${interval}`);
-                    console.debug(`websocket_class : pong: ${this.is_pong_received}`);
-                    // Test if wet get Pong before the wait time in normal wait: no is_stopping nor signal_ping_stop
-                    if (interval == 0 &&
-                        !this.is_pong_received &&
-                        !this.is_stopping &&
-                        !this.signal_ping_stop) {
-                        this.nb_ping_error -= 1;
-                        console.error(`websocket_class : no pong received after sending Ping ${this.nb_ping_error_default - this.nb_ping_error}`);
-                    }
-                    else if (this.is_pong_received) {
-                        // OK or stop reset
-                        this.nb_ping_error = this.nb_ping_error_default;
-                    }
-                    console.debug("websocket_class : ping function stopping...");
+    async pingDwarf() {
+        console.debug("websocket_class : init ping function...");
+        this.is_ping_stopped = false;
+        await sleep(10);
+        while (!this.is_running) {
+            await sleep(10);
+        }
+        console.debug("websocket_class : ping function...");
+        console.debug("websocket_class : is_running...", this.is_running);
+        console.debug("websocket_class : is_stopping...", this.is_stopping);
+        console.debug("websocket_class : signal_ping_stop...", this.signal_ping_stop);
+        console.debug("websocket_class : is_stopping...", this.is_stopping);
+        console.debug("websocket_class : is_pong_received...", this.is_pong_received);
+        this.is_sending = false;
+        this.nb_ping_error = this.nb_ping_error_default;
+        let interval_no_ping = this.ping_interval * 10 + 1;
+        let interval = this.ping_interval;
+        let ping_send = false;
+        while (!this.is_stopping && !this.signal_ping_stop) {
+            await sleep(100);
+            if (!this.is_sending && this.is_pong_received && this.isConnected()) {
+                console.debug("websocket_class : ping function starting...");
+                this.is_sending = true;
+                // reset interval_no_ping
+                interval_no_ping = this.ping_interval * 10 + 1;
+                this.nb_ping_error = this.nb_ping_error_default;
+                // Send Command:
+                this.is_pong_received = false;
+                //this.socket.ping("");
+                this.socket.send("ping");
+                console.log("websocket_class : sending ping");
+                this.is_sending = false;
+                ping_send = true;
+                console.debug("websocket_class : ping function waiting...");
+                interval = this.ping_interval;
+                console.debug(`websocket_class : ping interval wait : ${interval}`);
+                while (interval > 0 && !this.is_stopping && !this.signal_ping_stop) {
+                    await sleep(1000);
+                    interval = interval - 1;
                 }
-                if (this.is_pong_received) {
+                console.debug(`websocket_class : ping interval: ${interval}`);
+                console.debug(`websocket_class : pong: ${this.is_pong_received}`);
+                // Test if wet get Pong before the wait time in normal wait: no is_stopping nor signal_ping_stop
+                if (interval == 0 &&
+                    !this.is_pong_received &&
+                    !this.is_stopping &&
+                    !this.signal_ping_stop) {
+                    this.nb_ping_error -= 1;
+                    console.error(`websocket_class : no pong received after sending Ping ${this.nb_ping_error_default - this.nb_ping_error}`);
+                }
+                else if (this.is_pong_received) {
                     // OK or stop reset
                     this.nb_ping_error = this.nb_ping_error_default;
-                    ping_send = false;
                 }
-                if (ping_send) {
-                    if (this.nb_ping_error != this.nb_ping_error_default) {
-                        interval_no_ping -= 1;
-                        if (interval_no_ping <= 0) {
-                            this.nb_ping_error -= 1;
-                            console.error(`websocket_class : no pong received after sending Ping ${this.nb_ping_error_default - this.nb_ping_error}`);
-                            if (this.nb_ping_error <= 0) {
-                                console.error(`websocket_class : no pong received after ${this.nb_ping_error_default} tries: deconnect!`);
-                                this.signal_ping_stop = true;
-                                this.cleanup(true);
-                            }
-                            else {
-                                interval_no_ping = this.ping_interval * 10;
-                            }
+                console.debug("websocket_class : ping function stopping...");
+            }
+            if (this.is_pong_received) {
+                // OK or stop reset
+                this.nb_ping_error = this.nb_ping_error_default;
+                ping_send = false;
+            }
+            if (ping_send) {
+                if (this.nb_ping_error != this.nb_ping_error_default) {
+                    interval_no_ping -= 1;
+                    if (interval_no_ping <= 0) {
+                        this.nb_ping_error -= 1;
+                        console.error(`websocket_class : no pong received after sending Ping ${this.nb_ping_error_default - this.nb_ping_error}`);
+                        if (this.nb_ping_error <= 0) {
+                            console.error(`websocket_class : no pong received after ${this.nb_ping_error_default} tries: deconnect!`);
+                            this.signal_ping_stop = true;
+                            this.cleanup(true);
+                        }
+                        else {
+                            interval_no_ping = this.ping_interval * 10;
                         }
                     }
                 }
             }
-            this.is_sending = false;
-            this.is_ping_stopped = true;
-            console.debug("websocket_class : ping function ending...");
-        });
+        }
+        this.is_sending = false;
+        this.is_ping_stopped = true;
+        console.debug("websocket_class : ping function ending...");
     }
-    wait_ping_stop() {
-        return __awaiter(this, void 0, void 0, function* () {
-            this.signal_ping_stop = true;
-            while (!this.is_ping_stopped)
-                yield sleep(100);
-            this.signal_ping_stop = false;
-        });
+    async wait_ping_stop() {
+        this.signal_ping_stop = true;
+        while (!this.is_ping_stopped)
+            await sleep(100);
+        this.signal_ping_stop = false;
     }
-    send() {
-        return __awaiter(this, void 0, void 0, function* () {
-            yield sleep(250);
-            while (!this.is_running) {
-                yield sleep(10);
-            }
-            console.debug("websocket_class : send function...");
-            this.is_sending = false;
-            while (!this.is_stopping) {
-                yield sleep(10);
-                let lenQueue = this.sendingQueue.length;
-                if (!this.is_buffered &&
-                    !this.is_sending &&
-                    this.sendingQueue.length > 0 &&
-                    this.isConnected()) {
-                    console.debug("websocket_class : send function starting...");
-                    this.is_sending = true;
-                    this.WS_Packet = this.sendingQueue.shift();
-                    // Send Command:
-                    if (this.WS_Packet) {
-                        this.socket.send(this.WS_Packet);
-                        console.log(`websocket_class : sending buffer = ${Array.prototype.toString.call(this.WS_Packet)}`);
-                        yield sleep(100);
-                    }
-                    else {
-                        console.error(`websocket_class : sending buffer empty : lenqueue = ${lenQueue}`);
-                    }
-                    this.is_sending = false;
-                    console.debug("websocket_class : send function stopping...");
+    async send() {
+        await sleep(250);
+        while (!this.is_running) {
+            await sleep(10);
+        }
+        console.debug("websocket_class : send function...");
+        this.is_sending = false;
+        while (!this.is_stopping) {
+            await sleep(10);
+            let lenQueue = this.sendingQueue.length;
+            if (!this.is_buffered &&
+                !this.is_sending &&
+                this.sendingQueue.length > 0 &&
+                this.isConnected()) {
+                console.debug("websocket_class : send function starting...");
+                this.is_sending = true;
+                this.WS_Packet = this.sendingQueue.shift();
+                // Send Command:
+                if (this.WS_Packet) {
+                    this.socket.send(this.WS_Packet);
+                    console.log(`websocket_class : sending buffer = ${Array.prototype.toString.call(this.WS_Packet)}`);
+                    await sleep(100);
                 }
+                else {
+                    console.error(`websocket_class : sending buffer empty : lenqueue = ${lenQueue}`);
+                }
+                this.is_sending = false;
+                console.debug("websocket_class : send function stopping...");
             }
-            this.is_sending = false;
-            console.debug("websocket_class : send function ending...");
-        });
+        }
+        this.is_sending = false;
+        console.debug("websocket_class : send function ending...");
     }
     /**
      * stopCallbacks function : Stop receiving on the callbacks functions
@@ -646,117 +637,109 @@ export class WebSocketHandler {
      * To call from a timeout function during the connection with the Dwarf
      * @returns {Promise<void>}
      */
-    handleClose(message) {
-        return __awaiter(this, void 0, void 0, function* () {
-            // Stop Timer if exist
-            if (this.closeSocketTimer !== undefined) {
-                clearTimeout(this.closeSocketTimer);
-                if (this.onStopTimerHandler !== undefined)
-                    this.onStopTimerHandler();
-            }
-            // send Callback Status KO
-            this.sendCallbackConnectStates(false);
-            // send Callback Error
-            this.sendCallbackErrors();
-            // Stop ping command
-            yield this.wait_ping_stop();
-        });
+    async handleClose(message) {
+        // Stop Timer if exist
+        if (this.closeSocketTimer !== undefined) {
+            clearTimeout(this.closeSocketTimer);
+            if (this.onStopTimerHandler !== undefined)
+                this.onStopTimerHandler();
+        }
+        // send Callback Status KO
+        this.sendCallbackConnectStates(false);
+        // send Callback Error
+        this.sendCallbackErrors();
+        // Stop ping command
+        await this.wait_ping_stop();
     }
     /**
      * Force close the socket connection with the Dwarf
      * @returns {Promise<void>}
      */
-    close() {
-        return __awaiter(this, void 0, void 0, function* () {
-            // need closing socket if connected
-            if (this.socket && this.socket.readyState === WebSocket.OPEN) {
-                console.log("Websocket close");
-                this.socket.close(1000, "Normal closure");
-                yield sleep(1000);
-            }
-            if (this.socket && this.socket.readyState != WebSocket.CLOSED) {
-                // Socket still hangs, hard close
-                this.socket.close(1000, "Force close after timeout");
-                console.log("Websocket force close");
-                yield sleep(1000);
-            }
-        });
+    async close() {
+        // need closing socket if connected
+        if (this.socket && this.socket.readyState === WebSocket.OPEN) {
+            console.log("Websocket close");
+            this.socket.close(1000, "Normal closure");
+            await sleep(1000);
+        }
+        if (this.socket && this.socket.readyState != WebSocket.CLOSED) {
+            // Socket still hangs, hard close
+            this.socket.close(1000, "Force close after timeout");
+            console.log("Websocket force close");
+            await sleep(1000);
+        }
     }
     /**
      * cleanup function : Stop all the functions
      * @param {boolean} forceStop ; if true do not try a reconnection, false by default
      * @returns {Promise<void>}
      **/
-    cleanup(forceStop = false) {
-        return __awaiter(this, void 0, void 0, function* () {
-            console.log("WebSocketHandler cleanup");
-            if (forceStop) {
-                // send Callback Status KO
-                this.handleClose();
-                console.error("WebSocketHandler Force Stop!");
+    async cleanup(forceStop = false) {
+        console.log("WebSocketHandler cleanup");
+        if (forceStop) {
+            // send Callback Status KO
+            this.handleClose();
+            console.error("WebSocketHandler Force Stop!");
+        }
+        let continue_cleanup = true;
+        let needDisconnect = forceStop || !this.is_running;
+        let initial_running = this.is_running;
+        if (!forceStop && this.is_running) {
+            // need to verify if callback functions are still OK if running
+            let testCallbackMessages = Object.keys(this.packetCallbackMessages).length > 0;
+            let testCallbackConnectStates = Object.keys(this.packetCallbackConnectStates).length > 0;
+            let testCallbackErrors = Object.keys(this.packetCallbackErrors).length > 0;
+            if (testCallbackMessages != this.isCallbackMessages ||
+                testCallbackConnectStates != this.isCallbackConnectStates ||
+                testCallbackErrors != this.isCallbackErrors) {
+                needDisconnect = true;
+                console.log("WebSocketHandler need to be disconnect");
             }
-            let continue_cleanup = true;
-            let needDisconnect = forceStop || !this.is_running;
-            let initial_running = this.is_running;
-            if (!forceStop && this.is_running) {
-                // need to verify if callback functions are still OK if running
-                let testCallbackMessages = Object.keys(this.packetCallbackMessages).length > 0;
-                let testCallbackConnectStates = Object.keys(this.packetCallbackConnectStates).length > 0;
-                let testCallbackErrors = Object.keys(this.packetCallbackErrors).length > 0;
-                if (testCallbackMessages != this.isCallbackMessages ||
-                    testCallbackConnectStates != this.isCallbackConnectStates ||
-                    testCallbackErrors != this.isCallbackErrors) {
-                    needDisconnect = true;
-                    console.log("WebSocketHandler need to be disconnect");
-                }
+        }
+        if (this.closeSocketTimer !== undefined)
+            clearTimeout(this.closeSocketTimer);
+        this.is_stopping = true;
+        this.is_running = false;
+        console.log("WebSocketHandler close ping");
+        await this.wait_ping_stop();
+        // Remove event listeners during cleanup
+        await this.cleanup_socket();
+        await sleep(2000);
+        let stop_try_reconnect = false;
+        if (initial_running) {
+            console.log("WebSocketHandler max try connection: %d", this.nb_reconnect_default);
+        }
+        if (!needDisconnect && this.nb_reconnect > 0) {
+            this.is_running = initial_running;
+            this.nb_reconnect -= 1;
+            console.log("WebSocketHandler retry connection: %d", this.nb_reconnect_default - this.nb_reconnect);
+            continue_cleanup = false;
+            console.log("WebSocketHandler retry connection OK");
+            if (this.callbackReconnectFunction) {
+                console.log("WebSocketHandler launch Reconnect function");
+                this.callbackReconnectFunction();
             }
+            continue_cleanup = await !this.run();
+        }
+        if (continue_cleanup) {
+            this.handleClose();
             if (this.closeSocketTimer !== undefined)
                 clearTimeout(this.closeSocketTimer);
-            this.is_stopping = true;
-            this.is_running = false;
-            console.log("WebSocketHandler close ping");
-            yield this.wait_ping_stop();
-            // Remove event listeners during cleanup
-            yield this.cleanup_socket();
-            yield sleep(2000);
-            let stop_try_reconnect = false;
-            if (initial_running) {
-                console.log("WebSocketHandler max try connection: %d", this.nb_reconnect_default);
-            }
-            if (!needDisconnect && this.nb_reconnect > 0) {
-                this.is_running = initial_running;
-                this.nb_reconnect -= 1;
-                console.log("WebSocketHandler retry connection: %d", this.nb_reconnect_default - this.nb_reconnect);
-                continue_cleanup = false;
-                console.log("WebSocketHandler retry connection OK");
-                if (this.callbackReconnectFunction) {
-                    console.log("WebSocketHandler launch Reconnect function");
-                    this.callbackReconnectFunction();
-                }
-                continue_cleanup = yield !this.run();
-            }
-            if (continue_cleanup) {
-                this.handleClose();
-                if (this.closeSocketTimer !== undefined)
-                    clearTimeout(this.closeSocketTimer);
-                // delete CallbacksFunction
-                console.log("WebSocketHandler final closing functions");
-                this.stopCallbacks("*");
-                this.is_opened = false;
-            }
-        });
+            // delete CallbacksFunction
+            console.log("WebSocketHandler final closing functions");
+            this.stopCallbacks("*");
+            this.is_opened = false;
+        }
     }
-    cleanup_socket() {
-        return __awaiter(this, void 0, void 0, function* () {
-            // Remove event listeners during cleanup
-            if (this.socket) {
-                this.socket.onopen = null;
-                this.socket.onmessage = null;
-                this.socket.onerror = null;
-                this.socket.onclose = null;
-                this.socket = undefined;
-            }
-        });
+    async cleanup_socket() {
+        // Remove event listeners during cleanup
+        if (this.socket) {
+            this.socket.onopen = null;
+            this.socket.onmessage = null;
+            this.socket.onerror = null;
+            this.socket.onclose = null;
+            this.socket = undefined;
+        }
     }
 }
 WebSocketHandler.instance = undefined;

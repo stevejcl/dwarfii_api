@@ -2,6 +2,12 @@ import * as $protobuf from "protobufjs";
 import Long = require("long");
 /** Properties of a ReqStartCalibration. */
 export interface IReqStartCalibration {
+
+    /** ReqStartCalibration lon */
+    lon?: (number|null);
+
+    /** ReqStartCalibration lat */
+    lat?: (number|null);
 }
 
 /** Represents a ReqStartCalibration. */
@@ -12,6 +18,12 @@ export class ReqStartCalibration implements IReqStartCalibration {
      * @param [properties] Properties to set
      */
     constructor(properties?: IReqStartCalibration);
+
+    /** ReqStartCalibration lon. */
+    public lon: number;
+
+    /** ReqStartCalibration lat. */
+    public lat: number;
 
     /**
      * Creates a new ReqStartCalibration instance using the specified properties.
@@ -499,6 +511,12 @@ export class ReqStopGoto implements IReqStopGoto {
 
 /** Properties of a ReqCaptureRawLiveStacking. */
 export interface IReqCaptureRawLiveStacking {
+
+    /** ReqCaptureRawLiveStacking irIndex */
+    irIndex?: (number|null);
+
+    /** ReqCaptureRawLiveStacking forceStart */
+    forceStart?: (boolean|null);
 }
 
 /** Represents a ReqCaptureRawLiveStacking. */
@@ -509,6 +527,12 @@ export class ReqCaptureRawLiveStacking implements IReqCaptureRawLiveStacking {
      * @param [properties] Properties to set
      */
     constructor(properties?: IReqCaptureRawLiveStacking);
+
+    /** ReqCaptureRawLiveStacking irIndex. */
+    public irIndex: number;
+
+    /** ReqCaptureRawLiveStacking forceStart. */
+    public forceStart: boolean;
 
     /**
      * Creates a new ReqCaptureRawLiveStacking instance using the specified properties.
@@ -582,6 +606,239 @@ export class ReqCaptureRawLiveStacking implements IReqCaptureRawLiveStacking {
 
     /**
      * Gets the default type url for ReqCaptureRawLiveStacking
+     * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+     * @returns The default type url
+     */
+    public static getTypeUrl(typeUrlPrefix?: string): string;
+}
+
+/** Properties of a ReqContinueShooting. */
+export interface IReqContinueShooting {
+}
+
+/** Represents a ReqContinueShooting. */
+export class ReqContinueShooting implements IReqContinueShooting {
+
+    /**
+     * Constructs a new ReqContinueShooting.
+     * @param [properties] Properties to set
+     */
+    constructor(properties?: IReqContinueShooting);
+
+    /**
+     * Creates a new ReqContinueShooting instance using the specified properties.
+     * @param [properties] Properties to set
+     * @returns ReqContinueShooting instance
+     */
+    public static create(properties?: IReqContinueShooting): ReqContinueShooting;
+
+    /**
+     * Encodes the specified ReqContinueShooting message. Does not implicitly {@link ReqContinueShooting.verify|verify} messages.
+     * @param message ReqContinueShooting message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encode(message: IReqContinueShooting, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Encodes the specified ReqContinueShooting message, length delimited. Does not implicitly {@link ReqContinueShooting.verify|verify} messages.
+     * @param message ReqContinueShooting message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encodeDelimited(message: IReqContinueShooting, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Decodes a ReqContinueShooting message from the specified reader or buffer.
+     * @param reader Reader or buffer to decode from
+     * @param [length] Message length if known beforehand
+     * @returns ReqContinueShooting
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): ReqContinueShooting;
+
+    /**
+     * Decodes a ReqContinueShooting message from the specified reader or buffer, length delimited.
+     * @param reader Reader or buffer to decode from
+     * @returns ReqContinueShooting
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): ReqContinueShooting;
+
+    /**
+     * Verifies a ReqContinueShooting message.
+     * @param message Plain object to verify
+     * @returns `null` if valid, otherwise the reason why it is not
+     */
+    public static verify(message: { [k: string]: any }): (string|null);
+
+    /**
+     * Creates a ReqContinueShooting message from a plain object. Also converts values to their respective internal types.
+     * @param object Plain object
+     * @returns ReqContinueShooting
+     */
+    public static fromObject(object: { [k: string]: any }): ReqContinueShooting;
+
+    /**
+     * Creates a plain object from a ReqContinueShooting message. Also converts values to other types if specified.
+     * @param message ReqContinueShooting
+     * @param [options] Conversion options
+     * @returns Plain object
+     */
+    public static toObject(message: ReqContinueShooting, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+    /**
+     * Converts this ReqContinueShooting to JSON.
+     * @returns JSON object
+     */
+    public toJSON(): { [k: string]: any };
+
+    /**
+     * Gets the default type url for ReqContinueShooting
+     * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+     * @returns The default type url
+     */
+    public static getTypeUrl(typeUrlPrefix?: string): string;
+}
+
+/** Properties of a ResAstroShooting. */
+export interface IResAstroShooting {
+
+    /** ResAstroShooting code */
+    code?: (number|null);
+
+    /** ResAstroShooting expName */
+    expName?: (string|null);
+
+    /** ResAstroShooting gain */
+    gain?: (number|null);
+
+    /** ResAstroShooting resolution */
+    resolution?: (number|null);
+
+    /** ResAstroShooting filterType */
+    filterType?: (number|null);
+
+    /** ResAstroShooting tempThreshold */
+    tempThreshold?: (number|null);
+}
+
+/** Represents a ResAstroShooting. */
+export class ResAstroShooting implements IResAstroShooting {
+
+    /**
+     * Constructs a new ResAstroShooting.
+     * @param [properties] Properties to set
+     */
+    constructor(properties?: IResAstroShooting);
+
+    /** ResAstroShooting code. */
+    public code: number;
+
+    /** ResAstroShooting expName. */
+    public expName?: (string|null);
+
+    /** ResAstroShooting gain. */
+    public gain?: (number|null);
+
+    /** ResAstroShooting resolution. */
+    public resolution?: (number|null);
+
+    /** ResAstroShooting filterType. */
+    public filterType?: (number|null);
+
+    /** ResAstroShooting tempThreshold. */
+    public tempThreshold?: (number|null);
+
+    /** ResAstroShooting _expName. */
+    public _expName?: "expName";
+
+    /** ResAstroShooting _gain. */
+    public _gain?: "gain";
+
+    /** ResAstroShooting _resolution. */
+    public _resolution?: "resolution";
+
+    /** ResAstroShooting _filterType. */
+    public _filterType?: "filterType";
+
+    /** ResAstroShooting _tempThreshold. */
+    public _tempThreshold?: "tempThreshold";
+
+    /**
+     * Creates a new ResAstroShooting instance using the specified properties.
+     * @param [properties] Properties to set
+     * @returns ResAstroShooting instance
+     */
+    public static create(properties?: IResAstroShooting): ResAstroShooting;
+
+    /**
+     * Encodes the specified ResAstroShooting message. Does not implicitly {@link ResAstroShooting.verify|verify} messages.
+     * @param message ResAstroShooting message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encode(message: IResAstroShooting, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Encodes the specified ResAstroShooting message, length delimited. Does not implicitly {@link ResAstroShooting.verify|verify} messages.
+     * @param message ResAstroShooting message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encodeDelimited(message: IResAstroShooting, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Decodes a ResAstroShooting message from the specified reader or buffer.
+     * @param reader Reader or buffer to decode from
+     * @param [length] Message length if known beforehand
+     * @returns ResAstroShooting
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): ResAstroShooting;
+
+    /**
+     * Decodes a ResAstroShooting message from the specified reader or buffer, length delimited.
+     * @param reader Reader or buffer to decode from
+     * @returns ResAstroShooting
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): ResAstroShooting;
+
+    /**
+     * Verifies a ResAstroShooting message.
+     * @param message Plain object to verify
+     * @returns `null` if valid, otherwise the reason why it is not
+     */
+    public static verify(message: { [k: string]: any }): (string|null);
+
+    /**
+     * Creates a ResAstroShooting message from a plain object. Also converts values to their respective internal types.
+     * @param object Plain object
+     * @returns ResAstroShooting
+     */
+    public static fromObject(object: { [k: string]: any }): ResAstroShooting;
+
+    /**
+     * Creates a plain object from a ResAstroShooting message. Also converts values to other types if specified.
+     * @param message ResAstroShooting
+     * @param [options] Conversion options
+     * @returns Plain object
+     */
+    public static toObject(message: ResAstroShooting, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+    /**
+     * Converts this ResAstroShooting to JSON.
+     * @returns JSON object
+     */
+    public toJSON(): { [k: string]: any };
+
+    /**
+     * Gets the default type url for ResAstroShooting
      * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
      * @returns The default type url
      */
@@ -2199,6 +2456,21 @@ export interface IReqOneClickGotoDSO {
 
     /** ReqOneClickGotoDSO targetName */
     targetName?: (string|null);
+
+    /** ReqOneClickGotoDSO lon */
+    lon?: (number|null);
+
+    /** ReqOneClickGotoDSO lat */
+    lat?: (number|null);
+
+    /** ReqOneClickGotoDSO shootingMode */
+    shootingMode?: (number|null);
+
+    /** ReqOneClickGotoDSO gotoOnly */
+    gotoOnly?: (boolean|null);
+
+    /** ReqOneClickGotoDSO rotation */
+    rotation?: (number|null);
 }
 
 /** Represents a ReqOneClickGotoDSO. */
@@ -2218,6 +2490,24 @@ export class ReqOneClickGotoDSO implements IReqOneClickGotoDSO {
 
     /** ReqOneClickGotoDSO targetName. */
     public targetName: string;
+
+    /** ReqOneClickGotoDSO lon. */
+    public lon: number;
+
+    /** ReqOneClickGotoDSO lat. */
+    public lat: number;
+
+    /** ReqOneClickGotoDSO shootingMode. */
+    public shootingMode: number;
+
+    /** ReqOneClickGotoDSO gotoOnly. */
+    public gotoOnly: boolean;
+
+    /** ReqOneClickGotoDSO rotation. */
+    public rotation?: (number|null);
+
+    /** ReqOneClickGotoDSO _rotation. */
+    public _rotation?: "rotation";
 
     /**
      * Creates a new ReqOneClickGotoDSO instance using the specified properties.
@@ -2311,6 +2601,12 @@ export interface IReqOneClickGotoSolarSystem {
 
     /** ReqOneClickGotoSolarSystem targetName */
     targetName?: (string|null);
+
+    /** ReqOneClickGotoSolarSystem shootingMode */
+    shootingMode?: (number|null);
+
+    /** ReqOneClickGotoSolarSystem forceStart */
+    forceStart?: (boolean|null);
 }
 
 /** Represents a ReqOneClickGotoSolarSystem. */
@@ -2333,6 +2629,12 @@ export class ReqOneClickGotoSolarSystem implements IReqOneClickGotoSolarSystem {
 
     /** ReqOneClickGotoSolarSystem targetName. */
     public targetName: string;
+
+    /** ReqOneClickGotoSolarSystem shootingMode. */
+    public shootingMode: number;
+
+    /** ReqOneClickGotoSolarSystem forceStart. */
+    public forceStart: boolean;
 
     /**
      * Creates a new ReqOneClickGotoSolarSystem instance using the specified properties.
@@ -3933,6 +4235,351 @@ export class ResDelWideDarkFrameList implements IResDelWideDarkFrameList {
     public static getTypeUrl(typeUrlPrefix?: string): string;
 }
 
+/** Properties of a ReqOneClickShootingParam. */
+export interface IReqOneClickShootingParam {
+
+    /** ReqOneClickShootingParam horizontalScale */
+    horizontalScale?: (number|null);
+
+    /** ReqOneClickShootingParam verticalScale */
+    verticalScale?: (number|null);
+
+    /** ReqOneClickShootingParam rotation */
+    rotation?: (number|null);
+
+    /** ReqOneClickShootingParam cameraType */
+    cameraType?: (number|null);
+
+    /** ReqOneClickShootingParam expIndex */
+    expIndex?: (number|null);
+
+    /** ReqOneClickShootingParam gain */
+    gain?: (number|null);
+
+    /** ReqOneClickShootingParam filterType */
+    filterType?: (number|null);
+
+    /** ReqOneClickShootingParam capSize */
+    capSize?: (number|null);
+
+    /** ReqOneClickShootingParam resolution */
+    resolution?: (number|null);
+}
+
+/** Represents a ReqOneClickShootingParam. */
+export class ReqOneClickShootingParam implements IReqOneClickShootingParam {
+
+    /**
+     * Constructs a new ReqOneClickShootingParam.
+     * @param [properties] Properties to set
+     */
+    constructor(properties?: IReqOneClickShootingParam);
+
+    /** ReqOneClickShootingParam horizontalScale. */
+    public horizontalScale: number;
+
+    /** ReqOneClickShootingParam verticalScale. */
+    public verticalScale: number;
+
+    /** ReqOneClickShootingParam rotation. */
+    public rotation: number;
+
+    /** ReqOneClickShootingParam cameraType. */
+    public cameraType: number;
+
+    /** ReqOneClickShootingParam expIndex. */
+    public expIndex: number;
+
+    /** ReqOneClickShootingParam gain. */
+    public gain: number;
+
+    /** ReqOneClickShootingParam filterType. */
+    public filterType: number;
+
+    /** ReqOneClickShootingParam capSize. */
+    public capSize: number;
+
+    /** ReqOneClickShootingParam resolution. */
+    public resolution: number;
+
+    /**
+     * Creates a new ReqOneClickShootingParam instance using the specified properties.
+     * @param [properties] Properties to set
+     * @returns ReqOneClickShootingParam instance
+     */
+    public static create(properties?: IReqOneClickShootingParam): ReqOneClickShootingParam;
+
+    /**
+     * Encodes the specified ReqOneClickShootingParam message. Does not implicitly {@link ReqOneClickShootingParam.verify|verify} messages.
+     * @param message ReqOneClickShootingParam message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encode(message: IReqOneClickShootingParam, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Encodes the specified ReqOneClickShootingParam message, length delimited. Does not implicitly {@link ReqOneClickShootingParam.verify|verify} messages.
+     * @param message ReqOneClickShootingParam message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encodeDelimited(message: IReqOneClickShootingParam, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Decodes a ReqOneClickShootingParam message from the specified reader or buffer.
+     * @param reader Reader or buffer to decode from
+     * @param [length] Message length if known beforehand
+     * @returns ReqOneClickShootingParam
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): ReqOneClickShootingParam;
+
+    /**
+     * Decodes a ReqOneClickShootingParam message from the specified reader or buffer, length delimited.
+     * @param reader Reader or buffer to decode from
+     * @returns ReqOneClickShootingParam
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): ReqOneClickShootingParam;
+
+    /**
+     * Verifies a ReqOneClickShootingParam message.
+     * @param message Plain object to verify
+     * @returns `null` if valid, otherwise the reason why it is not
+     */
+    public static verify(message: { [k: string]: any }): (string|null);
+
+    /**
+     * Creates a ReqOneClickShootingParam message from a plain object. Also converts values to their respective internal types.
+     * @param object Plain object
+     * @returns ReqOneClickShootingParam
+     */
+    public static fromObject(object: { [k: string]: any }): ReqOneClickShootingParam;
+
+    /**
+     * Creates a plain object from a ReqOneClickShootingParam message. Also converts values to other types if specified.
+     * @param message ReqOneClickShootingParam
+     * @param [options] Conversion options
+     * @returns Plain object
+     */
+    public static toObject(message: ReqOneClickShootingParam, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+    /**
+     * Converts this ReqOneClickShootingParam to JSON.
+     * @returns JSON object
+     */
+    public toJSON(): { [k: string]: any };
+
+    /**
+     * Gets the default type url for ReqOneClickShootingParam
+     * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+     * @returns The default type url
+     */
+    public static getTypeUrl(typeUrlPrefix?: string): string;
+}
+
+/** Properties of a ReqOneClickShooting. */
+export interface IReqOneClickShooting {
+
+    /** ReqOneClickShooting gotoDso */
+    gotoDso?: (IReqOneClickGotoDSO|null);
+
+    /** ReqOneClickShooting shootingParam */
+    shootingParam?: (IReqOneClickShootingParam|null);
+}
+
+/** Represents a ReqOneClickShooting. */
+export class ReqOneClickShooting implements IReqOneClickShooting {
+
+    /**
+     * Constructs a new ReqOneClickShooting.
+     * @param [properties] Properties to set
+     */
+    constructor(properties?: IReqOneClickShooting);
+
+    /** ReqOneClickShooting gotoDso. */
+    public gotoDso?: (IReqOneClickGotoDSO|null);
+
+    /** ReqOneClickShooting shootingParam. */
+    public shootingParam?: (IReqOneClickShootingParam|null);
+
+    /**
+     * Creates a new ReqOneClickShooting instance using the specified properties.
+     * @param [properties] Properties to set
+     * @returns ReqOneClickShooting instance
+     */
+    public static create(properties?: IReqOneClickShooting): ReqOneClickShooting;
+
+    /**
+     * Encodes the specified ReqOneClickShooting message. Does not implicitly {@link ReqOneClickShooting.verify|verify} messages.
+     * @param message ReqOneClickShooting message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encode(message: IReqOneClickShooting, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Encodes the specified ReqOneClickShooting message, length delimited. Does not implicitly {@link ReqOneClickShooting.verify|verify} messages.
+     * @param message ReqOneClickShooting message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encodeDelimited(message: IReqOneClickShooting, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Decodes a ReqOneClickShooting message from the specified reader or buffer.
+     * @param reader Reader or buffer to decode from
+     * @param [length] Message length if known beforehand
+     * @returns ReqOneClickShooting
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): ReqOneClickShooting;
+
+    /**
+     * Decodes a ReqOneClickShooting message from the specified reader or buffer, length delimited.
+     * @param reader Reader or buffer to decode from
+     * @returns ReqOneClickShooting
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): ReqOneClickShooting;
+
+    /**
+     * Verifies a ReqOneClickShooting message.
+     * @param message Plain object to verify
+     * @returns `null` if valid, otherwise the reason why it is not
+     */
+    public static verify(message: { [k: string]: any }): (string|null);
+
+    /**
+     * Creates a ReqOneClickShooting message from a plain object. Also converts values to their respective internal types.
+     * @param object Plain object
+     * @returns ReqOneClickShooting
+     */
+    public static fromObject(object: { [k: string]: any }): ReqOneClickShooting;
+
+    /**
+     * Creates a plain object from a ReqOneClickShooting message. Also converts values to other types if specified.
+     * @param message ReqOneClickShooting
+     * @param [options] Conversion options
+     * @returns Plain object
+     */
+    public static toObject(message: ReqOneClickShooting, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+    /**
+     * Converts this ReqOneClickShooting to JSON.
+     * @returns JSON object
+     */
+    public toJSON(): { [k: string]: any };
+
+    /**
+     * Gets the default type url for ReqOneClickShooting
+     * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+     * @returns The default type url
+     */
+    public static getTypeUrl(typeUrlPrefix?: string): string;
+}
+
+/** Properties of a ReqDelCaliFrameList. */
+export interface IReqDelCaliFrameList {
+
+    /** ReqDelCaliFrameList infoIds */
+    infoIds?: (number[]|null);
+}
+
+/** Represents a ReqDelCaliFrameList. */
+export class ReqDelCaliFrameList implements IReqDelCaliFrameList {
+
+    /**
+     * Constructs a new ReqDelCaliFrameList.
+     * @param [properties] Properties to set
+     */
+    constructor(properties?: IReqDelCaliFrameList);
+
+    /** ReqDelCaliFrameList infoIds. */
+    public infoIds: number[];
+
+    /**
+     * Creates a new ReqDelCaliFrameList instance using the specified properties.
+     * @param [properties] Properties to set
+     * @returns ReqDelCaliFrameList instance
+     */
+    public static create(properties?: IReqDelCaliFrameList): ReqDelCaliFrameList;
+
+    /**
+     * Encodes the specified ReqDelCaliFrameList message. Does not implicitly {@link ReqDelCaliFrameList.verify|verify} messages.
+     * @param message ReqDelCaliFrameList message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encode(message: IReqDelCaliFrameList, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Encodes the specified ReqDelCaliFrameList message, length delimited. Does not implicitly {@link ReqDelCaliFrameList.verify|verify} messages.
+     * @param message ReqDelCaliFrameList message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encodeDelimited(message: IReqDelCaliFrameList, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Decodes a ReqDelCaliFrameList message from the specified reader or buffer.
+     * @param reader Reader or buffer to decode from
+     * @param [length] Message length if known beforehand
+     * @returns ReqDelCaliFrameList
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): ReqDelCaliFrameList;
+
+    /**
+     * Decodes a ReqDelCaliFrameList message from the specified reader or buffer, length delimited.
+     * @param reader Reader or buffer to decode from
+     * @returns ReqDelCaliFrameList
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): ReqDelCaliFrameList;
+
+    /**
+     * Verifies a ReqDelCaliFrameList message.
+     * @param message Plain object to verify
+     * @returns `null` if valid, otherwise the reason why it is not
+     */
+    public static verify(message: { [k: string]: any }): (string|null);
+
+    /**
+     * Creates a ReqDelCaliFrameList message from a plain object. Also converts values to their respective internal types.
+     * @param object Plain object
+     * @returns ReqDelCaliFrameList
+     */
+    public static fromObject(object: { [k: string]: any }): ReqDelCaliFrameList;
+
+    /**
+     * Creates a plain object from a ReqDelCaliFrameList message. Also converts values to other types if specified.
+     * @param message ReqDelCaliFrameList
+     * @param [options] Conversion options
+     * @returns Plain object
+     */
+    public static toObject(message: ReqDelCaliFrameList, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+    /**
+     * Converts this ReqDelCaliFrameList to JSON.
+     * @returns JSON object
+     */
+    public toJSON(): { [k: string]: any };
+
+    /**
+     * Gets the default type url for ReqDelCaliFrameList
+     * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+     * @returns The default type url
+     */
+    public static getTypeUrl(typeUrlPrefix?: string): string;
+}
+
 /** WsMajorVersion enum. */
 export enum WsMajorVersion {
     WS_MAJOR_VERSION_UNKNOWN = 0,
@@ -3942,7 +4589,8 @@ export enum WsMajorVersion {
 /** WsMinorVersion enum. */
 export enum WsMinorVersion {
     WS_MINOR_VERSION_UNKNOWN = 0,
-    WS_MINOR_VERSION_NUMBER = 9
+    WS_MINOR_VERSION_NUMBER = 9,
+    WS_MINOR_VERSION_V3 = 20
 }
 
 /** Represents a WsPacket. */
@@ -6215,6 +6863,672 @@ export class ResCheckFile implements IResCheckFile {
 
     /**
      * Gets the default type url for ResCheckFile
+     * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+     * @returns The default type url
+     */
+    public static getTypeUrl(typeUrlPrefix?: string): string;
+}
+
+/** Represents a ReqSetExposure. */
+export class ReqSetExposure implements IReqSetExposure {
+
+    /**
+     * Constructs a new ReqSetExposure.
+     * @param [properties] Properties to set
+     */
+    constructor(properties?: IReqSetExposure);
+
+    /** ReqSetExposure paramId. */
+    public paramId: (number|Long);
+
+    /** ReqSetExposure mode. */
+    public mode: number;
+
+    /** ReqSetExposure value. */
+    public value: number;
+
+    /**
+     * Creates a new ReqSetExposure instance using the specified properties.
+     * @param [properties] Properties to set
+     * @returns ReqSetExposure instance
+     */
+    public static create(properties?: IReqSetExposure): ReqSetExposure;
+
+    /**
+     * Encodes the specified ReqSetExposure message. Does not implicitly {@link ReqSetExposure.verify|verify} messages.
+     * @param message ReqSetExposure message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encode(message: IReqSetExposure, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Encodes the specified ReqSetExposure message, length delimited. Does not implicitly {@link ReqSetExposure.verify|verify} messages.
+     * @param message ReqSetExposure message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encodeDelimited(message: IReqSetExposure, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Decodes a ReqSetExposure message from the specified reader or buffer.
+     * @param reader Reader or buffer to decode from
+     * @param [length] Message length if known beforehand
+     * @returns ReqSetExposure
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): ReqSetExposure;
+
+    /**
+     * Decodes a ReqSetExposure message from the specified reader or buffer, length delimited.
+     * @param reader Reader or buffer to decode from
+     * @returns ReqSetExposure
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): ReqSetExposure;
+
+    /**
+     * Verifies a ReqSetExposure message.
+     * @param message Plain object to verify
+     * @returns `null` if valid, otherwise the reason why it is not
+     */
+    public static verify(message: { [k: string]: any }): (string|null);
+
+    /**
+     * Creates a ReqSetExposure message from a plain object. Also converts values to their respective internal types.
+     * @param object Plain object
+     * @returns ReqSetExposure
+     */
+    public static fromObject(object: { [k: string]: any }): ReqSetExposure;
+
+    /**
+     * Creates a plain object from a ReqSetExposure message. Also converts values to other types if specified.
+     * @param message ReqSetExposure
+     * @param [options] Conversion options
+     * @returns Plain object
+     */
+    public static toObject(message: ReqSetExposure, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+    /**
+     * Converts this ReqSetExposure to JSON.
+     * @returns JSON object
+     */
+    public toJSON(): { [k: string]: any };
+
+    /**
+     * Gets the default type url for ReqSetExposure
+     * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+     * @returns The default type url
+     */
+    public static getTypeUrl(typeUrlPrefix?: string): string;
+}
+
+/** Represents a V3ReqSetCameraParam. */
+export class V3ReqSetCameraParam implements IV3ReqSetCameraParam {
+
+    /**
+     * Constructs a new V3ReqSetCameraParam.
+     * @param [properties] Properties to set
+     */
+    constructor(properties?: IV3ReqSetCameraParam);
+
+    /** V3ReqSetCameraParam paramId. */
+    public paramId: (number|Long);
+
+    /** V3ReqSetCameraParam flag. */
+    public flag: number;
+
+    /** V3ReqSetCameraParam value. */
+    public value: number;
+
+    /**
+     * Creates a new V3ReqSetCameraParam instance using the specified properties.
+     * @param [properties] Properties to set
+     * @returns V3ReqSetCameraParam instance
+     */
+    public static create(properties?: IV3ReqSetCameraParam): V3ReqSetCameraParam;
+
+    /**
+     * Encodes the specified V3ReqSetCameraParam message. Does not implicitly {@link V3ReqSetCameraParam.verify|verify} messages.
+     * @param message V3ReqSetCameraParam message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encode(message: IV3ReqSetCameraParam, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Encodes the specified V3ReqSetCameraParam message, length delimited. Does not implicitly {@link V3ReqSetCameraParam.verify|verify} messages.
+     * @param message V3ReqSetCameraParam message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encodeDelimited(message: IV3ReqSetCameraParam, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Decodes a V3ReqSetCameraParam message from the specified reader or buffer.
+     * @param reader Reader or buffer to decode from
+     * @param [length] Message length if known beforehand
+     * @returns V3ReqSetCameraParam
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): V3ReqSetCameraParam;
+
+    /**
+     * Decodes a V3ReqSetCameraParam message from the specified reader or buffer, length delimited.
+     * @param reader Reader or buffer to decode from
+     * @returns V3ReqSetCameraParam
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): V3ReqSetCameraParam;
+
+    /**
+     * Verifies a V3ReqSetCameraParam message.
+     * @param message Plain object to verify
+     * @returns `null` if valid, otherwise the reason why it is not
+     */
+    public static verify(message: { [k: string]: any }): (string|null);
+
+    /**
+     * Creates a V3ReqSetCameraParam message from a plain object. Also converts values to their respective internal types.
+     * @param object Plain object
+     * @returns V3ReqSetCameraParam
+     */
+    public static fromObject(object: { [k: string]: any }): V3ReqSetCameraParam;
+
+    /**
+     * Creates a plain object from a V3ReqSetCameraParam message. Also converts values to other types if specified.
+     * @param message V3ReqSetCameraParam
+     * @param [options] Conversion options
+     * @returns Plain object
+     */
+    public static toObject(message: V3ReqSetCameraParam, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+    /**
+     * Converts this V3ReqSetCameraParam to JSON.
+     * @returns JSON object
+     */
+    public toJSON(): { [k: string]: any };
+
+    /**
+     * Gets the default type url for V3ReqSetCameraParam
+     * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+     * @returns The default type url
+     */
+    public static getTypeUrl(typeUrlPrefix?: string): string;
+}
+
+/** Represents a V3ReqSetExposureGain. */
+export class V3ReqSetExposureGain implements IV3ReqSetExposureGain {
+
+    /**
+     * Constructs a new V3ReqSetExposureGain.
+     * @param [properties] Properties to set
+     */
+    constructor(properties?: IV3ReqSetExposureGain);
+
+    /** V3ReqSetExposureGain paramId. */
+    public paramId: (number|Long);
+
+    /** V3ReqSetExposureGain flag. */
+    public flag: number;
+
+    /** V3ReqSetExposureGain value. */
+    public value: number;
+
+    /**
+     * Creates a new V3ReqSetExposureGain instance using the specified properties.
+     * @param [properties] Properties to set
+     * @returns V3ReqSetExposureGain instance
+     */
+    public static create(properties?: IV3ReqSetExposureGain): V3ReqSetExposureGain;
+
+    /**
+     * Encodes the specified V3ReqSetExposureGain message. Does not implicitly {@link V3ReqSetExposureGain.verify|verify} messages.
+     * @param message V3ReqSetExposureGain message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encode(message: IV3ReqSetExposureGain, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Encodes the specified V3ReqSetExposureGain message, length delimited. Does not implicitly {@link V3ReqSetExposureGain.verify|verify} messages.
+     * @param message V3ReqSetExposureGain message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encodeDelimited(message: IV3ReqSetExposureGain, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Decodes a V3ReqSetExposureGain message from the specified reader or buffer.
+     * @param reader Reader or buffer to decode from
+     * @param [length] Message length if known beforehand
+     * @returns V3ReqSetExposureGain
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): V3ReqSetExposureGain;
+
+    /**
+     * Decodes a V3ReqSetExposureGain message from the specified reader or buffer, length delimited.
+     * @param reader Reader or buffer to decode from
+     * @returns V3ReqSetExposureGain
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): V3ReqSetExposureGain;
+
+    /**
+     * Verifies a V3ReqSetExposureGain message.
+     * @param message Plain object to verify
+     * @returns `null` if valid, otherwise the reason why it is not
+     */
+    public static verify(message: { [k: string]: any }): (string|null);
+
+    /**
+     * Creates a V3ReqSetExposureGain message from a plain object. Also converts values to their respective internal types.
+     * @param object Plain object
+     * @returns V3ReqSetExposureGain
+     */
+    public static fromObject(object: { [k: string]: any }): V3ReqSetExposureGain;
+
+    /**
+     * Creates a plain object from a V3ReqSetExposureGain message. Also converts values to other types if specified.
+     * @param message V3ReqSetExposureGain
+     * @param [options] Conversion options
+     * @returns Plain object
+     */
+    public static toObject(message: V3ReqSetExposureGain, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+    /**
+     * Converts this V3ReqSetExposureGain to JSON.
+     * @returns JSON object
+     */
+    public toJSON(): { [k: string]: any };
+
+    /**
+     * Gets the default type url for V3ReqSetExposureGain
+     * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+     * @returns The default type url
+     */
+    public static getTypeUrl(typeUrlPrefix?: string): string;
+}
+
+/** Represents a V3ReqAdjustParam. */
+export class V3ReqAdjustParam implements IV3ReqAdjustParam {
+
+    /**
+     * Constructs a new V3ReqAdjustParam.
+     * @param [properties] Properties to set
+     */
+    constructor(properties?: IV3ReqAdjustParam);
+
+    /** V3ReqAdjustParam paramId. */
+    public paramId: (number|Long);
+
+    /** V3ReqAdjustParam value. */
+    public value: number;
+
+    /**
+     * Creates a new V3ReqAdjustParam instance using the specified properties.
+     * @param [properties] Properties to set
+     * @returns V3ReqAdjustParam instance
+     */
+    public static create(properties?: IV3ReqAdjustParam): V3ReqAdjustParam;
+
+    /**
+     * Encodes the specified V3ReqAdjustParam message. Does not implicitly {@link V3ReqAdjustParam.verify|verify} messages.
+     * @param message V3ReqAdjustParam message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encode(message: IV3ReqAdjustParam, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Encodes the specified V3ReqAdjustParam message, length delimited. Does not implicitly {@link V3ReqAdjustParam.verify|verify} messages.
+     * @param message V3ReqAdjustParam message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encodeDelimited(message: IV3ReqAdjustParam, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Decodes a V3ReqAdjustParam message from the specified reader or buffer.
+     * @param reader Reader or buffer to decode from
+     * @param [length] Message length if known beforehand
+     * @returns V3ReqAdjustParam
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): V3ReqAdjustParam;
+
+    /**
+     * Decodes a V3ReqAdjustParam message from the specified reader or buffer, length delimited.
+     * @param reader Reader or buffer to decode from
+     * @returns V3ReqAdjustParam
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): V3ReqAdjustParam;
+
+    /**
+     * Verifies a V3ReqAdjustParam message.
+     * @param message Plain object to verify
+     * @returns `null` if valid, otherwise the reason why it is not
+     */
+    public static verify(message: { [k: string]: any }): (string|null);
+
+    /**
+     * Creates a V3ReqAdjustParam message from a plain object. Also converts values to their respective internal types.
+     * @param object Plain object
+     * @returns V3ReqAdjustParam
+     */
+    public static fromObject(object: { [k: string]: any }): V3ReqAdjustParam;
+
+    /**
+     * Creates a plain object from a V3ReqAdjustParam message. Also converts values to other types if specified.
+     * @param message V3ReqAdjustParam
+     * @param [options] Conversion options
+     * @returns Plain object
+     */
+    public static toObject(message: V3ReqAdjustParam, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+    /**
+     * Converts this V3ReqAdjustParam to JSON.
+     * @returns JSON object
+     */
+    public toJSON(): { [k: string]: any };
+
+    /**
+     * Gets the default type url for V3ReqAdjustParam
+     * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+     * @returns The default type url
+     */
+    public static getTypeUrl(typeUrlPrefix?: string): string;
+}
+
+/** Represents a V3ReqUnknownCameraParam. */
+export class V3ReqUnknownCameraParam implements IV3ReqUnknownCameraParam {
+
+    /**
+     * Constructs a new V3ReqUnknownCameraParam.
+     * @param [properties] Properties to set
+     */
+    constructor(properties?: IV3ReqUnknownCameraParam);
+
+    /** V3ReqUnknownCameraParam paramId. */
+    public paramId: (number|Long);
+
+    /** V3ReqUnknownCameraParam field2. */
+    public field2: number;
+
+    /** V3ReqUnknownCameraParam field3. */
+    public field3: number;
+
+    /**
+     * Creates a new V3ReqUnknownCameraParam instance using the specified properties.
+     * @param [properties] Properties to set
+     * @returns V3ReqUnknownCameraParam instance
+     */
+    public static create(properties?: IV3ReqUnknownCameraParam): V3ReqUnknownCameraParam;
+
+    /**
+     * Encodes the specified V3ReqUnknownCameraParam message. Does not implicitly {@link V3ReqUnknownCameraParam.verify|verify} messages.
+     * @param message V3ReqUnknownCameraParam message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encode(message: IV3ReqUnknownCameraParam, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Encodes the specified V3ReqUnknownCameraParam message, length delimited. Does not implicitly {@link V3ReqUnknownCameraParam.verify|verify} messages.
+     * @param message V3ReqUnknownCameraParam message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encodeDelimited(message: IV3ReqUnknownCameraParam, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Decodes a V3ReqUnknownCameraParam message from the specified reader or buffer.
+     * @param reader Reader or buffer to decode from
+     * @param [length] Message length if known beforehand
+     * @returns V3ReqUnknownCameraParam
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): V3ReqUnknownCameraParam;
+
+    /**
+     * Decodes a V3ReqUnknownCameraParam message from the specified reader or buffer, length delimited.
+     * @param reader Reader or buffer to decode from
+     * @returns V3ReqUnknownCameraParam
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): V3ReqUnknownCameraParam;
+
+    /**
+     * Verifies a V3ReqUnknownCameraParam message.
+     * @param message Plain object to verify
+     * @returns `null` if valid, otherwise the reason why it is not
+     */
+    public static verify(message: { [k: string]: any }): (string|null);
+
+    /**
+     * Creates a V3ReqUnknownCameraParam message from a plain object. Also converts values to their respective internal types.
+     * @param object Plain object
+     * @returns V3ReqUnknownCameraParam
+     */
+    public static fromObject(object: { [k: string]: any }): V3ReqUnknownCameraParam;
+
+    /**
+     * Creates a plain object from a V3ReqUnknownCameraParam message. Also converts values to other types if specified.
+     * @param message V3ReqUnknownCameraParam
+     * @param [options] Conversion options
+     * @returns Plain object
+     */
+    public static toObject(message: V3ReqUnknownCameraParam, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+    /**
+     * Converts this V3ReqUnknownCameraParam to JSON.
+     * @returns JSON object
+     */
+    public toJSON(): { [k: string]: any };
+
+    /**
+     * Gets the default type url for V3ReqUnknownCameraParam
+     * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+     * @returns The default type url
+     */
+    public static getTypeUrl(typeUrlPrefix?: string): string;
+}
+
+/** Represents a V3ReqStreamControl. */
+export class V3ReqStreamControl implements IV3ReqStreamControl {
+
+    /**
+     * Constructs a new V3ReqStreamControl.
+     * @param [properties] Properties to set
+     */
+    constructor(properties?: IV3ReqStreamControl);
+
+    /** V3ReqStreamControl field1. */
+    public field1: number;
+
+    /** V3ReqStreamControl field2. */
+    public field2: number;
+
+    /** V3ReqStreamControl field3. */
+    public field3: number;
+
+    /**
+     * Creates a new V3ReqStreamControl instance using the specified properties.
+     * @param [properties] Properties to set
+     * @returns V3ReqStreamControl instance
+     */
+    public static create(properties?: IV3ReqStreamControl): V3ReqStreamControl;
+
+    /**
+     * Encodes the specified V3ReqStreamControl message. Does not implicitly {@link V3ReqStreamControl.verify|verify} messages.
+     * @param message V3ReqStreamControl message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encode(message: IV3ReqStreamControl, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Encodes the specified V3ReqStreamControl message, length delimited. Does not implicitly {@link V3ReqStreamControl.verify|verify} messages.
+     * @param message V3ReqStreamControl message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encodeDelimited(message: IV3ReqStreamControl, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Decodes a V3ReqStreamControl message from the specified reader or buffer.
+     * @param reader Reader or buffer to decode from
+     * @param [length] Message length if known beforehand
+     * @returns V3ReqStreamControl
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): V3ReqStreamControl;
+
+    /**
+     * Decodes a V3ReqStreamControl message from the specified reader or buffer, length delimited.
+     * @param reader Reader or buffer to decode from
+     * @returns V3ReqStreamControl
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): V3ReqStreamControl;
+
+    /**
+     * Verifies a V3ReqStreamControl message.
+     * @param message Plain object to verify
+     * @returns `null` if valid, otherwise the reason why it is not
+     */
+    public static verify(message: { [k: string]: any }): (string|null);
+
+    /**
+     * Creates a V3ReqStreamControl message from a plain object. Also converts values to their respective internal types.
+     * @param object Plain object
+     * @returns V3ReqStreamControl
+     */
+    public static fromObject(object: { [k: string]: any }): V3ReqStreamControl;
+
+    /**
+     * Creates a plain object from a V3ReqStreamControl message. Also converts values to other types if specified.
+     * @param message V3ReqStreamControl
+     * @param [options] Conversion options
+     * @returns Plain object
+     */
+    public static toObject(message: V3ReqStreamControl, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+    /**
+     * Converts this V3ReqStreamControl to JSON.
+     * @returns JSON object
+     */
+    public toJSON(): { [k: string]: any };
+
+    /**
+     * Gets the default type url for V3ReqStreamControl
+     * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+     * @returns The default type url
+     */
+    public static getTypeUrl(typeUrlPrefix?: string): string;
+}
+
+/** Represents a ReqSetGeneralBoolParams. */
+export class ReqSetGeneralBoolParams implements IReqSetGeneralBoolParams {
+
+    /**
+     * Constructs a new ReqSetGeneralBoolParams.
+     * @param [properties] Properties to set
+     */
+    constructor(properties?: IReqSetGeneralBoolParams);
+
+    /** ReqSetGeneralBoolParams paramId. */
+    public paramId: (number|Long);
+
+    /** ReqSetGeneralBoolParams value. */
+    public value: boolean;
+
+    /**
+     * Creates a new ReqSetGeneralBoolParams instance using the specified properties.
+     * @param [properties] Properties to set
+     * @returns ReqSetGeneralBoolParams instance
+     */
+    public static create(properties?: IReqSetGeneralBoolParams): ReqSetGeneralBoolParams;
+
+    /**
+     * Encodes the specified ReqSetGeneralBoolParams message. Does not implicitly {@link ReqSetGeneralBoolParams.verify|verify} messages.
+     * @param message ReqSetGeneralBoolParams message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encode(message: IReqSetGeneralBoolParams, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Encodes the specified ReqSetGeneralBoolParams message, length delimited. Does not implicitly {@link ReqSetGeneralBoolParams.verify|verify} messages.
+     * @param message ReqSetGeneralBoolParams message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encodeDelimited(message: IReqSetGeneralBoolParams, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Decodes a ReqSetGeneralBoolParams message from the specified reader or buffer.
+     * @param reader Reader or buffer to decode from
+     * @param [length] Message length if known beforehand
+     * @returns ReqSetGeneralBoolParams
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): ReqSetGeneralBoolParams;
+
+    /**
+     * Decodes a ReqSetGeneralBoolParams message from the specified reader or buffer, length delimited.
+     * @param reader Reader or buffer to decode from
+     * @returns ReqSetGeneralBoolParams
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): ReqSetGeneralBoolParams;
+
+    /**
+     * Verifies a ReqSetGeneralBoolParams message.
+     * @param message Plain object to verify
+     * @returns `null` if valid, otherwise the reason why it is not
+     */
+    public static verify(message: { [k: string]: any }): (string|null);
+
+    /**
+     * Creates a ReqSetGeneralBoolParams message from a plain object. Also converts values to their respective internal types.
+     * @param object Plain object
+     * @returns ReqSetGeneralBoolParams
+     */
+    public static fromObject(object: { [k: string]: any }): ReqSetGeneralBoolParams;
+
+    /**
+     * Creates a plain object from a ReqSetGeneralBoolParams message. Also converts values to other types if specified.
+     * @param message ReqSetGeneralBoolParams
+     * @param [options] Conversion options
+     * @returns Plain object
+     */
+    public static toObject(message: ReqSetGeneralBoolParams, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+    /**
+     * Converts this ReqSetGeneralBoolParams to JSON.
+     * @returns JSON object
+     */
+    public toJSON(): { [k: string]: any };
+
+    /**
+     * Gets the default type url for ReqSetGeneralBoolParams
      * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
      * @returns The default type url
      */
@@ -10511,6 +11825,1764 @@ export class ReqEnableAllIspProcessing implements IReqEnableAllIspProcessing {
     public static getTypeUrl(typeUrlPrefix?: string): string;
 }
 
+/** Represents a V3ReqModeQuery. */
+export class V3ReqModeQuery implements IV3ReqModeQuery {
+
+    /**
+     * Constructs a new V3ReqModeQuery.
+     * @param [properties] Properties to set
+     */
+    constructor(properties?: IV3ReqModeQuery);
+
+    /** V3ReqModeQuery targetMode. */
+    public targetMode: number;
+
+    /**
+     * Creates a new V3ReqModeQuery instance using the specified properties.
+     * @param [properties] Properties to set
+     * @returns V3ReqModeQuery instance
+     */
+    public static create(properties?: IV3ReqModeQuery): V3ReqModeQuery;
+
+    /**
+     * Encodes the specified V3ReqModeQuery message. Does not implicitly {@link V3ReqModeQuery.verify|verify} messages.
+     * @param message V3ReqModeQuery message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encode(message: IV3ReqModeQuery, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Encodes the specified V3ReqModeQuery message, length delimited. Does not implicitly {@link V3ReqModeQuery.verify|verify} messages.
+     * @param message V3ReqModeQuery message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encodeDelimited(message: IV3ReqModeQuery, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Decodes a V3ReqModeQuery message from the specified reader or buffer.
+     * @param reader Reader or buffer to decode from
+     * @param [length] Message length if known beforehand
+     * @returns V3ReqModeQuery
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): V3ReqModeQuery;
+
+    /**
+     * Decodes a V3ReqModeQuery message from the specified reader or buffer, length delimited.
+     * @param reader Reader or buffer to decode from
+     * @returns V3ReqModeQuery
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): V3ReqModeQuery;
+
+    /**
+     * Verifies a V3ReqModeQuery message.
+     * @param message Plain object to verify
+     * @returns `null` if valid, otherwise the reason why it is not
+     */
+    public static verify(message: { [k: string]: any }): (string|null);
+
+    /**
+     * Creates a V3ReqModeQuery message from a plain object. Also converts values to their respective internal types.
+     * @param object Plain object
+     * @returns V3ReqModeQuery
+     */
+    public static fromObject(object: { [k: string]: any }): V3ReqModeQuery;
+
+    /**
+     * Creates a plain object from a V3ReqModeQuery message. Also converts values to other types if specified.
+     * @param message V3ReqModeQuery
+     * @param [options] Conversion options
+     * @returns Plain object
+     */
+    public static toObject(message: V3ReqModeQuery, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+    /**
+     * Converts this V3ReqModeQuery to JSON.
+     * @returns JSON object
+     */
+    public toJSON(): { [k: string]: any };
+
+    /**
+     * Gets the default type url for V3ReqModeQuery
+     * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+     * @returns The default type url
+     */
+    public static getTypeUrl(typeUrlPrefix?: string): string;
+}
+
+/** Represents a V3ResModeQuery. */
+export class V3ResModeQuery implements IV3ResModeQuery {
+
+    /**
+     * Constructs a new V3ResModeQuery.
+     * @param [properties] Properties to set
+     */
+    constructor(properties?: IV3ResModeQuery);
+
+    /** V3ResModeQuery code. */
+    public code: number;
+
+    /** V3ResModeQuery mode. */
+    public mode: number;
+
+    /**
+     * Creates a new V3ResModeQuery instance using the specified properties.
+     * @param [properties] Properties to set
+     * @returns V3ResModeQuery instance
+     */
+    public static create(properties?: IV3ResModeQuery): V3ResModeQuery;
+
+    /**
+     * Encodes the specified V3ResModeQuery message. Does not implicitly {@link V3ResModeQuery.verify|verify} messages.
+     * @param message V3ResModeQuery message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encode(message: IV3ResModeQuery, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Encodes the specified V3ResModeQuery message, length delimited. Does not implicitly {@link V3ResModeQuery.verify|verify} messages.
+     * @param message V3ResModeQuery message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encodeDelimited(message: IV3ResModeQuery, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Decodes a V3ResModeQuery message from the specified reader or buffer.
+     * @param reader Reader or buffer to decode from
+     * @param [length] Message length if known beforehand
+     * @returns V3ResModeQuery
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): V3ResModeQuery;
+
+    /**
+     * Decodes a V3ResModeQuery message from the specified reader or buffer, length delimited.
+     * @param reader Reader or buffer to decode from
+     * @returns V3ResModeQuery
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): V3ResModeQuery;
+
+    /**
+     * Verifies a V3ResModeQuery message.
+     * @param message Plain object to verify
+     * @returns `null` if valid, otherwise the reason why it is not
+     */
+    public static verify(message: { [k: string]: any }): (string|null);
+
+    /**
+     * Creates a V3ResModeQuery message from a plain object. Also converts values to their respective internal types.
+     * @param object Plain object
+     * @returns V3ResModeQuery
+     */
+    public static fromObject(object: { [k: string]: any }): V3ResModeQuery;
+
+    /**
+     * Creates a plain object from a V3ResModeQuery message. Also converts values to other types if specified.
+     * @param message V3ResModeQuery
+     * @param [options] Conversion options
+     * @returns Plain object
+     */
+    public static toObject(message: V3ResModeQuery, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+    /**
+     * Converts this V3ResModeQuery to JSON.
+     * @returns JSON object
+     */
+    public toJSON(): { [k: string]: any };
+
+    /**
+     * Gets the default type url for V3ResModeQuery
+     * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+     * @returns The default type url
+     */
+    public static getTypeUrl(typeUrlPrefix?: string): string;
+}
+
+/** Represents a V3ReqShootingModeSwitch. */
+export class V3ReqShootingModeSwitch implements IV3ReqShootingModeSwitch {
+
+    /**
+     * Constructs a new V3ReqShootingModeSwitch.
+     * @param [properties] Properties to set
+     */
+    constructor(properties?: IV3ReqShootingModeSwitch);
+
+    /** V3ReqShootingModeSwitch modeId. */
+    public modeId: number;
+
+    /**
+     * Creates a new V3ReqShootingModeSwitch instance using the specified properties.
+     * @param [properties] Properties to set
+     * @returns V3ReqShootingModeSwitch instance
+     */
+    public static create(properties?: IV3ReqShootingModeSwitch): V3ReqShootingModeSwitch;
+
+    /**
+     * Encodes the specified V3ReqShootingModeSwitch message. Does not implicitly {@link V3ReqShootingModeSwitch.verify|verify} messages.
+     * @param message V3ReqShootingModeSwitch message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encode(message: IV3ReqShootingModeSwitch, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Encodes the specified V3ReqShootingModeSwitch message, length delimited. Does not implicitly {@link V3ReqShootingModeSwitch.verify|verify} messages.
+     * @param message V3ReqShootingModeSwitch message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encodeDelimited(message: IV3ReqShootingModeSwitch, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Decodes a V3ReqShootingModeSwitch message from the specified reader or buffer.
+     * @param reader Reader or buffer to decode from
+     * @param [length] Message length if known beforehand
+     * @returns V3ReqShootingModeSwitch
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): V3ReqShootingModeSwitch;
+
+    /**
+     * Decodes a V3ReqShootingModeSwitch message from the specified reader or buffer, length delimited.
+     * @param reader Reader or buffer to decode from
+     * @returns V3ReqShootingModeSwitch
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): V3ReqShootingModeSwitch;
+
+    /**
+     * Verifies a V3ReqShootingModeSwitch message.
+     * @param message Plain object to verify
+     * @returns `null` if valid, otherwise the reason why it is not
+     */
+    public static verify(message: { [k: string]: any }): (string|null);
+
+    /**
+     * Creates a V3ReqShootingModeSwitch message from a plain object. Also converts values to their respective internal types.
+     * @param object Plain object
+     * @returns V3ReqShootingModeSwitch
+     */
+    public static fromObject(object: { [k: string]: any }): V3ReqShootingModeSwitch;
+
+    /**
+     * Creates a plain object from a V3ReqShootingModeSwitch message. Also converts values to other types if specified.
+     * @param message V3ReqShootingModeSwitch
+     * @param [options] Conversion options
+     * @returns Plain object
+     */
+    public static toObject(message: V3ReqShootingModeSwitch, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+    /**
+     * Converts this V3ReqShootingModeSwitch to JSON.
+     * @returns JSON object
+     */
+    public toJSON(): { [k: string]: any };
+
+    /**
+     * Gets the default type url for V3ReqShootingModeSwitch
+     * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+     * @returns The default type url
+     */
+    public static getTypeUrl(typeUrlPrefix?: string): string;
+}
+
+/** Represents a V3ResShootingModeSwitch. */
+export class V3ResShootingModeSwitch implements IV3ResShootingModeSwitch {
+
+    /**
+     * Constructs a new V3ResShootingModeSwitch.
+     * @param [properties] Properties to set
+     */
+    constructor(properties?: IV3ResShootingModeSwitch);
+
+    /** V3ResShootingModeSwitch code. */
+    public code: number;
+
+    /** V3ResShootingModeSwitch modeId. */
+    public modeId: number;
+
+    /**
+     * Creates a new V3ResShootingModeSwitch instance using the specified properties.
+     * @param [properties] Properties to set
+     * @returns V3ResShootingModeSwitch instance
+     */
+    public static create(properties?: IV3ResShootingModeSwitch): V3ResShootingModeSwitch;
+
+    /**
+     * Encodes the specified V3ResShootingModeSwitch message. Does not implicitly {@link V3ResShootingModeSwitch.verify|verify} messages.
+     * @param message V3ResShootingModeSwitch message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encode(message: IV3ResShootingModeSwitch, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Encodes the specified V3ResShootingModeSwitch message, length delimited. Does not implicitly {@link V3ResShootingModeSwitch.verify|verify} messages.
+     * @param message V3ResShootingModeSwitch message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encodeDelimited(message: IV3ResShootingModeSwitch, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Decodes a V3ResShootingModeSwitch message from the specified reader or buffer.
+     * @param reader Reader or buffer to decode from
+     * @param [length] Message length if known beforehand
+     * @returns V3ResShootingModeSwitch
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): V3ResShootingModeSwitch;
+
+    /**
+     * Decodes a V3ResShootingModeSwitch message from the specified reader or buffer, length delimited.
+     * @param reader Reader or buffer to decode from
+     * @returns V3ResShootingModeSwitch
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): V3ResShootingModeSwitch;
+
+    /**
+     * Verifies a V3ResShootingModeSwitch message.
+     * @param message Plain object to verify
+     * @returns `null` if valid, otherwise the reason why it is not
+     */
+    public static verify(message: { [k: string]: any }): (string|null);
+
+    /**
+     * Creates a V3ResShootingModeSwitch message from a plain object. Also converts values to their respective internal types.
+     * @param object Plain object
+     * @returns V3ResShootingModeSwitch
+     */
+    public static fromObject(object: { [k: string]: any }): V3ResShootingModeSwitch;
+
+    /**
+     * Creates a plain object from a V3ResShootingModeSwitch message. Also converts values to other types if specified.
+     * @param message V3ResShootingModeSwitch
+     * @param [options] Conversion options
+     * @returns Plain object
+     */
+    public static toObject(message: V3ResShootingModeSwitch, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+    /**
+     * Converts this V3ResShootingModeSwitch to JSON.
+     * @returns JSON object
+     */
+    public toJSON(): { [k: string]: any };
+
+    /**
+     * Gets the default type url for V3ResShootingModeSwitch
+     * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+     * @returns The default type url
+     */
+    public static getTypeUrl(typeUrlPrefix?: string): string;
+}
+
+/** Represents a V3ReqModeSwitch. */
+export class V3ReqModeSwitch implements IV3ReqModeSwitch {
+
+    /**
+     * Constructs a new V3ReqModeSwitch.
+     * @param [properties] Properties to set
+     */
+    constructor(properties?: IV3ReqModeSwitch);
+
+    /** V3ReqModeSwitch field1. */
+    public field1: number;
+
+    /** V3ReqModeSwitch field2. */
+    public field2: number;
+
+    /** V3ReqModeSwitch inner. */
+    public inner?: (IV3ModeSwitchInner|null);
+
+    /**
+     * Creates a new V3ReqModeSwitch instance using the specified properties.
+     * @param [properties] Properties to set
+     * @returns V3ReqModeSwitch instance
+     */
+    public static create(properties?: IV3ReqModeSwitch): V3ReqModeSwitch;
+
+    /**
+     * Encodes the specified V3ReqModeSwitch message. Does not implicitly {@link V3ReqModeSwitch.verify|verify} messages.
+     * @param message V3ReqModeSwitch message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encode(message: IV3ReqModeSwitch, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Encodes the specified V3ReqModeSwitch message, length delimited. Does not implicitly {@link V3ReqModeSwitch.verify|verify} messages.
+     * @param message V3ReqModeSwitch message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encodeDelimited(message: IV3ReqModeSwitch, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Decodes a V3ReqModeSwitch message from the specified reader or buffer.
+     * @param reader Reader or buffer to decode from
+     * @param [length] Message length if known beforehand
+     * @returns V3ReqModeSwitch
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): V3ReqModeSwitch;
+
+    /**
+     * Decodes a V3ReqModeSwitch message from the specified reader or buffer, length delimited.
+     * @param reader Reader or buffer to decode from
+     * @returns V3ReqModeSwitch
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): V3ReqModeSwitch;
+
+    /**
+     * Verifies a V3ReqModeSwitch message.
+     * @param message Plain object to verify
+     * @returns `null` if valid, otherwise the reason why it is not
+     */
+    public static verify(message: { [k: string]: any }): (string|null);
+
+    /**
+     * Creates a V3ReqModeSwitch message from a plain object. Also converts values to their respective internal types.
+     * @param object Plain object
+     * @returns V3ReqModeSwitch
+     */
+    public static fromObject(object: { [k: string]: any }): V3ReqModeSwitch;
+
+    /**
+     * Creates a plain object from a V3ReqModeSwitch message. Also converts values to other types if specified.
+     * @param message V3ReqModeSwitch
+     * @param [options] Conversion options
+     * @returns Plain object
+     */
+    public static toObject(message: V3ReqModeSwitch, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+    /**
+     * Converts this V3ReqModeSwitch to JSON.
+     * @returns JSON object
+     */
+    public toJSON(): { [k: string]: any };
+
+    /**
+     * Gets the default type url for V3ReqModeSwitch
+     * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+     * @returns The default type url
+     */
+    public static getTypeUrl(typeUrlPrefix?: string): string;
+}
+
+/** Represents a V3ModeSwitchInner. */
+export class V3ModeSwitchInner implements IV3ModeSwitchInner {
+
+    /**
+     * Constructs a new V3ModeSwitchInner.
+     * @param [properties] Properties to set
+     */
+    constructor(properties?: IV3ModeSwitchInner);
+
+    /** V3ModeSwitchInner value. */
+    public value: number;
+
+    /**
+     * Creates a new V3ModeSwitchInner instance using the specified properties.
+     * @param [properties] Properties to set
+     * @returns V3ModeSwitchInner instance
+     */
+    public static create(properties?: IV3ModeSwitchInner): V3ModeSwitchInner;
+
+    /**
+     * Encodes the specified V3ModeSwitchInner message. Does not implicitly {@link V3ModeSwitchInner.verify|verify} messages.
+     * @param message V3ModeSwitchInner message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encode(message: IV3ModeSwitchInner, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Encodes the specified V3ModeSwitchInner message, length delimited. Does not implicitly {@link V3ModeSwitchInner.verify|verify} messages.
+     * @param message V3ModeSwitchInner message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encodeDelimited(message: IV3ModeSwitchInner, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Decodes a V3ModeSwitchInner message from the specified reader or buffer.
+     * @param reader Reader or buffer to decode from
+     * @param [length] Message length if known beforehand
+     * @returns V3ModeSwitchInner
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): V3ModeSwitchInner;
+
+    /**
+     * Decodes a V3ModeSwitchInner message from the specified reader or buffer, length delimited.
+     * @param reader Reader or buffer to decode from
+     * @returns V3ModeSwitchInner
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): V3ModeSwitchInner;
+
+    /**
+     * Verifies a V3ModeSwitchInner message.
+     * @param message Plain object to verify
+     * @returns `null` if valid, otherwise the reason why it is not
+     */
+    public static verify(message: { [k: string]: any }): (string|null);
+
+    /**
+     * Creates a V3ModeSwitchInner message from a plain object. Also converts values to their respective internal types.
+     * @param object Plain object
+     * @returns V3ModeSwitchInner
+     */
+    public static fromObject(object: { [k: string]: any }): V3ModeSwitchInner;
+
+    /**
+     * Creates a plain object from a V3ModeSwitchInner message. Also converts values to other types if specified.
+     * @param message V3ModeSwitchInner
+     * @param [options] Conversion options
+     * @returns Plain object
+     */
+    public static toObject(message: V3ModeSwitchInner, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+    /**
+     * Converts this V3ModeSwitchInner to JSON.
+     * @returns JSON object
+     */
+    public toJSON(): { [k: string]: any };
+
+    /**
+     * Gets the default type url for V3ModeSwitchInner
+     * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+     * @returns The default type url
+     */
+    public static getTypeUrl(typeUrlPrefix?: string): string;
+}
+
+/** Represents a V3ResModeSwitch. */
+export class V3ResModeSwitch implements IV3ResModeSwitch {
+
+    /**
+     * Constructs a new V3ResModeSwitch.
+     * @param [properties] Properties to set
+     */
+    constructor(properties?: IV3ResModeSwitch);
+
+    /** V3ResModeSwitch code. */
+    public code: number;
+
+    /** V3ResModeSwitch mode. */
+    public mode: number;
+
+    /**
+     * Creates a new V3ResModeSwitch instance using the specified properties.
+     * @param [properties] Properties to set
+     * @returns V3ResModeSwitch instance
+     */
+    public static create(properties?: IV3ResModeSwitch): V3ResModeSwitch;
+
+    /**
+     * Encodes the specified V3ResModeSwitch message. Does not implicitly {@link V3ResModeSwitch.verify|verify} messages.
+     * @param message V3ResModeSwitch message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encode(message: IV3ResModeSwitch, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Encodes the specified V3ResModeSwitch message, length delimited. Does not implicitly {@link V3ResModeSwitch.verify|verify} messages.
+     * @param message V3ResModeSwitch message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encodeDelimited(message: IV3ResModeSwitch, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Decodes a V3ResModeSwitch message from the specified reader or buffer.
+     * @param reader Reader or buffer to decode from
+     * @param [length] Message length if known beforehand
+     * @returns V3ResModeSwitch
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): V3ResModeSwitch;
+
+    /**
+     * Decodes a V3ResModeSwitch message from the specified reader or buffer, length delimited.
+     * @param reader Reader or buffer to decode from
+     * @returns V3ResModeSwitch
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): V3ResModeSwitch;
+
+    /**
+     * Verifies a V3ResModeSwitch message.
+     * @param message Plain object to verify
+     * @returns `null` if valid, otherwise the reason why it is not
+     */
+    public static verify(message: { [k: string]: any }): (string|null);
+
+    /**
+     * Creates a V3ResModeSwitch message from a plain object. Also converts values to their respective internal types.
+     * @param object Plain object
+     * @returns V3ResModeSwitch
+     */
+    public static fromObject(object: { [k: string]: any }): V3ResModeSwitch;
+
+    /**
+     * Creates a plain object from a V3ResModeSwitch message. Also converts values to other types if specified.
+     * @param message V3ResModeSwitch
+     * @param [options] Conversion options
+     * @returns Plain object
+     */
+    public static toObject(message: V3ResModeSwitch, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+    /**
+     * Converts this V3ResModeSwitch to JSON.
+     * @returns JSON object
+     */
+    public toJSON(): { [k: string]: any };
+
+    /**
+     * Gets the default type url for V3ResModeSwitch
+     * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+     * @returns The default type url
+     */
+    public static getTypeUrl(typeUrlPrefix?: string): string;
+}
+
+/** Represents a ReqGetDeviceStateInfo. */
+export class ReqGetDeviceStateInfo implements IReqGetDeviceStateInfo {
+
+    /**
+     * Constructs a new ReqGetDeviceStateInfo.
+     * @param [properties] Properties to set
+     */
+    constructor(properties?: IReqGetDeviceStateInfo);
+
+    /**
+     * Creates a new ReqGetDeviceStateInfo instance using the specified properties.
+     * @param [properties] Properties to set
+     * @returns ReqGetDeviceStateInfo instance
+     */
+    public static create(properties?: IReqGetDeviceStateInfo): ReqGetDeviceStateInfo;
+
+    /**
+     * Encodes the specified ReqGetDeviceStateInfo message. Does not implicitly {@link ReqGetDeviceStateInfo.verify|verify} messages.
+     * @param message ReqGetDeviceStateInfo message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encode(message: IReqGetDeviceStateInfo, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Encodes the specified ReqGetDeviceStateInfo message, length delimited. Does not implicitly {@link ReqGetDeviceStateInfo.verify|verify} messages.
+     * @param message ReqGetDeviceStateInfo message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encodeDelimited(message: IReqGetDeviceStateInfo, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Decodes a ReqGetDeviceStateInfo message from the specified reader or buffer.
+     * @param reader Reader or buffer to decode from
+     * @param [length] Message length if known beforehand
+     * @returns ReqGetDeviceStateInfo
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): ReqGetDeviceStateInfo;
+
+    /**
+     * Decodes a ReqGetDeviceStateInfo message from the specified reader or buffer, length delimited.
+     * @param reader Reader or buffer to decode from
+     * @returns ReqGetDeviceStateInfo
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): ReqGetDeviceStateInfo;
+
+    /**
+     * Verifies a ReqGetDeviceStateInfo message.
+     * @param message Plain object to verify
+     * @returns `null` if valid, otherwise the reason why it is not
+     */
+    public static verify(message: { [k: string]: any }): (string|null);
+
+    /**
+     * Creates a ReqGetDeviceStateInfo message from a plain object. Also converts values to their respective internal types.
+     * @param object Plain object
+     * @returns ReqGetDeviceStateInfo
+     */
+    public static fromObject(object: { [k: string]: any }): ReqGetDeviceStateInfo;
+
+    /**
+     * Creates a plain object from a ReqGetDeviceStateInfo message. Also converts values to other types if specified.
+     * @param message ReqGetDeviceStateInfo
+     * @param [options] Conversion options
+     * @returns Plain object
+     */
+    public static toObject(message: ReqGetDeviceStateInfo, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+    /**
+     * Converts this ReqGetDeviceStateInfo to JSON.
+     * @returns JSON object
+     */
+    public toJSON(): { [k: string]: any };
+
+    /**
+     * Gets the default type url for ReqGetDeviceStateInfo
+     * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+     * @returns The default type url
+     */
+    public static getTypeUrl(typeUrlPrefix?: string): string;
+}
+
+/** Represents a CaptureRawState. */
+export class CaptureRawState implements ICaptureRawState {
+
+    /**
+     * Constructs a new CaptureRawState.
+     * @param [properties] Properties to set
+     */
+    constructor(properties?: ICaptureRawState);
+
+    /** CaptureRawState state. */
+    public state: OperationState;
+
+    /** CaptureRawState cameraType. */
+    public cameraType: number;
+
+    /**
+     * Creates a new CaptureRawState instance using the specified properties.
+     * @param [properties] Properties to set
+     * @returns CaptureRawState instance
+     */
+    public static create(properties?: ICaptureRawState): CaptureRawState;
+
+    /**
+     * Encodes the specified CaptureRawState message. Does not implicitly {@link CaptureRawState.verify|verify} messages.
+     * @param message CaptureRawState message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encode(message: ICaptureRawState, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Encodes the specified CaptureRawState message, length delimited. Does not implicitly {@link CaptureRawState.verify|verify} messages.
+     * @param message CaptureRawState message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encodeDelimited(message: ICaptureRawState, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Decodes a CaptureRawState message from the specified reader or buffer.
+     * @param reader Reader or buffer to decode from
+     * @param [length] Message length if known beforehand
+     * @returns CaptureRawState
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): CaptureRawState;
+
+    /**
+     * Decodes a CaptureRawState message from the specified reader or buffer, length delimited.
+     * @param reader Reader or buffer to decode from
+     * @returns CaptureRawState
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): CaptureRawState;
+
+    /**
+     * Verifies a CaptureRawState message.
+     * @param message Plain object to verify
+     * @returns `null` if valid, otherwise the reason why it is not
+     */
+    public static verify(message: { [k: string]: any }): (string|null);
+
+    /**
+     * Creates a CaptureRawState message from a plain object. Also converts values to their respective internal types.
+     * @param object Plain object
+     * @returns CaptureRawState
+     */
+    public static fromObject(object: { [k: string]: any }): CaptureRawState;
+
+    /**
+     * Creates a plain object from a CaptureRawState message. Also converts values to other types if specified.
+     * @param message CaptureRawState
+     * @param [options] Conversion options
+     * @returns Plain object
+     */
+    public static toObject(message: CaptureRawState, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+    /**
+     * Converts this CaptureRawState to JSON.
+     * @returns JSON object
+     */
+    public toJSON(): { [k: string]: any };
+
+    /**
+     * Gets the default type url for CaptureRawState
+     * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+     * @returns The default type url
+     */
+    public static getTypeUrl(typeUrlPrefix?: string): string;
+}
+
+/** Represents an ExclusiveCameraState. */
+export class ExclusiveCameraState implements IExclusiveCameraState {
+
+    /**
+     * Constructs a new ExclusiveCameraState.
+     * @param [properties] Properties to set
+     */
+    constructor(properties?: IExclusiveCameraState);
+
+    /** ExclusiveCameraState captureRawState. */
+    public captureRawState?: (ICaptureRawState|null);
+
+    /** ExclusiveCameraState state. */
+    public state?: "captureRawState";
+
+    /**
+     * Creates a new ExclusiveCameraState instance using the specified properties.
+     * @param [properties] Properties to set
+     * @returns ExclusiveCameraState instance
+     */
+    public static create(properties?: IExclusiveCameraState): ExclusiveCameraState;
+
+    /**
+     * Encodes the specified ExclusiveCameraState message. Does not implicitly {@link ExclusiveCameraState.verify|verify} messages.
+     * @param message ExclusiveCameraState message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encode(message: IExclusiveCameraState, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Encodes the specified ExclusiveCameraState message, length delimited. Does not implicitly {@link ExclusiveCameraState.verify|verify} messages.
+     * @param message ExclusiveCameraState message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encodeDelimited(message: IExclusiveCameraState, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Decodes an ExclusiveCameraState message from the specified reader or buffer.
+     * @param reader Reader or buffer to decode from
+     * @param [length] Message length if known beforehand
+     * @returns ExclusiveCameraState
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): ExclusiveCameraState;
+
+    /**
+     * Decodes an ExclusiveCameraState message from the specified reader or buffer, length delimited.
+     * @param reader Reader or buffer to decode from
+     * @returns ExclusiveCameraState
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): ExclusiveCameraState;
+
+    /**
+     * Verifies an ExclusiveCameraState message.
+     * @param message Plain object to verify
+     * @returns `null` if valid, otherwise the reason why it is not
+     */
+    public static verify(message: { [k: string]: any }): (string|null);
+
+    /**
+     * Creates an ExclusiveCameraState message from a plain object. Also converts values to their respective internal types.
+     * @param object Plain object
+     * @returns ExclusiveCameraState
+     */
+    public static fromObject(object: { [k: string]: any }): ExclusiveCameraState;
+
+    /**
+     * Creates a plain object from an ExclusiveCameraState message. Also converts values to other types if specified.
+     * @param message ExclusiveCameraState
+     * @param [options] Conversion options
+     * @returns Plain object
+     */
+    public static toObject(message: ExclusiveCameraState, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+    /**
+     * Converts this ExclusiveCameraState to JSON.
+     * @returns JSON object
+     */
+    public toJSON(): { [k: string]: any };
+
+    /**
+     * Gets the default type url for ExclusiveCameraState
+     * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+     * @returns The default type url
+     */
+    public static getTypeUrl(typeUrlPrefix?: string): string;
+}
+
+/** Represents a TeleCameraStateInfo. */
+export class TeleCameraStateInfo implements ITeleCameraStateInfo {
+
+    /**
+     * Constructs a new TeleCameraStateInfo.
+     * @param [properties] Properties to set
+     */
+    constructor(properties?: ITeleCameraStateInfo);
+
+    /** TeleCameraStateInfo exclusiveState. */
+    public exclusiveState?: (IExclusiveCameraState|null);
+
+    /** TeleCameraStateInfo hFov. */
+    public hFov: number;
+
+    /** TeleCameraStateInfo vFov. */
+    public vFov: number;
+
+    /** TeleCameraStateInfo resolutionWidth. */
+    public resolutionWidth: number;
+
+    /** TeleCameraStateInfo resolutionHeight. */
+    public resolutionHeight: number;
+
+    /** TeleCameraStateInfo cmosTemperature. */
+    public cmosTemperature?: (ICmosTemperature|null);
+
+    /**
+     * Creates a new TeleCameraStateInfo instance using the specified properties.
+     * @param [properties] Properties to set
+     * @returns TeleCameraStateInfo instance
+     */
+    public static create(properties?: ITeleCameraStateInfo): TeleCameraStateInfo;
+
+    /**
+     * Encodes the specified TeleCameraStateInfo message. Does not implicitly {@link TeleCameraStateInfo.verify|verify} messages.
+     * @param message TeleCameraStateInfo message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encode(message: ITeleCameraStateInfo, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Encodes the specified TeleCameraStateInfo message, length delimited. Does not implicitly {@link TeleCameraStateInfo.verify|verify} messages.
+     * @param message TeleCameraStateInfo message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encodeDelimited(message: ITeleCameraStateInfo, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Decodes a TeleCameraStateInfo message from the specified reader or buffer.
+     * @param reader Reader or buffer to decode from
+     * @param [length] Message length if known beforehand
+     * @returns TeleCameraStateInfo
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): TeleCameraStateInfo;
+
+    /**
+     * Decodes a TeleCameraStateInfo message from the specified reader or buffer, length delimited.
+     * @param reader Reader or buffer to decode from
+     * @returns TeleCameraStateInfo
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): TeleCameraStateInfo;
+
+    /**
+     * Verifies a TeleCameraStateInfo message.
+     * @param message Plain object to verify
+     * @returns `null` if valid, otherwise the reason why it is not
+     */
+    public static verify(message: { [k: string]: any }): (string|null);
+
+    /**
+     * Creates a TeleCameraStateInfo message from a plain object. Also converts values to their respective internal types.
+     * @param object Plain object
+     * @returns TeleCameraStateInfo
+     */
+    public static fromObject(object: { [k: string]: any }): TeleCameraStateInfo;
+
+    /**
+     * Creates a plain object from a TeleCameraStateInfo message. Also converts values to other types if specified.
+     * @param message TeleCameraStateInfo
+     * @param [options] Conversion options
+     * @returns Plain object
+     */
+    public static toObject(message: TeleCameraStateInfo, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+    /**
+     * Converts this TeleCameraStateInfo to JSON.
+     * @returns JSON object
+     */
+    public toJSON(): { [k: string]: any };
+
+    /**
+     * Gets the default type url for TeleCameraStateInfo
+     * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+     * @returns The default type url
+     */
+    public static getTypeUrl(typeUrlPrefix?: string): string;
+}
+
+/** Represents a CmosTemperature. */
+export class CmosTemperature implements ICmosTemperature {
+
+    /**
+     * Constructs a new CmosTemperature.
+     * @param [properties] Properties to set
+     */
+    constructor(properties?: ICmosTemperature);
+
+    /** CmosTemperature temperature. */
+    public temperature?: (number|null);
+
+    /** CmosTemperature cameraType. */
+    public cameraType: number;
+
+    /** CmosTemperature _temperature. */
+    public _temperature?: "temperature";
+
+    /**
+     * Creates a new CmosTemperature instance using the specified properties.
+     * @param [properties] Properties to set
+     * @returns CmosTemperature instance
+     */
+    public static create(properties?: ICmosTemperature): CmosTemperature;
+
+    /**
+     * Encodes the specified CmosTemperature message. Does not implicitly {@link CmosTemperature.verify|verify} messages.
+     * @param message CmosTemperature message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encode(message: ICmosTemperature, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Encodes the specified CmosTemperature message, length delimited. Does not implicitly {@link CmosTemperature.verify|verify} messages.
+     * @param message CmosTemperature message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encodeDelimited(message: ICmosTemperature, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Decodes a CmosTemperature message from the specified reader or buffer.
+     * @param reader Reader or buffer to decode from
+     * @param [length] Message length if known beforehand
+     * @returns CmosTemperature
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): CmosTemperature;
+
+    /**
+     * Decodes a CmosTemperature message from the specified reader or buffer, length delimited.
+     * @param reader Reader or buffer to decode from
+     * @returns CmosTemperature
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): CmosTemperature;
+
+    /**
+     * Verifies a CmosTemperature message.
+     * @param message Plain object to verify
+     * @returns `null` if valid, otherwise the reason why it is not
+     */
+    public static verify(message: { [k: string]: any }): (string|null);
+
+    /**
+     * Creates a CmosTemperature message from a plain object. Also converts values to their respective internal types.
+     * @param object Plain object
+     * @returns CmosTemperature
+     */
+    public static fromObject(object: { [k: string]: any }): CmosTemperature;
+
+    /**
+     * Creates a plain object from a CmosTemperature message. Also converts values to other types if specified.
+     * @param message CmosTemperature
+     * @param [options] Conversion options
+     * @returns Plain object
+     */
+    public static toObject(message: CmosTemperature, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+    /**
+     * Converts this CmosTemperature to JSON.
+     * @returns JSON object
+     */
+    public toJSON(): { [k: string]: any };
+
+    /**
+     * Gets the default type url for CmosTemperature
+     * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+     * @returns The default type url
+     */
+    public static getTypeUrl(typeUrlPrefix?: string): string;
+}
+
+/** Represents a DeviceStateInfo. */
+export class DeviceStateInfo implements IDeviceStateInfo {
+
+    /**
+     * Constructs a new DeviceStateInfo.
+     * @param [properties] Properties to set
+     */
+    constructor(properties?: IDeviceStateInfo);
+
+    /** DeviceStateInfo calibrationResult. */
+    public calibrationResult?: (ICalibrationResult|null);
+
+    /**
+     * Creates a new DeviceStateInfo instance using the specified properties.
+     * @param [properties] Properties to set
+     * @returns DeviceStateInfo instance
+     */
+    public static create(properties?: IDeviceStateInfo): DeviceStateInfo;
+
+    /**
+     * Encodes the specified DeviceStateInfo message. Does not implicitly {@link DeviceStateInfo.verify|verify} messages.
+     * @param message DeviceStateInfo message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encode(message: IDeviceStateInfo, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Encodes the specified DeviceStateInfo message, length delimited. Does not implicitly {@link DeviceStateInfo.verify|verify} messages.
+     * @param message DeviceStateInfo message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encodeDelimited(message: IDeviceStateInfo, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Decodes a DeviceStateInfo message from the specified reader or buffer.
+     * @param reader Reader or buffer to decode from
+     * @param [length] Message length if known beforehand
+     * @returns DeviceStateInfo
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): DeviceStateInfo;
+
+    /**
+     * Decodes a DeviceStateInfo message from the specified reader or buffer, length delimited.
+     * @param reader Reader or buffer to decode from
+     * @returns DeviceStateInfo
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): DeviceStateInfo;
+
+    /**
+     * Verifies a DeviceStateInfo message.
+     * @param message Plain object to verify
+     * @returns `null` if valid, otherwise the reason why it is not
+     */
+    public static verify(message: { [k: string]: any }): (string|null);
+
+    /**
+     * Creates a DeviceStateInfo message from a plain object. Also converts values to their respective internal types.
+     * @param object Plain object
+     * @returns DeviceStateInfo
+     */
+    public static fromObject(object: { [k: string]: any }): DeviceStateInfo;
+
+    /**
+     * Creates a plain object from a DeviceStateInfo message. Also converts values to other types if specified.
+     * @param message DeviceStateInfo
+     * @param [options] Conversion options
+     * @returns Plain object
+     */
+    public static toObject(message: DeviceStateInfo, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+    /**
+     * Converts this DeviceStateInfo to JSON.
+     * @returns JSON object
+     */
+    public toJSON(): { [k: string]: any };
+
+    /**
+     * Gets the default type url for DeviceStateInfo
+     * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+     * @returns The default type url
+     */
+    public static getTypeUrl(typeUrlPrefix?: string): string;
+}
+
+/** Represents a ResGetDeviceStateInfo. */
+export class ResGetDeviceStateInfo implements IResGetDeviceStateInfo {
+
+    /**
+     * Constructs a new ResGetDeviceStateInfo.
+     * @param [properties] Properties to set
+     */
+    constructor(properties?: IResGetDeviceStateInfo);
+
+    /** ResGetDeviceStateInfo shootingMode. */
+    public shootingMode: number;
+
+    /** ResGetDeviceStateInfo teleCameraStateInfo. */
+    public teleCameraStateInfo?: (ITeleCameraStateInfo|null);
+
+    /** ResGetDeviceStateInfo deviceStateInfo. */
+    public deviceStateInfo?: (IDeviceStateInfo|null);
+
+    /** ResGetDeviceStateInfo code. */
+    public code: number;
+
+    /**
+     * Creates a new ResGetDeviceStateInfo instance using the specified properties.
+     * @param [properties] Properties to set
+     * @returns ResGetDeviceStateInfo instance
+     */
+    public static create(properties?: IResGetDeviceStateInfo): ResGetDeviceStateInfo;
+
+    /**
+     * Encodes the specified ResGetDeviceStateInfo message. Does not implicitly {@link ResGetDeviceStateInfo.verify|verify} messages.
+     * @param message ResGetDeviceStateInfo message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encode(message: IResGetDeviceStateInfo, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Encodes the specified ResGetDeviceStateInfo message, length delimited. Does not implicitly {@link ResGetDeviceStateInfo.verify|verify} messages.
+     * @param message ResGetDeviceStateInfo message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encodeDelimited(message: IResGetDeviceStateInfo, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Decodes a ResGetDeviceStateInfo message from the specified reader or buffer.
+     * @param reader Reader or buffer to decode from
+     * @param [length] Message length if known beforehand
+     * @returns ResGetDeviceStateInfo
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): ResGetDeviceStateInfo;
+
+    /**
+     * Decodes a ResGetDeviceStateInfo message from the specified reader or buffer, length delimited.
+     * @param reader Reader or buffer to decode from
+     * @returns ResGetDeviceStateInfo
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): ResGetDeviceStateInfo;
+
+    /**
+     * Verifies a ResGetDeviceStateInfo message.
+     * @param message Plain object to verify
+     * @returns `null` if valid, otherwise the reason why it is not
+     */
+    public static verify(message: { [k: string]: any }): (string|null);
+
+    /**
+     * Creates a ResGetDeviceStateInfo message from a plain object. Also converts values to their respective internal types.
+     * @param object Plain object
+     * @returns ResGetDeviceStateInfo
+     */
+    public static fromObject(object: { [k: string]: any }): ResGetDeviceStateInfo;
+
+    /**
+     * Creates a plain object from a ResGetDeviceStateInfo message. Also converts values to other types if specified.
+     * @param message ResGetDeviceStateInfo
+     * @param [options] Conversion options
+     * @returns Plain object
+     */
+    public static toObject(message: ResGetDeviceStateInfo, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+    /**
+     * Converts this ResGetDeviceStateInfo to JSON.
+     * @returns JSON object
+     */
+    public toJSON(): { [k: string]: any };
+
+    /**
+     * Gets the default type url for ResGetDeviceStateInfo
+     * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+     * @returns The default type url
+     */
+    public static getTypeUrl(typeUrlPrefix?: string): string;
+}
+
+/** Represents a V3ReqGetDeviceConfig. */
+export class V3ReqGetDeviceConfig implements IV3ReqGetDeviceConfig {
+
+    /**
+     * Constructs a new V3ReqGetDeviceConfig.
+     * @param [properties] Properties to set
+     */
+    constructor(properties?: IV3ReqGetDeviceConfig);
+
+    /**
+     * Creates a new V3ReqGetDeviceConfig instance using the specified properties.
+     * @param [properties] Properties to set
+     * @returns V3ReqGetDeviceConfig instance
+     */
+    public static create(properties?: IV3ReqGetDeviceConfig): V3ReqGetDeviceConfig;
+
+    /**
+     * Encodes the specified V3ReqGetDeviceConfig message. Does not implicitly {@link V3ReqGetDeviceConfig.verify|verify} messages.
+     * @param message V3ReqGetDeviceConfig message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encode(message: IV3ReqGetDeviceConfig, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Encodes the specified V3ReqGetDeviceConfig message, length delimited. Does not implicitly {@link V3ReqGetDeviceConfig.verify|verify} messages.
+     * @param message V3ReqGetDeviceConfig message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encodeDelimited(message: IV3ReqGetDeviceConfig, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Decodes a V3ReqGetDeviceConfig message from the specified reader or buffer.
+     * @param reader Reader or buffer to decode from
+     * @param [length] Message length if known beforehand
+     * @returns V3ReqGetDeviceConfig
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): V3ReqGetDeviceConfig;
+
+    /**
+     * Decodes a V3ReqGetDeviceConfig message from the specified reader or buffer, length delimited.
+     * @param reader Reader or buffer to decode from
+     * @returns V3ReqGetDeviceConfig
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): V3ReqGetDeviceConfig;
+
+    /**
+     * Verifies a V3ReqGetDeviceConfig message.
+     * @param message Plain object to verify
+     * @returns `null` if valid, otherwise the reason why it is not
+     */
+    public static verify(message: { [k: string]: any }): (string|null);
+
+    /**
+     * Creates a V3ReqGetDeviceConfig message from a plain object. Also converts values to their respective internal types.
+     * @param object Plain object
+     * @returns V3ReqGetDeviceConfig
+     */
+    public static fromObject(object: { [k: string]: any }): V3ReqGetDeviceConfig;
+
+    /**
+     * Creates a plain object from a V3ReqGetDeviceConfig message. Also converts values to other types if specified.
+     * @param message V3ReqGetDeviceConfig
+     * @param [options] Conversion options
+     * @returns Plain object
+     */
+    public static toObject(message: V3ReqGetDeviceConfig, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+    /**
+     * Converts this V3ReqGetDeviceConfig to JSON.
+     * @returns JSON object
+     */
+    public toJSON(): { [k: string]: any };
+
+    /**
+     * Gets the default type url for V3ReqGetDeviceConfig
+     * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+     * @returns The default type url
+     */
+    public static getTypeUrl(typeUrlPrefix?: string): string;
+}
+
+/** Represents a V3ResGetDeviceConfig. */
+export class V3ResGetDeviceConfig implements IV3ResGetDeviceConfig {
+
+    /**
+     * Constructs a new V3ResGetDeviceConfig.
+     * @param [properties] Properties to set
+     */
+    constructor(properties?: IV3ResGetDeviceConfig);
+
+    /** V3ResGetDeviceConfig code. */
+    public code: number;
+
+    /** V3ResGetDeviceConfig configData. */
+    public configData: Uint8Array;
+
+    /**
+     * Creates a new V3ResGetDeviceConfig instance using the specified properties.
+     * @param [properties] Properties to set
+     * @returns V3ResGetDeviceConfig instance
+     */
+    public static create(properties?: IV3ResGetDeviceConfig): V3ResGetDeviceConfig;
+
+    /**
+     * Encodes the specified V3ResGetDeviceConfig message. Does not implicitly {@link V3ResGetDeviceConfig.verify|verify} messages.
+     * @param message V3ResGetDeviceConfig message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encode(message: IV3ResGetDeviceConfig, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Encodes the specified V3ResGetDeviceConfig message, length delimited. Does not implicitly {@link V3ResGetDeviceConfig.verify|verify} messages.
+     * @param message V3ResGetDeviceConfig message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encodeDelimited(message: IV3ResGetDeviceConfig, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Decodes a V3ResGetDeviceConfig message from the specified reader or buffer.
+     * @param reader Reader or buffer to decode from
+     * @param [length] Message length if known beforehand
+     * @returns V3ResGetDeviceConfig
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): V3ResGetDeviceConfig;
+
+    /**
+     * Decodes a V3ResGetDeviceConfig message from the specified reader or buffer, length delimited.
+     * @param reader Reader or buffer to decode from
+     * @returns V3ResGetDeviceConfig
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): V3ResGetDeviceConfig;
+
+    /**
+     * Verifies a V3ResGetDeviceConfig message.
+     * @param message Plain object to verify
+     * @returns `null` if valid, otherwise the reason why it is not
+     */
+    public static verify(message: { [k: string]: any }): (string|null);
+
+    /**
+     * Creates a V3ResGetDeviceConfig message from a plain object. Also converts values to their respective internal types.
+     * @param object Plain object
+     * @returns V3ResGetDeviceConfig
+     */
+    public static fromObject(object: { [k: string]: any }): V3ResGetDeviceConfig;
+
+    /**
+     * Creates a plain object from a V3ResGetDeviceConfig message. Also converts values to other types if specified.
+     * @param message V3ResGetDeviceConfig
+     * @param [options] Conversion options
+     * @returns Plain object
+     */
+    public static toObject(message: V3ResGetDeviceConfig, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+    /**
+     * Converts this V3ResGetDeviceConfig to JSON.
+     * @returns JSON object
+     */
+    public toJSON(): { [k: string]: any };
+
+    /**
+     * Gets the default type url for V3ResGetDeviceConfig
+     * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+     * @returns The default type url
+     */
+    public static getTypeUrl(typeUrlPrefix?: string): string;
+}
+
+/** Represents a ReqLensDefog. */
+export class ReqLensDefog implements IReqLensDefog {
+
+    /**
+     * Constructs a new ReqLensDefog.
+     * @param [properties] Properties to set
+     */
+    constructor(properties?: IReqLensDefog);
+
+    /** ReqLensDefog state. */
+    public state: number;
+
+    /**
+     * Creates a new ReqLensDefog instance using the specified properties.
+     * @param [properties] Properties to set
+     * @returns ReqLensDefog instance
+     */
+    public static create(properties?: IReqLensDefog): ReqLensDefog;
+
+    /**
+     * Encodes the specified ReqLensDefog message. Does not implicitly {@link ReqLensDefog.verify|verify} messages.
+     * @param message ReqLensDefog message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encode(message: IReqLensDefog, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Encodes the specified ReqLensDefog message, length delimited. Does not implicitly {@link ReqLensDefog.verify|verify} messages.
+     * @param message ReqLensDefog message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encodeDelimited(message: IReqLensDefog, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Decodes a ReqLensDefog message from the specified reader or buffer.
+     * @param reader Reader or buffer to decode from
+     * @param [length] Message length if known beforehand
+     * @returns ReqLensDefog
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): ReqLensDefog;
+
+    /**
+     * Decodes a ReqLensDefog message from the specified reader or buffer, length delimited.
+     * @param reader Reader or buffer to decode from
+     * @returns ReqLensDefog
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): ReqLensDefog;
+
+    /**
+     * Verifies a ReqLensDefog message.
+     * @param message Plain object to verify
+     * @returns `null` if valid, otherwise the reason why it is not
+     */
+    public static verify(message: { [k: string]: any }): (string|null);
+
+    /**
+     * Creates a ReqLensDefog message from a plain object. Also converts values to their respective internal types.
+     * @param object Plain object
+     * @returns ReqLensDefog
+     */
+    public static fromObject(object: { [k: string]: any }): ReqLensDefog;
+
+    /**
+     * Creates a plain object from a ReqLensDefog message. Also converts values to other types if specified.
+     * @param message ReqLensDefog
+     * @param [options] Conversion options
+     * @returns Plain object
+     */
+    public static toObject(message: ReqLensDefog, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+    /**
+     * Converts this ReqLensDefog to JSON.
+     * @returns JSON object
+     */
+    public toJSON(): { [k: string]: any };
+
+    /**
+     * Gets the default type url for ReqLensDefog
+     * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+     * @returns The default type url
+     */
+    public static getTypeUrl(typeUrlPrefix?: string): string;
+}
+
+/** Represents a ReqAutoCooling. */
+export class ReqAutoCooling implements IReqAutoCooling {
+
+    /**
+     * Constructs a new ReqAutoCooling.
+     * @param [properties] Properties to set
+     */
+    constructor(properties?: IReqAutoCooling);
+
+    /** ReqAutoCooling state. */
+    public state: number;
+
+    /**
+     * Creates a new ReqAutoCooling instance using the specified properties.
+     * @param [properties] Properties to set
+     * @returns ReqAutoCooling instance
+     */
+    public static create(properties?: IReqAutoCooling): ReqAutoCooling;
+
+    /**
+     * Encodes the specified ReqAutoCooling message. Does not implicitly {@link ReqAutoCooling.verify|verify} messages.
+     * @param message ReqAutoCooling message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encode(message: IReqAutoCooling, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Encodes the specified ReqAutoCooling message, length delimited. Does not implicitly {@link ReqAutoCooling.verify|verify} messages.
+     * @param message ReqAutoCooling message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encodeDelimited(message: IReqAutoCooling, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Decodes a ReqAutoCooling message from the specified reader or buffer.
+     * @param reader Reader or buffer to decode from
+     * @param [length] Message length if known beforehand
+     * @returns ReqAutoCooling
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): ReqAutoCooling;
+
+    /**
+     * Decodes a ReqAutoCooling message from the specified reader or buffer, length delimited.
+     * @param reader Reader or buffer to decode from
+     * @returns ReqAutoCooling
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): ReqAutoCooling;
+
+    /**
+     * Verifies a ReqAutoCooling message.
+     * @param message Plain object to verify
+     * @returns `null` if valid, otherwise the reason why it is not
+     */
+    public static verify(message: { [k: string]: any }): (string|null);
+
+    /**
+     * Creates a ReqAutoCooling message from a plain object. Also converts values to their respective internal types.
+     * @param object Plain object
+     * @returns ReqAutoCooling
+     */
+    public static fromObject(object: { [k: string]: any }): ReqAutoCooling;
+
+    /**
+     * Creates a plain object from a ReqAutoCooling message. Also converts values to other types if specified.
+     * @param message ReqAutoCooling
+     * @param [options] Conversion options
+     * @returns Plain object
+     */
+    public static toObject(message: ReqAutoCooling, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+    /**
+     * Converts this ReqAutoCooling to JSON.
+     * @returns JSON object
+     */
+    public toJSON(): { [k: string]: any };
+
+    /**
+     * Gets the default type url for ReqAutoCooling
+     * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+     * @returns The default type url
+     */
+    public static getTypeUrl(typeUrlPrefix?: string): string;
+}
+
+/** Represents a ReqAutoShutdown. */
+export class ReqAutoShutdown implements IReqAutoShutdown {
+
+    /**
+     * Constructs a new ReqAutoShutdown.
+     * @param [properties] Properties to set
+     */
+    constructor(properties?: IReqAutoShutdown);
+
+    /** ReqAutoShutdown state. */
+    public state: number;
+
+    /**
+     * Creates a new ReqAutoShutdown instance using the specified properties.
+     * @param [properties] Properties to set
+     * @returns ReqAutoShutdown instance
+     */
+    public static create(properties?: IReqAutoShutdown): ReqAutoShutdown;
+
+    /**
+     * Encodes the specified ReqAutoShutdown message. Does not implicitly {@link ReqAutoShutdown.verify|verify} messages.
+     * @param message ReqAutoShutdown message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encode(message: IReqAutoShutdown, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Encodes the specified ReqAutoShutdown message, length delimited. Does not implicitly {@link ReqAutoShutdown.verify|verify} messages.
+     * @param message ReqAutoShutdown message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encodeDelimited(message: IReqAutoShutdown, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Decodes a ReqAutoShutdown message from the specified reader or buffer.
+     * @param reader Reader or buffer to decode from
+     * @param [length] Message length if known beforehand
+     * @returns ReqAutoShutdown
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): ReqAutoShutdown;
+
+    /**
+     * Decodes a ReqAutoShutdown message from the specified reader or buffer, length delimited.
+     * @param reader Reader or buffer to decode from
+     * @returns ReqAutoShutdown
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): ReqAutoShutdown;
+
+    /**
+     * Verifies a ReqAutoShutdown message.
+     * @param message Plain object to verify
+     * @returns `null` if valid, otherwise the reason why it is not
+     */
+    public static verify(message: { [k: string]: any }): (string|null);
+
+    /**
+     * Creates a ReqAutoShutdown message from a plain object. Also converts values to their respective internal types.
+     * @param object Plain object
+     * @returns ReqAutoShutdown
+     */
+    public static fromObject(object: { [k: string]: any }): ReqAutoShutdown;
+
+    /**
+     * Creates a plain object from a ReqAutoShutdown message. Also converts values to other types if specified.
+     * @param message ReqAutoShutdown
+     * @param [options] Conversion options
+     * @returns Plain object
+     */
+    public static toObject(message: ReqAutoShutdown, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+    /**
+     * Converts this ReqAutoShutdown to JSON.
+     * @returns JSON object
+     */
+    public toJSON(): { [k: string]: any };
+
+    /**
+     * Gets the default type url for ReqAutoShutdown
+     * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+     * @returns The default type url
+     */
+    public static getTypeUrl(typeUrlPrefix?: string): string;
+}
+
 /** Represents a ReqManualSingleStepFocus. */
 export class ReqManualSingleStepFocus implements IReqManualSingleStepFocus {
 
@@ -12383,6 +15455,276 @@ export class ReqDualCameraLinkage implements IReqDualCameraLinkage {
     public static getTypeUrl(typeUrlPrefix?: string): string;
 }
 
+/** MotorLevelCalibrationDirection enum. */
+export enum MotorLevelCalibrationDirection {
+    MOTOR_LEVEL_CALIBRATION_DIRECTION_CW = 0,
+    MOTOR_LEVEL_CALIBRATION_DIRECTION_CCW = 1
+}
+
+/** Represents a ReqMotorLevelCalibrationMove. */
+export class ReqMotorLevelCalibrationMove implements IReqMotorLevelCalibrationMove {
+
+    /**
+     * Constructs a new ReqMotorLevelCalibrationMove.
+     * @param [properties] Properties to set
+     */
+    constructor(properties?: IReqMotorLevelCalibrationMove);
+
+    /** ReqMotorLevelCalibrationMove direction. */
+    public direction: MotorLevelCalibrationDirection;
+
+    /**
+     * Creates a new ReqMotorLevelCalibrationMove instance using the specified properties.
+     * @param [properties] Properties to set
+     * @returns ReqMotorLevelCalibrationMove instance
+     */
+    public static create(properties?: IReqMotorLevelCalibrationMove): ReqMotorLevelCalibrationMove;
+
+    /**
+     * Encodes the specified ReqMotorLevelCalibrationMove message. Does not implicitly {@link ReqMotorLevelCalibrationMove.verify|verify} messages.
+     * @param message ReqMotorLevelCalibrationMove message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encode(message: IReqMotorLevelCalibrationMove, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Encodes the specified ReqMotorLevelCalibrationMove message, length delimited. Does not implicitly {@link ReqMotorLevelCalibrationMove.verify|verify} messages.
+     * @param message ReqMotorLevelCalibrationMove message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encodeDelimited(message: IReqMotorLevelCalibrationMove, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Decodes a ReqMotorLevelCalibrationMove message from the specified reader or buffer.
+     * @param reader Reader or buffer to decode from
+     * @param [length] Message length if known beforehand
+     * @returns ReqMotorLevelCalibrationMove
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): ReqMotorLevelCalibrationMove;
+
+    /**
+     * Decodes a ReqMotorLevelCalibrationMove message from the specified reader or buffer, length delimited.
+     * @param reader Reader or buffer to decode from
+     * @returns ReqMotorLevelCalibrationMove
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): ReqMotorLevelCalibrationMove;
+
+    /**
+     * Verifies a ReqMotorLevelCalibrationMove message.
+     * @param message Plain object to verify
+     * @returns `null` if valid, otherwise the reason why it is not
+     */
+    public static verify(message: { [k: string]: any }): (string|null);
+
+    /**
+     * Creates a ReqMotorLevelCalibrationMove message from a plain object. Also converts values to their respective internal types.
+     * @param object Plain object
+     * @returns ReqMotorLevelCalibrationMove
+     */
+    public static fromObject(object: { [k: string]: any }): ReqMotorLevelCalibrationMove;
+
+    /**
+     * Creates a plain object from a ReqMotorLevelCalibrationMove message. Also converts values to other types if specified.
+     * @param message ReqMotorLevelCalibrationMove
+     * @param [options] Conversion options
+     * @returns Plain object
+     */
+    public static toObject(message: ReqMotorLevelCalibrationMove, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+    /**
+     * Converts this ReqMotorLevelCalibrationMove to JSON.
+     * @returns JSON object
+     */
+    public toJSON(): { [k: string]: any };
+
+    /**
+     * Gets the default type url for ReqMotorLevelCalibrationMove
+     * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+     * @returns The default type url
+     */
+    public static getTypeUrl(typeUrlPrefix?: string): string;
+}
+
+/** Represents a ReqMotorLevelCalibrationSave. */
+export class ReqMotorLevelCalibrationSave implements IReqMotorLevelCalibrationSave {
+
+    /**
+     * Constructs a new ReqMotorLevelCalibrationSave.
+     * @param [properties] Properties to set
+     */
+    constructor(properties?: IReqMotorLevelCalibrationSave);
+
+    /**
+     * Creates a new ReqMotorLevelCalibrationSave instance using the specified properties.
+     * @param [properties] Properties to set
+     * @returns ReqMotorLevelCalibrationSave instance
+     */
+    public static create(properties?: IReqMotorLevelCalibrationSave): ReqMotorLevelCalibrationSave;
+
+    /**
+     * Encodes the specified ReqMotorLevelCalibrationSave message. Does not implicitly {@link ReqMotorLevelCalibrationSave.verify|verify} messages.
+     * @param message ReqMotorLevelCalibrationSave message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encode(message: IReqMotorLevelCalibrationSave, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Encodes the specified ReqMotorLevelCalibrationSave message, length delimited. Does not implicitly {@link ReqMotorLevelCalibrationSave.verify|verify} messages.
+     * @param message ReqMotorLevelCalibrationSave message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encodeDelimited(message: IReqMotorLevelCalibrationSave, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Decodes a ReqMotorLevelCalibrationSave message from the specified reader or buffer.
+     * @param reader Reader or buffer to decode from
+     * @param [length] Message length if known beforehand
+     * @returns ReqMotorLevelCalibrationSave
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): ReqMotorLevelCalibrationSave;
+
+    /**
+     * Decodes a ReqMotorLevelCalibrationSave message from the specified reader or buffer, length delimited.
+     * @param reader Reader or buffer to decode from
+     * @returns ReqMotorLevelCalibrationSave
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): ReqMotorLevelCalibrationSave;
+
+    /**
+     * Verifies a ReqMotorLevelCalibrationSave message.
+     * @param message Plain object to verify
+     * @returns `null` if valid, otherwise the reason why it is not
+     */
+    public static verify(message: { [k: string]: any }): (string|null);
+
+    /**
+     * Creates a ReqMotorLevelCalibrationSave message from a plain object. Also converts values to their respective internal types.
+     * @param object Plain object
+     * @returns ReqMotorLevelCalibrationSave
+     */
+    public static fromObject(object: { [k: string]: any }): ReqMotorLevelCalibrationSave;
+
+    /**
+     * Creates a plain object from a ReqMotorLevelCalibrationSave message. Also converts values to other types if specified.
+     * @param message ReqMotorLevelCalibrationSave
+     * @param [options] Conversion options
+     * @returns Plain object
+     */
+    public static toObject(message: ReqMotorLevelCalibrationSave, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+    /**
+     * Converts this ReqMotorLevelCalibrationSave to JSON.
+     * @returns JSON object
+     */
+    public toJSON(): { [k: string]: any };
+
+    /**
+     * Gets the default type url for ReqMotorLevelCalibrationSave
+     * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+     * @returns The default type url
+     */
+    public static getTypeUrl(typeUrlPrefix?: string): string;
+}
+
+/** Represents a ReqMotorLevelCalibrationResetDefault. */
+export class ReqMotorLevelCalibrationResetDefault implements IReqMotorLevelCalibrationResetDefault {
+
+    /**
+     * Constructs a new ReqMotorLevelCalibrationResetDefault.
+     * @param [properties] Properties to set
+     */
+    constructor(properties?: IReqMotorLevelCalibrationResetDefault);
+
+    /**
+     * Creates a new ReqMotorLevelCalibrationResetDefault instance using the specified properties.
+     * @param [properties] Properties to set
+     * @returns ReqMotorLevelCalibrationResetDefault instance
+     */
+    public static create(properties?: IReqMotorLevelCalibrationResetDefault): ReqMotorLevelCalibrationResetDefault;
+
+    /**
+     * Encodes the specified ReqMotorLevelCalibrationResetDefault message. Does not implicitly {@link ReqMotorLevelCalibrationResetDefault.verify|verify} messages.
+     * @param message ReqMotorLevelCalibrationResetDefault message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encode(message: IReqMotorLevelCalibrationResetDefault, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Encodes the specified ReqMotorLevelCalibrationResetDefault message, length delimited. Does not implicitly {@link ReqMotorLevelCalibrationResetDefault.verify|verify} messages.
+     * @param message ReqMotorLevelCalibrationResetDefault message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encodeDelimited(message: IReqMotorLevelCalibrationResetDefault, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Decodes a ReqMotorLevelCalibrationResetDefault message from the specified reader or buffer.
+     * @param reader Reader or buffer to decode from
+     * @param [length] Message length if known beforehand
+     * @returns ReqMotorLevelCalibrationResetDefault
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): ReqMotorLevelCalibrationResetDefault;
+
+    /**
+     * Decodes a ReqMotorLevelCalibrationResetDefault message from the specified reader or buffer, length delimited.
+     * @param reader Reader or buffer to decode from
+     * @returns ReqMotorLevelCalibrationResetDefault
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): ReqMotorLevelCalibrationResetDefault;
+
+    /**
+     * Verifies a ReqMotorLevelCalibrationResetDefault message.
+     * @param message Plain object to verify
+     * @returns `null` if valid, otherwise the reason why it is not
+     */
+    public static verify(message: { [k: string]: any }): (string|null);
+
+    /**
+     * Creates a ReqMotorLevelCalibrationResetDefault message from a plain object. Also converts values to their respective internal types.
+     * @param object Plain object
+     * @returns ReqMotorLevelCalibrationResetDefault
+     */
+    public static fromObject(object: { [k: string]: any }): ReqMotorLevelCalibrationResetDefault;
+
+    /**
+     * Creates a plain object from a ReqMotorLevelCalibrationResetDefault message. Also converts values to other types if specified.
+     * @param message ReqMotorLevelCalibrationResetDefault
+     * @param [options] Conversion options
+     * @returns Plain object
+     */
+    public static toObject(message: ReqMotorLevelCalibrationResetDefault, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+    /**
+     * Converts this ReqMotorLevelCalibrationResetDefault to JSON.
+     * @returns JSON object
+     */
+    public toJSON(): { [k: string]: any };
+
+    /**
+     * Gets the default type url for ReqMotorLevelCalibrationResetDefault
+     * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+     * @returns The default type url
+     */
+    public static getTypeUrl(typeUrlPrefix?: string): string;
+}
+
 /** State enum. */
 export enum State {
     STATE_IDLE = 0,
@@ -13078,6 +16420,99 @@ export class ResNotifyStateAstroCalibration implements IResNotifyStateAstroCalib
 
     /**
      * Gets the default type url for ResNotifyStateAstroCalibration
+     * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+     * @returns The default type url
+     */
+    public static getTypeUrl(typeUrlPrefix?: string): string;
+}
+
+/** Represents a CalibrationResult. */
+export class CalibrationResult implements ICalibrationResult {
+
+    /**
+     * Constructs a new CalibrationResult.
+     * @param [properties] Properties to set
+     */
+    constructor(properties?: ICalibrationResult);
+
+    /** CalibrationResult azi. */
+    public azi: number;
+
+    /** CalibrationResult alt. */
+    public alt: number;
+
+    /**
+     * Creates a new CalibrationResult instance using the specified properties.
+     * @param [properties] Properties to set
+     * @returns CalibrationResult instance
+     */
+    public static create(properties?: ICalibrationResult): CalibrationResult;
+
+    /**
+     * Encodes the specified CalibrationResult message. Does not implicitly {@link CalibrationResult.verify|verify} messages.
+     * @param message CalibrationResult message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encode(message: ICalibrationResult, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Encodes the specified CalibrationResult message, length delimited. Does not implicitly {@link CalibrationResult.verify|verify} messages.
+     * @param message CalibrationResult message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encodeDelimited(message: ICalibrationResult, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Decodes a CalibrationResult message from the specified reader or buffer.
+     * @param reader Reader or buffer to decode from
+     * @param [length] Message length if known beforehand
+     * @returns CalibrationResult
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): CalibrationResult;
+
+    /**
+     * Decodes a CalibrationResult message from the specified reader or buffer, length delimited.
+     * @param reader Reader or buffer to decode from
+     * @returns CalibrationResult
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): CalibrationResult;
+
+    /**
+     * Verifies a CalibrationResult message.
+     * @param message Plain object to verify
+     * @returns `null` if valid, otherwise the reason why it is not
+     */
+    public static verify(message: { [k: string]: any }): (string|null);
+
+    /**
+     * Creates a CalibrationResult message from a plain object. Also converts values to their respective internal types.
+     * @param object Plain object
+     * @returns CalibrationResult
+     */
+    public static fromObject(object: { [k: string]: any }): CalibrationResult;
+
+    /**
+     * Creates a plain object from a CalibrationResult message. Also converts values to other types if specified.
+     * @param message CalibrationResult
+     * @param [options] Conversion options
+     * @returns Plain object
+     */
+    public static toObject(message: CalibrationResult, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+    /**
+     * Converts this CalibrationResult to JSON.
+     * @returns JSON object
+     */
+    public toJSON(): { [k: string]: any };
+
+    /**
+     * Gets the default type url for CalibrationResult
      * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
      * @returns The default type url
      */
@@ -14752,6 +18187,99 @@ export class ResNotifyStateSentryMode implements IResNotifyStateSentryMode {
     public static getTypeUrl(typeUrlPrefix?: string): string;
 }
 
+/** Represents an OneClickGotoPhaseState. */
+export class OneClickGotoPhaseState implements IOneClickGotoPhaseState {
+
+    /**
+     * Constructs a new OneClickGotoPhaseState.
+     * @param [properties] Properties to set
+     */
+    constructor(properties?: IOneClickGotoPhaseState);
+
+    /** OneClickGotoPhaseState state. */
+    public state: number;
+
+    /** OneClickGotoPhaseState targetName. */
+    public targetName: string;
+
+    /**
+     * Creates a new OneClickGotoPhaseState instance using the specified properties.
+     * @param [properties] Properties to set
+     * @returns OneClickGotoPhaseState instance
+     */
+    public static create(properties?: IOneClickGotoPhaseState): OneClickGotoPhaseState;
+
+    /**
+     * Encodes the specified OneClickGotoPhaseState message. Does not implicitly {@link OneClickGotoPhaseState.verify|verify} messages.
+     * @param message OneClickGotoPhaseState message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encode(message: IOneClickGotoPhaseState, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Encodes the specified OneClickGotoPhaseState message, length delimited. Does not implicitly {@link OneClickGotoPhaseState.verify|verify} messages.
+     * @param message OneClickGotoPhaseState message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encodeDelimited(message: IOneClickGotoPhaseState, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Decodes an OneClickGotoPhaseState message from the specified reader or buffer.
+     * @param reader Reader or buffer to decode from
+     * @param [length] Message length if known beforehand
+     * @returns OneClickGotoPhaseState
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): OneClickGotoPhaseState;
+
+    /**
+     * Decodes an OneClickGotoPhaseState message from the specified reader or buffer, length delimited.
+     * @param reader Reader or buffer to decode from
+     * @returns OneClickGotoPhaseState
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): OneClickGotoPhaseState;
+
+    /**
+     * Verifies an OneClickGotoPhaseState message.
+     * @param message Plain object to verify
+     * @returns `null` if valid, otherwise the reason why it is not
+     */
+    public static verify(message: { [k: string]: any }): (string|null);
+
+    /**
+     * Creates an OneClickGotoPhaseState message from a plain object. Also converts values to their respective internal types.
+     * @param object Plain object
+     * @returns OneClickGotoPhaseState
+     */
+    public static fromObject(object: { [k: string]: any }): OneClickGotoPhaseState;
+
+    /**
+     * Creates a plain object from an OneClickGotoPhaseState message. Also converts values to other types if specified.
+     * @param message OneClickGotoPhaseState
+     * @param [options] Conversion options
+     * @returns Plain object
+     */
+    public static toObject(message: OneClickGotoPhaseState, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+    /**
+     * Converts this OneClickGotoPhaseState to JSON.
+     * @returns JSON object
+     */
+    public toJSON(): { [k: string]: any };
+
+    /**
+     * Gets the default type url for OneClickGotoPhaseState
+     * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+     * @returns The default type url
+     */
+    public static getTypeUrl(typeUrlPrefix?: string): string;
+}
+
 /** Represents a ResNotifyOneClickGotoState. */
 export class ResNotifyOneClickGotoState implements IResNotifyOneClickGotoState {
 
@@ -14763,6 +18291,15 @@ export class ResNotifyOneClickGotoState implements IResNotifyOneClickGotoState {
 
     /** ResNotifyOneClickGotoState state. */
     public state: OperationState;
+
+    /** ResNotifyOneClickGotoState phase_2. */
+    public phase_2?: (IOneClickGotoPhaseState|null);
+
+    /** ResNotifyOneClickGotoState gotoState. */
+    public gotoState?: (IOneClickGotoPhaseState|null);
+
+    /** ResNotifyOneClickGotoState trackingState. */
+    public trackingState?: (IOneClickGotoPhaseState|null);
 
     /**
      * Creates a new ResNotifyOneClickGotoState instance using the specified properties.
@@ -16397,6 +19934,273 @@ export class ResGetStitchUploadState implements IResGetStitchUploadState {
     public static getTypeUrl(typeUrlPrefix?: string): string;
 }
 
+/** Represents a ReqGetUploadPredict. */
+export class ReqGetUploadPredict implements IReqGetUploadPredict {
+
+    /**
+     * Constructs a new ReqGetUploadPredict.
+     * @param [properties] Properties to set
+     */
+    constructor(properties?: IReqGetUploadPredict);
+
+    /** ReqGetUploadPredict panoramaName. */
+    public panoramaName: string;
+
+    /**
+     * Creates a new ReqGetUploadPredict instance using the specified properties.
+     * @param [properties] Properties to set
+     * @returns ReqGetUploadPredict instance
+     */
+    public static create(properties?: IReqGetUploadPredict): ReqGetUploadPredict;
+
+    /**
+     * Encodes the specified ReqGetUploadPredict message. Does not implicitly {@link ReqGetUploadPredict.verify|verify} messages.
+     * @param message ReqGetUploadPredict message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encode(message: IReqGetUploadPredict, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Encodes the specified ReqGetUploadPredict message, length delimited. Does not implicitly {@link ReqGetUploadPredict.verify|verify} messages.
+     * @param message ReqGetUploadPredict message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encodeDelimited(message: IReqGetUploadPredict, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Decodes a ReqGetUploadPredict message from the specified reader or buffer.
+     * @param reader Reader or buffer to decode from
+     * @param [length] Message length if known beforehand
+     * @returns ReqGetUploadPredict
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): ReqGetUploadPredict;
+
+    /**
+     * Decodes a ReqGetUploadPredict message from the specified reader or buffer, length delimited.
+     * @param reader Reader or buffer to decode from
+     * @returns ReqGetUploadPredict
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): ReqGetUploadPredict;
+
+    /**
+     * Verifies a ReqGetUploadPredict message.
+     * @param message Plain object to verify
+     * @returns `null` if valid, otherwise the reason why it is not
+     */
+    public static verify(message: { [k: string]: any }): (string|null);
+
+    /**
+     * Creates a ReqGetUploadPredict message from a plain object. Also converts values to their respective internal types.
+     * @param object Plain object
+     * @returns ReqGetUploadPredict
+     */
+    public static fromObject(object: { [k: string]: any }): ReqGetUploadPredict;
+
+    /**
+     * Creates a plain object from a ReqGetUploadPredict message. Also converts values to other types if specified.
+     * @param message ReqGetUploadPredict
+     * @param [options] Conversion options
+     * @returns Plain object
+     */
+    public static toObject(message: ReqGetUploadPredict, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+    /**
+     * Converts this ReqGetUploadPredict to JSON.
+     * @returns JSON object
+     */
+    public toJSON(): { [k: string]: any };
+
+    /**
+     * Gets the default type url for ReqGetUploadPredict
+     * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+     * @returns The default type url
+     */
+    public static getTypeUrl(typeUrlPrefix?: string): string;
+}
+
+/** Represents a ReqCompressPanorama. */
+export class ReqCompressPanorama implements IReqCompressPanorama {
+
+    /**
+     * Constructs a new ReqCompressPanorama.
+     * @param [properties] Properties to set
+     */
+    constructor(properties?: IReqCompressPanorama);
+
+    /** ReqCompressPanorama panoramaName. */
+    public panoramaName: string;
+
+    /**
+     * Creates a new ReqCompressPanorama instance using the specified properties.
+     * @param [properties] Properties to set
+     * @returns ReqCompressPanorama instance
+     */
+    public static create(properties?: IReqCompressPanorama): ReqCompressPanorama;
+
+    /**
+     * Encodes the specified ReqCompressPanorama message. Does not implicitly {@link ReqCompressPanorama.verify|verify} messages.
+     * @param message ReqCompressPanorama message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encode(message: IReqCompressPanorama, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Encodes the specified ReqCompressPanorama message, length delimited. Does not implicitly {@link ReqCompressPanorama.verify|verify} messages.
+     * @param message ReqCompressPanorama message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encodeDelimited(message: IReqCompressPanorama, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Decodes a ReqCompressPanorama message from the specified reader or buffer.
+     * @param reader Reader or buffer to decode from
+     * @param [length] Message length if known beforehand
+     * @returns ReqCompressPanorama
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): ReqCompressPanorama;
+
+    /**
+     * Decodes a ReqCompressPanorama message from the specified reader or buffer, length delimited.
+     * @param reader Reader or buffer to decode from
+     * @returns ReqCompressPanorama
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): ReqCompressPanorama;
+
+    /**
+     * Verifies a ReqCompressPanorama message.
+     * @param message Plain object to verify
+     * @returns `null` if valid, otherwise the reason why it is not
+     */
+    public static verify(message: { [k: string]: any }): (string|null);
+
+    /**
+     * Creates a ReqCompressPanorama message from a plain object. Also converts values to their respective internal types.
+     * @param object Plain object
+     * @returns ReqCompressPanorama
+     */
+    public static fromObject(object: { [k: string]: any }): ReqCompressPanorama;
+
+    /**
+     * Creates a plain object from a ReqCompressPanorama message. Also converts values to other types if specified.
+     * @param message ReqCompressPanorama
+     * @param [options] Conversion options
+     * @returns Plain object
+     */
+    public static toObject(message: ReqCompressPanorama, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+    /**
+     * Converts this ReqCompressPanorama to JSON.
+     * @returns JSON object
+     */
+    public toJSON(): { [k: string]: any };
+
+    /**
+     * Gets the default type url for ReqCompressPanorama
+     * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+     * @returns The default type url
+     */
+    public static getTypeUrl(typeUrlPrefix?: string): string;
+}
+
+/** Represents a ReqStopCompressPanorama. */
+export class ReqStopCompressPanorama implements IReqStopCompressPanorama {
+
+    /**
+     * Constructs a new ReqStopCompressPanorama.
+     * @param [properties] Properties to set
+     */
+    constructor(properties?: IReqStopCompressPanorama);
+
+    /**
+     * Creates a new ReqStopCompressPanorama instance using the specified properties.
+     * @param [properties] Properties to set
+     * @returns ReqStopCompressPanorama instance
+     */
+    public static create(properties?: IReqStopCompressPanorama): ReqStopCompressPanorama;
+
+    /**
+     * Encodes the specified ReqStopCompressPanorama message. Does not implicitly {@link ReqStopCompressPanorama.verify|verify} messages.
+     * @param message ReqStopCompressPanorama message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encode(message: IReqStopCompressPanorama, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Encodes the specified ReqStopCompressPanorama message, length delimited. Does not implicitly {@link ReqStopCompressPanorama.verify|verify} messages.
+     * @param message ReqStopCompressPanorama message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encodeDelimited(message: IReqStopCompressPanorama, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Decodes a ReqStopCompressPanorama message from the specified reader or buffer.
+     * @param reader Reader or buffer to decode from
+     * @param [length] Message length if known beforehand
+     * @returns ReqStopCompressPanorama
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): ReqStopCompressPanorama;
+
+    /**
+     * Decodes a ReqStopCompressPanorama message from the specified reader or buffer, length delimited.
+     * @param reader Reader or buffer to decode from
+     * @returns ReqStopCompressPanorama
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): ReqStopCompressPanorama;
+
+    /**
+     * Verifies a ReqStopCompressPanorama message.
+     * @param message Plain object to verify
+     * @returns `null` if valid, otherwise the reason why it is not
+     */
+    public static verify(message: { [k: string]: any }): (string|null);
+
+    /**
+     * Creates a ReqStopCompressPanorama message from a plain object. Also converts values to their respective internal types.
+     * @param object Plain object
+     * @returns ReqStopCompressPanorama
+     */
+    public static fromObject(object: { [k: string]: any }): ReqStopCompressPanorama;
+
+    /**
+     * Creates a plain object from a ReqStopCompressPanorama message. Also converts values to other types if specified.
+     * @param message ReqStopCompressPanorama
+     * @param [options] Conversion options
+     * @returns Plain object
+     */
+    public static toObject(message: ReqStopCompressPanorama, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+    /**
+     * Converts this ReqStopCompressPanorama to JSON.
+     * @returns JSON object
+     */
+    public toJSON(): { [k: string]: any };
+
+    /**
+     * Gets the default type url for ReqStopCompressPanorama
+     * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+     * @returns The default type url
+     */
+    public static getTypeUrl(typeUrlPrefix?: string): string;
+}
+
 /** ModuleId enum. */
 export enum ModuleId {
     MODULE_NONE = 0,
@@ -16410,7 +20214,14 @@ export enum ModuleId {
     MODULE_FOCUS = 8,
     MODULE_NOTIFY = 9,
     MODULE_PANORAMA = 10,
-    MODULE_SHOOTING_SCHEDULE = 13
+    MODULE_ITIPS = 11,
+    MODULE_FACTORY_TEST = 12,
+    MODULE_SHOOTING_SCHEDULE = 13,
+    MODULE_DEVICE_CONFIG = 14,
+    MODULE_CAMERA_PARAMS = 15,
+    MODULE_VOICE_ASSISTANT = 16,
+    MODULE_CAMERA_GUIDE = 17,
+    MODULE_DEVICE = 18
 }
 
 /** MessageTypeId enum. */
@@ -16467,6 +20278,15 @@ export enum DwarfCMD {
     CMD_CAMERA_TELE_SET_JPG_QUALITY = 10040,
     CMD_CAMERA_TELE_PHOTO_RAW = 10041,
     CMD_CAMERA_TELE_SET_RTSP_BITRATE_TYPE = 10042,
+    CMD_CAMERA_TELE_DISABLE_ALL_ISP_PROCESSING = 10043,
+    CMD_CAMERA_TELE_ENABLE_ALL_ISP_PROCESSING = 10044,
+    CMD_CAMERA_TELE_SET_ISP_MODULE_STATE = 10045,
+    CMD_CAMERA_TELE_GET_ISP_MODULE_STATE = 10046,
+    CMD_CAMERA_TELE_SWITCH_RESOLUTION = 10047,
+    CMD_CAMERA_TELE_SWITCH_FRAMERATE = 10048,
+    CMD_CAMERA_TELE_SWITCH_CROP_RATIO = 10049,
+    CMD_V3_CAMERA_TELE_OPEN_CAMERA = 10050,
+    CMD_CAMERA_TELE_SET_ND_FILTER = 10051,
     CMD_ASTRO_START_CALIBRATION = 11000,
     CMD_ASTRO_STOP_CALIBRATION = 11001,
     CMD_ASTRO_START_GOTO_DSO = 11002,
@@ -16496,6 +20316,28 @@ export enum DwarfCMD {
     CMD_ASTRO_STOP_CAPTURE_WIDE_RAW_DARK_WITH_PARAM = 11026,
     CMD_ASTRO_GET_WIDE_DARK_FRAME_LIST = 11027,
     CMD_ASTRO_DEL_WIDE_DARK_FRAME_LIST = 11028,
+    CMD_ASTRO_START_AI_ENHANCE = 11029,
+    CMD_ASTRO_STOP_AI_ENHANCE = 11030,
+    CMD_ASTRO_START_TELE_MOSAIC = 11031,
+    CMD_ASTRO_CHECK_IF_RESTACKABLE = 11032,
+    CMD_V3_ASTRO_SAVE_STACKED_IMAGE = 11033,
+    CMD_V3_ASTRO_LIST_SAVED_IMAGES = 11034,
+    CMD_ASTRO_START_RESTACKED = 11035,
+    CMD_V3_ASTRO_SAVE_COMPLETE = 11036,
+    CMD_ASTRO_FAST_STOP_CAPTURE_RAW_LIVE_STACKING = 11037,
+    CMD_ASTRO_FAST_STOP_WIDE_CAPTURE_LIVE_STACKING = 11038,
+    CMD_V3_ASTRO_STATUS_POLLING = 11039,
+    CMD_V3_ASTRO_GET_PARAMS = 11040,
+    CMD_V3_ASTRO_SET_PARAMS = 11041,
+    CMD_ASTRO_START_ONE_CLICK_SHOOTING = 11042,
+    CMD_V3_ASTRO_GET_PRESETS = 11043,
+    CMD_ASTRO_DEL_CALI_FRAME_LIST = 11044,
+    CMD_V3_ASTRO_START_CAPTURE_CALI_FRAME = 11045,
+    CMD_V3_ASTRO_STOP_CAPTURE_CALI_FRAME = 11046,
+    CMD_V3_ASTRO_SET_LOCATION = 11047,
+    CMD_V3_ASTRO_CONFIRM = 11048,
+    CMD_ASTRO_GET_GYRO_ATTITUDE = 11049,
+    CMD_ASTRO_CONTINUE_SHOOTING = 11050,
     CMD_CAMERA_WIDE_OPEN_CAMERA = 12000,
     CMD_CAMERA_WIDE_CLOSE_CAMERA = 12001,
     CMD_CAMERA_WIDE_SET_EXP_MODE = 12002,
@@ -16525,13 +20367,24 @@ export enum DwarfCMD {
     CMD_CAMERA_WIDE_STOP_TIMELAPSE_PHOTO = 12026,
     CMD_CAMERA_WIDE_GET_ALL_PARAMS = 12027,
     CMD_CAMERA_WIDE_SET_ALL_PARAMS = 12028,
+    CMD_CAMERA_WIDE_PHOTO_RAW = 12029,
     CMD_CAMERA_WIDE_START_RECORD = 12030,
     CMD_CAMERA_WIDE_STOP_RECORD = 12031,
+    CMD_CAMERA_WIDE_SET_RTSP_BITRATE_TYPE = 12032,
+    CMD_CAMERA_WIDE_SET_WB_SCENE = 12035,
+    CMD_V3_CAMERA_WIDE_OPEN_CAMERA = 12036,
+    CMD_CAMERA_WIDE_SET_ND_FILTER = 12038,
     CMD_SYSTEM_SET_TIME = 13000,
     CMD_SYSTEM_SET_TIME_ZONE = 13001,
     CMD_SYSTEM_SET_MTP_MODE = 13002,
     CMD_SYSTEM_SET_CPU_MODE = 13003,
     CMD_SYSTEM_SET_MASTERLOCK = 13004,
+    CMD_SYSTEM_GET_DEVICE_ACTIVATE_INFO = 13005,
+    CMD_SYSTEM_DEVICE_ACTIVATE_WRITE_FILE = 13006,
+    CMD_SYSTEM_DEVICE_ACTIVATE_NOTIFY_ACTIVATE_SUCCESSFULL = 13007,
+    CMD_SYSTEM_FACTORY_TEST_UN_ACTIVATE = 13008,
+    CMD_SYSTEM_SET_LOW_TEMP_PROTECTION_MODE = 13009,
+    CMD_V3_SYSTEM_SET_GPS_LOCATION = 13010,
     CMD_RGB_POWER_OPEN_RGB = 13500,
     CMD_RGB_POWER_CLOSE_RGB = 13501,
     CMD_RGB_POWER_POWER_DOWN = 13502,
@@ -16550,6 +20403,11 @@ export enum DwarfCMD {
     CMD_STEP_MOTOR_SERVICE_DUAL_CAMERA_LINKAGE = 14009,
     CMD_STEP_MOTOR_RUN_IN_PULSE = 14010,
     CMD_STEP_MOTOR_GET_POSITION = 14011,
+    CMD_STEP_MOTOR_START_ATTITUDE_NOTIFY = 14012,
+    CMD_STEP_MOTOR_STOP_ATTITUDE_NOTIFY = 14013,
+    CMD_STEP_MOTOR_LEVEL_CALIBRATION_MOVE = 14014,
+    CMD_STEP_MOTOR_SAVE_LEVEL_CALIBRATION_OFFSET = 14015,
+    CMD_STEP_MOTOR_RESET_LEVEL_CALIBRATION_DEFAULT = 14016,
     CMD_TRACK_START_TRACK = 14800,
     CMD_TRACK_STOP_TRACK = 14801,
     CMD_SENTRY_MODE_START = 14802,
@@ -16561,12 +20419,32 @@ export enum DwarfCMD {
     CMD_MOT_WIDE_TRACK_ONE = 14808,
     CMD_WIDE_TELE_TRACK_SWITCH = 14809,
     CMD_UFO_HAND_AOTO_MODE = 14810,
+    CMD_SENTRY_SCENE_SELECT = 14811,
+    CMD_TRACK_START_CLICK = 14812,
     CMD_FOCUS_AUTO_FOCUS = 15000,
     CMD_FOCUS_MANUAL_SINGLE_STEP_FOCUS = 15001,
     CMD_FOCUS_START_MANUAL_CONTINU_FOCUS = 15002,
     CMD_FOCUS_STOP_MANUAL_CONTINU_FOCUS = 15003,
     CMD_FOCUS_START_ASTRO_AUTO_FOCUS = 15004,
     CMD_FOCUS_STOP_ASTRO_AUTO_FOCUS = 15005,
+    CMD_FOCUS_AUTO_INFINITY_FOCUS = 15006,
+    CMD_V3_FOCUS_INIT = 15011,
+    CMD_FOCUS_SET_USER_INFINITY_POS = 15012,
+    CMD_WIDE_FOCUS_AUTO_FOCUS = 15014,
+    CMD_WIDE_FOCUS_MANUAL_SINGLE_STEP_FOCUS = 15015,
+    CMD_WIDE_FOCUS_START_MANUAL_CONTINU_FOCUS = 15016,
+    CMD_WIDE_FOCUS_STOP_MANUAL_CONTINU_FOCUS = 15017,
+    CMD_WIDE_FOCUS_START_ASTRO_AUTO_FOCUS = 15018,
+    CMD_WIDE_FOCUS_STOP_ASTRO_AUTO_FOCUS = 15019,
+    CMD_WIDE_FOCUS_AUTO_INFINITY_FOCUS = 15020,
+    CMD_GUIDE_FOCUS_SET_USER_INFINITY_POS = 15027,
+    CMD_GUIDE_FOCUS_GET_USER_INFINITY_POS = 15028,
+    CMD_GUIDE_FOCUS_MANUAL_SINGLE_STEP_FOCUS = 15029,
+    CMD_GUIDE_FOCUS_START_MANUAL_CONTINU_FOCUS = 15030,
+    CMD_GUIDE_FOCUS_STOP_MANUAL_CONTINU_FOCUS = 15031,
+    CMD_GUIDE_FOCUS_START_ASTRO_AUTO_FOCUS = 15032,
+    CMD_GUIDE_FOCUS_AUTO_INFINITY_FOCUS = 15033,
+    CMD_GUIDE_FOCUS_STOP_ASTRO_AUTO_FOCUS = 15034,
     CMD_NOTIFY_TELE_WIDI_PICTURE_MATCHING = 15200,
     CMD_NOTIFY_ELE = 15201,
     CMD_NOTIFY_CHARGE = 15202,
@@ -16613,44 +20491,176 @@ export enum DwarfCMD {
     CMD_NOTIFY_TEMPERATURE = 15243,
     CMD_NOTIFY_PANORAMA_UPLOAD_COMPRESS_PROGRESS = 15244,
     CMD_NOTIFY_PANORAMA_UPLOAD_UPLOAD_PROGRESS = 15245,
-    CMD_NOTIFY_PANORAMA_UPLOAD_COMPLETE = 15246,
+    CMD_NOTIFY_PANORAMA_UPLOAD_COMPLETE = 15245,
     CMD_NOTIFY_STATE_CAPTURE_WIDE_RAW_DARK = 15247,
     CMD_NOTIFY_SHOOTING_SCHEDULE_RESULT_AND_STATE = 15248,
     CMD_NOTIFY_SHOOTING_TASK_STATE = 15249,
     CMD_NOTIFY_SKY_SEACHER_STATE = 15250,
     CMD_NOTIFY_WIDE_MULTI_TRACK_RESULT = 15251,
     CMD_NOTIFY_WIDE_TRACK_RESULT = 15252,
+    CMD_NOTIFY_STATE_AI_ENHANCE = 15253,
+    CMD_NOTIFY_PROGRESS_AI_ENHANCE = 15254,
+    CMD_NOTIFY_CALIBRATION_RESULT = 15256,
     CMD_NOTIFY_FOCUS = 15257,
+    CMD_NOTIFY_UFO_AUTO_HAND_MODE = 15258,
+    CMD_NOTIFY_CURRENT_PANORAMA_UPLOAD_STATE = 15259,
+    CMD_NOTIFY_LOW_TEMP_PROTECTION_MODE = 15260,
+    CMD_V3_NOTIFY_EXPOSURE_PROGRESS = 15255,
+    CMD_V3_NOTIFY_DEVICE_STATE = 15261,
+    CMD_V3_NOTIFY_STATE_LATCH = 15262,
+    CMD_NOTIFY_PROGRESS_CAPTURE_MOSAIC = 15263,
+    CMD_V3_NOTIFY_CAMERA_PARAM_STATE = 15264,
+    CMD_NOTIFY_GENERAL_FLOAT_PARAM = 15265,
+    CMD_NOTIFY_GENERAL_BOOL_PARAM = 15266,
+    CMD_V3_NOTIFY_MODE_CHANGE = 15267,
+    CMD_NOTIFY_TELE_SWITCH_CROP_RATIO = 15268,
+    CMD_NOTIFY_TELE_SHOOTING_TECH_STATE = 15269,
+    CMD_V3_NOTIFY_STACKING_DATA = 15270,
+    CMD_NOTIFY_WIDE_SHOOTING_TECH_STATE = 15271,
+    CMD_NOTIFY_RESOLUTION_PARAM = 15272,
+    CMD_V3_NOTIFY_PHOTO_STATE = 15273,
+    CMD_V3_NOTIFY_BURST_STATE = 15274,
+    CMD_V3_NOTIFY_VIDEO_STATE = 15275,
+    CMD_V3_NOTIFY_TIMELAPSE_STATE = 15276,
+    CMD_NOTIFY_PANORAMA_STATE = 15277,
+    CMD_V3_NOTIFY_AUTOFOCUS_STATE = 15278,
+    CMD_NOTIFY_NORMAL_AUTO_FOCUS_STATE = 15279,
+    CMD_V3_NOTIFY_AUTOFOCUS_STATE_ALT = 15280,
+    CMD_NOTIFY_AREA_AUTO_FOCUS_STATE = 15281,
+    CMD_NOTIFY_DUAL_CAMERA_LINKAGE_STATE = 15282,
+    CMD_NOTIFY_RESOLUTION_FPS_STATE = 15283,
+    CMD_NOTIFY_NORMAL_TRACK_STATE = 15284,
+    CMD_V3_NOTIFY_PHOTO_BURST_PROGRESS = 15285,
+    CMD_V3_NOTIFY_VIDEO_PROGRESS = 15286,
+    CMD_V3_NOTIFY_TIMELAPSE_PROGRESS = 15287,
+    CMD_V3_NOTIFY_EXPOSURE_DURATION = 15288,
+    CMD_NOTIFY_SENTRY_MOTOR_STATE = 15289,
+    CMD_V3_NOTIFY_CALI_FRAME_STATE = 15290,
+    CMD_V3_NOTIFY_CALI_FRAME_PROGRESS = 15291,
+    CMD_V3_NOTIFY_TEMPERATURE2 = 15292,
+    CMD_NOTIFY_PANORAMA_COMPRESS_PROGRESS = 15293,
+    CMD_NOTIFY_PANORAMA_COMPRESS_COMPLETE = 15294,
+    CMD_NOTIFY_DEVICE_ATTITUDE = 15295,
+    CMD_V3_NOTIFY_OBSERVATION_STATE = 15296,
+    CMD_NOTIFY_PANO_FRAMING_RECT_UPDATE = 15297,
+    CMD_NOTIFY_PANO_FRAMING_THUMBNAIL_UPDATE = 15298,
+    CMD_NOTIFY_PANO_FRAMING_STATE = 15299,
+    CMD_NOTIFY_WIDE_FOCUS_POSITION = 15300,
+    CMD_NOTIFY_LENS_DEFOG_STATE = 15301,
+    CMD_NOTIFY_AUTO_COOLING_STATE = 15302,
+    CMD_NOTIFY_AUTO_SHUTDOWN_STATE = 15303,
+    CMD_NOTIFY_ROLL_LEVEL_CALIBRATION_ANGLE = 15304,
+    CMD_NOTIFY_GUIDE_FOCUS_POSITION = 15305,
     CMD_PANORAMA_START_GRID = 15500,
     CMD_PANORAMA_STOP = 15501,
-    CMD_PANORAMA_START_EULER_RANGE = 15502
+    CMD_PANORAMA_START_EULER_RANGE = 15502,
+    CMD_PANORAMA_START_STITCH_UPLOAD = 15503,
+    CMD_PANORAMA_STOP_STITCH_UPLOAD = 15504,
+    CMD_PANORAMA_GET_CURRENT_UPLOAD_STATE = 15505,
+    CMD_PANORAMA_GET_UPLOAD_PREDICT = 15506,
+    CMD_PANORAMA_START_COMPRESS = 15507,
+    CMD_PANORAMA_STOP_COMPRESS = 15508,
+    CMD_PANORAMA_START_FRAMING = 15509,
+    CMD_PANORAMA_STOP_FRAMING = 15510,
+    CMD_PANORAMA_RESET_FRAMING = 15511,
+    CMD_PANORAMA_UPDATE_FRAMING_RECT = 15512,
+    CMD_PANORAMA_STOP_FRAMEING_AND_START_GRID = 15513,
+    CMD_ITIPS_GET = 15700,
+    CMD_SYNC_SHOOTING_SCHEDULE = 16100,
+    CMD_CANCEL_SHOOTING_SCHEDULE = 16101,
+    CMD_V3_SCHEDULE_GET = 16102,
+    CMD_GET_SHOOTING_SCHEDULE_BY_ID = 16103,
+    CMD_REPLACE_SHOOTING_SCHEDULE = 16105,
+    CMD_UNLOCK_SHOOTING_SCHEDULE = 16106,
+    CMD_LOCK_SHOOTING_SCHEDULE = 16107,
+    CMD_DELETE_SHOOTING_SCHEDULE = 16108,
+    CMD_GLOBAL_TASK_MANAGER_START_TASK = 16400,
+    CMD_GLOBAL_TASK_MANAGER_STOP_TASK = 16401,
+    CMD_V3_DEVICE_CONFIG_MODE_QUERY = 16402,
+    CMD_V3_DEVICE_CONFIG_SHOOTING_MODE = 16403,
+    CMD_V3_DEVICE_CONFIG_MODE_SWITCH = 16404,
+    CMD_V3_DEVICE_CONFIG_GET_CONFIG = 16405,
+    CMD_GLOBAL_VOICE_ASSISTANT_TASK = 16406,
+    CMD_V3_CAMERA_PARAMS_SET_PARAM = 16700,
+    CMD_V3_CAMERA_PARAMS_SET_EXP_GAIN = 16701,
+    CMD_V3_CAMERA_PARAMS_UNKNOWN_16702 = 16702,
+    CMD_V3_CAMERA_PARAMS_ADJUST = 16703,
+    CMD_PARAM_SET_GENERAL_FLOAT_PARAM = 16704,
+    CMD_PARAM_SET_GENERAL_BOOL_PARAM = 16705,
+    CMD_V3_CAMERA_PARAMS_STREAM_CTRL = 16706,
+    CMD_VOICE_ASSISTANT_TASK = 16800,
+    CMD_CAMERA_GUIDE_SET_EXP = 16900,
+    CMD_CAMERA_GUIDE_GET_EXP = 16901,
+    CMD_CAMERA_GUIDE_SET_GAIN = 16902,
+    CMD_CAMERA_GUIDE_GET_GAIN = 16903,
+    CMD_DEVICE_LENS_DEFOG = 17000,
+    CMD_DEVICE_AUTO_COOLING = 17001,
+    CMD_DEVICE_AUTO_SHUTDOWN = 17002
 }
 
 /** DwarfErrorCode enum. */
 export enum DwarfErrorCode {
     OK = 0,
+    WS_OK = 0,
     WS_PARSE_PROTOBUF_ERROR = -1,
     WS_SDCARD_NOT_EXIST = -2,
-    WS_INVALID_PARAM = -3,
+    WS_INVAID_PARAM = -3,
     WS_SDCARD_WRITE_ERROR = -4,
+    WS_DEVICE_NOT_ACTIVATED = -5,
+    WS_SDCARD_FULL_ERROR = -6,
     CODE_CAMERA_TELE_OPENED = -10500,
     CODE_CAMERA_TELE_CLOSED = -10501,
     CODE_CAMERA_TELE_ISP_SET_FAILED = -10502,
-    CODE_CAMERA_TELE_OPEN_FAILED = -10504,
-    CODE_CAMERA_TELE_RECORDING = -10506,
-    CODE_CAMERA_TELE_WORKING_BUSY_STACK = -10507,
-    CODE_CAMERA_TELE_CAPTURE_RAW_FAILED = -10510,
-    CODE_CAMERA_TELE_WORKING_BUSY = -10511,
+    CODE_CAMERA_TELE_OPEN_FAILED = -10503,
+    CODE_CAMERA_TELE_START_RECORD_FAILED = -10504,
+    CODE_CAMERA_TELE_STOP_RECORD_FAILED = -10505,
+    CODE_CAMERA_TELE_CAPTURE_RAW_FAILED = -10506,
+    CODE_CAMERA_TELE_WORKING_BUSY = -10507,
+    CODE_CAMERA_TELE_GET_IMAGE_FAILED = -10508,
+    CODE_CAMERA_TELE_RUNNING_PHOTO = -10509,
+    CODE_CAMERA_TELE_RUNNING_RECORD = -10510,
+    CODE_CAMERA_TELE_RUNNING_PANORAMA = -10511,
+    CODE_CAMERA_TELE_RUNNING_TIMELAPSE = -10512,
+    CODE_CAMERA_TELE_RUNNING_CAPTURE_DARK = -10513,
+    CODE_CAMERA_TELE_RUNNING_CAPTURE_LIVE_STACKING = -10514,
+    CODE_CAMERA_TELE_EXP_TOO_LONG = -10515,
+    CODE_CAMERA_TELE_SWITCH_WORK_MODE_FAILED = -10516,
+    CODE_CAMERA_TELE_RUNNING_TRACK = -10517,
+    CODE_CAMERA_TELE_RECORD_FILE_ERROR = -10518,
     CODE_ASTRO_PLATE_SOLVING_FAILED = -11500,
     CODE_ASTRO_FUNCTION_BUSY = -11501,
     CODE_ASTRO_DARK_GAIN_OUT_OF_RANGE = -11502,
     CODE_ASTRO_DARK_NOT_FOUND = -11503,
     CODE_ASTRO_CALIBRATION_FAILED = -11504,
     CODE_ASTRO_GOTO_FAILED = -11505,
+    CODE_ASTRO_DARK_RUNNING = -11506,
+    CODE_ASTRO_CALIBRATION_RUNNING = -11507,
+    CODE_ASTRO_GOTO_RUNNING = -11508,
+    CODE_ASTRO_LIVE_STACKING_RUNNING = -11509,
+    CODE_ASTRO_RESET_PITCH_MOTOR_FAILED = -11510,
+    CODE_ASTRO_NEED_CALIBRATION = -11511,
+    CODE_ASTRO_GOTO_READ_MOTOR_POSITION_AND_PLATE_SOLVING_FAILED = -11512,
     CODE_ASTRO_NEED_GOTO = -11513,
     CODE_ASTRO_NEED_ADJUST_SHOOT_PARAM = -11514,
+    CODE_ASTRO_CALIBRATION_PLATE_SOLVING_FAILED_TOO_MUCH = -11515,
     CODE_ASTRO_EQ_SOLVING_FAILED = -11516,
     CODE_ASTRO_SKY_SEARCH_FAILED = -11517,
+    CODE_ASTRO_NEED_GOTO_DSO = -11518,
+    CODE_ASTRO_RESTACK_CAMERA_MISMATCH = -11519,
+    CODE_ASTRO_RESTACK_BINNING_MISMATCH = -11520,
+    CODE_ASTRO_RESTACK_FILTER_MISMATCH = -11521,
+    CODE_ASTRO_RESTACK_TARGET_MISMATCH = -11522,
+    CODE_ASTRO_RESTACK_DARKFRAME_MISMATCH = -11523,
+    CODE_ASTRO_RESTACK_FAILED = -11524,
+    CODE_ASTRO_RESTACK_INVALID_DATA = -11525,
+    CODE_ASTRO_OVEREXPOSURE_WARNING = -11526,
+    CODE_ASTRO_EXP_TOO_LONG = -11527,
+    CODE_ASTRO_NEED_EQ = -11528,
+    CODE_ASTRO_STAR_TOO_FEW = -11529,
+    CODE_ASTRO_DARK_TEMP_MISMATCH = -11530,
+    CODE_ASTRO_SUN_MOON_NOT_FOUND = -11531,
+    CODE_ASTRO_GUIDING_FAILED_LOWER_EXPOSURE = -11532,
+    CODE_ASTRO_GUIDING_FAILED_TARGET_BLOCKED = -11533,
     CODE_CAMERA_WIDE_OPENED = -12500,
     CODE_CAMERA_WIDE_CLOSED = -12501,
     CODE_CAMERA_WIDE_CANNOT_FOUND = -12502,
@@ -16658,21 +20668,62 @@ export enum DwarfErrorCode {
     CODE_CAMERA_WIDE_CLOSE_FAILED = -12504,
     CODE_CAMERA_WIDE_SET_ISP_FAILED = -12505,
     CODE_CAMERA_WIDE_PHOTOGRAPHING = -12506,
+    CODE_CAMERA_WIDE_TIMELAPSE_RECORDING = -12507,
     CODE_CAMERA_WIDE_EXP_TOO_LONG = -12508,
+    CODE_CAMERA_WIDE_RECORD_FILE_ERROR = -12509,
     CODE_SYSTEM_SET_TIME_FAILED = -13300,
     CODE_SYSTEM_SET_TIMEZONE_FAILED = -13301,
-    CODE_SYSTEM_SETTING_TIMEZONE_FAILED = -13302,
     CODE_RGB_POWER_UART_INIT_FAILED = -13800,
+    CODE_RGB_POWER_UART_SEND_FAILED = -13801,
+    CODE_STEP_MOTOR_IS_RUNNING = -14500,
+    CODE_STEP_MOTOR_IS_STOPPED = -14501,
+    CODE_STEP_MOTOR_PARALLEL_IN = -14502,
+    CODE_STEP_MOTOR_PARALLEL_END = -14503,
     CODE_STEP_MOTOR_INVALID_PARAMETER_ID = -14504,
+    CODE_STEP_MOTOR_INVALID_PARAMETER_ANGLE = -14505,
+    CODE_STEP_MOTOR_INVALID_PARAMETER_SPEED = -14506,
+    CODE_STEP_MOTOR_INVALID_PARAMETER_SPEED_RAMPING = -14507,
+    CODE_STEP_MOTOR_INVALID_PARAMETER_RESOLUTION = -14508,
+    CODE_STEP_MOTOR_INVALID_PARAMETER_POSITION = -14509,
+    CODE_STEP_MOTOR_OVERTIME_GET_LIMIT_RETURN = -14510,
+    CODE_STEP_MOTOR_OVERTIME_GET_RESET_RETURN = -14511,
+    CODE_STEP_MOTOR_OVERTIME_GET_ABSOLUTE_POSITION_RETURN = -14512,
+    CODE_STEP_MOTOR_OVERTIME_GET_RELATIVE_POSITION_RETURN = -14513,
+    CODE_STEP_MOTOR_OVERTIME_WAIT_TO_STOP = -14514,
+    CODE_STEP_MOTOR_OVERTIME_WAIT_TO_RUN = -14515,
+    CODE_STEP_MOTOR_LIMIT_SPEED_TO_MAX = -14516,
+    CODE_STEP_MOTOR_LIMIT_SPEED_TO_MIN = -14517,
     CODE_STEP_MOTOR_LIMIT_POSITION_WARNING = -14518,
-    CODE_STEP_MOTOR_LIMIT_POSITION_HITTED = -14519,
-    CODE_STEP_MOTOR_POSITION_NEED_RESET = -14520,
+    CODE_STEP_MOTOR_LIMIT_POSITION_HIT = -14519,
+    CODE_STEP_MOTOR_NEED_RESET = -14520,
+    CODE_STEP_MOTOR_OVERTIME_GET_PE_SWITCH_RETURN = -14521,
+    CODE_STEP_MOTOR_OVERTIME_TO_RESET = -14522,
+    CODE_STEP_MOTOR_ROLL_LIMIT_ANGLE_WARNING = -14523,
     CODE_TRACK_TRACKER_INITING = -14900,
     CODE_TRACK_TRACKER_FAILED = -14901,
+    CODE_TRACK_SENTRY_MODE_INITING = -14902,
+    CODE_TRACK_SENTRY_MODE_FAILED = -14903,
+    CODE_UFOTRACK_MODE_INITING = -14904,
+    CODE_UFO_DAY_AUTO_MODE = -14906,
     CODE_FOCUS_ASTRO_AUTO_FOCUS_SLOW_ERROR = -15100,
     CODE_FOCUS_ASTRO_AUTO_FOCUS_FAST_ERROR = -15101,
-    CODE_PANORAMA_PHOTO_FAILED = -15600,
-    CODE_PANORAMA_MOTOR_RESET_FAILED = -15601
+    CODE_FOCUS_EXP_TOO_LONG = -15106,
+    CODE_PANORAMA_MOTOR_RESET_FAILED = -15601,
+    CODE_PANORAMA_UPLOAD_USER_STOP = -15602,
+    CODE_PANORAMA_UPLOAD_FILE_CHECK_FAILED = -15603,
+    CODE_PANORAMA_UPLOAD_COMPRESS_FAILED = -15604,
+    CODE_PANORAMA_UPLOAD_UPLOAD_FAILED = -15605,
+    CODE_PANORAMA_UPLOAD_IS_RUNNING = -15607,
+    CODE_PANORAMA_UPLOAD_CAMERA_BUSY = -15608,
+    CODE_PANORAMA_UPLOAD_NOT_IN_STA = -15609,
+    CODE_PANORAMA_COMPOSE_IS_RUNNING = -15615,
+    CODE_SHOOTING_SCHEDULE_DEVICE_ID_NOT_MATCH = -16300,
+    CODE_SHOOTING_SCHEDULE_INVALID_SHOOTING_DURATION = -16301,
+    CODE_SHOOTING_SCHEDULE_TIME_CONFLICT = -16302,
+    CODE_SHOOTING_SCHEDULE_DATABASE_OPERATION_FAILED = -16305,
+    CODE_SHOOTING_SCHEDULE_PASSWORD_ERROR = -16306,
+    CODE_SHOOTING_SCHEDULE_INTERRUPTED = -16310,
+    CODE_SHOOTING_SCHEDULE_NOT_SYNCED = -16311
 }
 
 /** AstroTrackingSpecial enum. */
@@ -21088,6 +25139,4322 @@ export class ReqMOTTrackOne implements IReqMOTTrackOne {
 
     /**
      * Gets the default type url for ReqMOTTrackOne
+     * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+     * @returns The default type url
+     */
+    public static getTypeUrl(typeUrlPrefix?: string): string;
+}
+
+/** Represents a V3ReqSaveStackedImage. */
+export class V3ReqSaveStackedImage implements IV3ReqSaveStackedImage {
+
+    /**
+     * Constructs a new V3ReqSaveStackedImage.
+     * @param [properties] Properties to set
+     */
+    constructor(properties?: IV3ReqSaveStackedImage);
+
+    /** V3ReqSaveStackedImage path. */
+    public path: string;
+
+    /**
+     * Creates a new V3ReqSaveStackedImage instance using the specified properties.
+     * @param [properties] Properties to set
+     * @returns V3ReqSaveStackedImage instance
+     */
+    public static create(properties?: IV3ReqSaveStackedImage): V3ReqSaveStackedImage;
+
+    /**
+     * Encodes the specified V3ReqSaveStackedImage message. Does not implicitly {@link V3ReqSaveStackedImage.verify|verify} messages.
+     * @param message V3ReqSaveStackedImage message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encode(message: IV3ReqSaveStackedImage, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Encodes the specified V3ReqSaveStackedImage message, length delimited. Does not implicitly {@link V3ReqSaveStackedImage.verify|verify} messages.
+     * @param message V3ReqSaveStackedImage message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encodeDelimited(message: IV3ReqSaveStackedImage, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Decodes a V3ReqSaveStackedImage message from the specified reader or buffer.
+     * @param reader Reader or buffer to decode from
+     * @param [length] Message length if known beforehand
+     * @returns V3ReqSaveStackedImage
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): V3ReqSaveStackedImage;
+
+    /**
+     * Decodes a V3ReqSaveStackedImage message from the specified reader or buffer, length delimited.
+     * @param reader Reader or buffer to decode from
+     * @returns V3ReqSaveStackedImage
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): V3ReqSaveStackedImage;
+
+    /**
+     * Verifies a V3ReqSaveStackedImage message.
+     * @param message Plain object to verify
+     * @returns `null` if valid, otherwise the reason why it is not
+     */
+    public static verify(message: { [k: string]: any }): (string|null);
+
+    /**
+     * Creates a V3ReqSaveStackedImage message from a plain object. Also converts values to their respective internal types.
+     * @param object Plain object
+     * @returns V3ReqSaveStackedImage
+     */
+    public static fromObject(object: { [k: string]: any }): V3ReqSaveStackedImage;
+
+    /**
+     * Creates a plain object from a V3ReqSaveStackedImage message. Also converts values to other types if specified.
+     * @param message V3ReqSaveStackedImage
+     * @param [options] Conversion options
+     * @returns Plain object
+     */
+    public static toObject(message: V3ReqSaveStackedImage, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+    /**
+     * Converts this V3ReqSaveStackedImage to JSON.
+     * @returns JSON object
+     */
+    public toJSON(): { [k: string]: any };
+
+    /**
+     * Gets the default type url for V3ReqSaveStackedImage
+     * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+     * @returns The default type url
+     */
+    public static getTypeUrl(typeUrlPrefix?: string): string;
+}
+
+/** Represents a V3ResSaveStackedImage. */
+export class V3ResSaveStackedImage implements IV3ResSaveStackedImage {
+
+    /**
+     * Constructs a new V3ResSaveStackedImage.
+     * @param [properties] Properties to set
+     */
+    constructor(properties?: IV3ResSaveStackedImage);
+
+    /** V3ResSaveStackedImage code. */
+    public code: number;
+
+    /** V3ResSaveStackedImage path. */
+    public path: string;
+
+    /**
+     * Creates a new V3ResSaveStackedImage instance using the specified properties.
+     * @param [properties] Properties to set
+     * @returns V3ResSaveStackedImage instance
+     */
+    public static create(properties?: IV3ResSaveStackedImage): V3ResSaveStackedImage;
+
+    /**
+     * Encodes the specified V3ResSaveStackedImage message. Does not implicitly {@link V3ResSaveStackedImage.verify|verify} messages.
+     * @param message V3ResSaveStackedImage message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encode(message: IV3ResSaveStackedImage, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Encodes the specified V3ResSaveStackedImage message, length delimited. Does not implicitly {@link V3ResSaveStackedImage.verify|verify} messages.
+     * @param message V3ResSaveStackedImage message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encodeDelimited(message: IV3ResSaveStackedImage, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Decodes a V3ResSaveStackedImage message from the specified reader or buffer.
+     * @param reader Reader or buffer to decode from
+     * @param [length] Message length if known beforehand
+     * @returns V3ResSaveStackedImage
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): V3ResSaveStackedImage;
+
+    /**
+     * Decodes a V3ResSaveStackedImage message from the specified reader or buffer, length delimited.
+     * @param reader Reader or buffer to decode from
+     * @returns V3ResSaveStackedImage
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): V3ResSaveStackedImage;
+
+    /**
+     * Verifies a V3ResSaveStackedImage message.
+     * @param message Plain object to verify
+     * @returns `null` if valid, otherwise the reason why it is not
+     */
+    public static verify(message: { [k: string]: any }): (string|null);
+
+    /**
+     * Creates a V3ResSaveStackedImage message from a plain object. Also converts values to their respective internal types.
+     * @param object Plain object
+     * @returns V3ResSaveStackedImage
+     */
+    public static fromObject(object: { [k: string]: any }): V3ResSaveStackedImage;
+
+    /**
+     * Creates a plain object from a V3ResSaveStackedImage message. Also converts values to other types if specified.
+     * @param message V3ResSaveStackedImage
+     * @param [options] Conversion options
+     * @returns Plain object
+     */
+    public static toObject(message: V3ResSaveStackedImage, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+    /**
+     * Converts this V3ResSaveStackedImage to JSON.
+     * @returns JSON object
+     */
+    public toJSON(): { [k: string]: any };
+
+    /**
+     * Gets the default type url for V3ResSaveStackedImage
+     * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+     * @returns The default type url
+     */
+    public static getTypeUrl(typeUrlPrefix?: string): string;
+}
+
+/** Represents a V3ReqListSavedImages. */
+export class V3ReqListSavedImages implements IV3ReqListSavedImages {
+
+    /**
+     * Constructs a new V3ReqListSavedImages.
+     * @param [properties] Properties to set
+     */
+    constructor(properties?: IV3ReqListSavedImages);
+
+    /**
+     * Creates a new V3ReqListSavedImages instance using the specified properties.
+     * @param [properties] Properties to set
+     * @returns V3ReqListSavedImages instance
+     */
+    public static create(properties?: IV3ReqListSavedImages): V3ReqListSavedImages;
+
+    /**
+     * Encodes the specified V3ReqListSavedImages message. Does not implicitly {@link V3ReqListSavedImages.verify|verify} messages.
+     * @param message V3ReqListSavedImages message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encode(message: IV3ReqListSavedImages, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Encodes the specified V3ReqListSavedImages message, length delimited. Does not implicitly {@link V3ReqListSavedImages.verify|verify} messages.
+     * @param message V3ReqListSavedImages message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encodeDelimited(message: IV3ReqListSavedImages, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Decodes a V3ReqListSavedImages message from the specified reader or buffer.
+     * @param reader Reader or buffer to decode from
+     * @param [length] Message length if known beforehand
+     * @returns V3ReqListSavedImages
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): V3ReqListSavedImages;
+
+    /**
+     * Decodes a V3ReqListSavedImages message from the specified reader or buffer, length delimited.
+     * @param reader Reader or buffer to decode from
+     * @returns V3ReqListSavedImages
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): V3ReqListSavedImages;
+
+    /**
+     * Verifies a V3ReqListSavedImages message.
+     * @param message Plain object to verify
+     * @returns `null` if valid, otherwise the reason why it is not
+     */
+    public static verify(message: { [k: string]: any }): (string|null);
+
+    /**
+     * Creates a V3ReqListSavedImages message from a plain object. Also converts values to their respective internal types.
+     * @param object Plain object
+     * @returns V3ReqListSavedImages
+     */
+    public static fromObject(object: { [k: string]: any }): V3ReqListSavedImages;
+
+    /**
+     * Creates a plain object from a V3ReqListSavedImages message. Also converts values to other types if specified.
+     * @param message V3ReqListSavedImages
+     * @param [options] Conversion options
+     * @returns Plain object
+     */
+    public static toObject(message: V3ReqListSavedImages, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+    /**
+     * Converts this V3ReqListSavedImages to JSON.
+     * @returns JSON object
+     */
+    public toJSON(): { [k: string]: any };
+
+    /**
+     * Gets the default type url for V3ReqListSavedImages
+     * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+     * @returns The default type url
+     */
+    public static getTypeUrl(typeUrlPrefix?: string): string;
+}
+
+/** Represents a V3ReqStatusPolling. */
+export class V3ReqStatusPolling implements IV3ReqStatusPolling {
+
+    /**
+     * Constructs a new V3ReqStatusPolling.
+     * @param [properties] Properties to set
+     */
+    constructor(properties?: IV3ReqStatusPolling);
+
+    /** V3ReqStatusPolling field1. */
+    public field1: number;
+
+    /** V3ReqStatusPolling field2. */
+    public field2: number;
+
+    /** V3ReqStatusPolling field3. */
+    public field3: number;
+
+    /** V3ReqStatusPolling field4. */
+    public field4: number;
+
+    /**
+     * Creates a new V3ReqStatusPolling instance using the specified properties.
+     * @param [properties] Properties to set
+     * @returns V3ReqStatusPolling instance
+     */
+    public static create(properties?: IV3ReqStatusPolling): V3ReqStatusPolling;
+
+    /**
+     * Encodes the specified V3ReqStatusPolling message. Does not implicitly {@link V3ReqStatusPolling.verify|verify} messages.
+     * @param message V3ReqStatusPolling message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encode(message: IV3ReqStatusPolling, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Encodes the specified V3ReqStatusPolling message, length delimited. Does not implicitly {@link V3ReqStatusPolling.verify|verify} messages.
+     * @param message V3ReqStatusPolling message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encodeDelimited(message: IV3ReqStatusPolling, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Decodes a V3ReqStatusPolling message from the specified reader or buffer.
+     * @param reader Reader or buffer to decode from
+     * @param [length] Message length if known beforehand
+     * @returns V3ReqStatusPolling
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): V3ReqStatusPolling;
+
+    /**
+     * Decodes a V3ReqStatusPolling message from the specified reader or buffer, length delimited.
+     * @param reader Reader or buffer to decode from
+     * @returns V3ReqStatusPolling
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): V3ReqStatusPolling;
+
+    /**
+     * Verifies a V3ReqStatusPolling message.
+     * @param message Plain object to verify
+     * @returns `null` if valid, otherwise the reason why it is not
+     */
+    public static verify(message: { [k: string]: any }): (string|null);
+
+    /**
+     * Creates a V3ReqStatusPolling message from a plain object. Also converts values to their respective internal types.
+     * @param object Plain object
+     * @returns V3ReqStatusPolling
+     */
+    public static fromObject(object: { [k: string]: any }): V3ReqStatusPolling;
+
+    /**
+     * Creates a plain object from a V3ReqStatusPolling message. Also converts values to other types if specified.
+     * @param message V3ReqStatusPolling
+     * @param [options] Conversion options
+     * @returns Plain object
+     */
+    public static toObject(message: V3ReqStatusPolling, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+    /**
+     * Converts this V3ReqStatusPolling to JSON.
+     * @returns JSON object
+     */
+    public toJSON(): { [k: string]: any };
+
+    /**
+     * Gets the default type url for V3ReqStatusPolling
+     * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+     * @returns The default type url
+     */
+    public static getTypeUrl(typeUrlPrefix?: string): string;
+}
+
+/** Represents a V3ReqGetAstroParams. */
+export class V3ReqGetAstroParams implements IV3ReqGetAstroParams {
+
+    /**
+     * Constructs a new V3ReqGetAstroParams.
+     * @param [properties] Properties to set
+     */
+    constructor(properties?: IV3ReqGetAstroParams);
+
+    /** V3ReqGetAstroParams mode. */
+    public mode: number;
+
+    /**
+     * Creates a new V3ReqGetAstroParams instance using the specified properties.
+     * @param [properties] Properties to set
+     * @returns V3ReqGetAstroParams instance
+     */
+    public static create(properties?: IV3ReqGetAstroParams): V3ReqGetAstroParams;
+
+    /**
+     * Encodes the specified V3ReqGetAstroParams message. Does not implicitly {@link V3ReqGetAstroParams.verify|verify} messages.
+     * @param message V3ReqGetAstroParams message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encode(message: IV3ReqGetAstroParams, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Encodes the specified V3ReqGetAstroParams message, length delimited. Does not implicitly {@link V3ReqGetAstroParams.verify|verify} messages.
+     * @param message V3ReqGetAstroParams message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encodeDelimited(message: IV3ReqGetAstroParams, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Decodes a V3ReqGetAstroParams message from the specified reader or buffer.
+     * @param reader Reader or buffer to decode from
+     * @param [length] Message length if known beforehand
+     * @returns V3ReqGetAstroParams
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): V3ReqGetAstroParams;
+
+    /**
+     * Decodes a V3ReqGetAstroParams message from the specified reader or buffer, length delimited.
+     * @param reader Reader or buffer to decode from
+     * @returns V3ReqGetAstroParams
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): V3ReqGetAstroParams;
+
+    /**
+     * Verifies a V3ReqGetAstroParams message.
+     * @param message Plain object to verify
+     * @returns `null` if valid, otherwise the reason why it is not
+     */
+    public static verify(message: { [k: string]: any }): (string|null);
+
+    /**
+     * Creates a V3ReqGetAstroParams message from a plain object. Also converts values to their respective internal types.
+     * @param object Plain object
+     * @returns V3ReqGetAstroParams
+     */
+    public static fromObject(object: { [k: string]: any }): V3ReqGetAstroParams;
+
+    /**
+     * Creates a plain object from a V3ReqGetAstroParams message. Also converts values to other types if specified.
+     * @param message V3ReqGetAstroParams
+     * @param [options] Conversion options
+     * @returns Plain object
+     */
+    public static toObject(message: V3ReqGetAstroParams, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+    /**
+     * Converts this V3ReqGetAstroParams to JSON.
+     * @returns JSON object
+     */
+    public toJSON(): { [k: string]: any };
+
+    /**
+     * Gets the default type url for V3ReqGetAstroParams
+     * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+     * @returns The default type url
+     */
+    public static getTypeUrl(typeUrlPrefix?: string): string;
+}
+
+/** Represents a V3ResGetAstroParams. */
+export class V3ResGetAstroParams implements IV3ResGetAstroParams {
+
+    /**
+     * Constructs a new V3ResGetAstroParams.
+     * @param [properties] Properties to set
+     */
+    constructor(properties?: IV3ResGetAstroParams);
+
+    /** V3ResGetAstroParams code. */
+    public code: number;
+
+    /** V3ResGetAstroParams params. */
+    public params: IV3AstroParamsData[];
+
+    /**
+     * Creates a new V3ResGetAstroParams instance using the specified properties.
+     * @param [properties] Properties to set
+     * @returns V3ResGetAstroParams instance
+     */
+    public static create(properties?: IV3ResGetAstroParams): V3ResGetAstroParams;
+
+    /**
+     * Encodes the specified V3ResGetAstroParams message. Does not implicitly {@link V3ResGetAstroParams.verify|verify} messages.
+     * @param message V3ResGetAstroParams message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encode(message: IV3ResGetAstroParams, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Encodes the specified V3ResGetAstroParams message, length delimited. Does not implicitly {@link V3ResGetAstroParams.verify|verify} messages.
+     * @param message V3ResGetAstroParams message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encodeDelimited(message: IV3ResGetAstroParams, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Decodes a V3ResGetAstroParams message from the specified reader or buffer.
+     * @param reader Reader or buffer to decode from
+     * @param [length] Message length if known beforehand
+     * @returns V3ResGetAstroParams
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): V3ResGetAstroParams;
+
+    /**
+     * Decodes a V3ResGetAstroParams message from the specified reader or buffer, length delimited.
+     * @param reader Reader or buffer to decode from
+     * @returns V3ResGetAstroParams
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): V3ResGetAstroParams;
+
+    /**
+     * Verifies a V3ResGetAstroParams message.
+     * @param message Plain object to verify
+     * @returns `null` if valid, otherwise the reason why it is not
+     */
+    public static verify(message: { [k: string]: any }): (string|null);
+
+    /**
+     * Creates a V3ResGetAstroParams message from a plain object. Also converts values to their respective internal types.
+     * @param object Plain object
+     * @returns V3ResGetAstroParams
+     */
+    public static fromObject(object: { [k: string]: any }): V3ResGetAstroParams;
+
+    /**
+     * Creates a plain object from a V3ResGetAstroParams message. Also converts values to other types if specified.
+     * @param message V3ResGetAstroParams
+     * @param [options] Conversion options
+     * @returns Plain object
+     */
+    public static toObject(message: V3ResGetAstroParams, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+    /**
+     * Converts this V3ResGetAstroParams to JSON.
+     * @returns JSON object
+     */
+    public toJSON(): { [k: string]: any };
+
+    /**
+     * Gets the default type url for V3ResGetAstroParams
+     * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+     * @returns The default type url
+     */
+    public static getTypeUrl(typeUrlPrefix?: string): string;
+}
+
+/** Represents a V3AstroParamsData. */
+export class V3AstroParamsData implements IV3AstroParamsData {
+
+    /**
+     * Constructs a new V3AstroParamsData.
+     * @param [properties] Properties to set
+     */
+    constructor(properties?: IV3AstroParamsData);
+
+    /** V3AstroParamsData exposure. */
+    public exposure: string;
+
+    /** V3AstroParamsData gain. */
+    public gain: number;
+
+    /** V3AstroParamsData total. */
+    public total: number;
+
+    /** V3AstroParamsData count. */
+    public count: number;
+
+    /** V3AstroParamsData pipeParams. */
+    public pipeParams: string;
+
+    /**
+     * Creates a new V3AstroParamsData instance using the specified properties.
+     * @param [properties] Properties to set
+     * @returns V3AstroParamsData instance
+     */
+    public static create(properties?: IV3AstroParamsData): V3AstroParamsData;
+
+    /**
+     * Encodes the specified V3AstroParamsData message. Does not implicitly {@link V3AstroParamsData.verify|verify} messages.
+     * @param message V3AstroParamsData message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encode(message: IV3AstroParamsData, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Encodes the specified V3AstroParamsData message, length delimited. Does not implicitly {@link V3AstroParamsData.verify|verify} messages.
+     * @param message V3AstroParamsData message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encodeDelimited(message: IV3AstroParamsData, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Decodes a V3AstroParamsData message from the specified reader or buffer.
+     * @param reader Reader or buffer to decode from
+     * @param [length] Message length if known beforehand
+     * @returns V3AstroParamsData
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): V3AstroParamsData;
+
+    /**
+     * Decodes a V3AstroParamsData message from the specified reader or buffer, length delimited.
+     * @param reader Reader or buffer to decode from
+     * @returns V3AstroParamsData
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): V3AstroParamsData;
+
+    /**
+     * Verifies a V3AstroParamsData message.
+     * @param message Plain object to verify
+     * @returns `null` if valid, otherwise the reason why it is not
+     */
+    public static verify(message: { [k: string]: any }): (string|null);
+
+    /**
+     * Creates a V3AstroParamsData message from a plain object. Also converts values to their respective internal types.
+     * @param object Plain object
+     * @returns V3AstroParamsData
+     */
+    public static fromObject(object: { [k: string]: any }): V3AstroParamsData;
+
+    /**
+     * Creates a plain object from a V3AstroParamsData message. Also converts values to other types if specified.
+     * @param message V3AstroParamsData
+     * @param [options] Conversion options
+     * @returns Plain object
+     */
+    public static toObject(message: V3AstroParamsData, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+    /**
+     * Converts this V3AstroParamsData to JSON.
+     * @returns JSON object
+     */
+    public toJSON(): { [k: string]: any };
+
+    /**
+     * Gets the default type url for V3AstroParamsData
+     * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+     * @returns The default type url
+     */
+    public static getTypeUrl(typeUrlPrefix?: string): string;
+}
+
+/** Represents a V3ReqSetAstroParams. */
+export class V3ReqSetAstroParams implements IV3ReqSetAstroParams {
+
+    /**
+     * Constructs a new V3ReqSetAstroParams.
+     * @param [properties] Properties to set
+     */
+    constructor(properties?: IV3ReqSetAstroParams);
+
+    /** V3ReqSetAstroParams params. */
+    public params: string;
+
+    /**
+     * Creates a new V3ReqSetAstroParams instance using the specified properties.
+     * @param [properties] Properties to set
+     * @returns V3ReqSetAstroParams instance
+     */
+    public static create(properties?: IV3ReqSetAstroParams): V3ReqSetAstroParams;
+
+    /**
+     * Encodes the specified V3ReqSetAstroParams message. Does not implicitly {@link V3ReqSetAstroParams.verify|verify} messages.
+     * @param message V3ReqSetAstroParams message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encode(message: IV3ReqSetAstroParams, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Encodes the specified V3ReqSetAstroParams message, length delimited. Does not implicitly {@link V3ReqSetAstroParams.verify|verify} messages.
+     * @param message V3ReqSetAstroParams message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encodeDelimited(message: IV3ReqSetAstroParams, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Decodes a V3ReqSetAstroParams message from the specified reader or buffer.
+     * @param reader Reader or buffer to decode from
+     * @param [length] Message length if known beforehand
+     * @returns V3ReqSetAstroParams
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): V3ReqSetAstroParams;
+
+    /**
+     * Decodes a V3ReqSetAstroParams message from the specified reader or buffer, length delimited.
+     * @param reader Reader or buffer to decode from
+     * @returns V3ReqSetAstroParams
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): V3ReqSetAstroParams;
+
+    /**
+     * Verifies a V3ReqSetAstroParams message.
+     * @param message Plain object to verify
+     * @returns `null` if valid, otherwise the reason why it is not
+     */
+    public static verify(message: { [k: string]: any }): (string|null);
+
+    /**
+     * Creates a V3ReqSetAstroParams message from a plain object. Also converts values to their respective internal types.
+     * @param object Plain object
+     * @returns V3ReqSetAstroParams
+     */
+    public static fromObject(object: { [k: string]: any }): V3ReqSetAstroParams;
+
+    /**
+     * Creates a plain object from a V3ReqSetAstroParams message. Also converts values to other types if specified.
+     * @param message V3ReqSetAstroParams
+     * @param [options] Conversion options
+     * @returns Plain object
+     */
+    public static toObject(message: V3ReqSetAstroParams, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+    /**
+     * Converts this V3ReqSetAstroParams to JSON.
+     * @returns JSON object
+     */
+    public toJSON(): { [k: string]: any };
+
+    /**
+     * Gets the default type url for V3ReqSetAstroParams
+     * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+     * @returns The default type url
+     */
+    public static getTypeUrl(typeUrlPrefix?: string): string;
+}
+
+/** Represents a V3ResSetAstroParams. */
+export class V3ResSetAstroParams implements IV3ResSetAstroParams {
+
+    /**
+     * Constructs a new V3ResSetAstroParams.
+     * @param [properties] Properties to set
+     */
+    constructor(properties?: IV3ResSetAstroParams);
+
+    /** V3ResSetAstroParams code. */
+    public code: number;
+
+    /** V3ResSetAstroParams pipeParams. */
+    public pipeParams: string;
+
+    /**
+     * Creates a new V3ResSetAstroParams instance using the specified properties.
+     * @param [properties] Properties to set
+     * @returns V3ResSetAstroParams instance
+     */
+    public static create(properties?: IV3ResSetAstroParams): V3ResSetAstroParams;
+
+    /**
+     * Encodes the specified V3ResSetAstroParams message. Does not implicitly {@link V3ResSetAstroParams.verify|verify} messages.
+     * @param message V3ResSetAstroParams message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encode(message: IV3ResSetAstroParams, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Encodes the specified V3ResSetAstroParams message, length delimited. Does not implicitly {@link V3ResSetAstroParams.verify|verify} messages.
+     * @param message V3ResSetAstroParams message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encodeDelimited(message: IV3ResSetAstroParams, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Decodes a V3ResSetAstroParams message from the specified reader or buffer.
+     * @param reader Reader or buffer to decode from
+     * @param [length] Message length if known beforehand
+     * @returns V3ResSetAstroParams
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): V3ResSetAstroParams;
+
+    /**
+     * Decodes a V3ResSetAstroParams message from the specified reader or buffer, length delimited.
+     * @param reader Reader or buffer to decode from
+     * @returns V3ResSetAstroParams
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): V3ResSetAstroParams;
+
+    /**
+     * Verifies a V3ResSetAstroParams message.
+     * @param message Plain object to verify
+     * @returns `null` if valid, otherwise the reason why it is not
+     */
+    public static verify(message: { [k: string]: any }): (string|null);
+
+    /**
+     * Creates a V3ResSetAstroParams message from a plain object. Also converts values to their respective internal types.
+     * @param object Plain object
+     * @returns V3ResSetAstroParams
+     */
+    public static fromObject(object: { [k: string]: any }): V3ResSetAstroParams;
+
+    /**
+     * Creates a plain object from a V3ResSetAstroParams message. Also converts values to other types if specified.
+     * @param message V3ResSetAstroParams
+     * @param [options] Conversion options
+     * @returns Plain object
+     */
+    public static toObject(message: V3ResSetAstroParams, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+    /**
+     * Converts this V3ResSetAstroParams to JSON.
+     * @returns JSON object
+     */
+    public toJSON(): { [k: string]: any };
+
+    /**
+     * Gets the default type url for V3ResSetAstroParams
+     * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+     * @returns The default type url
+     */
+    public static getTypeUrl(typeUrlPrefix?: string): string;
+}
+
+/** Represents a V3ReqGetExposurePresets. */
+export class V3ReqGetExposurePresets implements IV3ReqGetExposurePresets {
+
+    /**
+     * Constructs a new V3ReqGetExposurePresets.
+     * @param [properties] Properties to set
+     */
+    constructor(properties?: IV3ReqGetExposurePresets);
+
+    /** V3ReqGetExposurePresets query. */
+    public query?: (IV3PresetQuery|null);
+
+    /** V3ReqGetExposurePresets query2. */
+    public query2?: (IV3PresetQuery|null);
+
+    /**
+     * Creates a new V3ReqGetExposurePresets instance using the specified properties.
+     * @param [properties] Properties to set
+     * @returns V3ReqGetExposurePresets instance
+     */
+    public static create(properties?: IV3ReqGetExposurePresets): V3ReqGetExposurePresets;
+
+    /**
+     * Encodes the specified V3ReqGetExposurePresets message. Does not implicitly {@link V3ReqGetExposurePresets.verify|verify} messages.
+     * @param message V3ReqGetExposurePresets message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encode(message: IV3ReqGetExposurePresets, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Encodes the specified V3ReqGetExposurePresets message, length delimited. Does not implicitly {@link V3ReqGetExposurePresets.verify|verify} messages.
+     * @param message V3ReqGetExposurePresets message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encodeDelimited(message: IV3ReqGetExposurePresets, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Decodes a V3ReqGetExposurePresets message from the specified reader or buffer.
+     * @param reader Reader or buffer to decode from
+     * @param [length] Message length if known beforehand
+     * @returns V3ReqGetExposurePresets
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): V3ReqGetExposurePresets;
+
+    /**
+     * Decodes a V3ReqGetExposurePresets message from the specified reader or buffer, length delimited.
+     * @param reader Reader or buffer to decode from
+     * @returns V3ReqGetExposurePresets
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): V3ReqGetExposurePresets;
+
+    /**
+     * Verifies a V3ReqGetExposurePresets message.
+     * @param message Plain object to verify
+     * @returns `null` if valid, otherwise the reason why it is not
+     */
+    public static verify(message: { [k: string]: any }): (string|null);
+
+    /**
+     * Creates a V3ReqGetExposurePresets message from a plain object. Also converts values to their respective internal types.
+     * @param object Plain object
+     * @returns V3ReqGetExposurePresets
+     */
+    public static fromObject(object: { [k: string]: any }): V3ReqGetExposurePresets;
+
+    /**
+     * Creates a plain object from a V3ReqGetExposurePresets message. Also converts values to other types if specified.
+     * @param message V3ReqGetExposurePresets
+     * @param [options] Conversion options
+     * @returns Plain object
+     */
+    public static toObject(message: V3ReqGetExposurePresets, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+    /**
+     * Converts this V3ReqGetExposurePresets to JSON.
+     * @returns JSON object
+     */
+    public toJSON(): { [k: string]: any };
+
+    /**
+     * Gets the default type url for V3ReqGetExposurePresets
+     * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+     * @returns The default type url
+     */
+    public static getTypeUrl(typeUrlPrefix?: string): string;
+}
+
+/** Represents a V3PresetQuery. */
+export class V3PresetQuery implements IV3PresetQuery {
+
+    /**
+     * Constructs a new V3PresetQuery.
+     * @param [properties] Properties to set
+     */
+    constructor(properties?: IV3PresetQuery);
+
+    /** V3PresetQuery field1. */
+    public field1: number;
+
+    /** V3PresetQuery field2. */
+    public field2: number;
+
+    /**
+     * Creates a new V3PresetQuery instance using the specified properties.
+     * @param [properties] Properties to set
+     * @returns V3PresetQuery instance
+     */
+    public static create(properties?: IV3PresetQuery): V3PresetQuery;
+
+    /**
+     * Encodes the specified V3PresetQuery message. Does not implicitly {@link V3PresetQuery.verify|verify} messages.
+     * @param message V3PresetQuery message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encode(message: IV3PresetQuery, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Encodes the specified V3PresetQuery message, length delimited. Does not implicitly {@link V3PresetQuery.verify|verify} messages.
+     * @param message V3PresetQuery message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encodeDelimited(message: IV3PresetQuery, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Decodes a V3PresetQuery message from the specified reader or buffer.
+     * @param reader Reader or buffer to decode from
+     * @param [length] Message length if known beforehand
+     * @returns V3PresetQuery
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): V3PresetQuery;
+
+    /**
+     * Decodes a V3PresetQuery message from the specified reader or buffer, length delimited.
+     * @param reader Reader or buffer to decode from
+     * @returns V3PresetQuery
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): V3PresetQuery;
+
+    /**
+     * Verifies a V3PresetQuery message.
+     * @param message Plain object to verify
+     * @returns `null` if valid, otherwise the reason why it is not
+     */
+    public static verify(message: { [k: string]: any }): (string|null);
+
+    /**
+     * Creates a V3PresetQuery message from a plain object. Also converts values to their respective internal types.
+     * @param object Plain object
+     * @returns V3PresetQuery
+     */
+    public static fromObject(object: { [k: string]: any }): V3PresetQuery;
+
+    /**
+     * Creates a plain object from a V3PresetQuery message. Also converts values to other types if specified.
+     * @param message V3PresetQuery
+     * @param [options] Conversion options
+     * @returns Plain object
+     */
+    public static toObject(message: V3PresetQuery, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+    /**
+     * Converts this V3PresetQuery to JSON.
+     * @returns JSON object
+     */
+    public toJSON(): { [k: string]: any };
+
+    /**
+     * Gets the default type url for V3PresetQuery
+     * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+     * @returns The default type url
+     */
+    public static getTypeUrl(typeUrlPrefix?: string): string;
+}
+
+/** Represents a V3ResGetExposurePresets. */
+export class V3ResGetExposurePresets implements IV3ResGetExposurePresets {
+
+    /**
+     * Constructs a new V3ResGetExposurePresets.
+     * @param [properties] Properties to set
+     */
+    constructor(properties?: IV3ResGetExposurePresets);
+
+    /** V3ResGetExposurePresets code. */
+    public code: number;
+
+    /** V3ResGetExposurePresets data. */
+    public data?: (IV3ExposurePresetData|null);
+
+    /**
+     * Creates a new V3ResGetExposurePresets instance using the specified properties.
+     * @param [properties] Properties to set
+     * @returns V3ResGetExposurePresets instance
+     */
+    public static create(properties?: IV3ResGetExposurePresets): V3ResGetExposurePresets;
+
+    /**
+     * Encodes the specified V3ResGetExposurePresets message. Does not implicitly {@link V3ResGetExposurePresets.verify|verify} messages.
+     * @param message V3ResGetExposurePresets message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encode(message: IV3ResGetExposurePresets, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Encodes the specified V3ResGetExposurePresets message, length delimited. Does not implicitly {@link V3ResGetExposurePresets.verify|verify} messages.
+     * @param message V3ResGetExposurePresets message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encodeDelimited(message: IV3ResGetExposurePresets, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Decodes a V3ResGetExposurePresets message from the specified reader or buffer.
+     * @param reader Reader or buffer to decode from
+     * @param [length] Message length if known beforehand
+     * @returns V3ResGetExposurePresets
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): V3ResGetExposurePresets;
+
+    /**
+     * Decodes a V3ResGetExposurePresets message from the specified reader or buffer, length delimited.
+     * @param reader Reader or buffer to decode from
+     * @returns V3ResGetExposurePresets
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): V3ResGetExposurePresets;
+
+    /**
+     * Verifies a V3ResGetExposurePresets message.
+     * @param message Plain object to verify
+     * @returns `null` if valid, otherwise the reason why it is not
+     */
+    public static verify(message: { [k: string]: any }): (string|null);
+
+    /**
+     * Creates a V3ResGetExposurePresets message from a plain object. Also converts values to their respective internal types.
+     * @param object Plain object
+     * @returns V3ResGetExposurePresets
+     */
+    public static fromObject(object: { [k: string]: any }): V3ResGetExposurePresets;
+
+    /**
+     * Creates a plain object from a V3ResGetExposurePresets message. Also converts values to other types if specified.
+     * @param message V3ResGetExposurePresets
+     * @param [options] Conversion options
+     * @returns Plain object
+     */
+    public static toObject(message: V3ResGetExposurePresets, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+    /**
+     * Converts this V3ResGetExposurePresets to JSON.
+     * @returns JSON object
+     */
+    public toJSON(): { [k: string]: any };
+
+    /**
+     * Gets the default type url for V3ResGetExposurePresets
+     * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+     * @returns The default type url
+     */
+    public static getTypeUrl(typeUrlPrefix?: string): string;
+}
+
+/** Represents a V3ExposurePresetData. */
+export class V3ExposurePresetData implements IV3ExposurePresetData {
+
+    /**
+     * Constructs a new V3ExposurePresetData.
+     * @param [properties] Properties to set
+     */
+    constructor(properties?: IV3ExposurePresetData);
+
+    /** V3ExposurePresetData exposure. */
+    public exposure: string;
+
+    /** V3ExposurePresetData gain. */
+    public gain: number;
+
+    /** V3ExposurePresetData count. */
+    public count: number;
+
+    /**
+     * Creates a new V3ExposurePresetData instance using the specified properties.
+     * @param [properties] Properties to set
+     * @returns V3ExposurePresetData instance
+     */
+    public static create(properties?: IV3ExposurePresetData): V3ExposurePresetData;
+
+    /**
+     * Encodes the specified V3ExposurePresetData message. Does not implicitly {@link V3ExposurePresetData.verify|verify} messages.
+     * @param message V3ExposurePresetData message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encode(message: IV3ExposurePresetData, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Encodes the specified V3ExposurePresetData message, length delimited. Does not implicitly {@link V3ExposurePresetData.verify|verify} messages.
+     * @param message V3ExposurePresetData message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encodeDelimited(message: IV3ExposurePresetData, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Decodes a V3ExposurePresetData message from the specified reader or buffer.
+     * @param reader Reader or buffer to decode from
+     * @param [length] Message length if known beforehand
+     * @returns V3ExposurePresetData
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): V3ExposurePresetData;
+
+    /**
+     * Decodes a V3ExposurePresetData message from the specified reader or buffer, length delimited.
+     * @param reader Reader or buffer to decode from
+     * @returns V3ExposurePresetData
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): V3ExposurePresetData;
+
+    /**
+     * Verifies a V3ExposurePresetData message.
+     * @param message Plain object to verify
+     * @returns `null` if valid, otherwise the reason why it is not
+     */
+    public static verify(message: { [k: string]: any }): (string|null);
+
+    /**
+     * Creates a V3ExposurePresetData message from a plain object. Also converts values to their respective internal types.
+     * @param object Plain object
+     * @returns V3ExposurePresetData
+     */
+    public static fromObject(object: { [k: string]: any }): V3ExposurePresetData;
+
+    /**
+     * Creates a plain object from a V3ExposurePresetData message. Also converts values to other types if specified.
+     * @param message V3ExposurePresetData
+     * @param [options] Conversion options
+     * @returns Plain object
+     */
+    public static toObject(message: V3ExposurePresetData, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+    /**
+     * Converts this V3ExposurePresetData to JSON.
+     * @returns JSON object
+     */
+    public toJSON(): { [k: string]: any };
+
+    /**
+     * Gets the default type url for V3ExposurePresetData
+     * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+     * @returns The default type url
+     */
+    public static getTypeUrl(typeUrlPrefix?: string): string;
+}
+
+/** Represents a V3ReqCaptureCaliFrame. */
+export class V3ReqCaptureCaliFrame implements IV3ReqCaptureCaliFrame {
+
+    /**
+     * Constructs a new V3ReqCaptureCaliFrame.
+     * @param [properties] Properties to set
+     */
+    constructor(properties?: IV3ReqCaptureCaliFrame);
+
+    /** V3ReqCaptureCaliFrame expIndex. */
+    public expIndex: number;
+
+    /** V3ReqCaptureCaliFrame gain. */
+    public gain: number;
+
+    /** V3ReqCaptureCaliFrame resolution. */
+    public resolution: number;
+
+    /** V3ReqCaptureCaliFrame capSize. */
+    public capSize: number;
+
+    /** V3ReqCaptureCaliFrame cameraType. */
+    public cameraType: number;
+
+    /** V3ReqCaptureCaliFrame caliFrameType. */
+    public caliFrameType: number;
+
+    /** V3ReqCaptureCaliFrame filterType. */
+    public filterType?: (number|null);
+
+    /** V3ReqCaptureCaliFrame sceneType. */
+    public sceneType: number;
+
+    /** V3ReqCaptureCaliFrame _filterType. */
+    public _filterType?: "filterType";
+
+    /**
+     * Creates a new V3ReqCaptureCaliFrame instance using the specified properties.
+     * @param [properties] Properties to set
+     * @returns V3ReqCaptureCaliFrame instance
+     */
+    public static create(properties?: IV3ReqCaptureCaliFrame): V3ReqCaptureCaliFrame;
+
+    /**
+     * Encodes the specified V3ReqCaptureCaliFrame message. Does not implicitly {@link V3ReqCaptureCaliFrame.verify|verify} messages.
+     * @param message V3ReqCaptureCaliFrame message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encode(message: IV3ReqCaptureCaliFrame, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Encodes the specified V3ReqCaptureCaliFrame message, length delimited. Does not implicitly {@link V3ReqCaptureCaliFrame.verify|verify} messages.
+     * @param message V3ReqCaptureCaliFrame message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encodeDelimited(message: IV3ReqCaptureCaliFrame, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Decodes a V3ReqCaptureCaliFrame message from the specified reader or buffer.
+     * @param reader Reader or buffer to decode from
+     * @param [length] Message length if known beforehand
+     * @returns V3ReqCaptureCaliFrame
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): V3ReqCaptureCaliFrame;
+
+    /**
+     * Decodes a V3ReqCaptureCaliFrame message from the specified reader or buffer, length delimited.
+     * @param reader Reader or buffer to decode from
+     * @returns V3ReqCaptureCaliFrame
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): V3ReqCaptureCaliFrame;
+
+    /**
+     * Verifies a V3ReqCaptureCaliFrame message.
+     * @param message Plain object to verify
+     * @returns `null` if valid, otherwise the reason why it is not
+     */
+    public static verify(message: { [k: string]: any }): (string|null);
+
+    /**
+     * Creates a V3ReqCaptureCaliFrame message from a plain object. Also converts values to their respective internal types.
+     * @param object Plain object
+     * @returns V3ReqCaptureCaliFrame
+     */
+    public static fromObject(object: { [k: string]: any }): V3ReqCaptureCaliFrame;
+
+    /**
+     * Creates a plain object from a V3ReqCaptureCaliFrame message. Also converts values to other types if specified.
+     * @param message V3ReqCaptureCaliFrame
+     * @param [options] Conversion options
+     * @returns Plain object
+     */
+    public static toObject(message: V3ReqCaptureCaliFrame, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+    /**
+     * Converts this V3ReqCaptureCaliFrame to JSON.
+     * @returns JSON object
+     */
+    public toJSON(): { [k: string]: any };
+
+    /**
+     * Gets the default type url for V3ReqCaptureCaliFrame
+     * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+     * @returns The default type url
+     */
+    public static getTypeUrl(typeUrlPrefix?: string): string;
+}
+
+/** Represents a V3ReqStopCaptureCaliFrame. */
+export class V3ReqStopCaptureCaliFrame implements IV3ReqStopCaptureCaliFrame {
+
+    /**
+     * Constructs a new V3ReqStopCaptureCaliFrame.
+     * @param [properties] Properties to set
+     */
+    constructor(properties?: IV3ReqStopCaptureCaliFrame);
+
+    /** V3ReqStopCaptureCaliFrame cameraType. */
+    public cameraType: number;
+
+    /**
+     * Creates a new V3ReqStopCaptureCaliFrame instance using the specified properties.
+     * @param [properties] Properties to set
+     * @returns V3ReqStopCaptureCaliFrame instance
+     */
+    public static create(properties?: IV3ReqStopCaptureCaliFrame): V3ReqStopCaptureCaliFrame;
+
+    /**
+     * Encodes the specified V3ReqStopCaptureCaliFrame message. Does not implicitly {@link V3ReqStopCaptureCaliFrame.verify|verify} messages.
+     * @param message V3ReqStopCaptureCaliFrame message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encode(message: IV3ReqStopCaptureCaliFrame, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Encodes the specified V3ReqStopCaptureCaliFrame message, length delimited. Does not implicitly {@link V3ReqStopCaptureCaliFrame.verify|verify} messages.
+     * @param message V3ReqStopCaptureCaliFrame message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encodeDelimited(message: IV3ReqStopCaptureCaliFrame, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Decodes a V3ReqStopCaptureCaliFrame message from the specified reader or buffer.
+     * @param reader Reader or buffer to decode from
+     * @param [length] Message length if known beforehand
+     * @returns V3ReqStopCaptureCaliFrame
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): V3ReqStopCaptureCaliFrame;
+
+    /**
+     * Decodes a V3ReqStopCaptureCaliFrame message from the specified reader or buffer, length delimited.
+     * @param reader Reader or buffer to decode from
+     * @returns V3ReqStopCaptureCaliFrame
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): V3ReqStopCaptureCaliFrame;
+
+    /**
+     * Verifies a V3ReqStopCaptureCaliFrame message.
+     * @param message Plain object to verify
+     * @returns `null` if valid, otherwise the reason why it is not
+     */
+    public static verify(message: { [k: string]: any }): (string|null);
+
+    /**
+     * Creates a V3ReqStopCaptureCaliFrame message from a plain object. Also converts values to their respective internal types.
+     * @param object Plain object
+     * @returns V3ReqStopCaptureCaliFrame
+     */
+    public static fromObject(object: { [k: string]: any }): V3ReqStopCaptureCaliFrame;
+
+    /**
+     * Creates a plain object from a V3ReqStopCaptureCaliFrame message. Also converts values to other types if specified.
+     * @param message V3ReqStopCaptureCaliFrame
+     * @param [options] Conversion options
+     * @returns Plain object
+     */
+    public static toObject(message: V3ReqStopCaptureCaliFrame, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+    /**
+     * Converts this V3ReqStopCaptureCaliFrame to JSON.
+     * @returns JSON object
+     */
+    public toJSON(): { [k: string]: any };
+
+    /**
+     * Gets the default type url for V3ReqStopCaptureCaliFrame
+     * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+     * @returns The default type url
+     */
+    public static getTypeUrl(typeUrlPrefix?: string): string;
+}
+
+/** Represents a V3ReqSetObservationLocation. */
+export class V3ReqSetObservationLocation implements IV3ReqSetObservationLocation {
+
+    /**
+     * Constructs a new V3ReqSetObservationLocation.
+     * @param [properties] Properties to set
+     */
+    constructor(properties?: IV3ReqSetObservationLocation);
+
+    /** V3ReqSetObservationLocation lon. */
+    public lon: number;
+
+    /** V3ReqSetObservationLocation lat. */
+    public lat: number;
+
+    /**
+     * Creates a new V3ReqSetObservationLocation instance using the specified properties.
+     * @param [properties] Properties to set
+     * @returns V3ReqSetObservationLocation instance
+     */
+    public static create(properties?: IV3ReqSetObservationLocation): V3ReqSetObservationLocation;
+
+    /**
+     * Encodes the specified V3ReqSetObservationLocation message. Does not implicitly {@link V3ReqSetObservationLocation.verify|verify} messages.
+     * @param message V3ReqSetObservationLocation message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encode(message: IV3ReqSetObservationLocation, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Encodes the specified V3ReqSetObservationLocation message, length delimited. Does not implicitly {@link V3ReqSetObservationLocation.verify|verify} messages.
+     * @param message V3ReqSetObservationLocation message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encodeDelimited(message: IV3ReqSetObservationLocation, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Decodes a V3ReqSetObservationLocation message from the specified reader or buffer.
+     * @param reader Reader or buffer to decode from
+     * @param [length] Message length if known beforehand
+     * @returns V3ReqSetObservationLocation
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): V3ReqSetObservationLocation;
+
+    /**
+     * Decodes a V3ReqSetObservationLocation message from the specified reader or buffer, length delimited.
+     * @param reader Reader or buffer to decode from
+     * @returns V3ReqSetObservationLocation
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): V3ReqSetObservationLocation;
+
+    /**
+     * Verifies a V3ReqSetObservationLocation message.
+     * @param message Plain object to verify
+     * @returns `null` if valid, otherwise the reason why it is not
+     */
+    public static verify(message: { [k: string]: any }): (string|null);
+
+    /**
+     * Creates a V3ReqSetObservationLocation message from a plain object. Also converts values to their respective internal types.
+     * @param object Plain object
+     * @returns V3ReqSetObservationLocation
+     */
+    public static fromObject(object: { [k: string]: any }): V3ReqSetObservationLocation;
+
+    /**
+     * Creates a plain object from a V3ReqSetObservationLocation message. Also converts values to other types if specified.
+     * @param message V3ReqSetObservationLocation
+     * @param [options] Conversion options
+     * @returns Plain object
+     */
+    public static toObject(message: V3ReqSetObservationLocation, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+    /**
+     * Converts this V3ReqSetObservationLocation to JSON.
+     * @returns JSON object
+     */
+    public toJSON(): { [k: string]: any };
+
+    /**
+     * Gets the default type url for V3ReqSetObservationLocation
+     * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+     * @returns The default type url
+     */
+    public static getTypeUrl(typeUrlPrefix?: string): string;
+}
+
+/** Represents a V3ReqConfirmObservation. */
+export class V3ReqConfirmObservation implements IV3ReqConfirmObservation {
+
+    /**
+     * Constructs a new V3ReqConfirmObservation.
+     * @param [properties] Properties to set
+     */
+    constructor(properties?: IV3ReqConfirmObservation);
+
+    /**
+     * Creates a new V3ReqConfirmObservation instance using the specified properties.
+     * @param [properties] Properties to set
+     * @returns V3ReqConfirmObservation instance
+     */
+    public static create(properties?: IV3ReqConfirmObservation): V3ReqConfirmObservation;
+
+    /**
+     * Encodes the specified V3ReqConfirmObservation message. Does not implicitly {@link V3ReqConfirmObservation.verify|verify} messages.
+     * @param message V3ReqConfirmObservation message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encode(message: IV3ReqConfirmObservation, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Encodes the specified V3ReqConfirmObservation message, length delimited. Does not implicitly {@link V3ReqConfirmObservation.verify|verify} messages.
+     * @param message V3ReqConfirmObservation message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encodeDelimited(message: IV3ReqConfirmObservation, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Decodes a V3ReqConfirmObservation message from the specified reader or buffer.
+     * @param reader Reader or buffer to decode from
+     * @param [length] Message length if known beforehand
+     * @returns V3ReqConfirmObservation
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): V3ReqConfirmObservation;
+
+    /**
+     * Decodes a V3ReqConfirmObservation message from the specified reader or buffer, length delimited.
+     * @param reader Reader or buffer to decode from
+     * @returns V3ReqConfirmObservation
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): V3ReqConfirmObservation;
+
+    /**
+     * Verifies a V3ReqConfirmObservation message.
+     * @param message Plain object to verify
+     * @returns `null` if valid, otherwise the reason why it is not
+     */
+    public static verify(message: { [k: string]: any }): (string|null);
+
+    /**
+     * Creates a V3ReqConfirmObservation message from a plain object. Also converts values to their respective internal types.
+     * @param object Plain object
+     * @returns V3ReqConfirmObservation
+     */
+    public static fromObject(object: { [k: string]: any }): V3ReqConfirmObservation;
+
+    /**
+     * Creates a plain object from a V3ReqConfirmObservation message. Also converts values to other types if specified.
+     * @param message V3ReqConfirmObservation
+     * @param [options] Conversion options
+     * @returns Plain object
+     */
+    public static toObject(message: V3ReqConfirmObservation, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+    /**
+     * Converts this V3ReqConfirmObservation to JSON.
+     * @returns JSON object
+     */
+    public toJSON(): { [k: string]: any };
+
+    /**
+     * Gets the default type url for V3ReqConfirmObservation
+     * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+     * @returns The default type url
+     */
+    public static getTypeUrl(typeUrlPrefix?: string): string;
+}
+
+/** Represents a V3ReqOpenTeleCamera. */
+export class V3ReqOpenTeleCamera implements IV3ReqOpenTeleCamera {
+
+    /**
+     * Constructs a new V3ReqOpenTeleCamera.
+     * @param [properties] Properties to set
+     */
+    constructor(properties?: IV3ReqOpenTeleCamera);
+
+    /** V3ReqOpenTeleCamera action. */
+    public action: number;
+
+    /**
+     * Creates a new V3ReqOpenTeleCamera instance using the specified properties.
+     * @param [properties] Properties to set
+     * @returns V3ReqOpenTeleCamera instance
+     */
+    public static create(properties?: IV3ReqOpenTeleCamera): V3ReqOpenTeleCamera;
+
+    /**
+     * Encodes the specified V3ReqOpenTeleCamera message. Does not implicitly {@link V3ReqOpenTeleCamera.verify|verify} messages.
+     * @param message V3ReqOpenTeleCamera message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encode(message: IV3ReqOpenTeleCamera, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Encodes the specified V3ReqOpenTeleCamera message, length delimited. Does not implicitly {@link V3ReqOpenTeleCamera.verify|verify} messages.
+     * @param message V3ReqOpenTeleCamera message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encodeDelimited(message: IV3ReqOpenTeleCamera, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Decodes a V3ReqOpenTeleCamera message from the specified reader or buffer.
+     * @param reader Reader or buffer to decode from
+     * @param [length] Message length if known beforehand
+     * @returns V3ReqOpenTeleCamera
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): V3ReqOpenTeleCamera;
+
+    /**
+     * Decodes a V3ReqOpenTeleCamera message from the specified reader or buffer, length delimited.
+     * @param reader Reader or buffer to decode from
+     * @returns V3ReqOpenTeleCamera
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): V3ReqOpenTeleCamera;
+
+    /**
+     * Verifies a V3ReqOpenTeleCamera message.
+     * @param message Plain object to verify
+     * @returns `null` if valid, otherwise the reason why it is not
+     */
+    public static verify(message: { [k: string]: any }): (string|null);
+
+    /**
+     * Creates a V3ReqOpenTeleCamera message from a plain object. Also converts values to their respective internal types.
+     * @param object Plain object
+     * @returns V3ReqOpenTeleCamera
+     */
+    public static fromObject(object: { [k: string]: any }): V3ReqOpenTeleCamera;
+
+    /**
+     * Creates a plain object from a V3ReqOpenTeleCamera message. Also converts values to other types if specified.
+     * @param message V3ReqOpenTeleCamera
+     * @param [options] Conversion options
+     * @returns Plain object
+     */
+    public static toObject(message: V3ReqOpenTeleCamera, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+    /**
+     * Converts this V3ReqOpenTeleCamera to JSON.
+     * @returns JSON object
+     */
+    public toJSON(): { [k: string]: any };
+
+    /**
+     * Gets the default type url for V3ReqOpenTeleCamera
+     * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+     * @returns The default type url
+     */
+    public static getTypeUrl(typeUrlPrefix?: string): string;
+}
+
+/** Represents a V3ReqOpenWideCamera. */
+export class V3ReqOpenWideCamera implements IV3ReqOpenWideCamera {
+
+    /**
+     * Constructs a new V3ReqOpenWideCamera.
+     * @param [properties] Properties to set
+     */
+    constructor(properties?: IV3ReqOpenWideCamera);
+
+    /** V3ReqOpenWideCamera action. */
+    public action: number;
+
+    /**
+     * Creates a new V3ReqOpenWideCamera instance using the specified properties.
+     * @param [properties] Properties to set
+     * @returns V3ReqOpenWideCamera instance
+     */
+    public static create(properties?: IV3ReqOpenWideCamera): V3ReqOpenWideCamera;
+
+    /**
+     * Encodes the specified V3ReqOpenWideCamera message. Does not implicitly {@link V3ReqOpenWideCamera.verify|verify} messages.
+     * @param message V3ReqOpenWideCamera message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encode(message: IV3ReqOpenWideCamera, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Encodes the specified V3ReqOpenWideCamera message, length delimited. Does not implicitly {@link V3ReqOpenWideCamera.verify|verify} messages.
+     * @param message V3ReqOpenWideCamera message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encodeDelimited(message: IV3ReqOpenWideCamera, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Decodes a V3ReqOpenWideCamera message from the specified reader or buffer.
+     * @param reader Reader or buffer to decode from
+     * @param [length] Message length if known beforehand
+     * @returns V3ReqOpenWideCamera
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): V3ReqOpenWideCamera;
+
+    /**
+     * Decodes a V3ReqOpenWideCamera message from the specified reader or buffer, length delimited.
+     * @param reader Reader or buffer to decode from
+     * @returns V3ReqOpenWideCamera
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): V3ReqOpenWideCamera;
+
+    /**
+     * Verifies a V3ReqOpenWideCamera message.
+     * @param message Plain object to verify
+     * @returns `null` if valid, otherwise the reason why it is not
+     */
+    public static verify(message: { [k: string]: any }): (string|null);
+
+    /**
+     * Creates a V3ReqOpenWideCamera message from a plain object. Also converts values to their respective internal types.
+     * @param object Plain object
+     * @returns V3ReqOpenWideCamera
+     */
+    public static fromObject(object: { [k: string]: any }): V3ReqOpenWideCamera;
+
+    /**
+     * Creates a plain object from a V3ReqOpenWideCamera message. Also converts values to other types if specified.
+     * @param message V3ReqOpenWideCamera
+     * @param [options] Conversion options
+     * @returns Plain object
+     */
+    public static toObject(message: V3ReqOpenWideCamera, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+    /**
+     * Converts this V3ReqOpenWideCamera to JSON.
+     * @returns JSON object
+     */
+    public toJSON(): { [k: string]: any };
+
+    /**
+     * Gets the default type url for V3ReqOpenWideCamera
+     * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+     * @returns The default type url
+     */
+    public static getTypeUrl(typeUrlPrefix?: string): string;
+}
+
+/** Represents a V3ReqFocusInit. */
+export class V3ReqFocusInit implements IV3ReqFocusInit {
+
+    /**
+     * Constructs a new V3ReqFocusInit.
+     * @param [properties] Properties to set
+     */
+    constructor(properties?: IV3ReqFocusInit);
+
+    /**
+     * Creates a new V3ReqFocusInit instance using the specified properties.
+     * @param [properties] Properties to set
+     * @returns V3ReqFocusInit instance
+     */
+    public static create(properties?: IV3ReqFocusInit): V3ReqFocusInit;
+
+    /**
+     * Encodes the specified V3ReqFocusInit message. Does not implicitly {@link V3ReqFocusInit.verify|verify} messages.
+     * @param message V3ReqFocusInit message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encode(message: IV3ReqFocusInit, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Encodes the specified V3ReqFocusInit message, length delimited. Does not implicitly {@link V3ReqFocusInit.verify|verify} messages.
+     * @param message V3ReqFocusInit message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encodeDelimited(message: IV3ReqFocusInit, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Decodes a V3ReqFocusInit message from the specified reader or buffer.
+     * @param reader Reader or buffer to decode from
+     * @param [length] Message length if known beforehand
+     * @returns V3ReqFocusInit
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): V3ReqFocusInit;
+
+    /**
+     * Decodes a V3ReqFocusInit message from the specified reader or buffer, length delimited.
+     * @param reader Reader or buffer to decode from
+     * @returns V3ReqFocusInit
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): V3ReqFocusInit;
+
+    /**
+     * Verifies a V3ReqFocusInit message.
+     * @param message Plain object to verify
+     * @returns `null` if valid, otherwise the reason why it is not
+     */
+    public static verify(message: { [k: string]: any }): (string|null);
+
+    /**
+     * Creates a V3ReqFocusInit message from a plain object. Also converts values to their respective internal types.
+     * @param object Plain object
+     * @returns V3ReqFocusInit
+     */
+    public static fromObject(object: { [k: string]: any }): V3ReqFocusInit;
+
+    /**
+     * Creates a plain object from a V3ReqFocusInit message. Also converts values to other types if specified.
+     * @param message V3ReqFocusInit
+     * @param [options] Conversion options
+     * @returns Plain object
+     */
+    public static toObject(message: V3ReqFocusInit, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+    /**
+     * Converts this V3ReqFocusInit to JSON.
+     * @returns JSON object
+     */
+    public toJSON(): { [k: string]: any };
+
+    /**
+     * Gets the default type url for V3ReqFocusInit
+     * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+     * @returns The default type url
+     */
+    public static getTypeUrl(typeUrlPrefix?: string): string;
+}
+
+/** Represents a V3ResFocusInit. */
+export class V3ResFocusInit implements IV3ResFocusInit {
+
+    /**
+     * Constructs a new V3ResFocusInit.
+     * @param [properties] Properties to set
+     */
+    constructor(properties?: IV3ResFocusInit);
+
+    /** V3ResFocusInit code. */
+    public code: number;
+
+    /** V3ResFocusInit focusPosition. */
+    public focusPosition: number;
+
+    /**
+     * Creates a new V3ResFocusInit instance using the specified properties.
+     * @param [properties] Properties to set
+     * @returns V3ResFocusInit instance
+     */
+    public static create(properties?: IV3ResFocusInit): V3ResFocusInit;
+
+    /**
+     * Encodes the specified V3ResFocusInit message. Does not implicitly {@link V3ResFocusInit.verify|verify} messages.
+     * @param message V3ResFocusInit message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encode(message: IV3ResFocusInit, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Encodes the specified V3ResFocusInit message, length delimited. Does not implicitly {@link V3ResFocusInit.verify|verify} messages.
+     * @param message V3ResFocusInit message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encodeDelimited(message: IV3ResFocusInit, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Decodes a V3ResFocusInit message from the specified reader or buffer.
+     * @param reader Reader or buffer to decode from
+     * @param [length] Message length if known beforehand
+     * @returns V3ResFocusInit
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): V3ResFocusInit;
+
+    /**
+     * Decodes a V3ResFocusInit message from the specified reader or buffer, length delimited.
+     * @param reader Reader or buffer to decode from
+     * @returns V3ResFocusInit
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): V3ResFocusInit;
+
+    /**
+     * Verifies a V3ResFocusInit message.
+     * @param message Plain object to verify
+     * @returns `null` if valid, otherwise the reason why it is not
+     */
+    public static verify(message: { [k: string]: any }): (string|null);
+
+    /**
+     * Creates a V3ResFocusInit message from a plain object. Also converts values to their respective internal types.
+     * @param object Plain object
+     * @returns V3ResFocusInit
+     */
+    public static fromObject(object: { [k: string]: any }): V3ResFocusInit;
+
+    /**
+     * Creates a plain object from a V3ResFocusInit message. Also converts values to other types if specified.
+     * @param message V3ResFocusInit
+     * @param [options] Conversion options
+     * @returns Plain object
+     */
+    public static toObject(message: V3ResFocusInit, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+    /**
+     * Converts this V3ResFocusInit to JSON.
+     * @returns JSON object
+     */
+    public toJSON(): { [k: string]: any };
+
+    /**
+     * Gets the default type url for V3ResFocusInit
+     * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+     * @returns The default type url
+     */
+    public static getTypeUrl(typeUrlPrefix?: string): string;
+}
+
+/** Represents a V3ResNotifyExposureProgress. */
+export class V3ResNotifyExposureProgress implements IV3ResNotifyExposureProgress {
+
+    /**
+     * Constructs a new V3ResNotifyExposureProgress.
+     * @param [properties] Properties to set
+     */
+    constructor(properties?: IV3ResNotifyExposureProgress);
+
+    /** V3ResNotifyExposureProgress elapsed. */
+    public elapsed: number;
+
+    /** V3ResNotifyExposureProgress total. */
+    public total: number;
+
+    /**
+     * Creates a new V3ResNotifyExposureProgress instance using the specified properties.
+     * @param [properties] Properties to set
+     * @returns V3ResNotifyExposureProgress instance
+     */
+    public static create(properties?: IV3ResNotifyExposureProgress): V3ResNotifyExposureProgress;
+
+    /**
+     * Encodes the specified V3ResNotifyExposureProgress message. Does not implicitly {@link V3ResNotifyExposureProgress.verify|verify} messages.
+     * @param message V3ResNotifyExposureProgress message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encode(message: IV3ResNotifyExposureProgress, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Encodes the specified V3ResNotifyExposureProgress message, length delimited. Does not implicitly {@link V3ResNotifyExposureProgress.verify|verify} messages.
+     * @param message V3ResNotifyExposureProgress message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encodeDelimited(message: IV3ResNotifyExposureProgress, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Decodes a V3ResNotifyExposureProgress message from the specified reader or buffer.
+     * @param reader Reader or buffer to decode from
+     * @param [length] Message length if known beforehand
+     * @returns V3ResNotifyExposureProgress
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): V3ResNotifyExposureProgress;
+
+    /**
+     * Decodes a V3ResNotifyExposureProgress message from the specified reader or buffer, length delimited.
+     * @param reader Reader or buffer to decode from
+     * @returns V3ResNotifyExposureProgress
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): V3ResNotifyExposureProgress;
+
+    /**
+     * Verifies a V3ResNotifyExposureProgress message.
+     * @param message Plain object to verify
+     * @returns `null` if valid, otherwise the reason why it is not
+     */
+    public static verify(message: { [k: string]: any }): (string|null);
+
+    /**
+     * Creates a V3ResNotifyExposureProgress message from a plain object. Also converts values to their respective internal types.
+     * @param object Plain object
+     * @returns V3ResNotifyExposureProgress
+     */
+    public static fromObject(object: { [k: string]: any }): V3ResNotifyExposureProgress;
+
+    /**
+     * Creates a plain object from a V3ResNotifyExposureProgress message. Also converts values to other types if specified.
+     * @param message V3ResNotifyExposureProgress
+     * @param [options] Conversion options
+     * @returns Plain object
+     */
+    public static toObject(message: V3ResNotifyExposureProgress, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+    /**
+     * Converts this V3ResNotifyExposureProgress to JSON.
+     * @returns JSON object
+     */
+    public toJSON(): { [k: string]: any };
+
+    /**
+     * Gets the default type url for V3ResNotifyExposureProgress
+     * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+     * @returns The default type url
+     */
+    public static getTypeUrl(typeUrlPrefix?: string): string;
+}
+
+/** Represents a V3ResNotifyDeviceState. */
+export class V3ResNotifyDeviceState implements IV3ResNotifyDeviceState {
+
+    /**
+     * Constructs a new V3ResNotifyDeviceState.
+     * @param [properties] Properties to set
+     */
+    constructor(properties?: IV3ResNotifyDeviceState);
+
+    /** V3ResNotifyDeviceState event. */
+    public event: number;
+
+    /** V3ResNotifyDeviceState mode. */
+    public mode?: (IV3DeviceStateMode|null);
+
+    /** V3ResNotifyDeviceState state. */
+    public state?: (IV3DeviceStateDetail|null);
+
+    /** V3ResNotifyDeviceState path. */
+    public path?: (IV3DeviceStatePath|null);
+
+    /**
+     * Creates a new V3ResNotifyDeviceState instance using the specified properties.
+     * @param [properties] Properties to set
+     * @returns V3ResNotifyDeviceState instance
+     */
+    public static create(properties?: IV3ResNotifyDeviceState): V3ResNotifyDeviceState;
+
+    /**
+     * Encodes the specified V3ResNotifyDeviceState message. Does not implicitly {@link V3ResNotifyDeviceState.verify|verify} messages.
+     * @param message V3ResNotifyDeviceState message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encode(message: IV3ResNotifyDeviceState, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Encodes the specified V3ResNotifyDeviceState message, length delimited. Does not implicitly {@link V3ResNotifyDeviceState.verify|verify} messages.
+     * @param message V3ResNotifyDeviceState message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encodeDelimited(message: IV3ResNotifyDeviceState, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Decodes a V3ResNotifyDeviceState message from the specified reader or buffer.
+     * @param reader Reader or buffer to decode from
+     * @param [length] Message length if known beforehand
+     * @returns V3ResNotifyDeviceState
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): V3ResNotifyDeviceState;
+
+    /**
+     * Decodes a V3ResNotifyDeviceState message from the specified reader or buffer, length delimited.
+     * @param reader Reader or buffer to decode from
+     * @returns V3ResNotifyDeviceState
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): V3ResNotifyDeviceState;
+
+    /**
+     * Verifies a V3ResNotifyDeviceState message.
+     * @param message Plain object to verify
+     * @returns `null` if valid, otherwise the reason why it is not
+     */
+    public static verify(message: { [k: string]: any }): (string|null);
+
+    /**
+     * Creates a V3ResNotifyDeviceState message from a plain object. Also converts values to their respective internal types.
+     * @param object Plain object
+     * @returns V3ResNotifyDeviceState
+     */
+    public static fromObject(object: { [k: string]: any }): V3ResNotifyDeviceState;
+
+    /**
+     * Creates a plain object from a V3ResNotifyDeviceState message. Also converts values to other types if specified.
+     * @param message V3ResNotifyDeviceState
+     * @param [options] Conversion options
+     * @returns Plain object
+     */
+    public static toObject(message: V3ResNotifyDeviceState, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+    /**
+     * Converts this V3ResNotifyDeviceState to JSON.
+     * @returns JSON object
+     */
+    public toJSON(): { [k: string]: any };
+
+    /**
+     * Gets the default type url for V3ResNotifyDeviceState
+     * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+     * @returns The default type url
+     */
+    public static getTypeUrl(typeUrlPrefix?: string): string;
+}
+
+/** Represents a V3DeviceStateMode. */
+export class V3DeviceStateMode implements IV3DeviceStateMode {
+
+    /**
+     * Constructs a new V3DeviceStateMode.
+     * @param [properties] Properties to set
+     */
+    constructor(properties?: IV3DeviceStateMode);
+
+    /** V3DeviceStateMode mode. */
+    public mode: number;
+
+    /** V3DeviceStateMode flags. */
+    public flags: number;
+
+    /**
+     * Creates a new V3DeviceStateMode instance using the specified properties.
+     * @param [properties] Properties to set
+     * @returns V3DeviceStateMode instance
+     */
+    public static create(properties?: IV3DeviceStateMode): V3DeviceStateMode;
+
+    /**
+     * Encodes the specified V3DeviceStateMode message. Does not implicitly {@link V3DeviceStateMode.verify|verify} messages.
+     * @param message V3DeviceStateMode message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encode(message: IV3DeviceStateMode, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Encodes the specified V3DeviceStateMode message, length delimited. Does not implicitly {@link V3DeviceStateMode.verify|verify} messages.
+     * @param message V3DeviceStateMode message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encodeDelimited(message: IV3DeviceStateMode, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Decodes a V3DeviceStateMode message from the specified reader or buffer.
+     * @param reader Reader or buffer to decode from
+     * @param [length] Message length if known beforehand
+     * @returns V3DeviceStateMode
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): V3DeviceStateMode;
+
+    /**
+     * Decodes a V3DeviceStateMode message from the specified reader or buffer, length delimited.
+     * @param reader Reader or buffer to decode from
+     * @returns V3DeviceStateMode
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): V3DeviceStateMode;
+
+    /**
+     * Verifies a V3DeviceStateMode message.
+     * @param message Plain object to verify
+     * @returns `null` if valid, otherwise the reason why it is not
+     */
+    public static verify(message: { [k: string]: any }): (string|null);
+
+    /**
+     * Creates a V3DeviceStateMode message from a plain object. Also converts values to their respective internal types.
+     * @param object Plain object
+     * @returns V3DeviceStateMode
+     */
+    public static fromObject(object: { [k: string]: any }): V3DeviceStateMode;
+
+    /**
+     * Creates a plain object from a V3DeviceStateMode message. Also converts values to other types if specified.
+     * @param message V3DeviceStateMode
+     * @param [options] Conversion options
+     * @returns Plain object
+     */
+    public static toObject(message: V3DeviceStateMode, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+    /**
+     * Converts this V3DeviceStateMode to JSON.
+     * @returns JSON object
+     */
+    public toJSON(): { [k: string]: any };
+
+    /**
+     * Gets the default type url for V3DeviceStateMode
+     * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+     * @returns The default type url
+     */
+    public static getTypeUrl(typeUrlPrefix?: string): string;
+}
+
+/** Represents a V3DeviceStateDetail. */
+export class V3DeviceStateDetail implements IV3DeviceStateDetail {
+
+    /**
+     * Constructs a new V3DeviceStateDetail.
+     * @param [properties] Properties to set
+     */
+    constructor(properties?: IV3DeviceStateDetail);
+
+    /** V3DeviceStateDetail state. */
+    public state: number;
+
+    /**
+     * Creates a new V3DeviceStateDetail instance using the specified properties.
+     * @param [properties] Properties to set
+     * @returns V3DeviceStateDetail instance
+     */
+    public static create(properties?: IV3DeviceStateDetail): V3DeviceStateDetail;
+
+    /**
+     * Encodes the specified V3DeviceStateDetail message. Does not implicitly {@link V3DeviceStateDetail.verify|verify} messages.
+     * @param message V3DeviceStateDetail message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encode(message: IV3DeviceStateDetail, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Encodes the specified V3DeviceStateDetail message, length delimited. Does not implicitly {@link V3DeviceStateDetail.verify|verify} messages.
+     * @param message V3DeviceStateDetail message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encodeDelimited(message: IV3DeviceStateDetail, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Decodes a V3DeviceStateDetail message from the specified reader or buffer.
+     * @param reader Reader or buffer to decode from
+     * @param [length] Message length if known beforehand
+     * @returns V3DeviceStateDetail
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): V3DeviceStateDetail;
+
+    /**
+     * Decodes a V3DeviceStateDetail message from the specified reader or buffer, length delimited.
+     * @param reader Reader or buffer to decode from
+     * @returns V3DeviceStateDetail
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): V3DeviceStateDetail;
+
+    /**
+     * Verifies a V3DeviceStateDetail message.
+     * @param message Plain object to verify
+     * @returns `null` if valid, otherwise the reason why it is not
+     */
+    public static verify(message: { [k: string]: any }): (string|null);
+
+    /**
+     * Creates a V3DeviceStateDetail message from a plain object. Also converts values to their respective internal types.
+     * @param object Plain object
+     * @returns V3DeviceStateDetail
+     */
+    public static fromObject(object: { [k: string]: any }): V3DeviceStateDetail;
+
+    /**
+     * Creates a plain object from a V3DeviceStateDetail message. Also converts values to other types if specified.
+     * @param message V3DeviceStateDetail
+     * @param [options] Conversion options
+     * @returns Plain object
+     */
+    public static toObject(message: V3DeviceStateDetail, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+    /**
+     * Converts this V3DeviceStateDetail to JSON.
+     * @returns JSON object
+     */
+    public toJSON(): { [k: string]: any };
+
+    /**
+     * Gets the default type url for V3DeviceStateDetail
+     * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+     * @returns The default type url
+     */
+    public static getTypeUrl(typeUrlPrefix?: string): string;
+}
+
+/** Represents a V3DeviceStatePath. */
+export class V3DeviceStatePath implements IV3DeviceStatePath {
+
+    /**
+     * Constructs a new V3DeviceStatePath.
+     * @param [properties] Properties to set
+     */
+    constructor(properties?: IV3DeviceStatePath);
+
+    /** V3DeviceStatePath path. */
+    public path: string;
+
+    /**
+     * Creates a new V3DeviceStatePath instance using the specified properties.
+     * @param [properties] Properties to set
+     * @returns V3DeviceStatePath instance
+     */
+    public static create(properties?: IV3DeviceStatePath): V3DeviceStatePath;
+
+    /**
+     * Encodes the specified V3DeviceStatePath message. Does not implicitly {@link V3DeviceStatePath.verify|verify} messages.
+     * @param message V3DeviceStatePath message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encode(message: IV3DeviceStatePath, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Encodes the specified V3DeviceStatePath message, length delimited. Does not implicitly {@link V3DeviceStatePath.verify|verify} messages.
+     * @param message V3DeviceStatePath message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encodeDelimited(message: IV3DeviceStatePath, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Decodes a V3DeviceStatePath message from the specified reader or buffer.
+     * @param reader Reader or buffer to decode from
+     * @param [length] Message length if known beforehand
+     * @returns V3DeviceStatePath
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): V3DeviceStatePath;
+
+    /**
+     * Decodes a V3DeviceStatePath message from the specified reader or buffer, length delimited.
+     * @param reader Reader or buffer to decode from
+     * @returns V3DeviceStatePath
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): V3DeviceStatePath;
+
+    /**
+     * Verifies a V3DeviceStatePath message.
+     * @param message Plain object to verify
+     * @returns `null` if valid, otherwise the reason why it is not
+     */
+    public static verify(message: { [k: string]: any }): (string|null);
+
+    /**
+     * Creates a V3DeviceStatePath message from a plain object. Also converts values to their respective internal types.
+     * @param object Plain object
+     * @returns V3DeviceStatePath
+     */
+    public static fromObject(object: { [k: string]: any }): V3DeviceStatePath;
+
+    /**
+     * Creates a plain object from a V3DeviceStatePath message. Also converts values to other types if specified.
+     * @param message V3DeviceStatePath
+     * @param [options] Conversion options
+     * @returns Plain object
+     */
+    public static toObject(message: V3DeviceStatePath, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+    /**
+     * Converts this V3DeviceStatePath to JSON.
+     * @returns JSON object
+     */
+    public toJSON(): { [k: string]: any };
+
+    /**
+     * Gets the default type url for V3DeviceStatePath
+     * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+     * @returns The default type url
+     */
+    public static getTypeUrl(typeUrlPrefix?: string): string;
+}
+
+/** Represents a V3ResNotifyCameraParamState. */
+export class V3ResNotifyCameraParamState implements IV3ResNotifyCameraParamState {
+
+    /**
+     * Constructs a new V3ResNotifyCameraParamState.
+     * @param [properties] Properties to set
+     */
+    constructor(properties?: IV3ResNotifyCameraParamState);
+
+    /** V3ResNotifyCameraParamState paramId. */
+    public paramId: (number|Long);
+
+    /** V3ResNotifyCameraParamState flag. */
+    public flag: number;
+
+    /** V3ResNotifyCameraParamState value. */
+    public value: number;
+
+    /**
+     * Creates a new V3ResNotifyCameraParamState instance using the specified properties.
+     * @param [properties] Properties to set
+     * @returns V3ResNotifyCameraParamState instance
+     */
+    public static create(properties?: IV3ResNotifyCameraParamState): V3ResNotifyCameraParamState;
+
+    /**
+     * Encodes the specified V3ResNotifyCameraParamState message. Does not implicitly {@link V3ResNotifyCameraParamState.verify|verify} messages.
+     * @param message V3ResNotifyCameraParamState message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encode(message: IV3ResNotifyCameraParamState, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Encodes the specified V3ResNotifyCameraParamState message, length delimited. Does not implicitly {@link V3ResNotifyCameraParamState.verify|verify} messages.
+     * @param message V3ResNotifyCameraParamState message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encodeDelimited(message: IV3ResNotifyCameraParamState, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Decodes a V3ResNotifyCameraParamState message from the specified reader or buffer.
+     * @param reader Reader or buffer to decode from
+     * @param [length] Message length if known beforehand
+     * @returns V3ResNotifyCameraParamState
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): V3ResNotifyCameraParamState;
+
+    /**
+     * Decodes a V3ResNotifyCameraParamState message from the specified reader or buffer, length delimited.
+     * @param reader Reader or buffer to decode from
+     * @returns V3ResNotifyCameraParamState
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): V3ResNotifyCameraParamState;
+
+    /**
+     * Verifies a V3ResNotifyCameraParamState message.
+     * @param message Plain object to verify
+     * @returns `null` if valid, otherwise the reason why it is not
+     */
+    public static verify(message: { [k: string]: any }): (string|null);
+
+    /**
+     * Creates a V3ResNotifyCameraParamState message from a plain object. Also converts values to their respective internal types.
+     * @param object Plain object
+     * @returns V3ResNotifyCameraParamState
+     */
+    public static fromObject(object: { [k: string]: any }): V3ResNotifyCameraParamState;
+
+    /**
+     * Creates a plain object from a V3ResNotifyCameraParamState message. Also converts values to other types if specified.
+     * @param message V3ResNotifyCameraParamState
+     * @param [options] Conversion options
+     * @returns Plain object
+     */
+    public static toObject(message: V3ResNotifyCameraParamState, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+    /**
+     * Converts this V3ResNotifyCameraParamState to JSON.
+     * @returns JSON object
+     */
+    public toJSON(): { [k: string]: any };
+
+    /**
+     * Gets the default type url for V3ResNotifyCameraParamState
+     * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+     * @returns The default type url
+     */
+    public static getTypeUrl(typeUrlPrefix?: string): string;
+}
+
+/** Represents a V3ResNotifyModeChange. */
+export class V3ResNotifyModeChange implements IV3ResNotifyModeChange {
+
+    /**
+     * Constructs a new V3ResNotifyModeChange.
+     * @param [properties] Properties to set
+     */
+    constructor(properties?: IV3ResNotifyModeChange);
+
+    /** V3ResNotifyModeChange changing. */
+    public changing: number;
+
+    /** V3ResNotifyModeChange mode. */
+    public mode: number;
+
+    /** V3ResNotifyModeChange subMode. */
+    public subMode: number;
+
+    /**
+     * Creates a new V3ResNotifyModeChange instance using the specified properties.
+     * @param [properties] Properties to set
+     * @returns V3ResNotifyModeChange instance
+     */
+    public static create(properties?: IV3ResNotifyModeChange): V3ResNotifyModeChange;
+
+    /**
+     * Encodes the specified V3ResNotifyModeChange message. Does not implicitly {@link V3ResNotifyModeChange.verify|verify} messages.
+     * @param message V3ResNotifyModeChange message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encode(message: IV3ResNotifyModeChange, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Encodes the specified V3ResNotifyModeChange message, length delimited. Does not implicitly {@link V3ResNotifyModeChange.verify|verify} messages.
+     * @param message V3ResNotifyModeChange message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encodeDelimited(message: IV3ResNotifyModeChange, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Decodes a V3ResNotifyModeChange message from the specified reader or buffer.
+     * @param reader Reader or buffer to decode from
+     * @param [length] Message length if known beforehand
+     * @returns V3ResNotifyModeChange
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): V3ResNotifyModeChange;
+
+    /**
+     * Decodes a V3ResNotifyModeChange message from the specified reader or buffer, length delimited.
+     * @param reader Reader or buffer to decode from
+     * @returns V3ResNotifyModeChange
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): V3ResNotifyModeChange;
+
+    /**
+     * Verifies a V3ResNotifyModeChange message.
+     * @param message Plain object to verify
+     * @returns `null` if valid, otherwise the reason why it is not
+     */
+    public static verify(message: { [k: string]: any }): (string|null);
+
+    /**
+     * Creates a V3ResNotifyModeChange message from a plain object. Also converts values to their respective internal types.
+     * @param object Plain object
+     * @returns V3ResNotifyModeChange
+     */
+    public static fromObject(object: { [k: string]: any }): V3ResNotifyModeChange;
+
+    /**
+     * Creates a plain object from a V3ResNotifyModeChange message. Also converts values to other types if specified.
+     * @param message V3ResNotifyModeChange
+     * @param [options] Conversion options
+     * @returns Plain object
+     */
+    public static toObject(message: V3ResNotifyModeChange, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+    /**
+     * Converts this V3ResNotifyModeChange to JSON.
+     * @returns JSON object
+     */
+    public toJSON(): { [k: string]: any };
+
+    /**
+     * Gets the default type url for V3ResNotifyModeChange
+     * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+     * @returns The default type url
+     */
+    public static getTypeUrl(typeUrlPrefix?: string): string;
+}
+
+/** Represents a V3ResNotifyStackingData. */
+export class V3ResNotifyStackingData implements IV3ResNotifyStackingData {
+
+    /**
+     * Constructs a new V3ResNotifyStackingData.
+     * @param [properties] Properties to set
+     */
+    constructor(properties?: IV3ResNotifyStackingData);
+
+    /** V3ResNotifyStackingData field1. */
+    public field1: number;
+
+    /** V3ResNotifyStackingData colorTemperature. */
+    public colorTemperature: number;
+
+    /** V3ResNotifyStackingData field3. */
+    public field3: number;
+
+    /** V3ResNotifyStackingData camera. */
+    public camera: number;
+
+    /**
+     * Creates a new V3ResNotifyStackingData instance using the specified properties.
+     * @param [properties] Properties to set
+     * @returns V3ResNotifyStackingData instance
+     */
+    public static create(properties?: IV3ResNotifyStackingData): V3ResNotifyStackingData;
+
+    /**
+     * Encodes the specified V3ResNotifyStackingData message. Does not implicitly {@link V3ResNotifyStackingData.verify|verify} messages.
+     * @param message V3ResNotifyStackingData message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encode(message: IV3ResNotifyStackingData, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Encodes the specified V3ResNotifyStackingData message, length delimited. Does not implicitly {@link V3ResNotifyStackingData.verify|verify} messages.
+     * @param message V3ResNotifyStackingData message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encodeDelimited(message: IV3ResNotifyStackingData, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Decodes a V3ResNotifyStackingData message from the specified reader or buffer.
+     * @param reader Reader or buffer to decode from
+     * @param [length] Message length if known beforehand
+     * @returns V3ResNotifyStackingData
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): V3ResNotifyStackingData;
+
+    /**
+     * Decodes a V3ResNotifyStackingData message from the specified reader or buffer, length delimited.
+     * @param reader Reader or buffer to decode from
+     * @returns V3ResNotifyStackingData
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): V3ResNotifyStackingData;
+
+    /**
+     * Verifies a V3ResNotifyStackingData message.
+     * @param message Plain object to verify
+     * @returns `null` if valid, otherwise the reason why it is not
+     */
+    public static verify(message: { [k: string]: any }): (string|null);
+
+    /**
+     * Creates a V3ResNotifyStackingData message from a plain object. Also converts values to their respective internal types.
+     * @param object Plain object
+     * @returns V3ResNotifyStackingData
+     */
+    public static fromObject(object: { [k: string]: any }): V3ResNotifyStackingData;
+
+    /**
+     * Creates a plain object from a V3ResNotifyStackingData message. Also converts values to other types if specified.
+     * @param message V3ResNotifyStackingData
+     * @param [options] Conversion options
+     * @returns Plain object
+     */
+    public static toObject(message: V3ResNotifyStackingData, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+    /**
+     * Converts this V3ResNotifyStackingData to JSON.
+     * @returns JSON object
+     */
+    public toJSON(): { [k: string]: any };
+
+    /**
+     * Gets the default type url for V3ResNotifyStackingData
+     * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+     * @returns The default type url
+     */
+    public static getTypeUrl(typeUrlPrefix?: string): string;
+}
+
+/** Represents a V3ResNotifyPhotoState. */
+export class V3ResNotifyPhotoState implements IV3ResNotifyPhotoState {
+
+    /**
+     * Constructs a new V3ResNotifyPhotoState.
+     * @param [properties] Properties to set
+     */
+    constructor(properties?: IV3ResNotifyPhotoState);
+
+    /** V3ResNotifyPhotoState started. */
+    public started: number;
+
+    /** V3ResNotifyPhotoState complete. */
+    public complete: number;
+
+    /**
+     * Creates a new V3ResNotifyPhotoState instance using the specified properties.
+     * @param [properties] Properties to set
+     * @returns V3ResNotifyPhotoState instance
+     */
+    public static create(properties?: IV3ResNotifyPhotoState): V3ResNotifyPhotoState;
+
+    /**
+     * Encodes the specified V3ResNotifyPhotoState message. Does not implicitly {@link V3ResNotifyPhotoState.verify|verify} messages.
+     * @param message V3ResNotifyPhotoState message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encode(message: IV3ResNotifyPhotoState, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Encodes the specified V3ResNotifyPhotoState message, length delimited. Does not implicitly {@link V3ResNotifyPhotoState.verify|verify} messages.
+     * @param message V3ResNotifyPhotoState message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encodeDelimited(message: IV3ResNotifyPhotoState, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Decodes a V3ResNotifyPhotoState message from the specified reader or buffer.
+     * @param reader Reader or buffer to decode from
+     * @param [length] Message length if known beforehand
+     * @returns V3ResNotifyPhotoState
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): V3ResNotifyPhotoState;
+
+    /**
+     * Decodes a V3ResNotifyPhotoState message from the specified reader or buffer, length delimited.
+     * @param reader Reader or buffer to decode from
+     * @returns V3ResNotifyPhotoState
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): V3ResNotifyPhotoState;
+
+    /**
+     * Verifies a V3ResNotifyPhotoState message.
+     * @param message Plain object to verify
+     * @returns `null` if valid, otherwise the reason why it is not
+     */
+    public static verify(message: { [k: string]: any }): (string|null);
+
+    /**
+     * Creates a V3ResNotifyPhotoState message from a plain object. Also converts values to their respective internal types.
+     * @param object Plain object
+     * @returns V3ResNotifyPhotoState
+     */
+    public static fromObject(object: { [k: string]: any }): V3ResNotifyPhotoState;
+
+    /**
+     * Creates a plain object from a V3ResNotifyPhotoState message. Also converts values to other types if specified.
+     * @param message V3ResNotifyPhotoState
+     * @param [options] Conversion options
+     * @returns Plain object
+     */
+    public static toObject(message: V3ResNotifyPhotoState, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+    /**
+     * Converts this V3ResNotifyPhotoState to JSON.
+     * @returns JSON object
+     */
+    public toJSON(): { [k: string]: any };
+
+    /**
+     * Gets the default type url for V3ResNotifyPhotoState
+     * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+     * @returns The default type url
+     */
+    public static getTypeUrl(typeUrlPrefix?: string): string;
+}
+
+/** Represents a V3ResNotifyBurstState. */
+export class V3ResNotifyBurstState implements IV3ResNotifyBurstState {
+
+    /**
+     * Constructs a new V3ResNotifyBurstState.
+     * @param [properties] Properties to set
+     */
+    constructor(properties?: IV3ResNotifyBurstState);
+
+    /** V3ResNotifyBurstState started. */
+    public started: number;
+
+    /** V3ResNotifyBurstState complete. */
+    public complete: number;
+
+    /**
+     * Creates a new V3ResNotifyBurstState instance using the specified properties.
+     * @param [properties] Properties to set
+     * @returns V3ResNotifyBurstState instance
+     */
+    public static create(properties?: IV3ResNotifyBurstState): V3ResNotifyBurstState;
+
+    /**
+     * Encodes the specified V3ResNotifyBurstState message. Does not implicitly {@link V3ResNotifyBurstState.verify|verify} messages.
+     * @param message V3ResNotifyBurstState message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encode(message: IV3ResNotifyBurstState, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Encodes the specified V3ResNotifyBurstState message, length delimited. Does not implicitly {@link V3ResNotifyBurstState.verify|verify} messages.
+     * @param message V3ResNotifyBurstState message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encodeDelimited(message: IV3ResNotifyBurstState, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Decodes a V3ResNotifyBurstState message from the specified reader or buffer.
+     * @param reader Reader or buffer to decode from
+     * @param [length] Message length if known beforehand
+     * @returns V3ResNotifyBurstState
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): V3ResNotifyBurstState;
+
+    /**
+     * Decodes a V3ResNotifyBurstState message from the specified reader or buffer, length delimited.
+     * @param reader Reader or buffer to decode from
+     * @returns V3ResNotifyBurstState
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): V3ResNotifyBurstState;
+
+    /**
+     * Verifies a V3ResNotifyBurstState message.
+     * @param message Plain object to verify
+     * @returns `null` if valid, otherwise the reason why it is not
+     */
+    public static verify(message: { [k: string]: any }): (string|null);
+
+    /**
+     * Creates a V3ResNotifyBurstState message from a plain object. Also converts values to their respective internal types.
+     * @param object Plain object
+     * @returns V3ResNotifyBurstState
+     */
+    public static fromObject(object: { [k: string]: any }): V3ResNotifyBurstState;
+
+    /**
+     * Creates a plain object from a V3ResNotifyBurstState message. Also converts values to other types if specified.
+     * @param message V3ResNotifyBurstState
+     * @param [options] Conversion options
+     * @returns Plain object
+     */
+    public static toObject(message: V3ResNotifyBurstState, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+    /**
+     * Converts this V3ResNotifyBurstState to JSON.
+     * @returns JSON object
+     */
+    public toJSON(): { [k: string]: any };
+
+    /**
+     * Gets the default type url for V3ResNotifyBurstState
+     * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+     * @returns The default type url
+     */
+    public static getTypeUrl(typeUrlPrefix?: string): string;
+}
+
+/** Represents a V3ResNotifyVideoState. */
+export class V3ResNotifyVideoState implements IV3ResNotifyVideoState {
+
+    /**
+     * Constructs a new V3ResNotifyVideoState.
+     * @param [properties] Properties to set
+     */
+    constructor(properties?: IV3ResNotifyVideoState);
+
+    /** V3ResNotifyVideoState started. */
+    public started: number;
+
+    /** V3ResNotifyVideoState complete. */
+    public complete: number;
+
+    /**
+     * Creates a new V3ResNotifyVideoState instance using the specified properties.
+     * @param [properties] Properties to set
+     * @returns V3ResNotifyVideoState instance
+     */
+    public static create(properties?: IV3ResNotifyVideoState): V3ResNotifyVideoState;
+
+    /**
+     * Encodes the specified V3ResNotifyVideoState message. Does not implicitly {@link V3ResNotifyVideoState.verify|verify} messages.
+     * @param message V3ResNotifyVideoState message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encode(message: IV3ResNotifyVideoState, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Encodes the specified V3ResNotifyVideoState message, length delimited. Does not implicitly {@link V3ResNotifyVideoState.verify|verify} messages.
+     * @param message V3ResNotifyVideoState message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encodeDelimited(message: IV3ResNotifyVideoState, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Decodes a V3ResNotifyVideoState message from the specified reader or buffer.
+     * @param reader Reader or buffer to decode from
+     * @param [length] Message length if known beforehand
+     * @returns V3ResNotifyVideoState
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): V3ResNotifyVideoState;
+
+    /**
+     * Decodes a V3ResNotifyVideoState message from the specified reader or buffer, length delimited.
+     * @param reader Reader or buffer to decode from
+     * @returns V3ResNotifyVideoState
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): V3ResNotifyVideoState;
+
+    /**
+     * Verifies a V3ResNotifyVideoState message.
+     * @param message Plain object to verify
+     * @returns `null` if valid, otherwise the reason why it is not
+     */
+    public static verify(message: { [k: string]: any }): (string|null);
+
+    /**
+     * Creates a V3ResNotifyVideoState message from a plain object. Also converts values to their respective internal types.
+     * @param object Plain object
+     * @returns V3ResNotifyVideoState
+     */
+    public static fromObject(object: { [k: string]: any }): V3ResNotifyVideoState;
+
+    /**
+     * Creates a plain object from a V3ResNotifyVideoState message. Also converts values to other types if specified.
+     * @param message V3ResNotifyVideoState
+     * @param [options] Conversion options
+     * @returns Plain object
+     */
+    public static toObject(message: V3ResNotifyVideoState, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+    /**
+     * Converts this V3ResNotifyVideoState to JSON.
+     * @returns JSON object
+     */
+    public toJSON(): { [k: string]: any };
+
+    /**
+     * Gets the default type url for V3ResNotifyVideoState
+     * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+     * @returns The default type url
+     */
+    public static getTypeUrl(typeUrlPrefix?: string): string;
+}
+
+/** Represents a V3ResNotifyTimelapseState. */
+export class V3ResNotifyTimelapseState implements IV3ResNotifyTimelapseState {
+
+    /**
+     * Constructs a new V3ResNotifyTimelapseState.
+     * @param [properties] Properties to set
+     */
+    constructor(properties?: IV3ResNotifyTimelapseState);
+
+    /** V3ResNotifyTimelapseState started. */
+    public started: number;
+
+    /** V3ResNotifyTimelapseState complete. */
+    public complete: number;
+
+    /**
+     * Creates a new V3ResNotifyTimelapseState instance using the specified properties.
+     * @param [properties] Properties to set
+     * @returns V3ResNotifyTimelapseState instance
+     */
+    public static create(properties?: IV3ResNotifyTimelapseState): V3ResNotifyTimelapseState;
+
+    /**
+     * Encodes the specified V3ResNotifyTimelapseState message. Does not implicitly {@link V3ResNotifyTimelapseState.verify|verify} messages.
+     * @param message V3ResNotifyTimelapseState message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encode(message: IV3ResNotifyTimelapseState, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Encodes the specified V3ResNotifyTimelapseState message, length delimited. Does not implicitly {@link V3ResNotifyTimelapseState.verify|verify} messages.
+     * @param message V3ResNotifyTimelapseState message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encodeDelimited(message: IV3ResNotifyTimelapseState, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Decodes a V3ResNotifyTimelapseState message from the specified reader or buffer.
+     * @param reader Reader or buffer to decode from
+     * @param [length] Message length if known beforehand
+     * @returns V3ResNotifyTimelapseState
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): V3ResNotifyTimelapseState;
+
+    /**
+     * Decodes a V3ResNotifyTimelapseState message from the specified reader or buffer, length delimited.
+     * @param reader Reader or buffer to decode from
+     * @returns V3ResNotifyTimelapseState
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): V3ResNotifyTimelapseState;
+
+    /**
+     * Verifies a V3ResNotifyTimelapseState message.
+     * @param message Plain object to verify
+     * @returns `null` if valid, otherwise the reason why it is not
+     */
+    public static verify(message: { [k: string]: any }): (string|null);
+
+    /**
+     * Creates a V3ResNotifyTimelapseState message from a plain object. Also converts values to their respective internal types.
+     * @param object Plain object
+     * @returns V3ResNotifyTimelapseState
+     */
+    public static fromObject(object: { [k: string]: any }): V3ResNotifyTimelapseState;
+
+    /**
+     * Creates a plain object from a V3ResNotifyTimelapseState message. Also converts values to other types if specified.
+     * @param message V3ResNotifyTimelapseState
+     * @param [options] Conversion options
+     * @returns Plain object
+     */
+    public static toObject(message: V3ResNotifyTimelapseState, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+    /**
+     * Converts this V3ResNotifyTimelapseState to JSON.
+     * @returns JSON object
+     */
+    public toJSON(): { [k: string]: any };
+
+    /**
+     * Gets the default type url for V3ResNotifyTimelapseState
+     * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+     * @returns The default type url
+     */
+    public static getTypeUrl(typeUrlPrefix?: string): string;
+}
+
+/** Represents a V3ResNotifyAutoFocusState. */
+export class V3ResNotifyAutoFocusState implements IV3ResNotifyAutoFocusState {
+
+    /**
+     * Constructs a new V3ResNotifyAutoFocusState.
+     * @param [properties] Properties to set
+     */
+    constructor(properties?: IV3ResNotifyAutoFocusState);
+
+    /** V3ResNotifyAutoFocusState state. */
+    public state: number;
+
+    /**
+     * Creates a new V3ResNotifyAutoFocusState instance using the specified properties.
+     * @param [properties] Properties to set
+     * @returns V3ResNotifyAutoFocusState instance
+     */
+    public static create(properties?: IV3ResNotifyAutoFocusState): V3ResNotifyAutoFocusState;
+
+    /**
+     * Encodes the specified V3ResNotifyAutoFocusState message. Does not implicitly {@link V3ResNotifyAutoFocusState.verify|verify} messages.
+     * @param message V3ResNotifyAutoFocusState message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encode(message: IV3ResNotifyAutoFocusState, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Encodes the specified V3ResNotifyAutoFocusState message, length delimited. Does not implicitly {@link V3ResNotifyAutoFocusState.verify|verify} messages.
+     * @param message V3ResNotifyAutoFocusState message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encodeDelimited(message: IV3ResNotifyAutoFocusState, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Decodes a V3ResNotifyAutoFocusState message from the specified reader or buffer.
+     * @param reader Reader or buffer to decode from
+     * @param [length] Message length if known beforehand
+     * @returns V3ResNotifyAutoFocusState
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): V3ResNotifyAutoFocusState;
+
+    /**
+     * Decodes a V3ResNotifyAutoFocusState message from the specified reader or buffer, length delimited.
+     * @param reader Reader or buffer to decode from
+     * @returns V3ResNotifyAutoFocusState
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): V3ResNotifyAutoFocusState;
+
+    /**
+     * Verifies a V3ResNotifyAutoFocusState message.
+     * @param message Plain object to verify
+     * @returns `null` if valid, otherwise the reason why it is not
+     */
+    public static verify(message: { [k: string]: any }): (string|null);
+
+    /**
+     * Creates a V3ResNotifyAutoFocusState message from a plain object. Also converts values to their respective internal types.
+     * @param object Plain object
+     * @returns V3ResNotifyAutoFocusState
+     */
+    public static fromObject(object: { [k: string]: any }): V3ResNotifyAutoFocusState;
+
+    /**
+     * Creates a plain object from a V3ResNotifyAutoFocusState message. Also converts values to other types if specified.
+     * @param message V3ResNotifyAutoFocusState
+     * @param [options] Conversion options
+     * @returns Plain object
+     */
+    public static toObject(message: V3ResNotifyAutoFocusState, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+    /**
+     * Converts this V3ResNotifyAutoFocusState to JSON.
+     * @returns JSON object
+     */
+    public toJSON(): { [k: string]: any };
+
+    /**
+     * Gets the default type url for V3ResNotifyAutoFocusState
+     * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+     * @returns The default type url
+     */
+    public static getTypeUrl(typeUrlPrefix?: string): string;
+}
+
+/** Represents a V3ResNotifyPhotoBurstProgress. */
+export class V3ResNotifyPhotoBurstProgress implements IV3ResNotifyPhotoBurstProgress {
+
+    /**
+     * Constructs a new V3ResNotifyPhotoBurstProgress.
+     * @param [properties] Properties to set
+     */
+    constructor(properties?: IV3ResNotifyPhotoBurstProgress);
+
+    /** V3ResNotifyPhotoBurstProgress totalFrames. */
+    public totalFrames: number;
+
+    /** V3ResNotifyPhotoBurstProgress currentFrame. */
+    public currentFrame: number;
+
+    /** V3ResNotifyPhotoBurstProgress flag. */
+    public flag: number;
+
+    /**
+     * Creates a new V3ResNotifyPhotoBurstProgress instance using the specified properties.
+     * @param [properties] Properties to set
+     * @returns V3ResNotifyPhotoBurstProgress instance
+     */
+    public static create(properties?: IV3ResNotifyPhotoBurstProgress): V3ResNotifyPhotoBurstProgress;
+
+    /**
+     * Encodes the specified V3ResNotifyPhotoBurstProgress message. Does not implicitly {@link V3ResNotifyPhotoBurstProgress.verify|verify} messages.
+     * @param message V3ResNotifyPhotoBurstProgress message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encode(message: IV3ResNotifyPhotoBurstProgress, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Encodes the specified V3ResNotifyPhotoBurstProgress message, length delimited. Does not implicitly {@link V3ResNotifyPhotoBurstProgress.verify|verify} messages.
+     * @param message V3ResNotifyPhotoBurstProgress message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encodeDelimited(message: IV3ResNotifyPhotoBurstProgress, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Decodes a V3ResNotifyPhotoBurstProgress message from the specified reader or buffer.
+     * @param reader Reader or buffer to decode from
+     * @param [length] Message length if known beforehand
+     * @returns V3ResNotifyPhotoBurstProgress
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): V3ResNotifyPhotoBurstProgress;
+
+    /**
+     * Decodes a V3ResNotifyPhotoBurstProgress message from the specified reader or buffer, length delimited.
+     * @param reader Reader or buffer to decode from
+     * @returns V3ResNotifyPhotoBurstProgress
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): V3ResNotifyPhotoBurstProgress;
+
+    /**
+     * Verifies a V3ResNotifyPhotoBurstProgress message.
+     * @param message Plain object to verify
+     * @returns `null` if valid, otherwise the reason why it is not
+     */
+    public static verify(message: { [k: string]: any }): (string|null);
+
+    /**
+     * Creates a V3ResNotifyPhotoBurstProgress message from a plain object. Also converts values to their respective internal types.
+     * @param object Plain object
+     * @returns V3ResNotifyPhotoBurstProgress
+     */
+    public static fromObject(object: { [k: string]: any }): V3ResNotifyPhotoBurstProgress;
+
+    /**
+     * Creates a plain object from a V3ResNotifyPhotoBurstProgress message. Also converts values to other types if specified.
+     * @param message V3ResNotifyPhotoBurstProgress
+     * @param [options] Conversion options
+     * @returns Plain object
+     */
+    public static toObject(message: V3ResNotifyPhotoBurstProgress, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+    /**
+     * Converts this V3ResNotifyPhotoBurstProgress to JSON.
+     * @returns JSON object
+     */
+    public toJSON(): { [k: string]: any };
+
+    /**
+     * Gets the default type url for V3ResNotifyPhotoBurstProgress
+     * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+     * @returns The default type url
+     */
+    public static getTypeUrl(typeUrlPrefix?: string): string;
+}
+
+/** Represents a V3ResNotifyVideoProgress. */
+export class V3ResNotifyVideoProgress implements IV3ResNotifyVideoProgress {
+
+    /**
+     * Constructs a new V3ResNotifyVideoProgress.
+     * @param [properties] Properties to set
+     */
+    constructor(properties?: IV3ResNotifyVideoProgress);
+
+    /** V3ResNotifyVideoProgress elapsedSec. */
+    public elapsedSec: number;
+
+    /** V3ResNotifyVideoProgress flag. */
+    public flag: number;
+
+    /**
+     * Creates a new V3ResNotifyVideoProgress instance using the specified properties.
+     * @param [properties] Properties to set
+     * @returns V3ResNotifyVideoProgress instance
+     */
+    public static create(properties?: IV3ResNotifyVideoProgress): V3ResNotifyVideoProgress;
+
+    /**
+     * Encodes the specified V3ResNotifyVideoProgress message. Does not implicitly {@link V3ResNotifyVideoProgress.verify|verify} messages.
+     * @param message V3ResNotifyVideoProgress message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encode(message: IV3ResNotifyVideoProgress, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Encodes the specified V3ResNotifyVideoProgress message, length delimited. Does not implicitly {@link V3ResNotifyVideoProgress.verify|verify} messages.
+     * @param message V3ResNotifyVideoProgress message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encodeDelimited(message: IV3ResNotifyVideoProgress, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Decodes a V3ResNotifyVideoProgress message from the specified reader or buffer.
+     * @param reader Reader or buffer to decode from
+     * @param [length] Message length if known beforehand
+     * @returns V3ResNotifyVideoProgress
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): V3ResNotifyVideoProgress;
+
+    /**
+     * Decodes a V3ResNotifyVideoProgress message from the specified reader or buffer, length delimited.
+     * @param reader Reader or buffer to decode from
+     * @returns V3ResNotifyVideoProgress
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): V3ResNotifyVideoProgress;
+
+    /**
+     * Verifies a V3ResNotifyVideoProgress message.
+     * @param message Plain object to verify
+     * @returns `null` if valid, otherwise the reason why it is not
+     */
+    public static verify(message: { [k: string]: any }): (string|null);
+
+    /**
+     * Creates a V3ResNotifyVideoProgress message from a plain object. Also converts values to their respective internal types.
+     * @param object Plain object
+     * @returns V3ResNotifyVideoProgress
+     */
+    public static fromObject(object: { [k: string]: any }): V3ResNotifyVideoProgress;
+
+    /**
+     * Creates a plain object from a V3ResNotifyVideoProgress message. Also converts values to other types if specified.
+     * @param message V3ResNotifyVideoProgress
+     * @param [options] Conversion options
+     * @returns Plain object
+     */
+    public static toObject(message: V3ResNotifyVideoProgress, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+    /**
+     * Converts this V3ResNotifyVideoProgress to JSON.
+     * @returns JSON object
+     */
+    public toJSON(): { [k: string]: any };
+
+    /**
+     * Gets the default type url for V3ResNotifyVideoProgress
+     * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+     * @returns The default type url
+     */
+    public static getTypeUrl(typeUrlPrefix?: string): string;
+}
+
+/** Represents a V3ResNotifyTimelapseProgress. */
+export class V3ResNotifyTimelapseProgress implements IV3ResNotifyTimelapseProgress {
+
+    /**
+     * Constructs a new V3ResNotifyTimelapseProgress.
+     * @param [properties] Properties to set
+     */
+    constructor(properties?: IV3ResNotifyTimelapseProgress);
+
+    /** V3ResNotifyTimelapseProgress field1. */
+    public field1: number;
+
+    /** V3ResNotifyTimelapseProgress field2. */
+    public field2: number;
+
+    /** V3ResNotifyTimelapseProgress frameCount. */
+    public frameCount: number;
+
+    /** V3ResNotifyTimelapseProgress flag. */
+    public flag: number;
+
+    /**
+     * Creates a new V3ResNotifyTimelapseProgress instance using the specified properties.
+     * @param [properties] Properties to set
+     * @returns V3ResNotifyTimelapseProgress instance
+     */
+    public static create(properties?: IV3ResNotifyTimelapseProgress): V3ResNotifyTimelapseProgress;
+
+    /**
+     * Encodes the specified V3ResNotifyTimelapseProgress message. Does not implicitly {@link V3ResNotifyTimelapseProgress.verify|verify} messages.
+     * @param message V3ResNotifyTimelapseProgress message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encode(message: IV3ResNotifyTimelapseProgress, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Encodes the specified V3ResNotifyTimelapseProgress message, length delimited. Does not implicitly {@link V3ResNotifyTimelapseProgress.verify|verify} messages.
+     * @param message V3ResNotifyTimelapseProgress message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encodeDelimited(message: IV3ResNotifyTimelapseProgress, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Decodes a V3ResNotifyTimelapseProgress message from the specified reader or buffer.
+     * @param reader Reader or buffer to decode from
+     * @param [length] Message length if known beforehand
+     * @returns V3ResNotifyTimelapseProgress
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): V3ResNotifyTimelapseProgress;
+
+    /**
+     * Decodes a V3ResNotifyTimelapseProgress message from the specified reader or buffer, length delimited.
+     * @param reader Reader or buffer to decode from
+     * @returns V3ResNotifyTimelapseProgress
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): V3ResNotifyTimelapseProgress;
+
+    /**
+     * Verifies a V3ResNotifyTimelapseProgress message.
+     * @param message Plain object to verify
+     * @returns `null` if valid, otherwise the reason why it is not
+     */
+    public static verify(message: { [k: string]: any }): (string|null);
+
+    /**
+     * Creates a V3ResNotifyTimelapseProgress message from a plain object. Also converts values to their respective internal types.
+     * @param object Plain object
+     * @returns V3ResNotifyTimelapseProgress
+     */
+    public static fromObject(object: { [k: string]: any }): V3ResNotifyTimelapseProgress;
+
+    /**
+     * Creates a plain object from a V3ResNotifyTimelapseProgress message. Also converts values to other types if specified.
+     * @param message V3ResNotifyTimelapseProgress
+     * @param [options] Conversion options
+     * @returns Plain object
+     */
+    public static toObject(message: V3ResNotifyTimelapseProgress, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+    /**
+     * Converts this V3ResNotifyTimelapseProgress to JSON.
+     * @returns JSON object
+     */
+    public toJSON(): { [k: string]: any };
+
+    /**
+     * Gets the default type url for V3ResNotifyTimelapseProgress
+     * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+     * @returns The default type url
+     */
+    public static getTypeUrl(typeUrlPrefix?: string): string;
+}
+
+/** Represents a V3ResNotifyCaliFrameState. */
+export class V3ResNotifyCaliFrameState implements IV3ResNotifyCaliFrameState {
+
+    /**
+     * Constructs a new V3ResNotifyCaliFrameState.
+     * @param [properties] Properties to set
+     */
+    constructor(properties?: IV3ResNotifyCaliFrameState);
+
+    /** V3ResNotifyCaliFrameState state. */
+    public state: number;
+
+    /** V3ResNotifyCaliFrameState cameraType. */
+    public cameraType: number;
+
+    /** V3ResNotifyCaliFrameState caliFrameType. */
+    public caliFrameType: number;
+
+    /**
+     * Creates a new V3ResNotifyCaliFrameState instance using the specified properties.
+     * @param [properties] Properties to set
+     * @returns V3ResNotifyCaliFrameState instance
+     */
+    public static create(properties?: IV3ResNotifyCaliFrameState): V3ResNotifyCaliFrameState;
+
+    /**
+     * Encodes the specified V3ResNotifyCaliFrameState message. Does not implicitly {@link V3ResNotifyCaliFrameState.verify|verify} messages.
+     * @param message V3ResNotifyCaliFrameState message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encode(message: IV3ResNotifyCaliFrameState, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Encodes the specified V3ResNotifyCaliFrameState message, length delimited. Does not implicitly {@link V3ResNotifyCaliFrameState.verify|verify} messages.
+     * @param message V3ResNotifyCaliFrameState message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encodeDelimited(message: IV3ResNotifyCaliFrameState, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Decodes a V3ResNotifyCaliFrameState message from the specified reader or buffer.
+     * @param reader Reader or buffer to decode from
+     * @param [length] Message length if known beforehand
+     * @returns V3ResNotifyCaliFrameState
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): V3ResNotifyCaliFrameState;
+
+    /**
+     * Decodes a V3ResNotifyCaliFrameState message from the specified reader or buffer, length delimited.
+     * @param reader Reader or buffer to decode from
+     * @returns V3ResNotifyCaliFrameState
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): V3ResNotifyCaliFrameState;
+
+    /**
+     * Verifies a V3ResNotifyCaliFrameState message.
+     * @param message Plain object to verify
+     * @returns `null` if valid, otherwise the reason why it is not
+     */
+    public static verify(message: { [k: string]: any }): (string|null);
+
+    /**
+     * Creates a V3ResNotifyCaliFrameState message from a plain object. Also converts values to their respective internal types.
+     * @param object Plain object
+     * @returns V3ResNotifyCaliFrameState
+     */
+    public static fromObject(object: { [k: string]: any }): V3ResNotifyCaliFrameState;
+
+    /**
+     * Creates a plain object from a V3ResNotifyCaliFrameState message. Also converts values to other types if specified.
+     * @param message V3ResNotifyCaliFrameState
+     * @param [options] Conversion options
+     * @returns Plain object
+     */
+    public static toObject(message: V3ResNotifyCaliFrameState, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+    /**
+     * Converts this V3ResNotifyCaliFrameState to JSON.
+     * @returns JSON object
+     */
+    public toJSON(): { [k: string]: any };
+
+    /**
+     * Gets the default type url for V3ResNotifyCaliFrameState
+     * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+     * @returns The default type url
+     */
+    public static getTypeUrl(typeUrlPrefix?: string): string;
+}
+
+/** Represents a V3ResNotifyCaliFrameProgress. */
+export class V3ResNotifyCaliFrameProgress implements IV3ResNotifyCaliFrameProgress {
+
+    /**
+     * Constructs a new V3ResNotifyCaliFrameProgress.
+     * @param [properties] Properties to set
+     */
+    constructor(properties?: IV3ResNotifyCaliFrameProgress);
+
+    /** V3ResNotifyCaliFrameProgress progress. */
+    public progress: number;
+
+    /** V3ResNotifyCaliFrameProgress cameraType. */
+    public cameraType: number;
+
+    /** V3ResNotifyCaliFrameProgress caliFrameType. */
+    public caliFrameType: number;
+
+    /**
+     * Creates a new V3ResNotifyCaliFrameProgress instance using the specified properties.
+     * @param [properties] Properties to set
+     * @returns V3ResNotifyCaliFrameProgress instance
+     */
+    public static create(properties?: IV3ResNotifyCaliFrameProgress): V3ResNotifyCaliFrameProgress;
+
+    /**
+     * Encodes the specified V3ResNotifyCaliFrameProgress message. Does not implicitly {@link V3ResNotifyCaliFrameProgress.verify|verify} messages.
+     * @param message V3ResNotifyCaliFrameProgress message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encode(message: IV3ResNotifyCaliFrameProgress, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Encodes the specified V3ResNotifyCaliFrameProgress message, length delimited. Does not implicitly {@link V3ResNotifyCaliFrameProgress.verify|verify} messages.
+     * @param message V3ResNotifyCaliFrameProgress message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encodeDelimited(message: IV3ResNotifyCaliFrameProgress, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Decodes a V3ResNotifyCaliFrameProgress message from the specified reader or buffer.
+     * @param reader Reader or buffer to decode from
+     * @param [length] Message length if known beforehand
+     * @returns V3ResNotifyCaliFrameProgress
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): V3ResNotifyCaliFrameProgress;
+
+    /**
+     * Decodes a V3ResNotifyCaliFrameProgress message from the specified reader or buffer, length delimited.
+     * @param reader Reader or buffer to decode from
+     * @returns V3ResNotifyCaliFrameProgress
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): V3ResNotifyCaliFrameProgress;
+
+    /**
+     * Verifies a V3ResNotifyCaliFrameProgress message.
+     * @param message Plain object to verify
+     * @returns `null` if valid, otherwise the reason why it is not
+     */
+    public static verify(message: { [k: string]: any }): (string|null);
+
+    /**
+     * Creates a V3ResNotifyCaliFrameProgress message from a plain object. Also converts values to their respective internal types.
+     * @param object Plain object
+     * @returns V3ResNotifyCaliFrameProgress
+     */
+    public static fromObject(object: { [k: string]: any }): V3ResNotifyCaliFrameProgress;
+
+    /**
+     * Creates a plain object from a V3ResNotifyCaliFrameProgress message. Also converts values to other types if specified.
+     * @param message V3ResNotifyCaliFrameProgress
+     * @param [options] Conversion options
+     * @returns Plain object
+     */
+    public static toObject(message: V3ResNotifyCaliFrameProgress, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+    /**
+     * Converts this V3ResNotifyCaliFrameProgress to JSON.
+     * @returns JSON object
+     */
+    public toJSON(): { [k: string]: any };
+
+    /**
+     * Gets the default type url for V3ResNotifyCaliFrameProgress
+     * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+     * @returns The default type url
+     */
+    public static getTypeUrl(typeUrlPrefix?: string): string;
+}
+
+/** Represents a V3ResNotifyTemperature2. */
+export class V3ResNotifyTemperature2 implements IV3ResNotifyTemperature2 {
+
+    /**
+     * Constructs a new V3ResNotifyTemperature2.
+     * @param [properties] Properties to set
+     */
+    constructor(properties?: IV3ResNotifyTemperature2);
+
+    /** V3ResNotifyTemperature2 temperature. */
+    public temperature: number;
+
+    /**
+     * Creates a new V3ResNotifyTemperature2 instance using the specified properties.
+     * @param [properties] Properties to set
+     * @returns V3ResNotifyTemperature2 instance
+     */
+    public static create(properties?: IV3ResNotifyTemperature2): V3ResNotifyTemperature2;
+
+    /**
+     * Encodes the specified V3ResNotifyTemperature2 message. Does not implicitly {@link V3ResNotifyTemperature2.verify|verify} messages.
+     * @param message V3ResNotifyTemperature2 message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encode(message: IV3ResNotifyTemperature2, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Encodes the specified V3ResNotifyTemperature2 message, length delimited. Does not implicitly {@link V3ResNotifyTemperature2.verify|verify} messages.
+     * @param message V3ResNotifyTemperature2 message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encodeDelimited(message: IV3ResNotifyTemperature2, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Decodes a V3ResNotifyTemperature2 message from the specified reader or buffer.
+     * @param reader Reader or buffer to decode from
+     * @param [length] Message length if known beforehand
+     * @returns V3ResNotifyTemperature2
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): V3ResNotifyTemperature2;
+
+    /**
+     * Decodes a V3ResNotifyTemperature2 message from the specified reader or buffer, length delimited.
+     * @param reader Reader or buffer to decode from
+     * @returns V3ResNotifyTemperature2
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): V3ResNotifyTemperature2;
+
+    /**
+     * Verifies a V3ResNotifyTemperature2 message.
+     * @param message Plain object to verify
+     * @returns `null` if valid, otherwise the reason why it is not
+     */
+    public static verify(message: { [k: string]: any }): (string|null);
+
+    /**
+     * Creates a V3ResNotifyTemperature2 message from a plain object. Also converts values to their respective internal types.
+     * @param object Plain object
+     * @returns V3ResNotifyTemperature2
+     */
+    public static fromObject(object: { [k: string]: any }): V3ResNotifyTemperature2;
+
+    /**
+     * Creates a plain object from a V3ResNotifyTemperature2 message. Also converts values to other types if specified.
+     * @param message V3ResNotifyTemperature2
+     * @param [options] Conversion options
+     * @returns Plain object
+     */
+    public static toObject(message: V3ResNotifyTemperature2, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+    /**
+     * Converts this V3ResNotifyTemperature2 to JSON.
+     * @returns JSON object
+     */
+    public toJSON(): { [k: string]: any };
+
+    /**
+     * Gets the default type url for V3ResNotifyTemperature2
+     * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+     * @returns The default type url
+     */
+    public static getTypeUrl(typeUrlPrefix?: string): string;
+}
+
+/** Represents a V3ResNotifyObservationState. */
+export class V3ResNotifyObservationState implements IV3ResNotifyObservationState {
+
+    /**
+     * Constructs a new V3ResNotifyObservationState.
+     * @param [properties] Properties to set
+     */
+    constructor(properties?: IV3ResNotifyObservationState);
+
+    /** V3ResNotifyObservationState state. */
+    public state: number;
+
+    /**
+     * Creates a new V3ResNotifyObservationState instance using the specified properties.
+     * @param [properties] Properties to set
+     * @returns V3ResNotifyObservationState instance
+     */
+    public static create(properties?: IV3ResNotifyObservationState): V3ResNotifyObservationState;
+
+    /**
+     * Encodes the specified V3ResNotifyObservationState message. Does not implicitly {@link V3ResNotifyObservationState.verify|verify} messages.
+     * @param message V3ResNotifyObservationState message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encode(message: IV3ResNotifyObservationState, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Encodes the specified V3ResNotifyObservationState message, length delimited. Does not implicitly {@link V3ResNotifyObservationState.verify|verify} messages.
+     * @param message V3ResNotifyObservationState message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encodeDelimited(message: IV3ResNotifyObservationState, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Decodes a V3ResNotifyObservationState message from the specified reader or buffer.
+     * @param reader Reader or buffer to decode from
+     * @param [length] Message length if known beforehand
+     * @returns V3ResNotifyObservationState
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): V3ResNotifyObservationState;
+
+    /**
+     * Decodes a V3ResNotifyObservationState message from the specified reader or buffer, length delimited.
+     * @param reader Reader or buffer to decode from
+     * @returns V3ResNotifyObservationState
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): V3ResNotifyObservationState;
+
+    /**
+     * Verifies a V3ResNotifyObservationState message.
+     * @param message Plain object to verify
+     * @returns `null` if valid, otherwise the reason why it is not
+     */
+    public static verify(message: { [k: string]: any }): (string|null);
+
+    /**
+     * Creates a V3ResNotifyObservationState message from a plain object. Also converts values to their respective internal types.
+     * @param object Plain object
+     * @returns V3ResNotifyObservationState
+     */
+    public static fromObject(object: { [k: string]: any }): V3ResNotifyObservationState;
+
+    /**
+     * Creates a plain object from a V3ResNotifyObservationState message. Also converts values to other types if specified.
+     * @param message V3ResNotifyObservationState
+     * @param [options] Conversion options
+     * @returns Plain object
+     */
+    public static toObject(message: V3ResNotifyObservationState, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+    /**
+     * Converts this V3ResNotifyObservationState to JSON.
+     * @returns JSON object
+     */
+    public toJSON(): { [k: string]: any };
+
+    /**
+     * Gets the default type url for V3ResNotifyObservationState
+     * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+     * @returns The default type url
+     */
+    public static getTypeUrl(typeUrlPrefix?: string): string;
+}
+
+/** Represents a V3ResNotifyStateLatch. */
+export class V3ResNotifyStateLatch implements IV3ResNotifyStateLatch {
+
+    /**
+     * Constructs a new V3ResNotifyStateLatch.
+     * @param [properties] Properties to set
+     */
+    constructor(properties?: IV3ResNotifyStateLatch);
+
+    /** V3ResNotifyStateLatch state. */
+    public state: number;
+
+    /**
+     * Creates a new V3ResNotifyStateLatch instance using the specified properties.
+     * @param [properties] Properties to set
+     * @returns V3ResNotifyStateLatch instance
+     */
+    public static create(properties?: IV3ResNotifyStateLatch): V3ResNotifyStateLatch;
+
+    /**
+     * Encodes the specified V3ResNotifyStateLatch message. Does not implicitly {@link V3ResNotifyStateLatch.verify|verify} messages.
+     * @param message V3ResNotifyStateLatch message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encode(message: IV3ResNotifyStateLatch, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Encodes the specified V3ResNotifyStateLatch message, length delimited. Does not implicitly {@link V3ResNotifyStateLatch.verify|verify} messages.
+     * @param message V3ResNotifyStateLatch message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encodeDelimited(message: IV3ResNotifyStateLatch, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Decodes a V3ResNotifyStateLatch message from the specified reader or buffer.
+     * @param reader Reader or buffer to decode from
+     * @param [length] Message length if known beforehand
+     * @returns V3ResNotifyStateLatch
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): V3ResNotifyStateLatch;
+
+    /**
+     * Decodes a V3ResNotifyStateLatch message from the specified reader or buffer, length delimited.
+     * @param reader Reader or buffer to decode from
+     * @returns V3ResNotifyStateLatch
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): V3ResNotifyStateLatch;
+
+    /**
+     * Verifies a V3ResNotifyStateLatch message.
+     * @param message Plain object to verify
+     * @returns `null` if valid, otherwise the reason why it is not
+     */
+    public static verify(message: { [k: string]: any }): (string|null);
+
+    /**
+     * Creates a V3ResNotifyStateLatch message from a plain object. Also converts values to their respective internal types.
+     * @param object Plain object
+     * @returns V3ResNotifyStateLatch
+     */
+    public static fromObject(object: { [k: string]: any }): V3ResNotifyStateLatch;
+
+    /**
+     * Creates a plain object from a V3ResNotifyStateLatch message. Also converts values to other types if specified.
+     * @param message V3ResNotifyStateLatch
+     * @param [options] Conversion options
+     * @returns Plain object
+     */
+    public static toObject(message: V3ResNotifyStateLatch, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+    /**
+     * Converts this V3ResNotifyStateLatch to JSON.
+     * @returns JSON object
+     */
+    public toJSON(): { [k: string]: any };
+
+    /**
+     * Gets the default type url for V3ResNotifyStateLatch
+     * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+     * @returns The default type url
+     */
+    public static getTypeUrl(typeUrlPrefix?: string): string;
+}
+
+/** Represents a V3ResNotifyAutoFocusStateAlt. */
+export class V3ResNotifyAutoFocusStateAlt implements IV3ResNotifyAutoFocusStateAlt {
+
+    /**
+     * Constructs a new V3ResNotifyAutoFocusStateAlt.
+     * @param [properties] Properties to set
+     */
+    constructor(properties?: IV3ResNotifyAutoFocusStateAlt);
+
+    /** V3ResNotifyAutoFocusStateAlt state. */
+    public state: number;
+
+    /**
+     * Creates a new V3ResNotifyAutoFocusStateAlt instance using the specified properties.
+     * @param [properties] Properties to set
+     * @returns V3ResNotifyAutoFocusStateAlt instance
+     */
+    public static create(properties?: IV3ResNotifyAutoFocusStateAlt): V3ResNotifyAutoFocusStateAlt;
+
+    /**
+     * Encodes the specified V3ResNotifyAutoFocusStateAlt message. Does not implicitly {@link V3ResNotifyAutoFocusStateAlt.verify|verify} messages.
+     * @param message V3ResNotifyAutoFocusStateAlt message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encode(message: IV3ResNotifyAutoFocusStateAlt, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Encodes the specified V3ResNotifyAutoFocusStateAlt message, length delimited. Does not implicitly {@link V3ResNotifyAutoFocusStateAlt.verify|verify} messages.
+     * @param message V3ResNotifyAutoFocusStateAlt message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encodeDelimited(message: IV3ResNotifyAutoFocusStateAlt, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Decodes a V3ResNotifyAutoFocusStateAlt message from the specified reader or buffer.
+     * @param reader Reader or buffer to decode from
+     * @param [length] Message length if known beforehand
+     * @returns V3ResNotifyAutoFocusStateAlt
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): V3ResNotifyAutoFocusStateAlt;
+
+    /**
+     * Decodes a V3ResNotifyAutoFocusStateAlt message from the specified reader or buffer, length delimited.
+     * @param reader Reader or buffer to decode from
+     * @returns V3ResNotifyAutoFocusStateAlt
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): V3ResNotifyAutoFocusStateAlt;
+
+    /**
+     * Verifies a V3ResNotifyAutoFocusStateAlt message.
+     * @param message Plain object to verify
+     * @returns `null` if valid, otherwise the reason why it is not
+     */
+    public static verify(message: { [k: string]: any }): (string|null);
+
+    /**
+     * Creates a V3ResNotifyAutoFocusStateAlt message from a plain object. Also converts values to their respective internal types.
+     * @param object Plain object
+     * @returns V3ResNotifyAutoFocusStateAlt
+     */
+    public static fromObject(object: { [k: string]: any }): V3ResNotifyAutoFocusStateAlt;
+
+    /**
+     * Creates a plain object from a V3ResNotifyAutoFocusStateAlt message. Also converts values to other types if specified.
+     * @param message V3ResNotifyAutoFocusStateAlt
+     * @param [options] Conversion options
+     * @returns Plain object
+     */
+    public static toObject(message: V3ResNotifyAutoFocusStateAlt, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+    /**
+     * Converts this V3ResNotifyAutoFocusStateAlt to JSON.
+     * @returns JSON object
+     */
+    public toJSON(): { [k: string]: any };
+
+    /**
+     * Gets the default type url for V3ResNotifyAutoFocusStateAlt
+     * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+     * @returns The default type url
+     */
+    public static getTypeUrl(typeUrlPrefix?: string): string;
+}
+
+/** Represents a V3ResNotifyExposureDuration. */
+export class V3ResNotifyExposureDuration implements IV3ResNotifyExposureDuration {
+
+    /**
+     * Constructs a new V3ResNotifyExposureDuration.
+     * @param [properties] Properties to set
+     */
+    constructor(properties?: IV3ResNotifyExposureDuration);
+
+    /** V3ResNotifyExposureDuration duration. */
+    public duration: number;
+
+    /**
+     * Creates a new V3ResNotifyExposureDuration instance using the specified properties.
+     * @param [properties] Properties to set
+     * @returns V3ResNotifyExposureDuration instance
+     */
+    public static create(properties?: IV3ResNotifyExposureDuration): V3ResNotifyExposureDuration;
+
+    /**
+     * Encodes the specified V3ResNotifyExposureDuration message. Does not implicitly {@link V3ResNotifyExposureDuration.verify|verify} messages.
+     * @param message V3ResNotifyExposureDuration message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encode(message: IV3ResNotifyExposureDuration, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Encodes the specified V3ResNotifyExposureDuration message, length delimited. Does not implicitly {@link V3ResNotifyExposureDuration.verify|verify} messages.
+     * @param message V3ResNotifyExposureDuration message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encodeDelimited(message: IV3ResNotifyExposureDuration, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Decodes a V3ResNotifyExposureDuration message from the specified reader or buffer.
+     * @param reader Reader or buffer to decode from
+     * @param [length] Message length if known beforehand
+     * @returns V3ResNotifyExposureDuration
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): V3ResNotifyExposureDuration;
+
+    /**
+     * Decodes a V3ResNotifyExposureDuration message from the specified reader or buffer, length delimited.
+     * @param reader Reader or buffer to decode from
+     * @returns V3ResNotifyExposureDuration
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): V3ResNotifyExposureDuration;
+
+    /**
+     * Verifies a V3ResNotifyExposureDuration message.
+     * @param message Plain object to verify
+     * @returns `null` if valid, otherwise the reason why it is not
+     */
+    public static verify(message: { [k: string]: any }): (string|null);
+
+    /**
+     * Creates a V3ResNotifyExposureDuration message from a plain object. Also converts values to their respective internal types.
+     * @param object Plain object
+     * @returns V3ResNotifyExposureDuration
+     */
+    public static fromObject(object: { [k: string]: any }): V3ResNotifyExposureDuration;
+
+    /**
+     * Creates a plain object from a V3ResNotifyExposureDuration message. Also converts values to other types if specified.
+     * @param message V3ResNotifyExposureDuration
+     * @param [options] Conversion options
+     * @returns Plain object
+     */
+    public static toObject(message: V3ResNotifyExposureDuration, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+    /**
+     * Converts this V3ResNotifyExposureDuration to JSON.
+     * @returns JSON object
+     */
+    public toJSON(): { [k: string]: any };
+
+    /**
+     * Gets the default type url for V3ResNotifyExposureDuration
+     * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+     * @returns The default type url
+     */
+    public static getTypeUrl(typeUrlPrefix?: string): string;
+}
+
+/** Represents a V3ReqSetGPSLocation. */
+export class V3ReqSetGPSLocation implements IV3ReqSetGPSLocation {
+
+    /**
+     * Constructs a new V3ReqSetGPSLocation.
+     * @param [properties] Properties to set
+     */
+    constructor(properties?: IV3ReqSetGPSLocation);
+
+    /** V3ReqSetGPSLocation lat. */
+    public lat: number;
+
+    /** V3ReqSetGPSLocation lon. */
+    public lon: number;
+
+    /** V3ReqSetGPSLocation alt. */
+    public alt: number;
+
+    /** V3ReqSetGPSLocation locationName. */
+    public locationName: string;
+
+    /**
+     * Creates a new V3ReqSetGPSLocation instance using the specified properties.
+     * @param [properties] Properties to set
+     * @returns V3ReqSetGPSLocation instance
+     */
+    public static create(properties?: IV3ReqSetGPSLocation): V3ReqSetGPSLocation;
+
+    /**
+     * Encodes the specified V3ReqSetGPSLocation message. Does not implicitly {@link V3ReqSetGPSLocation.verify|verify} messages.
+     * @param message V3ReqSetGPSLocation message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encode(message: IV3ReqSetGPSLocation, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Encodes the specified V3ReqSetGPSLocation message, length delimited. Does not implicitly {@link V3ReqSetGPSLocation.verify|verify} messages.
+     * @param message V3ReqSetGPSLocation message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encodeDelimited(message: IV3ReqSetGPSLocation, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Decodes a V3ReqSetGPSLocation message from the specified reader or buffer.
+     * @param reader Reader or buffer to decode from
+     * @param [length] Message length if known beforehand
+     * @returns V3ReqSetGPSLocation
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): V3ReqSetGPSLocation;
+
+    /**
+     * Decodes a V3ReqSetGPSLocation message from the specified reader or buffer, length delimited.
+     * @param reader Reader or buffer to decode from
+     * @returns V3ReqSetGPSLocation
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): V3ReqSetGPSLocation;
+
+    /**
+     * Verifies a V3ReqSetGPSLocation message.
+     * @param message Plain object to verify
+     * @returns `null` if valid, otherwise the reason why it is not
+     */
+    public static verify(message: { [k: string]: any }): (string|null);
+
+    /**
+     * Creates a V3ReqSetGPSLocation message from a plain object. Also converts values to their respective internal types.
+     * @param object Plain object
+     * @returns V3ReqSetGPSLocation
+     */
+    public static fromObject(object: { [k: string]: any }): V3ReqSetGPSLocation;
+
+    /**
+     * Creates a plain object from a V3ReqSetGPSLocation message. Also converts values to other types if specified.
+     * @param message V3ReqSetGPSLocation
+     * @param [options] Conversion options
+     * @returns Plain object
+     */
+    public static toObject(message: V3ReqSetGPSLocation, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+    /**
+     * Converts this V3ReqSetGPSLocation to JSON.
+     * @returns JSON object
+     */
+    public toJSON(): { [k: string]: any };
+
+    /**
+     * Gets the default type url for V3ReqSetGPSLocation
+     * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+     * @returns The default type url
+     */
+    public static getTypeUrl(typeUrlPrefix?: string): string;
+}
+
+/** VoiceCommandType enum. */
+export enum VoiceCommandType {
+    VOICE_CMD_UNKNOWN = 0,
+    VOICE_CMD_GET_STATUS = 1,
+    VOICE_CMD_TAKE_PHOTO = 2,
+    VOICE_CMD_START_RECORD = 3,
+    VOICE_CMD_STOP_RECORD = 4,
+    VOICE_CMD_START_TIMELAPSE = 5,
+    VOICE_CMD_STOP_TIMELAPSE = 6,
+    VOICE_CMD_START_BURST = 7,
+    VOICE_CMD_STOP_BURST = 8,
+    VOICE_CMD_START_ASTRO = 9,
+    VOICE_CMD_STOP_ASTRO = 10,
+    VOICE_CMD_START_SENTRY = 11,
+    VOICE_CMD_STOP_SENTRY = 12,
+    VOICE_CMD_MOVE = 13,
+    VOICE_CMD_GOTO_TARGET = 14,
+    VOICE_CMD_CALIBRATION = 15,
+    VOICE_CMD_AUTO_FOCUS = 16,
+    VOICE_CMD_STOP_FOCUS = 17,
+    VOICE_CMD_STOP_ALL = 18
+}
+
+/** Represents a ReqVoiceCommand. */
+export class ReqVoiceCommand implements IReqVoiceCommand {
+
+    /**
+     * Constructs a new ReqVoiceCommand.
+     * @param [properties] Properties to set
+     */
+    constructor(properties?: IReqVoiceCommand);
+
+    /** ReqVoiceCommand commandType. */
+    public commandType: VoiceCommandType;
+
+    /**
+     * Creates a new ReqVoiceCommand instance using the specified properties.
+     * @param [properties] Properties to set
+     * @returns ReqVoiceCommand instance
+     */
+    public static create(properties?: IReqVoiceCommand): ReqVoiceCommand;
+
+    /**
+     * Encodes the specified ReqVoiceCommand message. Does not implicitly {@link ReqVoiceCommand.verify|verify} messages.
+     * @param message ReqVoiceCommand message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encode(message: IReqVoiceCommand, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Encodes the specified ReqVoiceCommand message, length delimited. Does not implicitly {@link ReqVoiceCommand.verify|verify} messages.
+     * @param message ReqVoiceCommand message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encodeDelimited(message: IReqVoiceCommand, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Decodes a ReqVoiceCommand message from the specified reader or buffer.
+     * @param reader Reader or buffer to decode from
+     * @param [length] Message length if known beforehand
+     * @returns ReqVoiceCommand
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): ReqVoiceCommand;
+
+    /**
+     * Decodes a ReqVoiceCommand message from the specified reader or buffer, length delimited.
+     * @param reader Reader or buffer to decode from
+     * @returns ReqVoiceCommand
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): ReqVoiceCommand;
+
+    /**
+     * Verifies a ReqVoiceCommand message.
+     * @param message Plain object to verify
+     * @returns `null` if valid, otherwise the reason why it is not
+     */
+    public static verify(message: { [k: string]: any }): (string|null);
+
+    /**
+     * Creates a ReqVoiceCommand message from a plain object. Also converts values to their respective internal types.
+     * @param object Plain object
+     * @returns ReqVoiceCommand
+     */
+    public static fromObject(object: { [k: string]: any }): ReqVoiceCommand;
+
+    /**
+     * Creates a plain object from a ReqVoiceCommand message. Also converts values to other types if specified.
+     * @param message ReqVoiceCommand
+     * @param [options] Conversion options
+     * @returns Plain object
+     */
+    public static toObject(message: ReqVoiceCommand, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+    /**
+     * Converts this ReqVoiceCommand to JSON.
+     * @returns JSON object
+     */
+    public toJSON(): { [k: string]: any };
+
+    /**
+     * Gets the default type url for ReqVoiceCommand
      * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
      * @returns The default type url
      */

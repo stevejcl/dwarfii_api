@@ -10,4 +10,14 @@ export * from "./src/system.js";
 export * from "./src/websocket_class.js";
 export * from "./src/bluetooth.js";
 export * from "./src/motor.js";
+export * from "./src/v3_motor.js";
+export * from "./src/v3_camera_tele.js";
+export * from "./src/v3_camera_wide.js";
+export * from "./src/v3_astro.js";
+export * from "./src/v3_system.js";
+export * from "./src/v3_focus.js";
+export * from "./src/v3_device_config.js";
+export * from "./src/v3_camera_params.js";
+export * from "./src/v3_schedule.js";
+export * from "./src/http_api.js";
 //# sourceMappingURL=index.d.ts.map
