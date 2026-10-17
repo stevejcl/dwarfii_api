@@ -2,7 +2,7 @@
 
 import assert from "node:assert/strict";
 
-import { messageStartTeleMosaic } from "../../index.js";
+import { messageStartTeleMosaic } from "../../dist/index.js";
 import {
   Dwarfii_Api,
   analyzePacket,

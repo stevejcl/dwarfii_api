@@ -1,6 +1,11 @@
 {
   "source": {
     "include": "./src",
+    "exclude": [
+      "./src/protobuf/current.js",
+      "./src/protobuf/current-fields.js",
+      "./src/current_errors.js"
+    ],
     "includePattern": "\\.js$",
     "excludePattern": "(node_modules/|docs)"
   },

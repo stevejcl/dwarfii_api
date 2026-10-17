@@ -20,3 +20,8 @@ export * from "./src/v3_device_config.js";
 export * from "./src/v3_camera_params.js";
 export * from "./src/v3_schedule.js";
 export * from "./src/http_api.js";
+export * from "./src/current_protocol.js";
+export * from "./src/current_session.js";
+export * from "./src/current_catalog.js";
+export * from "./src/current_websocket.js";
+export * from "./src/current_capture.js";

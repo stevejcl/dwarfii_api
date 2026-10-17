@@ -412,9 +412,7 @@
 <dl class="details">
     
     <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li>Decode a paramId into its constituent parts.
-
-Accepts number, string (decimal), BigInt, or protobuf.js Long object.</li></ul></dd>
+    <dd class="tag-description"><ul class="dummy"><li>Decode a paramId into its constituent parts.Accepts number, string (decimal), BigInt, or protobuf.js Long object.</li></ul></dd>
     
 
     
@@ -577,16 +575,7 @@ Accepts number, string (decimal), BigInt, or protobuf.js Long object.</li></ul><
 <dl class="details">
     
     <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li>Encode a paramId from its constituent parts.
-
-paramId layout (64-bit):
-  bits 63..56 = shootingMode  (e.g. 0=photo, 1=video, 2=astro)
-  bits 55..48 = category      (parameter group)
-  bits 47..16 = reserved (0)
-  bits 15..8  = cameraId      (0=tele, 1=wide)
-  bits 7..0   = paramIndex    (parameter index within the category)
-
-Returns a decimal string suitable for protobuf.js int64 fields.</li></ul></dd>
+    <dd class="tag-description"><ul class="dummy"><li>Encode a paramId from its constituent parts.paramId layout (64-bit):  bits 63..56 = shootingMode  (e.g. 0=photo, 1=video, 2=astro)  bits 55..48 = category      (parameter group)  bits 47..44 = cameraId      (0=tele, 1=wide, 15=shared)  bits 43..8  = reserved (0)  bits 7..0   = paramIndex    (parameter index within the category)Returns a decimal string suitable for protobuf.js int64 fields.</li></ul></dd>
     
 
     
@@ -901,13 +890,7 @@ Returns a decimal string suitable for protobuf.js int64 fields.</li></ul></dd>
 <dl class="details">
     
     <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li>V3: Set the astronomy live-stacking frame count.
-
-V3 app captures show this absolute `16703` write immediately after
-`11041`. The firmware may otherwise retain an earlier count even when
-`11041` echoes the newly requested pipe string.
-
-This command belongs to the shared DWARF 2, DWARF 3, and DWARF mini V3 API.</li></ul></dd>
+    <dd class="tag-description"><ul class="dummy"><li>V3: Set the astronomy live-stacking frame count.V3 app captures show this absolute `16703` write immediately after`11041`. The firmware may otherwise retain an earlier count even when`11041` echoes the newly requested pipe string.This command belongs to the shared DWARF 2, DWARF 3, and DWARF mini V3 API.</li></ul></dd>
     
 
     
@@ -1202,8 +1185,7 @@ This command belongs to the shared DWARF 2, DWARF 3, and DWARF mini V3 API.</li>
 <dl class="details">
     
     <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li>V3: Set camera parameter (general)
-Create Encoded Packet for the command CMD_V3_CAMERA_PARAMS_SET_PARAM (16700)</li></ul></dd>
+    <dd class="tag-description"><ul class="dummy"><li>V3: Set camera parameter (general)Create Encoded Packet for the command CMD_V3_CAMERA_PARAMS_SET_PARAM (16700)</li></ul></dd>
     
 
     
@@ -1452,8 +1434,7 @@ Create Encoded Packet for the command CMD_V3_CAMERA_PARAMS_SET_PARAM (16700)</li
 <dl class="details">
     
     <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li>V3: Set exposure/gain parameter
-Create Encoded Packet for the command CMD_V3_CAMERA_PARAMS_SET_EXP_GAIN (16701)</li></ul></dd>
+    <dd class="tag-description"><ul class="dummy"><li>V3: Set exposure/gain parameterCreate Encoded Packet for the command CMD_V3_CAMERA_PARAMS_SET_EXP_GAIN (16701)</li></ul></dd>
     
 
     
@@ -1702,8 +1683,7 @@ Create Encoded Packet for the command CMD_V3_CAMERA_PARAMS_SET_EXP_GAIN (16701)<
 <dl class="details">
     
     <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li>V3: Adjust camera parameter (relative adjustment)
-Create Encoded Packet for the command CMD_V3_CAMERA_PARAMS_ADJUST (16703)</li></ul></dd>
+    <dd class="tag-description"><ul class="dummy"><li>V3: Adjust camera parameter (relative adjustment)Create Encoded Packet for the command CMD_V3_CAMERA_PARAMS_ADJUST (16703)</li></ul></dd>
     
 
     
@@ -1884,9 +1864,7 @@ Create Encoded Packet for the command CMD_V3_CAMERA_PARAMS_ADJUST (16703)</li></
 <dl class="details">
     
     <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li>V3: Set filter wheel position
-Convenience wrapper around messageV3CameraParamsAdjust for filter wheel control.
-Verified from pcap capture (AcoVanConis, 2026-03-14).</li></ul></dd>
+    <dd class="tag-description"><ul class="dummy"><li>V3: Set filter wheel positionConvenience wrapper around messageV3CameraParamsAdjust for filter wheel control.Verified from pcap capture (AcoVanConis, 2026-03-14).</li></ul></dd>
     
 
     
@@ -2141,7 +2119,7 @@ Verified from pcap capture (AcoVanConis, 2026-03-14).</li></ul></dd>
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.5</a> on Mon Aug 31 2026 21:15:18 GMT+0200 (Mitteleuropäische Sommerzeit) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.5</a> on Sat Oct 17 2026 23:56:57 GMT+0200 (Mitteleuropäische Sommerzeit) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
 </footer>
 
 <script>prettyPrint();</script>

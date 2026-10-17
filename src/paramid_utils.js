@@ -8,8 +8,8 @@
  * paramId layout (64-bit):
  *   bits 63..56 = shootingMode  (e.g. 0=photo, 1=video, 2=astro)
  *   bits 55..48 = category      (parameter group)
- *   bits 47..16 = reserved (0)
- *   bits 15..8  = cameraId      (0=tele, 1=wide)
+ *   bits 47..44 = cameraId      (0=tele, 1=wide, 15=shared)
+ *   bits 43..8  = reserved (0)
  *   bits 7..0   = paramIndex    (parameter index within the category)
  *
  * Returns a decimal string suitable for protobuf.js int64 fields.
@@ -24,7 +24,7 @@ export function encodeParamId(shootingMode, category, cameraId, paramIndex) {
   const id =
     (BigInt(shootingMode & 0xff) << 56n) |
     (BigInt(category & 0xff) << 48n) |
-    (BigInt(cameraId & 0xff) << 8n) |
+    (BigInt(cameraId & 0x0f) << 44n) |
     BigInt(paramIndex & 0xff);
   return id.toString();
 }
@@ -64,7 +64,7 @@ export function decodeParamId(paramId) {
   return {
     shootingMode: Number((id >> 56n) & 0xffn),
     category: Number((id >> 48n) & 0xffn),
-    cameraId: Number((id >> 8n) & 0xffn),
+    cameraId: Number((id >> 44n) & 0x0fn),
     paramIndex: Number(id & 0xffn),
   };
 }

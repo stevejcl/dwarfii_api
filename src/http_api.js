@@ -1,3 +1,5 @@
+import { parseCurrentJsonLossless } from "./current_json.js";
+
 /** @module http_api */
 // HTTP API wrapper for DWARF mini / II / 3 file download and album management.
 //
@@ -247,7 +249,7 @@ export async function getParamAndSetting(IP, modeId = 2) {
       `getParamAndSetting failed: ${response.status} ${response.statusText}`,
     );
   }
-  return response.json();
+  return parseCurrentJsonLossless(await response.text());
 }
 
 /*** --------------------------------------------------------- ***/

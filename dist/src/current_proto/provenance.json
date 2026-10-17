@@ -1,0 +1,144 @@
+{
+  "repository": "https://github.com/acocalypso/dwarfAlp",
+  "commit": "b5a56f00519a1b76ab36d6e445e1d332216816f6",
+  "importMethod": "git show <commit>:<path>; original git blob bytes, no transformations",
+  "purpose": "Canonical current schema, isolated from retained legacy SDK schema",
+  "omitted": [
+    "camera_params.proto (empty compatibility stub)",
+    "device_config.proto (empty compatibility stub)",
+    "v3_astro.proto (empty compatibility stub)",
+    "v3_camera.proto (empty compatibility stub)",
+    "v3_focus.proto (empty compatibility stub)",
+    "v3_notify.proto (provisional 15255 capture-derived schema, not descriptor verified)",
+    "v3_system.proto (empty compatibility stub)"
+  ],
+  "files": [
+    {
+      "name": "astro.proto",
+      "sourcePath": "src/dwarf_alpaca/proto/astro.proto",
+      "bytes": 7025,
+      "sha256": "d2858c31acdeb09edc3029d60c1b4e18d35e8aea5e6e0ccb201453c532817971"
+    },
+    {
+      "name": "base.proto",
+      "sourcePath": "src/dwarf_alpaca/proto/base.proto",
+      "bytes": 1103,
+      "sha256": "b0faf888745c7fc084851526d75edd8900b44c92e9fd28183dbe5c584856b83e"
+    },
+    {
+      "name": "ble.proto",
+      "sourcePath": "src/dwarf_alpaca/proto/ble.proto",
+      "bytes": 3358,
+      "sha256": "34d7e1f84e239fd3bbe5ed470e977e5f50dcbd022cb73ba80bca0454881ade59"
+    },
+    {
+      "name": "camera.proto",
+      "sourcePath": "src/dwarf_alpaca/proto/camera.proto",
+      "bytes": 2875,
+      "sha256": "31955c7e126b46390099355014980f3493737e910e667c9757bf615454c623ea"
+    },
+    {
+      "name": "device.proto",
+      "sourcePath": "src/dwarf_alpaca/proto/device.proto",
+      "bytes": 187,
+      "sha256": "7d87ff8d851bffdf6ed8fe4ad72191439ddd7f0ad2c7107f082290e7f7892d35"
+    },
+    {
+      "name": "factoryTest.proto",
+      "sourcePath": "src/dwarf_alpaca/proto/factoryTest.proto",
+      "bytes": 3704,
+      "sha256": "96ccc0a0873fd242ffaebfe1cfa9413805d037fedf102c5c108dd1bc7187c5fe"
+    },
+    {
+      "name": "focus.proto",
+      "sourcePath": "src/dwarf_alpaca/proto/focus.proto",
+      "bytes": 927,
+      "sha256": "3f9a7d6b25b703540a234984379bf88e6c2be67b23c65367a45f75e44c18efca"
+    },
+    {
+      "name": "motor_control.proto",
+      "sourcePath": "src/dwarf_alpaca/proto/motor_control.proto",
+      "bytes": 1711,
+      "sha256": "769ff4e5fa007675c641676f478959a67f9768917bdd7810e6e5c35391537991"
+    },
+    {
+      "name": "notify.proto",
+      "sourcePath": "src/dwarf_alpaca/proto/notify.proto",
+      "bytes": 9956,
+      "sha256": "eac4b60e87e0bf15a8779b1609d6a8c28fbeb5cef5e1c5f9f18e66a6ff882842"
+    },
+    {
+      "name": "panorama.proto",
+      "sourcePath": "src/dwarf_alpaca/proto/panorama.proto",
+      "bytes": 2192,
+      "sha256": "dab14eb9a768be9ee42a6c1f250b276aa2443748a20888e9aa6cad0f87d38a6a"
+    },
+    {
+      "name": "param.proto",
+      "sourcePath": "src/dwarf_alpaca/proto/param.proto",
+      "bytes": 841,
+      "sha256": "6e1a2d4da96b98a8b7746c07f46b5bb5d70bcceb7fe12027ba487d79440afaab"
+    },
+    {
+      "name": "protocol.proto",
+      "sourcePath": "src/dwarf_alpaca/proto/protocol.proto",
+      "bytes": 29829,
+      "sha256": "4a32929eb55d8c1c33829c1f813d98747d89dfebd3232aad3e94d704304aa16b"
+    },
+    {
+      "name": "rgb.proto",
+      "sourcePath": "src/dwarf_alpaca/proto/rgb.proto",
+      "bytes": 273,
+      "sha256": "a977ea848fba3a2548879c7756d9f5163fc88e1f6a4e6d963b7106ca32ba1c56"
+    },
+    {
+      "name": "shooting_schedule.proto",
+      "sourcePath": "src/dwarf_alpaca/proto/shooting_schedule.proto",
+      "bytes": 3473,
+      "sha256": "85f06f06914c82bfe116c2b3583312339210de5a7ee884aae555f081ca8c82bb"
+    },
+    {
+      "name": "system.proto",
+      "sourcePath": "src/dwarf_alpaca/proto/system.proto",
+      "bytes": 585,
+      "sha256": "e6ce3924907cadad7aed73fede3d5e2e95f2ce2a79faddfefd09fe8ece078717"
+    },
+    {
+      "name": "task_center.proto",
+      "sourcePath": "src/dwarf_alpaca/proto/task_center.proto",
+      "bytes": 5622,
+      "sha256": "30f3d2e72817c6f9b792d28cfcc1a49f3b22679f93a49522ec1738ddfb2d57dc"
+    },
+    {
+      "name": "track.proto",
+      "sourcePath": "src/dwarf_alpaca/proto/track.proto",
+      "bytes": 442,
+      "sha256": "a783e57bd848aa398edd7ebea87d4d755dd42a23b466a22b3a194e5936b59474"
+    }
+  ],
+  "evidence": [
+    {
+      "sourcePath": "tests/test_protocol_golden.py",
+      "bytes": 4288,
+      "sha256": "a0a4648f60a92eef955ba472a7110589c8473248e41ceb1513da4657d9a968cf"
+    },
+    {
+      "sourcePath": "docs/protocol/firmware-schema-audit.json",
+      "bytes": 1479788,
+      "sha256": "8f7a5e72e8bd44e14caaf44f1daf934adda35f986924b6d91148510dd3c0b4d5"
+    },
+    {
+      "sourcePath": "firmware-analysis/metadata/bilbo-protos.pb",
+      "bytes": 39836,
+      "sha256": "4370a369cb1d151d052efbdaa8fd251658d3ced898dbe264aa01b612fa7aaf24"
+    }
+  ],
+  "upstreamLicense": {
+    "sourcePath": "LICENSE",
+    "localPath": "LICENSE.upstream",
+    "bytes": 35149,
+    "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986",
+    "declaredLicense": "GNU General Public License, Version 3",
+    "note": "Preserved upstream terms; importing these sources does not relicense them under the SDK's existing ISC label. Review redistribution licensing before publishing."
+  }
+}

@@ -9,6 +9,6 @@
     "declarationMap": true,
     "moduleResolution":"node",
   },
-  "include": ["src/*.js","index.js", "node_modules/dwarfii_api/dist/index.d.ts"],
+  "include": ["src/*.js", "src/current*.ts", "index.js", "node_modules/dwarfii_api/dist/index.d.ts"],
   "exclude": ["src/protobuf/protobuf.js", "node_modules"]
 }

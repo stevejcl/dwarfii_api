@@ -140,8 +140,7 @@
 <dl class="details">
     
     <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li>V3: Confirm observation
-Create Encoded Packet for the command CMD_V3_ASTRO_CONFIRM</li></ul></dd>
+    <dd class="tag-description"><ul class="dummy"><li>V3: Confirm observationCreate Encoded Packet for the command CMD_V3_ASTRO_CONFIRM</li></ul></dd>
     
 
     
@@ -245,12 +244,7 @@ Create Encoded Packet for the command CMD_V3_ASTRO_CONFIRM</li></ul></dd>
 <dl class="details">
     
     <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li>V3 protocol >=2.5: continue after firmware reports a recoverable dark-frame
-warning such as `CODE_ASTRO_DARK_NOT_FOUND` (-11503) or
-`CODE_ASTRO_DARK_TEMP_MISMATCH` (-11530).
-
-DWARF 2 and older protocol versions repeat the start request with
-`forceStart=true` instead.</li></ul></dd>
+    <dd class="tag-description"><ul class="dummy"><li>V3 protocol >=2.5: continue after firmware reports a recoverable dark-framewarning such as `CODE_ASTRO_DARK_NOT_FOUND` (-11503) or`CODE_ASTRO_DARK_TEMP_MISMATCH` (-11530).DWARF 2 and older protocol versions repeat the start request with`forceStart=true` instead.</li></ul></dd>
     
 
     
@@ -354,13 +348,7 @@ DWARF 2 and older protocol versions repeat the start request with
 <dl class="details">
     
     <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li>V3: Get astro parameters
-Create Encoded Packet for the command CMD_V3_ASTRO_GET_PARAMS (11040)
-
-Response contains repeated V3AstroParamsData. Its six-component pipeParams
-string has confirmed positions 3=exposure seconds, 4=gain and 5=frame count.
-Components 1, 2 and 6 remain unresolved; component 1 is not a filter.
-Example: "0|0|60|60|1|null".</li></ul></dd>
+    <dd class="tag-description"><ul class="dummy"><li>V3: Get astro parametersCreate Encoded Packet for the command CMD_V3_ASTRO_GET_PARAMS (11040)Response contains repeated V3AstroParamsData. Its six-component pipeParamsstring has confirmed positions 3=exposure seconds, 4=gain and 5=frame count.Components 1, 2 and 6 remain unresolved; component 1 is not a filter.Example: "0|0|60|60|1|null".</li></ul></dd>
     
 
     
@@ -514,11 +502,7 @@ Example: "0|0|60|60|1|null".</li></ul></dd>
 <dl class="details">
     
     <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li>V3: Provisional command 11043 decoder.
-Existing captures resemble exposure-preset data, while DWARFLAB 3.4.1 names
-this command GET_CALI_FRAME_LIST. Validate the raw response before relying on
-this function's response schema.
-Create Encoded Packet for the command CMD_V3_ASTRO_GET_PRESETS</li></ul></dd>
+    <dd class="tag-description"><ul class="dummy"><li>V3: Provisional command 11043 decoder.Existing captures resemble exposure-preset data, while DWARFLAB 3.4.1 namesthis command GET_CALI_FRAME_LIST. Validate the raw response before relying onthis function's response schema.Create Encoded Packet for the command CMD_V3_ASTRO_GET_PRESETS</li></ul></dd>
     
 
     
@@ -622,8 +606,7 @@ Create Encoded Packet for the command CMD_V3_ASTRO_GET_PRESETS</li></ul></dd>
 <dl class="details">
     
     <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li>V3: One-click GOTO DSO with lon/lat/mode
-Create Encoded Packet for the command CMD_ASTRO_START_ONE_CLICK_GOTO_DSO</li></ul></dd>
+    <dd class="tag-description"><ul class="dummy"><li>V3: One-click GOTO DSO with lon/lat/modeCreate Encoded Packet for the command CMD_ASTRO_START_ONE_CLICK_GOTO_DSO</li></ul></dd>
     
 
     
@@ -897,8 +880,7 @@ Create Encoded Packet for the command CMD_ASTRO_START_ONE_CLICK_GOTO_DSO</li></u
 <dl class="details">
     
     <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li>V3: GOTO done / acknowledge
-Create Encoded Packet for the command CMD_ASTRO_STOP_ONE_CLICK_GOTO</li></ul></dd>
+    <dd class="tag-description"><ul class="dummy"><li>V3: GOTO done / acknowledgeCreate Encoded Packet for the command CMD_ASTRO_STOP_ONE_CLICK_GOTO</li></ul></dd>
     
 
     
@@ -1002,8 +984,7 @@ Create Encoded Packet for the command CMD_ASTRO_STOP_ONE_CLICK_GOTO</li></ul></d
 <dl class="details">
     
     <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li>V3: One-click GOTO Solar System target with mode
-Create Encoded Packet for the command CMD_ASTRO_START_ONE_CLICK_GOTO_SOLAR_SYSTEM</li></ul></dd>
+    <dd class="tag-description"><ul class="dummy"><li>V3: One-click GOTO Solar System target with modeCreate Encoded Packet for the command CMD_ASTRO_START_ONE_CLICK_GOTO_SOLAR_SYSTEM</li></ul></dd>
     
 
     
@@ -1253,8 +1234,7 @@ Create Encoded Packet for the command CMD_ASTRO_START_ONE_CLICK_GOTO_SOLAR_SYSTE
 <dl class="details">
     
     <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li>V3: List saved images
-Create Encoded Packet for the command CMD_V3_ASTRO_LIST_SAVED_IMAGES</li></ul></dd>
+    <dd class="tag-description"><ul class="dummy"><li>V3: List saved imagesCreate Encoded Packet for the command CMD_V3_ASTRO_LIST_SAVED_IMAGES</li></ul></dd>
     
 
     
@@ -1358,8 +1338,7 @@ Create Encoded Packet for the command CMD_V3_ASTRO_LIST_SAVED_IMAGES</li></ul></
 <dl class="details">
     
     <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li>V3: Save stacked image
-Create Encoded Packet for the command CMD_V3_ASTRO_SAVE_STACKED_IMAGE</li></ul></dd>
+    <dd class="tag-description"><ul class="dummy"><li>V3: Save stacked imageCreate Encoded Packet for the command CMD_V3_ASTRO_SAVE_STACKED_IMAGE</li></ul></dd>
     
 
     
@@ -1513,8 +1492,7 @@ Create Encoded Packet for the command CMD_V3_ASTRO_SAVE_STACKED_IMAGE</li></ul><
 <dl class="details">
     
     <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li>V3: Set observation location
-Create Encoded Packet for the command CMD_V3_ASTRO_SET_LOCATION</li></ul></dd>
+    <dd class="tag-description"><ul class="dummy"><li>V3: Set observation locationCreate Encoded Packet for the command CMD_V3_ASTRO_SET_LOCATION</li></ul></dd>
     
 
     
@@ -1692,14 +1670,7 @@ Create Encoded Packet for the command CMD_V3_ASTRO_SET_LOCATION</li></ul></dd>
 <dl class="details">
     
     <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li>V3: Set astro parameters
-Create Encoded Packet for the command CMD_V3_ASTRO_SET_PARAMS (11041)
-
-The six-component params string has confirmed positions 3=exposure seconds,
-4=gain and 5=frame count. Components 1, 2 and 6 remain unresolved.
-Example: "0|0|60|60|1|null".
-
-Response is V3ResSetAstroParams with code and pipeParams echo.</li></ul></dd>
+    <dd class="tag-description"><ul class="dummy"><li>V3: Set astro parametersCreate Encoded Packet for the command CMD_V3_ASTRO_SET_PARAMS (11041)The six-component params string has confirmed positions 3=exposure seconds,4=gain and 5=frame count. Components 1, 2 and 6 remain unresolved.Example: "0|0|60|60|1|null".Response is V3ResSetAstroParams with code and pipeParams echo.</li></ul></dd>
     
 
     
@@ -1853,10 +1824,7 @@ Response is V3ResSetAstroParams with code and pipeParams echo.</li></ul></dd>
 <dl class="details">
     
     <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li>V3: Start a calibration-frame capture (CMD 11045).
-
-The request schema is confirmed from DWARFLAB 3.4.1. Hardware result delivery
-and completion notifications are not yet verified.</li></ul></dd>
+    <dd class="tag-description"><ul class="dummy"><li>V3: Start a calibration-frame capture (CMD 11045).The request schema is confirmed from DWARFLAB 3.4.1. Hardware result deliveryand completion notifications are not yet verified.</li></ul></dd>
     
 
     
@@ -2178,8 +2146,7 @@ and completion notifications are not yet verified.</li></ul></dd>
 <dl class="details">
     
     <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li>V3: Start a DWARF mini dark-frame calibration capture.
-Dark is a calibration workflow, not a normal Deep Sky filter-wheel position.</li></ul></dd>
+    <dd class="tag-description"><ul class="dummy"><li>V3: Start a DWARF mini dark-frame calibration capture.Dark is a calibration workflow, not a normal Deep Sky filter-wheel position.</li></ul></dd>
     
 
     
@@ -2429,10 +2396,7 @@ Dark is a calibration workflow, not a normal Deep Sky filter-wheel position.</li
 <dl class="details">
     
     <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li>V3: Start stacking with the model-appropriate payload.
-Create Encoded Packet for the command CMD_ASTRO_START_CAPTURE_RAW_LIVE_STACKING
-DWARF 3 and DWARF mini send the capture filter (1=Astro, 2=Duo-Band).
-Filterless DWARF 2 uses irIndex=-1, which serializes as the observed sentinel.</li></ul></dd>
+    <dd class="tag-description"><ul class="dummy"><li>V3: Start stacking with the model-appropriate payload.Create Encoded Packet for the command CMD_ASTRO_START_CAPTURE_RAW_LIVE_STACKINGDWARF 3 and DWARF mini send the capture filter (1=Astro, 2=Duo-Band).Filterless DWARF 2 uses irIndex=-1, which serializes as the observed sentinel.</li></ul></dd>
     
 
     
@@ -2610,8 +2574,7 @@ Filterless DWARF 2 uses irIndex=-1, which serializes as the observed sentinel.</
 <dl class="details">
     
     <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li>V3: Start tracking (after stacking)
-Create Encoded Packet for the command CMD_ASTRO_GO_LIVE</li></ul></dd>
+    <dd class="tag-description"><ul class="dummy"><li>V3: Start tracking (after stacking)Create Encoded Packet for the command CMD_ASTRO_GO_LIVE</li></ul></dd>
     
 
     
@@ -2715,8 +2678,7 @@ Create Encoded Packet for the command CMD_ASTRO_GO_LIVE</li></ul></dd>
 <dl class="details">
     
     <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li>V3: Status polling
-Create Encoded Packet for the command CMD_V3_ASTRO_STATUS_POLLING</li></ul></dd>
+    <dd class="tag-description"><ul class="dummy"><li>V3: Status pollingCreate Encoded Packet for the command CMD_V3_ASTRO_STATUS_POLLING</li></ul></dd>
     
 
     
@@ -3096,8 +3058,7 @@ Create Encoded Packet for the command CMD_V3_ASTRO_STATUS_POLLING</li></ul></dd>
 <dl class="details">
     
     <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li>V3: Stop stacking
-Create Encoded Packet for the command CMD_ASTRO_STOP_CAPTURE_RAW_LIVE_STACKING</li></ul></dd>
+    <dd class="tag-description"><ul class="dummy"><li>V3: Stop stackingCreate Encoded Packet for the command CMD_ASTRO_STOP_CAPTURE_RAW_LIVE_STACKING</li></ul></dd>
     
 
     
@@ -3206,7 +3167,7 @@ Create Encoded Packet for the command CMD_ASTRO_STOP_CAPTURE_RAW_LIVE_STACKING</
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.5</a> on Mon Aug 31 2026 21:15:18 GMT+0200 (Mitteleuropäische Sommerzeit) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.5</a> on Sat Oct 17 2026 23:56:57 GMT+0200 (Mitteleuropäische Sommerzeit) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
 </footer>
 
 <script>prettyPrint();</script>

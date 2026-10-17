@@ -1,0 +1,219 @@
+syntax = "proto3";
+
+import "base.proto";
+
+message ReqOpenCamera {
+    bool binning = 1;
+    int32 rtsp_encode_type = 2;
+}
+
+message ReqCloseCamera {
+}
+
+message ReqPhoto {
+}
+
+message ReqBurstPhoto {
+    int32 count = 1;
+}
+
+message ReqStopBurstPhoto {
+}
+
+message ReqStartRecord {
+    int32 encode_type = 1;
+}
+
+message ReqStopRecord {
+}
+
+message ReqSetExpMode {
+    int32 mode = 1;
+}
+
+message ReqGetExpMode {
+}
+
+message ReqSetExp {
+    int32 index = 1;
+}
+
+message ReqGetExp {
+}
+
+message ReqSetGainMode {
+    int32 mode = 1;
+}
+
+message ReqGetGainMode {
+}
+
+message ReqSetGain {
+    int32 index = 1;
+}
+
+message ReqGetGain {
+}
+
+message ReqSetBrightness {
+    int32 value = 1;
+}
+
+message ReqGetBrightness {
+}
+
+message ReqSetContrast {
+    int32 value = 1;
+}
+
+message ReqGetContrast {
+}
+
+message ReqSetHue {
+    int32 value = 1;
+}
+
+message ReqGetHue {
+}
+
+message ReqSetSaturation {
+    int32 value = 1;
+}
+
+message ReqGetSaturation {
+}
+
+message ReqSetSharpness {
+    int32 value = 1;
+}
+
+message ReqGetSharpness {
+}
+
+message ReqSetWBMode {
+    int32 mode = 1;
+}
+
+message ReqGetWBMode {
+}
+
+message ReqSetWBSence {
+    int32 value = 1;
+}
+
+message ReqGetWBSence {
+}
+
+message ReqSetWBCT {
+    int32 index = 1;
+}
+
+message ReqGetWBCT {
+}
+
+message ReqSetIrCut {
+    int32 value = 1;
+}
+
+message ReqSetNdFilter {
+    bool value = 1;
+}
+
+message ReqGetIrcut {
+}
+
+message ReqStartTimeLapse {
+}
+
+message ReqStopTimeLapse {
+}
+
+message ReqSetAllParams {
+    int32 exp_mode = 1;
+    int32 exp_index = 2;
+    int32 gain_mode = 3;
+    int32 gain_index = 4;
+    int32 ircut_value = 5;
+    int32 wb_mode = 6;
+    int32 wb_index_type = 7;
+    int32 wb_index = 8;
+    int32 brightness = 9;
+    int32 contrast = 10;
+    int32 hue = 11;
+    int32 saturation = 12;
+    int32 sharpness = 13;
+    int32 jpg_quality = 14;
+}
+
+message ReqGetAllParams {
+}
+
+message ResGetAllParams {
+    repeated CommonParam all_params = 1;
+    int32 code = 2;
+}
+
+message ReqSetFeatureParams {
+    CommonParam param = 1;
+}
+
+message ReqGetAllFeatureParams {
+}
+
+message ResGetAllFeatureParams {
+    repeated CommonParam all_feature_params = 1;
+    int32 code = 2;
+}
+
+message ReqGetSystemWorkingState {
+}
+
+message ReqSetJpgQuality {
+    int32 quality = 1;
+}
+
+message ReqGetJpgQuality {
+}
+
+message ReqPhotoRaw {
+}
+
+message ReqSetRtspBitRateType {
+    int32 bitrate_type = 1;
+}
+
+message ReqDisableAllIspProcessing {
+}
+
+message ReqEnableAllIspProcessing {
+}
+
+message IspModuleState {
+    int32 module_id = 1;
+    bool state = 2;
+}
+
+message ReqSetIspModuleState {
+    repeated IspModuleState module_states = 1;
+}
+
+message ReqGetIspModuleState {
+    repeated int32 module_ids = 1;
+}
+
+message ReqSwitchResolution {
+    int32 resolution_index = 1;
+}
+
+message ReqSwitchFrameRate {
+    int32 fps_index = 1;
+}
+
+message ReqSwitchCropRatio {
+    int32 crop_ratio = 1;
+}
+
+message ReqSetPreviewQuality {
+    uint32 level = 1;
+    uint32 quality = 2;
+}
