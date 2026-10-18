@@ -82,9 +82,14 @@ never triggers `replaceShootingSchedule`. If submission times out or readback
 fails, inspect the device queue before retrying: the result can be uncertain.
 
 To cancel a known plan on the same controlled device, explicitly send
-`cancelShootingSchedule` with `{id, password}` and then read
-`getAllShootingSchedule` again. Confirm the ID is absent or terminal; an ACK
-alone is insufficient. Do not delete or cancel unrelated schedules.
+`cancelShootingSchedule` with `{id, password}` and require a successful ACK,
+then query `getShootingScheduleById` for that exact ID. Confirm terminal state
+or the missing-ID response observed on these releases (-16305). The latter is
+the firmware's shared database-operation error, not a general database health
+check; it must not authorize writes or imply an empty queue. Other errors and
+timeouts leave cancellation unverified. Avoid full-list verification for the
+last record on D3 because its empty-list handler never replies. Do not delete
+or cancel unrelated schedules.
 
 ## First-job creation and the silent empty-list defect
 
