@@ -12008,6 +12008,70 @@ declare namespace CurrentSchema {
     public static getTypeUrl(typeUrlPrefix?: string): string;
   }
 
+  /** CameraId enum. */
+  export enum CameraId {
+    CAMERA_ID_UNKNOWN = 0,
+    CAMERA_ID_TELE = 1,
+    CAMERA_ID_WIDE = 2,
+    CAMERA_ID_GUIDE = 3,
+  }
+
+  /** CfaType enum. */
+  export enum CfaType {
+    CFA_TYPE_UNKNOWN = 0,
+    CFA_TYPE_NONE = 1,
+    CFA_TYPE_BAYER = 2,
+  }
+
+  /** RawFormat enum. */
+  export enum RawFormat {
+    RAW_FORMAT_UNKNOWN = 0,
+    RAW_FORMAT_RAW8 = 1,
+    RAW_FORMAT_RAW10 = 2,
+    RAW_FORMAT_RAW12 = 3,
+  }
+
+  /** BayerPattern enum. */
+  export enum BayerPattern {
+    BAYER_PATTERN_UNKNOWN = 0,
+    BAYER_PATTERN_NONE = 1,
+    BAYER_PATTERN_BGGR = 2,
+    BAYER_PATTERN_RGGB = 3,
+    BAYER_PATTERN_GBRG = 4,
+    BAYER_PATTERN_GRBG = 5,
+  }
+
+  /** RawStorage enum. */
+  export enum RawStorage {
+    RAW_STORAGE_UNKNOWN = 0,
+    RAW_STORAGE_RAW8 = 1,
+    RAW_STORAGE_PACKED10 = 2,
+    RAW_STORAGE_PACKED12 = 3,
+    RAW_STORAGE_UNPACKED16 = 4,
+  }
+
+  /** ByteOrder enum. */
+  export enum ByteOrder {
+    BYTE_ORDER_UNKNOWN = 0,
+    BYTE_ORDER_LITTLE_ENDIAN = 1,
+    BYTE_ORDER_BIG_ENDIAN = 2,
+  }
+
+  /** CameraFocusType enum. */
+  export enum CameraFocusType {
+    FOCUS_TYPE_UNKNOWN = 0,
+    FOCUS_TYPE_STEPPER = 1,
+    FOCUS_TYPE_VCM = 2,
+  }
+
+  /** FocusId enum. */
+  export enum FocusId {
+    FOCUS_ID_UNKNOWN = 0,
+    FOCUS_ID_TELE = 1,
+    FOCUS_ID_GUIDE = 2,
+    FOCUS_ID_WIDE = 3,
+  }
+
   /** Represents a ReqOpenCamera. */
   export class ReqOpenCamera implements IReqOpenCamera {
     /**
@@ -17786,6 +17850,474 @@ declare namespace CurrentSchema {
 
     /**
      * Gets the default type url for ReqSetPreviewQuality
+     * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+     * @returns The default type url
+     */
+    public static getTypeUrl(typeUrlPrefix?: string): string;
+  }
+
+  /** Represents a ReqGetCameraAndFocusInfo. */
+  export class ReqGetCameraAndFocusInfo implements IReqGetCameraAndFocusInfo {
+    /**
+     * Constructs a new ReqGetCameraAndFocusInfo.
+     * @param [properties] Properties to set
+     */
+    constructor(properties?: IReqGetCameraAndFocusInfo);
+
+    /**
+     * Creates a new ReqGetCameraAndFocusInfo instance using the specified properties.
+     * @param [properties] Properties to set
+     * @returns ReqGetCameraAndFocusInfo instance
+     */
+    public static create(
+      properties?: IReqGetCameraAndFocusInfo,
+    ): ReqGetCameraAndFocusInfo;
+
+    /**
+     * Encodes the specified ReqGetCameraAndFocusInfo message. Does not implicitly {@link ReqGetCameraAndFocusInfo.verify|verify} messages.
+     * @param message ReqGetCameraAndFocusInfo message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encode(
+      message: IReqGetCameraAndFocusInfo,
+      writer?: $protobuf.Writer,
+    ): $protobuf.Writer;
+
+    /**
+     * Encodes the specified ReqGetCameraAndFocusInfo message, length delimited. Does not implicitly {@link ReqGetCameraAndFocusInfo.verify|verify} messages.
+     * @param message ReqGetCameraAndFocusInfo message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encodeDelimited(
+      message: IReqGetCameraAndFocusInfo,
+      writer?: $protobuf.Writer,
+    ): $protobuf.Writer;
+
+    /**
+     * Decodes a ReqGetCameraAndFocusInfo message from the specified reader or buffer.
+     * @param reader Reader or buffer to decode from
+     * @param [length] Message length if known beforehand
+     * @returns ReqGetCameraAndFocusInfo
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decode(
+      reader: $protobuf.Reader | Uint8Array,
+      length?: number,
+    ): ReqGetCameraAndFocusInfo;
+
+    /**
+     * Decodes a ReqGetCameraAndFocusInfo message from the specified reader or buffer, length delimited.
+     * @param reader Reader or buffer to decode from
+     * @returns ReqGetCameraAndFocusInfo
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decodeDelimited(
+      reader: $protobuf.Reader | Uint8Array,
+    ): ReqGetCameraAndFocusInfo;
+
+    /**
+     * Verifies a ReqGetCameraAndFocusInfo message.
+     * @param message Plain object to verify
+     * @returns `null` if valid, otherwise the reason why it is not
+     */
+    public static verify(message: { [k: string]: any }): string | null;
+
+    /**
+     * Creates a ReqGetCameraAndFocusInfo message from a plain object. Also converts values to their respective internal types.
+     * @param object Plain object
+     * @returns ReqGetCameraAndFocusInfo
+     */
+    public static fromObject(object: {
+      [k: string]: any;
+    }): ReqGetCameraAndFocusInfo;
+
+    /**
+     * Creates a plain object from a ReqGetCameraAndFocusInfo message. Also converts values to other types if specified.
+     * @param message ReqGetCameraAndFocusInfo
+     * @param [options] Conversion options
+     * @returns Plain object
+     */
+    public static toObject(
+      message: ReqGetCameraAndFocusInfo,
+      options?: $protobuf.IConversionOptions,
+    ): { [k: string]: any };
+
+    /**
+     * Converts this ReqGetCameraAndFocusInfo to JSON.
+     * @returns JSON object
+     */
+    public toJSON(): { [k: string]: any };
+
+    /**
+     * Gets the default type url for ReqGetCameraAndFocusInfo
+     * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+     * @returns The default type url
+     */
+    public static getTypeUrl(typeUrlPrefix?: string): string;
+  }
+
+  /** Represents a SensorInfo. */
+  export class SensorInfo implements ISensorInfo {
+    /**
+     * Constructs a new SensorInfo.
+     * @param [properties] Properties to set
+     */
+    constructor(properties?: ISensorInfo);
+
+    /** SensorInfo cameraId. */
+    public cameraId: CameraId;
+
+    /** SensorInfo cmosModel. */
+    public cmosModel: string;
+
+    /** SensorInfo imageWidth. */
+    public imageWidth: number;
+
+    /** SensorInfo imageHeight. */
+    public imageHeight: number;
+
+    /** SensorInfo cfaType. */
+    public cfaType: CfaType;
+
+    /** SensorInfo rawFormat. */
+    public rawFormat: RawFormat;
+
+    /** SensorInfo bayerPattern. */
+    public bayerPattern: BayerPattern;
+
+    /** SensorInfo rawStorage. */
+    public rawStorage: RawStorage;
+
+    /** SensorInfo rowStrideBytes. */
+    public rowStrideBytes: number;
+
+    /** SensorInfo byteOrder. */
+    public byteOrder: ByteOrder;
+
+    /**
+     * Creates a new SensorInfo instance using the specified properties.
+     * @param [properties] Properties to set
+     * @returns SensorInfo instance
+     */
+    public static create(properties?: ISensorInfo): SensorInfo;
+
+    /**
+     * Encodes the specified SensorInfo message. Does not implicitly {@link SensorInfo.verify|verify} messages.
+     * @param message SensorInfo message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encode(
+      message: ISensorInfo,
+      writer?: $protobuf.Writer,
+    ): $protobuf.Writer;
+
+    /**
+     * Encodes the specified SensorInfo message, length delimited. Does not implicitly {@link SensorInfo.verify|verify} messages.
+     * @param message SensorInfo message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encodeDelimited(
+      message: ISensorInfo,
+      writer?: $protobuf.Writer,
+    ): $protobuf.Writer;
+
+    /**
+     * Decodes a SensorInfo message from the specified reader or buffer.
+     * @param reader Reader or buffer to decode from
+     * @param [length] Message length if known beforehand
+     * @returns SensorInfo
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decode(
+      reader: $protobuf.Reader | Uint8Array,
+      length?: number,
+    ): SensorInfo;
+
+    /**
+     * Decodes a SensorInfo message from the specified reader or buffer, length delimited.
+     * @param reader Reader or buffer to decode from
+     * @returns SensorInfo
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decodeDelimited(
+      reader: $protobuf.Reader | Uint8Array,
+    ): SensorInfo;
+
+    /**
+     * Verifies a SensorInfo message.
+     * @param message Plain object to verify
+     * @returns `null` if valid, otherwise the reason why it is not
+     */
+    public static verify(message: { [k: string]: any }): string | null;
+
+    /**
+     * Creates a SensorInfo message from a plain object. Also converts values to their respective internal types.
+     * @param object Plain object
+     * @returns SensorInfo
+     */
+    public static fromObject(object: { [k: string]: any }): SensorInfo;
+
+    /**
+     * Creates a plain object from a SensorInfo message. Also converts values to other types if specified.
+     * @param message SensorInfo
+     * @param [options] Conversion options
+     * @returns Plain object
+     */
+    public static toObject(
+      message: SensorInfo,
+      options?: $protobuf.IConversionOptions,
+    ): { [k: string]: any };
+
+    /**
+     * Converts this SensorInfo to JSON.
+     * @returns JSON object
+     */
+    public toJSON(): { [k: string]: any };
+
+    /**
+     * Gets the default type url for SensorInfo
+     * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+     * @returns The default type url
+     */
+    public static getTypeUrl(typeUrlPrefix?: string): string;
+  }
+
+  /** Represents a FocusInfo. */
+  export class FocusInfo implements IFocusInfo {
+    /**
+     * Constructs a new FocusInfo.
+     * @param [properties] Properties to set
+     */
+    constructor(properties?: IFocusInfo);
+
+    /** FocusInfo focusId. */
+    public focusId: FocusId;
+
+    /** FocusInfo focusType. */
+    public focusType: CameraFocusType;
+
+    /** FocusInfo totalTravelUm. */
+    public totalTravelUm: number;
+
+    /** FocusInfo umPerStep. */
+    public umPerStep: number;
+
+    /** FocusInfo minCode. */
+    public minCode: number;
+
+    /** FocusInfo maxCode. */
+    public maxCode: number;
+
+    /**
+     * Creates a new FocusInfo instance using the specified properties.
+     * @param [properties] Properties to set
+     * @returns FocusInfo instance
+     */
+    public static create(properties?: IFocusInfo): FocusInfo;
+
+    /**
+     * Encodes the specified FocusInfo message. Does not implicitly {@link FocusInfo.verify|verify} messages.
+     * @param message FocusInfo message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encode(
+      message: IFocusInfo,
+      writer?: $protobuf.Writer,
+    ): $protobuf.Writer;
+
+    /**
+     * Encodes the specified FocusInfo message, length delimited. Does not implicitly {@link FocusInfo.verify|verify} messages.
+     * @param message FocusInfo message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encodeDelimited(
+      message: IFocusInfo,
+      writer?: $protobuf.Writer,
+    ): $protobuf.Writer;
+
+    /**
+     * Decodes a FocusInfo message from the specified reader or buffer.
+     * @param reader Reader or buffer to decode from
+     * @param [length] Message length if known beforehand
+     * @returns FocusInfo
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decode(
+      reader: $protobuf.Reader | Uint8Array,
+      length?: number,
+    ): FocusInfo;
+
+    /**
+     * Decodes a FocusInfo message from the specified reader or buffer, length delimited.
+     * @param reader Reader or buffer to decode from
+     * @returns FocusInfo
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decodeDelimited(
+      reader: $protobuf.Reader | Uint8Array,
+    ): FocusInfo;
+
+    /**
+     * Verifies a FocusInfo message.
+     * @param message Plain object to verify
+     * @returns `null` if valid, otherwise the reason why it is not
+     */
+    public static verify(message: { [k: string]: any }): string | null;
+
+    /**
+     * Creates a FocusInfo message from a plain object. Also converts values to their respective internal types.
+     * @param object Plain object
+     * @returns FocusInfo
+     */
+    public static fromObject(object: { [k: string]: any }): FocusInfo;
+
+    /**
+     * Creates a plain object from a FocusInfo message. Also converts values to other types if specified.
+     * @param message FocusInfo
+     * @param [options] Conversion options
+     * @returns Plain object
+     */
+    public static toObject(
+      message: FocusInfo,
+      options?: $protobuf.IConversionOptions,
+    ): { [k: string]: any };
+
+    /**
+     * Converts this FocusInfo to JSON.
+     * @returns JSON object
+     */
+    public toJSON(): { [k: string]: any };
+
+    /**
+     * Gets the default type url for FocusInfo
+     * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+     * @returns The default type url
+     */
+    public static getTypeUrl(typeUrlPrefix?: string): string;
+  }
+
+  /** Represents a ResGetCameraAndFocusInfo. */
+  export class ResGetCameraAndFocusInfo implements IResGetCameraAndFocusInfo {
+    /**
+     * Constructs a new ResGetCameraAndFocusInfo.
+     * @param [properties] Properties to set
+     */
+    constructor(properties?: IResGetCameraAndFocusInfo);
+
+    /** ResGetCameraAndFocusInfo code. */
+    public code: number;
+
+    /** ResGetCameraAndFocusInfo schemaVersion. */
+    public schemaVersion: string;
+
+    /** ResGetCameraAndFocusInfo sensorInfos. */
+    public sensorInfos: ISensorInfo[];
+
+    /** ResGetCameraAndFocusInfo focusInfos. */
+    public focusInfos: IFocusInfo[];
+
+    /**
+     * Creates a new ResGetCameraAndFocusInfo instance using the specified properties.
+     * @param [properties] Properties to set
+     * @returns ResGetCameraAndFocusInfo instance
+     */
+    public static create(
+      properties?: IResGetCameraAndFocusInfo,
+    ): ResGetCameraAndFocusInfo;
+
+    /**
+     * Encodes the specified ResGetCameraAndFocusInfo message. Does not implicitly {@link ResGetCameraAndFocusInfo.verify|verify} messages.
+     * @param message ResGetCameraAndFocusInfo message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encode(
+      message: IResGetCameraAndFocusInfo,
+      writer?: $protobuf.Writer,
+    ): $protobuf.Writer;
+
+    /**
+     * Encodes the specified ResGetCameraAndFocusInfo message, length delimited. Does not implicitly {@link ResGetCameraAndFocusInfo.verify|verify} messages.
+     * @param message ResGetCameraAndFocusInfo message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encodeDelimited(
+      message: IResGetCameraAndFocusInfo,
+      writer?: $protobuf.Writer,
+    ): $protobuf.Writer;
+
+    /**
+     * Decodes a ResGetCameraAndFocusInfo message from the specified reader or buffer.
+     * @param reader Reader or buffer to decode from
+     * @param [length] Message length if known beforehand
+     * @returns ResGetCameraAndFocusInfo
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decode(
+      reader: $protobuf.Reader | Uint8Array,
+      length?: number,
+    ): ResGetCameraAndFocusInfo;
+
+    /**
+     * Decodes a ResGetCameraAndFocusInfo message from the specified reader or buffer, length delimited.
+     * @param reader Reader or buffer to decode from
+     * @returns ResGetCameraAndFocusInfo
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decodeDelimited(
+      reader: $protobuf.Reader | Uint8Array,
+    ): ResGetCameraAndFocusInfo;
+
+    /**
+     * Verifies a ResGetCameraAndFocusInfo message.
+     * @param message Plain object to verify
+     * @returns `null` if valid, otherwise the reason why it is not
+     */
+    public static verify(message: { [k: string]: any }): string | null;
+
+    /**
+     * Creates a ResGetCameraAndFocusInfo message from a plain object. Also converts values to their respective internal types.
+     * @param object Plain object
+     * @returns ResGetCameraAndFocusInfo
+     */
+    public static fromObject(object: {
+      [k: string]: any;
+    }): ResGetCameraAndFocusInfo;
+
+    /**
+     * Creates a plain object from a ResGetCameraAndFocusInfo message. Also converts values to other types if specified.
+     * @param message ResGetCameraAndFocusInfo
+     * @param [options] Conversion options
+     * @returns Plain object
+     */
+    public static toObject(
+      message: ResGetCameraAndFocusInfo,
+      options?: $protobuf.IConversionOptions,
+    ): { [k: string]: any };
+
+    /**
+     * Converts this ResGetCameraAndFocusInfo to JSON.
+     * @returns JSON object
+     */
+    public toJSON(): { [k: string]: any };
+
+    /**
+     * Gets the default type url for ResGetCameraAndFocusInfo
      * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
      * @returns The default type url
      */
@@ -32169,6 +32701,7 @@ declare namespace CurrentSchema {
       enum ProgressType {
         PROGRESS_TYPE_INITING = 0,
         PROGRESS_TYPE_MOSAIC_MOVING = 1,
+        PROGRESS_TYPE_CAPTURING_DARK_FRAME = 2,
       }
     }
 
@@ -34788,6 +35321,9 @@ declare namespace CurrentSchema {
 
       /** ResolutionParam supportedResolutionList */
       supportedResolutionList?: number[] | null;
+
+      /** ResolutionParam resolutionAspectRatio */
+      resolutionAspectRatio?: number | null;
     }
 
     /** Represents a ResolutionParam. */
@@ -34812,6 +35348,9 @@ declare namespace CurrentSchema {
 
       /** ResolutionParam supportedResolutionList. */
       public supportedResolutionList: number[];
+
+      /** ResolutionParam resolutionAspectRatio. */
+      public resolutionAspectRatio: number;
 
       /**
        * Creates a new ResolutionParam instance using the specified properties.
@@ -46661,6 +47200,448 @@ declare namespace CurrentSchema {
     public static getTypeUrl(typeUrlPrefix?: string): string;
   }
 
+  /** Represents a ReqSwitchCameraHdr. */
+  export class ReqSwitchCameraHdr implements IReqSwitchCameraHdr {
+    /**
+     * Constructs a new ReqSwitchCameraHdr.
+     * @param [properties] Properties to set
+     */
+    constructor(properties?: IReqSwitchCameraHdr);
+
+    /** ReqSwitchCameraHdr cameraType. */
+    public cameraType: number;
+
+    /** ReqSwitchCameraHdr hdrMode. */
+    public hdrMode: number;
+
+    /**
+     * Creates a new ReqSwitchCameraHdr instance using the specified properties.
+     * @param [properties] Properties to set
+     * @returns ReqSwitchCameraHdr instance
+     */
+    public static create(properties?: IReqSwitchCameraHdr): ReqSwitchCameraHdr;
+
+    /**
+     * Encodes the specified ReqSwitchCameraHdr message. Does not implicitly {@link ReqSwitchCameraHdr.verify|verify} messages.
+     * @param message ReqSwitchCameraHdr message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encode(
+      message: IReqSwitchCameraHdr,
+      writer?: $protobuf.Writer,
+    ): $protobuf.Writer;
+
+    /**
+     * Encodes the specified ReqSwitchCameraHdr message, length delimited. Does not implicitly {@link ReqSwitchCameraHdr.verify|verify} messages.
+     * @param message ReqSwitchCameraHdr message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encodeDelimited(
+      message: IReqSwitchCameraHdr,
+      writer?: $protobuf.Writer,
+    ): $protobuf.Writer;
+
+    /**
+     * Decodes a ReqSwitchCameraHdr message from the specified reader or buffer.
+     * @param reader Reader or buffer to decode from
+     * @param [length] Message length if known beforehand
+     * @returns ReqSwitchCameraHdr
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decode(
+      reader: $protobuf.Reader | Uint8Array,
+      length?: number,
+    ): ReqSwitchCameraHdr;
+
+    /**
+     * Decodes a ReqSwitchCameraHdr message from the specified reader or buffer, length delimited.
+     * @param reader Reader or buffer to decode from
+     * @returns ReqSwitchCameraHdr
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decodeDelimited(
+      reader: $protobuf.Reader | Uint8Array,
+    ): ReqSwitchCameraHdr;
+
+    /**
+     * Verifies a ReqSwitchCameraHdr message.
+     * @param message Plain object to verify
+     * @returns `null` if valid, otherwise the reason why it is not
+     */
+    public static verify(message: { [k: string]: any }): string | null;
+
+    /**
+     * Creates a ReqSwitchCameraHdr message from a plain object. Also converts values to their respective internal types.
+     * @param object Plain object
+     * @returns ReqSwitchCameraHdr
+     */
+    public static fromObject(object: { [k: string]: any }): ReqSwitchCameraHdr;
+
+    /**
+     * Creates a plain object from a ReqSwitchCameraHdr message. Also converts values to other types if specified.
+     * @param message ReqSwitchCameraHdr
+     * @param [options] Conversion options
+     * @returns Plain object
+     */
+    public static toObject(
+      message: ReqSwitchCameraHdr,
+      options?: $protobuf.IConversionOptions,
+    ): { [k: string]: any };
+
+    /**
+     * Converts this ReqSwitchCameraHdr to JSON.
+     * @returns JSON object
+     */
+    public toJSON(): { [k: string]: any };
+
+    /**
+     * Gets the default type url for ReqSwitchCameraHdr
+     * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+     * @returns The default type url
+     */
+    public static getTypeUrl(typeUrlPrefix?: string): string;
+  }
+
+  /** Represents a ResSwitchCameraHdr. */
+  export class ResSwitchCameraHdr implements IResSwitchCameraHdr {
+    /**
+     * Constructs a new ResSwitchCameraHdr.
+     * @param [properties] Properties to set
+     */
+    constructor(properties?: IResSwitchCameraHdr);
+
+    /** ResSwitchCameraHdr code. */
+    public code: number;
+
+    /** ResSwitchCameraHdr cameraType. */
+    public cameraType: number;
+
+    /** ResSwitchCameraHdr hdrMode. */
+    public hdrMode: number;
+
+    /**
+     * Creates a new ResSwitchCameraHdr instance using the specified properties.
+     * @param [properties] Properties to set
+     * @returns ResSwitchCameraHdr instance
+     */
+    public static create(properties?: IResSwitchCameraHdr): ResSwitchCameraHdr;
+
+    /**
+     * Encodes the specified ResSwitchCameraHdr message. Does not implicitly {@link ResSwitchCameraHdr.verify|verify} messages.
+     * @param message ResSwitchCameraHdr message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encode(
+      message: IResSwitchCameraHdr,
+      writer?: $protobuf.Writer,
+    ): $protobuf.Writer;
+
+    /**
+     * Encodes the specified ResSwitchCameraHdr message, length delimited. Does not implicitly {@link ResSwitchCameraHdr.verify|verify} messages.
+     * @param message ResSwitchCameraHdr message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encodeDelimited(
+      message: IResSwitchCameraHdr,
+      writer?: $protobuf.Writer,
+    ): $protobuf.Writer;
+
+    /**
+     * Decodes a ResSwitchCameraHdr message from the specified reader or buffer.
+     * @param reader Reader or buffer to decode from
+     * @param [length] Message length if known beforehand
+     * @returns ResSwitchCameraHdr
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decode(
+      reader: $protobuf.Reader | Uint8Array,
+      length?: number,
+    ): ResSwitchCameraHdr;
+
+    /**
+     * Decodes a ResSwitchCameraHdr message from the specified reader or buffer, length delimited.
+     * @param reader Reader or buffer to decode from
+     * @returns ResSwitchCameraHdr
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decodeDelimited(
+      reader: $protobuf.Reader | Uint8Array,
+    ): ResSwitchCameraHdr;
+
+    /**
+     * Verifies a ResSwitchCameraHdr message.
+     * @param message Plain object to verify
+     * @returns `null` if valid, otherwise the reason why it is not
+     */
+    public static verify(message: { [k: string]: any }): string | null;
+
+    /**
+     * Creates a ResSwitchCameraHdr message from a plain object. Also converts values to their respective internal types.
+     * @param object Plain object
+     * @returns ResSwitchCameraHdr
+     */
+    public static fromObject(object: { [k: string]: any }): ResSwitchCameraHdr;
+
+    /**
+     * Creates a plain object from a ResSwitchCameraHdr message. Also converts values to other types if specified.
+     * @param message ResSwitchCameraHdr
+     * @param [options] Conversion options
+     * @returns Plain object
+     */
+    public static toObject(
+      message: ResSwitchCameraHdr,
+      options?: $protobuf.IConversionOptions,
+    ): { [k: string]: any };
+
+    /**
+     * Converts this ResSwitchCameraHdr to JSON.
+     * @returns JSON object
+     */
+    public toJSON(): { [k: string]: any };
+
+    /**
+     * Gets the default type url for ResSwitchCameraHdr
+     * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+     * @returns The default type url
+     */
+    public static getTypeUrl(typeUrlPrefix?: string): string;
+  }
+
+  /** Represents a ReqSetDigitalZoom. */
+  export class ReqSetDigitalZoom implements IReqSetDigitalZoom {
+    /**
+     * Constructs a new ReqSetDigitalZoom.
+     * @param [properties] Properties to set
+     */
+    constructor(properties?: IReqSetDigitalZoom);
+
+    /** ReqSetDigitalZoom cameraType. */
+    public cameraType: number;
+
+    /** ReqSetDigitalZoom zoomRatio. */
+    public zoomRatio: number;
+
+    /** ReqSetDigitalZoom centerX. */
+    public centerX: number;
+
+    /** ReqSetDigitalZoom centerY. */
+    public centerY: number;
+
+    /**
+     * Creates a new ReqSetDigitalZoom instance using the specified properties.
+     * @param [properties] Properties to set
+     * @returns ReqSetDigitalZoom instance
+     */
+    public static create(properties?: IReqSetDigitalZoom): ReqSetDigitalZoom;
+
+    /**
+     * Encodes the specified ReqSetDigitalZoom message. Does not implicitly {@link ReqSetDigitalZoom.verify|verify} messages.
+     * @param message ReqSetDigitalZoom message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encode(
+      message: IReqSetDigitalZoom,
+      writer?: $protobuf.Writer,
+    ): $protobuf.Writer;
+
+    /**
+     * Encodes the specified ReqSetDigitalZoom message, length delimited. Does not implicitly {@link ReqSetDigitalZoom.verify|verify} messages.
+     * @param message ReqSetDigitalZoom message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encodeDelimited(
+      message: IReqSetDigitalZoom,
+      writer?: $protobuf.Writer,
+    ): $protobuf.Writer;
+
+    /**
+     * Decodes a ReqSetDigitalZoom message from the specified reader or buffer.
+     * @param reader Reader or buffer to decode from
+     * @param [length] Message length if known beforehand
+     * @returns ReqSetDigitalZoom
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decode(
+      reader: $protobuf.Reader | Uint8Array,
+      length?: number,
+    ): ReqSetDigitalZoom;
+
+    /**
+     * Decodes a ReqSetDigitalZoom message from the specified reader or buffer, length delimited.
+     * @param reader Reader or buffer to decode from
+     * @returns ReqSetDigitalZoom
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decodeDelimited(
+      reader: $protobuf.Reader | Uint8Array,
+    ): ReqSetDigitalZoom;
+
+    /**
+     * Verifies a ReqSetDigitalZoom message.
+     * @param message Plain object to verify
+     * @returns `null` if valid, otherwise the reason why it is not
+     */
+    public static verify(message: { [k: string]: any }): string | null;
+
+    /**
+     * Creates a ReqSetDigitalZoom message from a plain object. Also converts values to their respective internal types.
+     * @param object Plain object
+     * @returns ReqSetDigitalZoom
+     */
+    public static fromObject(object: { [k: string]: any }): ReqSetDigitalZoom;
+
+    /**
+     * Creates a plain object from a ReqSetDigitalZoom message. Also converts values to other types if specified.
+     * @param message ReqSetDigitalZoom
+     * @param [options] Conversion options
+     * @returns Plain object
+     */
+    public static toObject(
+      message: ReqSetDigitalZoom,
+      options?: $protobuf.IConversionOptions,
+    ): { [k: string]: any };
+
+    /**
+     * Converts this ReqSetDigitalZoom to JSON.
+     * @returns JSON object
+     */
+    public toJSON(): { [k: string]: any };
+
+    /**
+     * Gets the default type url for ReqSetDigitalZoom
+     * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+     * @returns The default type url
+     */
+    public static getTypeUrl(typeUrlPrefix?: string): string;
+  }
+
+  /** Represents a ResSetDigitalZoom. */
+  export class ResSetDigitalZoom implements IResSetDigitalZoom {
+    /**
+     * Constructs a new ResSetDigitalZoom.
+     * @param [properties] Properties to set
+     */
+    constructor(properties?: IResSetDigitalZoom);
+
+    /** ResSetDigitalZoom code. */
+    public code: number;
+
+    /** ResSetDigitalZoom cameraType. */
+    public cameraType: number;
+
+    /** ResSetDigitalZoom zoomRatio. */
+    public zoomRatio: number;
+
+    /** ResSetDigitalZoom centerX. */
+    public centerX: number;
+
+    /** ResSetDigitalZoom centerY. */
+    public centerY: number;
+
+    /**
+     * Creates a new ResSetDigitalZoom instance using the specified properties.
+     * @param [properties] Properties to set
+     * @returns ResSetDigitalZoom instance
+     */
+    public static create(properties?: IResSetDigitalZoom): ResSetDigitalZoom;
+
+    /**
+     * Encodes the specified ResSetDigitalZoom message. Does not implicitly {@link ResSetDigitalZoom.verify|verify} messages.
+     * @param message ResSetDigitalZoom message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encode(
+      message: IResSetDigitalZoom,
+      writer?: $protobuf.Writer,
+    ): $protobuf.Writer;
+
+    /**
+     * Encodes the specified ResSetDigitalZoom message, length delimited. Does not implicitly {@link ResSetDigitalZoom.verify|verify} messages.
+     * @param message ResSetDigitalZoom message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encodeDelimited(
+      message: IResSetDigitalZoom,
+      writer?: $protobuf.Writer,
+    ): $protobuf.Writer;
+
+    /**
+     * Decodes a ResSetDigitalZoom message from the specified reader or buffer.
+     * @param reader Reader or buffer to decode from
+     * @param [length] Message length if known beforehand
+     * @returns ResSetDigitalZoom
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decode(
+      reader: $protobuf.Reader | Uint8Array,
+      length?: number,
+    ): ResSetDigitalZoom;
+
+    /**
+     * Decodes a ResSetDigitalZoom message from the specified reader or buffer, length delimited.
+     * @param reader Reader or buffer to decode from
+     * @returns ResSetDigitalZoom
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decodeDelimited(
+      reader: $protobuf.Reader | Uint8Array,
+    ): ResSetDigitalZoom;
+
+    /**
+     * Verifies a ResSetDigitalZoom message.
+     * @param message Plain object to verify
+     * @returns `null` if valid, otherwise the reason why it is not
+     */
+    public static verify(message: { [k: string]: any }): string | null;
+
+    /**
+     * Creates a ResSetDigitalZoom message from a plain object. Also converts values to their respective internal types.
+     * @param object Plain object
+     * @returns ResSetDigitalZoom
+     */
+    public static fromObject(object: { [k: string]: any }): ResSetDigitalZoom;
+
+    /**
+     * Creates a plain object from a ResSetDigitalZoom message. Also converts values to other types if specified.
+     * @param message ResSetDigitalZoom
+     * @param [options] Conversion options
+     * @returns Plain object
+     */
+    public static toObject(
+      message: ResSetDigitalZoom,
+      options?: $protobuf.IConversionOptions,
+    ): { [k: string]: any };
+
+    /**
+     * Converts this ResSetDigitalZoom to JSON.
+     * @returns JSON object
+     */
+    public toJSON(): { [k: string]: any };
+
+    /**
+     * Gets the default type url for ResSetDigitalZoom
+     * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+     * @returns The default type url
+     */
+    public static getTypeUrl(typeUrlPrefix?: string): string;
+  }
+
   /** Represents a ReqGetDeviceStateInfo. */
   export class ReqGetDeviceStateInfo implements IReqGetDeviceStateInfo {
     /**
@@ -46933,6 +47914,12 @@ declare namespace CurrentSchema {
     /** TeleCameraStateInfo cmosTemperature. */
     public cmosTemperature?: notify.ICmosTemperature | null;
 
+    /** TeleCameraStateInfo hdrEnabled. */
+    public hdrEnabled: boolean;
+
+    /** TeleCameraStateInfo resolutionAspectRatio. */
+    public resolutionAspectRatio: number;
+
     /**
      * Creates a new TeleCameraStateInfo instance using the specified properties.
      * @param [properties] Properties to set
@@ -47055,6 +48042,12 @@ declare namespace CurrentSchema {
 
     /** WideCameraStateInfo cmosTemperature. */
     public cmosTemperature?: notify.ICmosTemperature | null;
+
+    /** WideCameraStateInfo hdrEnabled. */
+    public hdrEnabled: boolean;
+
+    /** WideCameraStateInfo resolutionAspectRatio. */
+    public resolutionAspectRatio: number;
 
     /**
      * Creates a new WideCameraStateInfo instance using the specified properties.
@@ -49288,6 +50281,33 @@ declare namespace CurrentSchema {
     level?: number | null;
     quality?: number | null;
   }
+  export interface IReqGetCameraAndFocusInfo {}
+  export interface ISensorInfo {
+    cameraId?: CameraId | null;
+    cmosModel?: string | null;
+    imageWidth?: number | null;
+    imageHeight?: number | null;
+    cfaType?: CfaType | null;
+    rawFormat?: RawFormat | null;
+    bayerPattern?: BayerPattern | null;
+    rawStorage?: RawStorage | null;
+    rowStrideBytes?: number | null;
+    byteOrder?: ByteOrder | null;
+  }
+  export interface IFocusInfo {
+    focusId?: FocusId | null;
+    focusType?: CameraFocusType | null;
+    totalTravelUm?: number | null;
+    umPerStep?: number | null;
+    minCode?: number | null;
+    maxCode?: number | null;
+  }
+  export interface IResGetCameraAndFocusInfo {
+    code?: number | null;
+    schemaVersion?: string | null;
+    sensorInfos?: Array<ISensorInfo> | null;
+    focusInfos?: Array<IFocusInfo> | null;
+  }
   export interface IReqLensDefog {
     state?: number | null;
   }
@@ -49841,6 +50861,28 @@ declare namespace CurrentSchema {
     code?: number | null;
     shootingTechId?: number | null;
   }
+  export interface IReqSwitchCameraHdr {
+    cameraType?: number | null;
+    hdrMode?: number | null;
+  }
+  export interface IResSwitchCameraHdr {
+    code?: number | null;
+    cameraType?: number | null;
+    hdrMode?: number | null;
+  }
+  export interface IReqSetDigitalZoom {
+    cameraType?: number | null;
+    zoomRatio?: number | null;
+    centerX?: number | null;
+    centerY?: number | null;
+  }
+  export interface IResSetDigitalZoom {
+    code?: number | null;
+    cameraType?: number | null;
+    zoomRatio?: number | null;
+    centerX?: number | null;
+    centerY?: number | null;
+  }
   export interface IReqGetDeviceStateInfo {}
   export interface IExclusiveCameraState {
     captureRawState?: notify.ICaptureRawState | null;
@@ -49860,6 +50902,8 @@ declare namespace CurrentSchema {
     resolutionWidth?: number | null;
     resolutionHeight?: number | null;
     cmosTemperature?: notify.ICmosTemperature | null;
+    hdrEnabled?: boolean | null;
+    resolutionAspectRatio?: number | null;
   }
   export interface IWideCameraStateInfo {
     exclusiveState?: IExclusiveCameraState | null;
@@ -49869,6 +50913,8 @@ declare namespace CurrentSchema {
     resolutionWidth?: number | null;
     resolutionHeight?: number | null;
     cmosTemperature?: notify.ICmosTemperature | null;
+    hdrEnabled?: boolean | null;
+    resolutionAspectRatio?: number | null;
   }
   export interface IExclusiveFocusMotorState {
     astroAutoFocusState?: notify.IAstroAutoFocusState | null;

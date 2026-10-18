@@ -75,9 +75,9 @@ export function getDeviceActivateInfo(IP: string): Promise<any>;
  * Note: Named fetchDefaultParamsConfig to avoid conflict with the URL builder
  * in api_codes.js which exports getDefaultParamsConfig.
  * @param {string} IP - Device IP address
- * @returns {Promise<Object>}
+ * @returns {Promise<DefaultParamsConfigResponse>}
  */
-export function fetchDefaultParamsConfig(IP: string): Promise<any>;
+export function fetchDefaultParamsConfig(IP: string): Promise<DefaultParamsConfigResponse>;
 /**
  * Get firmware version.
  * GET /firmwareVersion
@@ -147,4 +147,14 @@ export function albumDelete(IP: string, datas: Array<{
 }>): Promise<any>;
 export const DEFAULT_RTSP_PORT: 554;
 export const DEFAULT_MJPEG_PORT: 8092;
+export type DefaultParamsConfigData = {
+    majorVersion: number;
+    minorVersion: number;
+    [key: string]: unknown;
+};
+export type DefaultParamsConfigResponse = {
+    code: number;
+    data: DefaultParamsConfigData;
+    [key: string]: unknown;
+};
 //# sourceMappingURL=http_api.d.ts.map

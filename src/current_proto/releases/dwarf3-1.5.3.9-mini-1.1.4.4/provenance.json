@@ -1,0 +1,44 @@
+{
+  "purpose": "Additive camera/state schema overlay; original research snapshot remains byte-preserved. No factory write commands are exposed.",
+  "generation": "DwarfAlpa/tools/protocol/render_descriptor_protos.py _render_file, UTF-8 LF",
+  "firmware": [
+    {
+      "model": "dwarf3",
+      "version": "1.5.3.9",
+      "binary": "dwarf3_v1.5.3.9/bin/magni",
+      "binarySha256": "d878e9590b109d1d970917a6ff737a1864d96139ed7245fcece19890fa684c4a",
+      "descriptorSetSha256": "edcf4cb33079bc0a13cd4c62f95bb0bffb13a12e8e191130d28d3a383b88e146"
+    },
+    {
+      "model": "dwarfmini",
+      "version": "1.1.4.4",
+      "binary": "dwarf_mini_v1.1.4.4/bin/bilbo",
+      "binarySha256": "6ddad63ef4f580ed33e1b5e5e66f7bdaf583ad0c6bd74e77b344f46712900e5a",
+      "descriptorSetSha256": "edcf4cb33079bc0a13cd4c62f95bb0bffb13a12e8e191130d28d3a383b88e146"
+    }
+  ],
+  "files": [
+    {
+      "name": "camera.proto",
+      "bytes": 4628,
+      "sha256": "11c278530b7a066df347bc603127e3786cab54ba8fe0cb69e7e4edbe8a024bee",
+      "descriptorSha256": "7f96ff4a36806b19e430d4b9b356204db6a06927107f5b0f71e817d318d33796"
+    },
+    {
+      "name": "notify.proto",
+      "bytes": 10043,
+      "sha256": "a3d62534c641c9050bbb9dc88da00e9e97e35cd3290ee0151d098bc9b23ef6bd",
+      "descriptorSha256": "0261aca876288a3a139266a1d1794687db9bb082f9398df95d219ae5686c3dca"
+    },
+    {
+      "name": "task_center.proto",
+      "bytes": 6222,
+      "sha256": "ea5d0ac98ecbc7c10a79ba146665ad8041a21af83d1eee6f49f5f204258f4397",
+      "descriptorSha256": "98545412fa9dd8c4004bd66ed22f2fad1b01bb923080d68febcc9c395134a32f"
+    }
+  ],
+  "excludedChanges": [
+    "factoryTest.proto: manufacturer calibration/EEPROM operations are outside the public SDK control surface",
+    "voice_assistant.proto: no voice assistant API in canonical SDK"
+  ]
+}

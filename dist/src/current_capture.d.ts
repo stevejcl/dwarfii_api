@@ -14,6 +14,19 @@ export interface CurrentCaptureSettings {
     /** Semantic hardware filter index, not a UI option's ordinal. Telephoto only. */
     filterIndex?: number;
 }
+export interface CurrentShootingModeCapability {
+    id: number;
+    parentId?: number;
+    shootingTechnology: readonly {
+        id: number;
+        cameraIds: readonly number[];
+    }[];
+}
+export interface CurrentCaptureModeOptions {
+    /** DSO is2. Other modes (e.g. Sun8) must be explicitly selected and discovered. */
+    shootingModeId?: number;
+    supportedShootingModes?: readonly CurrentShootingModeCapability[];
+}
 export interface CurrentCaptureStep {
     operation: CurrentCommand;
     values: Record<string, unknown>;
@@ -35,6 +48,8 @@ export interface CurrentCaptureControls {
     };
 }
 export interface CurrentCapturePlan {
+    shootingModeId: number;
+    catalogModeId: number;
     settings: Readonly<CurrentCaptureSettings>;
     controls: CurrentCaptureControls;
     sourceQuickSetInfoId: string;
@@ -60,15 +75,15 @@ export interface CurrentCaptureSubmission {
 /** Resolve user-facing filter text without Mini-specific ordinal arithmetic. */
 export declare function resolveCurrentScienceFilter(profile: CurrentProfile, value: number | string): number;
 /** All catalog/settings validation occurs before any mode or capture command. */
-export declare function resolveCurrentCaptureControls(profile: CurrentProfile, catalog: CurrentCameraCatalog, settings: CurrentCaptureSettings): CurrentCaptureControls;
+export declare function resolveCurrentCaptureControls(profile: CurrentProfile, catalog: CurrentCameraCatalog, settings: CurrentCaptureSettings, options?: CurrentCaptureModeOptions): CurrentCaptureControls;
 /** Prepare only from an actual camera-scoped quick-set response. Never invent
  * or interpret the unknown tuple components. Modify duration/gain only.
  */
-export declare function buildCurrentCapturePlan(profile: CurrentProfile, catalog: CurrentCameraCatalog, settings: CurrentCaptureSettings, quickSets: Record<string, unknown>): CurrentCapturePlan;
+export declare function buildCurrentCapturePlan(profile: CurrentProfile, catalog: CurrentCameraCatalog, settings: CurrentCaptureSettings, quickSets: Record<string, unknown>, options?: CurrentCaptureModeOptions): CurrentCapturePlan;
 /** Pure adaptation for an OBSERVED active capture namespace (11/13). This never
  * sends automatically: a new mode must be supported by an actual15264 echo and
  * correlated with the active camera/capture before the caller applies it.
  */
 export declare function currentCaptureControlsForObservedMode(controls: CurrentCaptureControls, modeId: number): CurrentCaptureControls;
-export declare function executeCurrentCapture(transport: CurrentCaptureTransport, profile: CurrentProfile, catalog: CurrentCameraCatalog, settings: CurrentCaptureSettings): Promise<CurrentCaptureSubmission>;
+export declare function executeCurrentCapture(transport: CurrentCaptureTransport, profile: CurrentProfile, catalog: CurrentCameraCatalog, settings: CurrentCaptureSettings, options?: CurrentCaptureModeOptions): Promise<CurrentCaptureSubmission>;
 //# sourceMappingURL=current_capture.d.ts.map

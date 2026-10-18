@@ -4,6 +4,8 @@ Generated with `node scripts/current-schema-compare.mjs`. This report compares s
 
 Canonical source: [dwarfAlp b5a56f00519a1b76ab36d6e445e1d332216816f6](https://github.com/acocalypso/dwarfAlp/tree/b5a56f00519a1b76ab36d6e445e1d332216816f6/src/dwarf_alpaca/proto). SHA-256 hashes of unchanged source blobs are recorded in `src/current_proto/provenance.json`.
 
+Effective release overlays: dwarf3 1.5.3.9 and dwarfmini 1.1.4.4. Camera, notification and task-center additions come from independently hash-verified rendered descriptors in `src/current_proto/releases/dwarf3-1.5.3.9-mini-1.1.4.4/provenance.json`; original research snapshots are preserved.
+
 The legacy SDK root is intentionally retained for external compatibility. Dwarfium's current protocol uses the separately generated `dwarfCurrent` root; legacy and current types do not overwrite one another.
 
 Empty compatibility stubs and the provisional command 15255 schema are not imported. Merely retaining a legacy declaration or command enum does not establish that a current device supports it.
@@ -13,14 +15,14 @@ Empty compatibility stubs and the provisional command 15255 schema are not impor
 | Source | Files | Messages | Fields | Enums | Enum values |
 | --- | ---: | ---: | ---: | ---: | ---: |
 | Legacy SDK | 22 | 306 | 623 | 24 | 614 |
-| Canonical current | 17 | 428 | 957 | 28 | 532 |
+| Canonical current | 17 | 436 | 996 | 36 | 565 |
 
 Equality includes every field number/name/type, fully qualified type reference, repetition/map key, oneof membership, and explicit proto3 optional presence. Enum equality includes numeric values, declared aliases and their order. Moving a message into a package is not reported as a false short-name match.
 
 | Definition | Exact | Different | Legacy / compatibility only | Current only |
 | --- | ---: | ---: | ---: | ---: |
-| Messages | 157 | 27 | 122 | 244 |
-| Enums | 13 | 4 | 7 | 11 |
+| Messages | 157 | 27 | 122 | 252 |
+| Enums | 13 | 4 | 7 | 19 |
 
 ## Messages
 
@@ -50,6 +52,7 @@ Equality includes every field number/name/type, fully qualified type reference, 
 | `FatigueTestLightsParam` | CURRENT ONLY |
 | `FatigueTestMotorParam` | CURRENT ONLY |
 | `FatigueTestParam` | CURRENT ONLY |
+| `FocusInfo` | CURRENT ONLY |
 | `FocusMotorStateInfo` | CURRENT ONLY |
 | `IspModuleState` | CURRENT ONLY |
 | `MakeFitsThumbTaskParam` | CURRENT ONLY |
@@ -122,6 +125,7 @@ Equality includes every field number/name/type, fully qualified type reference, 
 | `ReqGetAstroShootingTime` | CURRENT ONLY |
 | `ReqGetBrightness` | EXACT |
 | `ReqGetCaliFrameList` | CURRENT ONLY |
+| `ReqGetCameraAndFocusInfo` | CURRENT ONLY |
 | `ReqGetContrast` | EXACT |
 | `ReqGetDarkFrameList` | EXACT |
 | `ReqGetDeviceActivateInfo` | LEGACY / COMPATIBILITY ONLY |
@@ -215,6 +219,7 @@ Equality includes every field number/name/type, fully qualified type reference, 
 | `ReqSetBrightness` | EXACT |
 | `ReqSetContrast` | EXACT |
 | `ReqSetCpuMode` | EXACT |
+| `ReqSetDigitalZoom` | CURRENT ONLY |
 | `ReqSetExp` | EXACT |
 | `ReqSetExpMode` | EXACT |
 | `ReqSetExposure` | LEGACY / COMPATIBILITY ONLY |
@@ -296,6 +301,7 @@ Equality includes every field number/name/type, fully qualified type reference, 
 | `ReqStopTimeLapse` | EXACT |
 | `ReqStopTrack` | EXACT |
 | `ReqStopTrackSpecialTarget` | EXACT |
+| `ReqSwitchCameraHdr` | CURRENT ONLY |
 | `ReqSwitchCropRatio` | CURRENT ONLY |
 | `ReqSwitchFrameRate` | CURRENT ONLY |
 | `ReqSwitchResolution` | CURRENT ONLY |
@@ -337,6 +343,7 @@ Equality includes every field number/name/type, fully qualified type reference, 
 | `ResGetAllShootingSchedule` | EXACT |
 | `ResGetAstroShootingTime` | CURRENT ONLY |
 | `ResGetCaliFrameList` | CURRENT ONLY |
+| `ResGetCameraAndFocusInfo` | CURRENT ONLY |
 | `ResGetDarkFrameInfo` | DIFFERENT |
 | `ResGetDarkFrameInfoList` | EXACT |
 | `ResGetDeviceStateInfo` | DIFFERENT |
@@ -401,6 +408,7 @@ Equality includes every field number/name/type, fully qualified type reference, 
 | `ResReplaceShootingSchedule` | DIFFERENT |
 | `ResRepostprocess` | CURRENT ONLY |
 | `ResReset` | EXACT |
+| `ResSetDigitalZoom` | CURRENT ONLY |
 | `ResSetQuickSet` | CURRENT ONLY |
 | `ResSetblewifi` | EXACT |
 | `ResSta` | EXACT |
@@ -408,6 +416,7 @@ Equality includes every field number/name/type, fully qualified type reference, 
 | `ResStartPanoramaStitchUpload` | CURRENT ONLY |
 | `ResStartSkyTargetFinder` | CURRENT ONLY |
 | `ResStopPanoramaStitchUpload` | CURRENT ONLY |
+| `ResSwitchCameraHdr` | CURRENT ONLY |
 | `ResSwitchShootingMode` | CURRENT ONLY |
 | `ResSwitchShootingTech` | CURRENT ONLY |
 | `ResSyncShootingSchedule` | EXACT |
@@ -416,6 +425,7 @@ Equality includes every field number/name/type, fully qualified type reference, 
 | `ResUserInfinityPos` | CURRENT ONLY |
 | `ResVcmK` | CURRENT ONLY |
 | `ResWifilist` | DIFFERENT |
+| `SensorInfo` | CURRENT ONLY |
 | `ShootingModeAndTech` | CURRENT ONLY |
 | `ShootingScheduleMsg` | EXACT |
 | `ShootingTaskMsg` | EXACT |
@@ -3065,6 +3075,24 @@ Current:
       "keyType": null,
       "oneof": "_cmos_temperature",
       "proto3Optional": true
+    },
+    {
+      "number": 8,
+      "name": "hdr_enabled",
+      "type": "bool",
+      "rule": "singular",
+      "keyType": null,
+      "oneof": null,
+      "proto3Optional": false
+    },
+    {
+      "number": 9,
+      "name": "resolution_aspect_ratio",
+      "type": "int32",
+      "rule": "singular",
+      "keyType": null,
+      "oneof": null,
+      "proto3Optional": false
     }
   ],
   "oneofs": [
@@ -3084,16 +3112,24 @@ Current:
 | --- | --- |
 | `AstroState` | LEGACY / COMPATIBILITY ONLY |
 | `AstroTrackingSpecial` | EXACT |
+| `BayerPattern` | CURRENT ONLY |
+| `ByteOrder` | CURRENT ONLY |
+| `CameraFocusType` | CURRENT ONLY |
+| `CameraId` | CURRENT ONLY |
+| `CfaType` | CURRENT ONLY |
 | `DwarfBleErrorCode` | LEGACY / COMPATIBILITY ONLY |
 | `DwarfCMD` | DIFFERENT |
 | `DwarfErrorCode` | DIFFERENT |
 | `ExclusiveTaskType` | CURRENT ONLY |
+| `FocusId` | CURRENT ONLY |
 | `IrCut` | EXACT |
 | `MessageTypeId` | EXACT |
 | `ModuleId` | DIFFERENT |
 | `MotorLevelCalibrationDirection` | EXACT |
 | `OperationState` | LEGACY / COMPATIBILITY ONLY |
 | `PhotoMode` | EXACT |
+| `RawFormat` | CURRENT ONLY |
+| `RawStorage` | CURRENT ONLY |
 | `ResGetAstroShootingTime.AstroMode` | CURRENT ONLY |
 | `ResNotifyEqSolvingState.Action` | LEGACY / COMPATIBILITY ONLY |
 | `SentryModeState` | LEGACY / COMPATIBILITY ONLY |

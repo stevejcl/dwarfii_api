@@ -82,8 +82,8 @@ function transport({ responseOverride, failOn } = {}) {
       if (operation === failOn)
         throw new CurrentProtocolError("device", "Synthetic rejection", -1);
       let data = {};
-      if (operation === "switchShootingMode") data = { shootingModeId: 8 };
-      if (operation === "enterCamera") data = { shootingModeId: 8 };
+      if (operation === "switchShootingMode") data = { shootingModeId: 2 };
+      if (operation === "enterCamera") data = { shootingModeId: 2 };
       if (operation === "switchShootingTech") data = { shootingTechId: 2 };
       if (operation === "getQuickSets") data = presets(values.cameraType);
       if (operation === "setQuickSet") data = { infoId: values.infoId };
@@ -209,7 +209,7 @@ test("verified submission sequence reapplies live parameters after persisted qui
       11005,
     ],
   );
-  assert.deepEqual(calls[0].values, { mode: 8 });
+  assert.deepEqual(calls[0].values, { mode: 2 });
   assert.deepEqual(calls[1].values, { clientParam: { encodeType: 1 } });
   assert.deepEqual(calls[2].values, { tech: 2 });
   assert.deepEqual(calls.at(-1).values, { irIndex: 1 });
@@ -451,4 +451,114 @@ test("observed runtime mode adaptation is pure and preserves every nonmode ident
     () => currentCaptureControlsForObservedMode(controls, 8),
     kind("unsupported"),
   );
+});
+
+for (const hardwareId of [2, 4]) {
+  test(`DWARF hardware ${hardwareId} DSO sessions select mode2 and never silently select Sun8`, async () => {
+    const { client, calls } = transport();
+    const result = await executeCurrentCapture(
+      client,
+      getCurrentProfile(hardwareId),
+      catalog(),
+      settings(),
+    );
+    assert.deepEqual(calls[0], {
+      operation: "switchShootingMode",
+      values: { mode: 2 },
+    });
+    assert.equal(result.plan.shootingModeId, 2);
+    assert.equal(result.plan.catalogModeId, 2);
+    assert.equal(
+      calls.some(
+        (call) =>
+          call.operation === "switchShootingMode" && call.values.mode === 8,
+      ),
+      false,
+    );
+  });
+}
+
+test("an explicit discovered Sun8 capture uses the parent3 parameter namespace", async () => {
+  const solarCatalog = catalog();
+  solarCatalog.modeId = 3;
+  for (const camera of solarCatalog.cameras)
+    for (const parameter of camera.parameters) {
+      parameter.paramId = (
+        (3n << 56n) |
+        (BigInt(parameter.paramId) & ((1n << 56n) - 1n))
+      ).toString();
+    }
+  const options = {
+    shootingModeId: 8,
+    supportedShootingModes: [
+      {
+        id: 8,
+        parentId: 3,
+        shootingTechnology: [{ id: 2, cameraIds: [0, 1] }],
+      },
+    ],
+  };
+  const { client, calls } = transport({
+    responseOverride: (operation, data) =>
+      operation === "switchShootingMode"
+        ? { shootingModeId: 8 }
+        : operation === "enterCamera"
+          ? { shootingModeId: 3 }
+          : data,
+  });
+  const result = await executeCurrentCapture(
+    client,
+    getCurrentProfile(2),
+    solarCatalog,
+    settings(),
+    options,
+  );
+  assert.deepEqual(calls[0].values, { mode: 8 });
+  assert.equal(result.plan.catalogModeId, 3);
+  for (const control of Object.values(result.plan.controls))
+    assert.equal(decodeCurrentParamId(control.paramId).shootingMode, 3);
+});
+
+test("non-DSO modes cannot use undiscovered capabilities or a different catalog namespace", async () => {
+  for (const options of [
+    { shootingModeId: 8 },
+    {
+      shootingModeId: 8,
+      supportedShootingModes: [
+        {
+          id: 8,
+          parentId: 3,
+          shootingTechnology: [{ id: 4, cameraIds: [0, 1] }],
+        },
+      ],
+    },
+    {
+      shootingModeId: 8,
+      supportedShootingModes: [
+        { id: 8, parentId: 3, shootingTechnology: [{ id: 2, cameraIds: [1] }] },
+      ],
+    },
+    {
+      shootingModeId: 8,
+      supportedShootingModes: [
+        {
+          id: 8,
+          parentId: 3,
+          shootingTechnology: [{ id: 2, cameraIds: [0, 1] }],
+        },
+      ],
+    },
+  ]) {
+    const { client, calls } = transport();
+    await assert.rejects(
+      executeCurrentCapture(
+        client,
+        getCurrentProfile(2),
+        catalog(),
+        settings(),
+        options,
+      ),
+    );
+    assert.equal(calls.length, 0);
+  }
 });

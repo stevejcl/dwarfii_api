@@ -24,8 +24,8 @@ test("canonical generated root cannot overwrite legacy SDK types", () => {
 });
 
 test("generated validation metadata preserves qualification and optional/oneof presence", () => {
-  assert.equal(Object.keys(currentFields).length, 428);
-  assert.equal(Object.keys(currentEnums).length, 28);
+  assert.equal(Object.keys(currentFields).length, 436);
+  assert.equal(Object.keys(currentEnums).length, 36);
   assert.equal(
     currentFields["param.ReqSetExposure"].fields.paramId.type,
     "uint64",
@@ -121,6 +121,73 @@ test("all canonical sources exactly match the pinned research provenance", () =>
       file.name,
     );
   }
+});
+
+test("current D3/Mini release overlays have independent hash-verified provenance", () => {
+  const directory = new URL(
+    "../current_proto/releases/dwarf3-1.5.3.9-mini-1.1.4.4/",
+    import.meta.url,
+  );
+  const manifest = JSON.parse(
+    readFileSync(new URL("provenance.json", directory)),
+  );
+  assert.equal(
+    manifest.firmware[0].descriptorSetSha256,
+    manifest.firmware[1].descriptorSetSha256,
+  );
+  assert.deepEqual(
+    manifest.firmware.map((source) => source.version),
+    ["1.5.3.9", "1.1.4.4"],
+  );
+  for (const file of manifest.files) {
+    const bytes = readFileSync(new URL(file.name, directory));
+    assert.equal(bytes.length, file.bytes);
+    assert.equal(createHash("sha256").update(bytes).digest("hex"), file.sha256);
+  }
+  assert.equal(
+    readFileSync(
+      new URL("../current_proto/camera.proto", import.meta.url),
+      "utf8",
+    ).includes("message SensorInfo"),
+    false,
+  );
+});
+
+test("release HDR/aspect-ratio state fields retain literal firmware wire positions", () => {
+  for (const type of [
+    current.TeleCameraStateInfo,
+    current.WideCameraStateInfo,
+  ]) {
+    assert.deepEqual(type.toObject(type.decode(bytes("40014802"))), {
+      hdrEnabled: true,
+      resolutionAspectRatio: 2,
+    });
+  }
+  assert.deepEqual(
+    current.notify.ResolutionParam.toObject(
+      current.notify.ResolutionParam.decode(bytes("30ac02")),
+    ),
+    { resolutionAspectRatio: 300 },
+  );
+});
+
+test("camera/focus metadata uses the firmware-specific enums and independent literal payload", () => {
+  const decoded = current.ResGetCameraAndFocusInfo.toObject(
+    current.ResGetCameraAndFocusInfo.decode(
+      bytes("1201311a090801120158181020082206080110013064"),
+    ),
+  );
+  assert.deepEqual(decoded, {
+    schemaVersion: "1",
+    sensorInfos: [
+      { cameraId: 1, cmosModel: "X", imageWidth: 16, imageHeight: 8 },
+    ],
+    focusInfos: [{ focusId: 1, focusType: 1, maxCode: 100 }],
+  });
+  assert.equal(current.CameraId.CAMERA_ID_TELE, 1);
+  assert.equal(current.CameraId.CAMERA_ID_WIDE, 2);
+  assert.equal(current.FocusId.FOCUS_ID_WIDE, 3);
+  assert.equal(encoded(current.ReqGetCameraAndFocusInfo, {}), "");
 });
 
 test("task-center and preview requests match APK golden bytes", () => {

@@ -2633,6 +2633,142 @@ export const currentFields = {
     },
     oneofs: {},
   },
+  ReqGetCameraAndFocusInfo: { fields: {}, oneofs: {} },
+  SensorInfo: {
+    fields: {
+      cameraId: {
+        type: "CameraId",
+        kind: "enum",
+        rule: "singular",
+        optional: false,
+      },
+      cmosModel: {
+        type: "string",
+        kind: "scalar",
+        rule: "singular",
+        optional: false,
+      },
+      imageWidth: {
+        type: "int32",
+        kind: "scalar",
+        rule: "singular",
+        optional: false,
+      },
+      imageHeight: {
+        type: "int32",
+        kind: "scalar",
+        rule: "singular",
+        optional: false,
+      },
+      cfaType: {
+        type: "CfaType",
+        kind: "enum",
+        rule: "singular",
+        optional: false,
+      },
+      rawFormat: {
+        type: "RawFormat",
+        kind: "enum",
+        rule: "singular",
+        optional: false,
+      },
+      bayerPattern: {
+        type: "BayerPattern",
+        kind: "enum",
+        rule: "singular",
+        optional: false,
+      },
+      rawStorage: {
+        type: "RawStorage",
+        kind: "enum",
+        rule: "singular",
+        optional: false,
+      },
+      rowStrideBytes: {
+        type: "int32",
+        kind: "scalar",
+        rule: "singular",
+        optional: false,
+      },
+      byteOrder: {
+        type: "ByteOrder",
+        kind: "enum",
+        rule: "singular",
+        optional: false,
+      },
+    },
+    oneofs: {},
+  },
+  FocusInfo: {
+    fields: {
+      focusId: {
+        type: "FocusId",
+        kind: "enum",
+        rule: "singular",
+        optional: false,
+      },
+      focusType: {
+        type: "CameraFocusType",
+        kind: "enum",
+        rule: "singular",
+        optional: false,
+      },
+      totalTravelUm: {
+        type: "double",
+        kind: "scalar",
+        rule: "singular",
+        optional: false,
+      },
+      umPerStep: {
+        type: "double",
+        kind: "scalar",
+        rule: "singular",
+        optional: false,
+      },
+      minCode: {
+        type: "int32",
+        kind: "scalar",
+        rule: "singular",
+        optional: false,
+      },
+      maxCode: {
+        type: "int32",
+        kind: "scalar",
+        rule: "singular",
+        optional: false,
+      },
+    },
+    oneofs: {},
+  },
+  ResGetCameraAndFocusInfo: {
+    fields: {
+      code: {
+        type: "int32",
+        kind: "scalar",
+        rule: "singular",
+        optional: false,
+      },
+      schemaVersion: {
+        type: "string",
+        kind: "scalar",
+        rule: "singular",
+        optional: false,
+      },
+      sensorInfos: {
+        type: "SensorInfo",
+        kind: "message",
+        rule: "repeated",
+        optional: false,
+      },
+      focusInfos: {
+        type: "FocusInfo",
+        kind: "message",
+        rule: "repeated",
+        optional: false,
+      },
+    },
+    oneofs: {},
+  },
   ReqLensDefog: {
     fields: {
       state: {
@@ -4872,6 +5008,12 @@ export const currentFields = {
         rule: "repeated",
         optional: false,
       },
+      resolutionAspectRatio: {
+        type: "int32",
+        kind: "scalar",
+        rule: "singular",
+        optional: false,
+      },
     },
     oneofs: {},
   },
@@ -6641,6 +6783,110 @@ export const currentFields = {
     },
     oneofs: {},
   },
+  ReqSwitchCameraHdr: {
+    fields: {
+      cameraType: {
+        type: "int32",
+        kind: "scalar",
+        rule: "singular",
+        optional: false,
+      },
+      hdrMode: {
+        type: "int32",
+        kind: "scalar",
+        rule: "singular",
+        optional: false,
+      },
+    },
+    oneofs: {},
+  },
+  ResSwitchCameraHdr: {
+    fields: {
+      code: {
+        type: "int32",
+        kind: "scalar",
+        rule: "singular",
+        optional: false,
+      },
+      cameraType: {
+        type: "int32",
+        kind: "scalar",
+        rule: "singular",
+        optional: false,
+      },
+      hdrMode: {
+        type: "int32",
+        kind: "scalar",
+        rule: "singular",
+        optional: false,
+      },
+    },
+    oneofs: {},
+  },
+  ReqSetDigitalZoom: {
+    fields: {
+      cameraType: {
+        type: "int32",
+        kind: "scalar",
+        rule: "singular",
+        optional: false,
+      },
+      zoomRatio: {
+        type: "float",
+        kind: "scalar",
+        rule: "singular",
+        optional: false,
+      },
+      centerX: {
+        type: "float",
+        kind: "scalar",
+        rule: "singular",
+        optional: false,
+      },
+      centerY: {
+        type: "float",
+        kind: "scalar",
+        rule: "singular",
+        optional: false,
+      },
+    },
+    oneofs: {},
+  },
+  ResSetDigitalZoom: {
+    fields: {
+      code: {
+        type: "int32",
+        kind: "scalar",
+        rule: "singular",
+        optional: false,
+      },
+      cameraType: {
+        type: "int32",
+        kind: "scalar",
+        rule: "singular",
+        optional: false,
+      },
+      zoomRatio: {
+        type: "float",
+        kind: "scalar",
+        rule: "singular",
+        optional: false,
+      },
+      centerX: {
+        type: "float",
+        kind: "scalar",
+        rule: "singular",
+        optional: false,
+      },
+      centerY: {
+        type: "float",
+        kind: "scalar",
+        rule: "singular",
+        optional: false,
+      },
+    },
+    oneofs: {},
+  },
   ReqGetDeviceStateInfo: { fields: {}, oneofs: {} },
   ExclusiveCameraState: {
     fields: {
@@ -6759,6 +7005,18 @@ export const currentFields = {
         optional: true,
         oneof: "_cmosTemperature",
       },
+      hdrEnabled: {
+        type: "bool",
+        kind: "scalar",
+        rule: "singular",
+        optional: false,
+      },
+      resolutionAspectRatio: {
+        type: "int32",
+        kind: "scalar",
+        rule: "singular",
+        optional: false,
+      },
     },
     oneofs: { _cmosTemperature: ["cmosTemperature"] },
   },
@@ -6806,6 +7064,18 @@ export const currentFields = {
         rule: "singular",
         optional: true,
         oneof: "_cmosTemperature",
+      },
+      hdrEnabled: {
+        type: "bool",
+        kind: "scalar",
+        rule: "singular",
+        optional: false,
+      },
+      resolutionAspectRatio: {
+        type: "int32",
+        kind: "scalar",
+        rule: "singular",
+        optional: false,
       },
     },
     oneofs: { _cmosTemperature: ["cmosTemperature"] },
@@ -7219,6 +7489,50 @@ export const currentEnums = {
   WsMajorVersion: { WS_MAJOR_VERSION_UNKNOWN: 0, WS_MAJOR_VERSION_NUMBER: 1 },
   WsMinorVersion: { WS_MINOR_VERSION_UNKNOWN: 0, WS_MINOR_VERSION_NUMBER: 9 },
   VocalType: { VT_UNKNOWN: 0, VT_PING: 1, VT_ECHO: 2 },
+  CameraId: {
+    CAMERA_ID_UNKNOWN: 0,
+    CAMERA_ID_TELE: 1,
+    CAMERA_ID_WIDE: 2,
+    CAMERA_ID_GUIDE: 3,
+  },
+  CfaType: { CFA_TYPE_UNKNOWN: 0, CFA_TYPE_NONE: 1, CFA_TYPE_BAYER: 2 },
+  RawFormat: {
+    RAW_FORMAT_UNKNOWN: 0,
+    RAW_FORMAT_RAW8: 1,
+    RAW_FORMAT_RAW10: 2,
+    RAW_FORMAT_RAW12: 3,
+  },
+  BayerPattern: {
+    BAYER_PATTERN_UNKNOWN: 0,
+    BAYER_PATTERN_NONE: 1,
+    BAYER_PATTERN_BGGR: 2,
+    BAYER_PATTERN_RGGB: 3,
+    BAYER_PATTERN_GBRG: 4,
+    BAYER_PATTERN_GRBG: 5,
+  },
+  RawStorage: {
+    RAW_STORAGE_UNKNOWN: 0,
+    RAW_STORAGE_RAW8: 1,
+    RAW_STORAGE_PACKED10: 2,
+    RAW_STORAGE_PACKED12: 3,
+    RAW_STORAGE_UNPACKED16: 4,
+  },
+  ByteOrder: {
+    BYTE_ORDER_UNKNOWN: 0,
+    BYTE_ORDER_LITTLE_ENDIAN: 1,
+    BYTE_ORDER_BIG_ENDIAN: 2,
+  },
+  CameraFocusType: {
+    FOCUS_TYPE_UNKNOWN: 0,
+    FOCUS_TYPE_STEPPER: 1,
+    FOCUS_TYPE_VCM: 2,
+  },
+  FocusId: {
+    FOCUS_ID_UNKNOWN: 0,
+    FOCUS_ID_TELE: 1,
+    FOCUS_ID_GUIDE: 2,
+    FOCUS_ID_WIDE: 3,
+  },
   MotorLevelCalibrationDirection: {
     MOTOR_LEVEL_CALIBRATION_DIRECTION_CW: 0,
     MOTOR_LEVEL_CALIBRATION_DIRECTION_CCW: 1,
@@ -7257,6 +7571,7 @@ export const currentEnums = {
   "notify.CommonProgress.ProgressType": {
     PROGRESS_TYPE_INITING: 0,
     PROGRESS_TYPE_MOSAIC_MOVING: 1,
+    PROGRESS_TYPE_CAPTURING_DARK_FRAME: 2,
   },
   "notify.StateSystemResourceOccupation.TaskId": {
     IDLE: 0,

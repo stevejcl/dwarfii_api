@@ -25,4 +25,4 @@ export * from "./src/current_session.js";
 export * from "./src/current_catalog.js";
 export * from "./src/current_websocket.js";
 export * from "./src/current_capture.js";
-
+export * from "./src/current_schedule.js";

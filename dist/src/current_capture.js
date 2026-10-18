@@ -12,17 +12,45 @@ function positiveInt(value, description) {
     if (!Number.isSafeInteger(value) || value < 1 || value > int32Max)
         throw new CurrentProtocolError("invalid-parameter", `${description} must be an integer in [1, ${int32Max}]`);
 }
-function namespace(parameter, cameraId, category, index) {
+function namespace(parameter, cameraId, category, index, modeId) {
     if (!parameter.paramId)
         throw new CurrentProtocolError("unsupported", `No discovered identifier for ${parameter.key}`);
     const parts = decodeCurrentParamId(parameter.paramId);
-    if (parts.shootingMode !== 2 ||
+    if (parts.shootingMode !== modeId ||
         parts.cameraId !== cameraId ||
         parts.category !== category ||
         parts.paramIndex !== index) {
         throw new CurrentProtocolError("invalid-parameter", `Discovered ${parameter.key} identifier does not belong to this astronomy camera/control`);
     }
     return parameter.paramId;
+}
+function captureMode(catalog, settings, options) {
+    const shootingModeId = options.shootingModeId ?? 2;
+    if (!Number.isSafeInteger(shootingModeId) || shootingModeId < 1)
+        throw new CurrentProtocolError("invalid-parameter", "Select a valid shooting mode");
+    let catalogModeId = 2;
+    if (options.supportedShootingModes !== undefined) {
+        if (!Array.isArray(options.supportedShootingModes))
+            throw new CurrentProtocolError("invalid-parameter", "Expected discovered shooting modes");
+        const matches = options.supportedShootingModes.filter((mode) => mode.id === shootingModeId);
+        if (matches.length !== 1 ||
+            !Array.isArray(matches[0].shootingTechnology) ||
+            !matches[0].shootingTechnology.some((tech) => tech.id === 2 &&
+                Array.isArray(tech.cameraIds) &&
+                tech.cameraIds.includes(settings.cameraId)))
+            throw new CurrentProtocolError("unsupported", "The selected mode does not advertise stacking for this camera");
+        const mode = matches[0];
+        catalogModeId =
+            typeof mode.parentId === "number" && mode.parentId >= 0
+                ? mode.parentId
+                : mode.id;
+    }
+    else if (shootingModeId !== 2) {
+        throw new CurrentProtocolError("unsupported", "An explicit non-DSO mode requires discovered shooting-mode capabilities");
+    }
+    if (catalog.modeId !== catalogModeId)
+        throw new CurrentProtocolError("invalid-parameter", "Capture requires the parameter catalog for the selected mode's parent namespace");
+    return { shootingModeId, catalogModeId };
 }
 /** Resolve user-facing filter text without Mini-specific ordinal arithmetic. */
 export function resolveCurrentScienceFilter(profile, value) {
@@ -38,9 +66,8 @@ export function resolveCurrentScienceFilter(profile, value) {
     return matches[0].index;
 }
 /** All catalog/settings validation occurs before any mode or capture command. */
-export function resolveCurrentCaptureControls(profile, catalog, settings) {
-    if (catalog.modeId !== 2)
-        throw new CurrentProtocolError("invalid-parameter", "Astronomy capture requires a freshly discovered mode-2 parameter catalog");
+export function resolveCurrentCaptureControls(profile, catalog, settings, options = {}) {
+    const { catalogModeId } = captureMode(catalog, settings, options);
     if (settings.cameraId !== 0 && settings.cameraId !== 1)
         throw new CurrentProtocolError("invalid-parameter", "Unknown capture camera");
     positiveInt(settings.frameCount, "Frame count");
@@ -58,8 +85,8 @@ export function resolveCurrentCaptureControls(profile, catalog, settings) {
     }
     const exposureParameter = findCurrentCameraParameter(catalog, settings.cameraId, "exp");
     const gainParameter = findCurrentCameraParameter(catalog, settings.cameraId, "gain");
-    namespace(exposureParameter, settings.cameraId, 1, 1);
-    namespace(gainParameter, settings.cameraId, 1, 2);
+    namespace(exposureParameter, settings.cameraId, 1, 1, catalogModeId);
+    namespace(gainParameter, settings.cameraId, 1, 2, catalogModeId);
     const exposure = selectCurrentExposure(catalog, settings.cameraId, settings.exposureSeconds);
     const gain = selectCurrentParameterValue(gainParameter, settings.gain);
     const countParameters = catalog.cameras
@@ -68,7 +95,7 @@ export function resolveCurrentCaptureControls(profile, catalog, settings) {
         if (!parameter.paramId)
             return false;
         const parts = decodeCurrentParamId(parameter.paramId);
-        return (parts.shootingMode === 2 &&
+        return (parts.shootingMode === catalogModeId &&
             parts.cameraId === settings.cameraId &&
             parts.category === 2 &&
             parts.paramIndex === 16);
@@ -76,7 +103,7 @@ export function resolveCurrentCaptureControls(profile, catalog, settings) {
     if (countParameters.length !== 1)
         throw new CurrentProtocolError("unsupported", "No unique runtime astronomy frame-count control was discovered for this camera");
     const countParameter = countParameters[0];
-    const countId = namespace(countParameter, settings.cameraId, 2, 16);
+    const countId = namespace(countParameter, settings.cameraId, 2, 16, catalogModeId);
     if (countParameter.options || countParameter.range)
         selectCurrentParameterValue(countParameter, settings.frameCount);
     return {
@@ -88,8 +115,9 @@ export function resolveCurrentCaptureControls(profile, catalog, settings) {
 /** Prepare only from an actual camera-scoped quick-set response. Never invent
  * or interpret the unknown tuple components. Modify duration/gain only.
  */
-export function buildCurrentCapturePlan(profile, catalog, settings, quickSets) {
-    const controls = resolveCurrentCaptureControls(profile, catalog, settings);
+export function buildCurrentCapturePlan(profile, catalog, settings, quickSets, options = {}) {
+    const selectedMode = captureMode(catalog, settings, options);
+    const controls = resolveCurrentCaptureControls(profile, catalog, settings, options);
     if ((quickSets.code ?? 0) !== 0)
         throw new CurrentProtocolError("device", `Quick-set discovery failed (${quickSets.code})`, Number(quickSets.code), 11040);
     if ((quickSets.cameraType ?? 0) !== settings.cameraId ||
@@ -133,6 +161,7 @@ export function buildCurrentCapturePlan(profile, catalog, settings, quickSets) {
     parts[3] = String(settings.gain);
     const quickSetInfoId = parts.join("|");
     return {
+        ...selectedMode,
         settings: Object.freeze({ ...settings }),
         controls,
         sourceQuickSetInfoId: template.infoId,
@@ -177,8 +206,9 @@ export function currentCaptureControlsForObservedMode(controls, modeId) {
         },
     };
 }
-export async function executeCurrentCapture(transport, profile, catalog, settings) {
-    resolveCurrentCaptureControls(profile, catalog, settings);
+export async function executeCurrentCapture(transport, profile, catalog, settings, options = {}) {
+    const selectedMode = captureMode(catalog, settings, options);
+    resolveCurrentCaptureControls(profile, catalog, settings, options);
     if (running.has(transport))
         throw new CurrentProtocolError("busy", "Astronomy capture configuration is already in progress");
     running.add(transport);
@@ -196,13 +226,15 @@ export async function executeCurrentCapture(transport, profile, catalog, setting
         return packet;
     };
     try {
-        const mode = await send("switchShootingMode", { mode: 8 });
-        if (mode.data.shootingModeId !== 8)
-            throw new CurrentProtocolError("device", "DWARF did not confirm astronomy mode 8", undefined, 16402);
+        const mode = await send("switchShootingMode", {
+            mode: selectedMode.shootingModeId,
+        });
+        if (mode.data.shootingModeId !== selectedMode.shootingModeId)
+            throw new CurrentProtocolError("device", `DWARF did not confirm shooting mode ${selectedMode.shootingModeId}`, undefined, 16402);
         const camera = await send("enterCamera", {
             clientParam: { encodeType: 1 },
         });
-        if (![2, 8].includes(camera.data.shootingModeId))
+        if (![selectedMode.shootingModeId, selectedMode.catalogModeId].includes(camera.data.shootingModeId))
             throw new CurrentProtocolError("device", "DWARF did not confirm the astronomy camera", undefined, 16404);
         const tech = await send("switchShootingTech", { tech: 2 });
         if (tech.data.shootingTechId !== 2)
@@ -210,7 +242,7 @@ export async function executeCurrentCapture(transport, profile, catalog, setting
         const quickSets = await send("getQuickSets", {
             cameraType: settings.cameraId,
         });
-        const plan = buildCurrentCapturePlan(profile, catalog, settings, quickSets.data);
+        const plan = buildCurrentCapturePlan(profile, catalog, settings, quickSets.data, options);
         let acknowledgement;
         for (const step of plan.steps) {
             acknowledgement = await send(step.operation, step.values);

@@ -1,11 +1,14 @@
 // Reproducible local generation: no network, shell globs, or mutable source checkout.
 import { execFileSync } from "node:child_process";
+import console from "node:console";
+import process from "node:process";
 import { createHash } from "node:crypto";
 import { mkdirSync, readFileSync, readdirSync, writeFileSync } from "node:fs";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import protobuf from "protobufjs";
 import ts from "typescript";
+import { currentSchemaSources } from "./current-schema-sources.mjs";
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const dir = resolve(root, "src/current_proto");
@@ -46,9 +49,8 @@ const run = (entry, args) =>
     stdio: "inherit",
   });
 mkdirSync(resolve(root, "src/protobuf"), { recursive: true });
-const schema = new protobuf.Root()
-  .loadSync(expectedFiles.map((name) => resolve(dir, name)))
-  .resolveAll();
+const sources = currentSchemaSources(root);
+const schema = new protobuf.Root().loadSync(sources.files).resolveAll();
 const currentFields = {};
 const currentEnums = {};
 function collect(node) {
@@ -109,14 +111,14 @@ run("node_modules/protobufjs-cli/bin/pbjs", [
   "protobufjs/minimal.js",
   "-o",
   "./src/protobuf/current.js",
-  ...expectedFiles.map((name) => resolve(dir, name)),
+  ...sources.files,
 ]);
 run("node_modules/protobufjs-cli/bin/pbjs", [
   "-t",
   "json",
   "-o",
   "./src/protobuf/current-descriptor.json",
-  ...expectedFiles.map((name) => resolve(dir, name)),
+  ...sources.files,
 ]);
 run("node_modules/prettier/bin/prettier.cjs", [
   "--write",

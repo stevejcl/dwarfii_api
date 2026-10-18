@@ -17,7 +17,10 @@ import {
   withCurrentParamMode,
 } from "../../dist/src/current_catalog.js";
 import { CurrentProtocolError } from "../../dist/src/current_protocol.js";
-import { getParamAndSetting } from "../../dist/src/http_api.js";
+import {
+  getParamAndSetting,
+  fetchDefaultParamsConfig,
+} from "../../dist/src/http_api.js";
 
 const kind = (expected) => (error) =>
   error instanceof CurrentProtocolError && error.kind === expected;
@@ -452,5 +455,35 @@ test("photo time-lapse explicit durations override firmware placeholder zero bou
   assert.throws(
     () => selectCurrentParameterValue(duration, 123),
     kind("unsupported"),
+  );
+});
+
+test("default configuration GET preserves HTTP capability version and lossless IDs independently of WS headers", async (t) => {
+  const original = globalThis.fetch;
+  t.after(() => {
+    globalThis.fetch = original;
+  });
+  globalThis.fetch = async (url, options) => {
+    assert.equal(url, "http://offline.test:8082/getDefaultParamsConfig");
+    assert.deepEqual(options, { method: "GET" });
+    return {
+      ok: true,
+      text: async () =>
+        '{"code":0,"data":{"majorVersion":2,"minorVersion":6,"paramId":144396663052566529}}',
+    };
+  };
+  const response = await fetchDefaultParamsConfig("offline.test");
+  assert.deepEqual(response.data, {
+    majorVersion: 2,
+    minorVersion: 6,
+    paramId: "144396663052566529",
+  });
+  globalThis.fetch = async () => ({
+    ok: true,
+    text: async () => '{"code":0,"data":{"majorVersion":2}}',
+  });
+  await assert.rejects(
+    fetchDefaultParamsConfig("offline.test"),
+    kind("decode"),
   );
 });

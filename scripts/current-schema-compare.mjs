@@ -1,16 +1,20 @@
 // Compare every fully qualified message/enum; short-name similarity is not equality.
 import protobuf from "protobufjs";
+import console from "node:console";
 import { readFileSync, readdirSync, writeFileSync, mkdirSync } from "node:fs";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
+import { currentSchemaSources } from "./current-schema-sources.mjs";
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
-function inspect(relative) {
+function inspect(relative, selectedPaths) {
   const dir = resolve(root, relative);
-  const paths = readdirSync(dir)
-    .filter((name) => name.endsWith(".proto"))
-    .sort()
-    .map((name) => resolve(dir, name));
+  const paths =
+    selectedPaths ??
+    readdirSync(dir)
+      .filter((name) => name.endsWith(".proto"))
+      .sort()
+      .map((name) => resolve(dir, name));
   const schema = new protobuf.Root()
     .loadSync(paths, { keepCase: true })
     .resolveAll();
@@ -67,7 +71,8 @@ function inspect(relative) {
   };
 }
 const legacy = inspect("src/proto");
-const current = inspect("src/current_proto");
+const sources = currentSchemaSources(root);
+const current = inspect("src/current_proto", sources.files);
 const source = JSON.parse(
   readFileSync(resolve(root, "src/current_proto/provenance.json"), "utf8"),
 );
@@ -95,6 +100,8 @@ const lines = [
   "Generated with `node scripts/current-schema-compare.mjs`. This report compares source definitions, not generated code or hardware behavior.",
   "",
   `Canonical source: [dwarfAlp ${source.commit}](https://github.com/acocalypso/dwarfAlp/tree/${source.commit}/src/dwarf_alpaca/proto). SHA-256 hashes of unchanged source blobs are recorded in \`src/current_proto/provenance.json\`.`,
+  "",
+  `Effective release overlays: ${sources.release.firmware.map((firmware) => `${firmware.model} ${firmware.version}`).join(" and ")}. Camera, notification and task-center additions come from independently hash-verified rendered descriptors in \`src/current_proto/releases/dwarf3-1.5.3.9-mini-1.1.4.4/provenance.json\`; original research snapshots are preserved.`,
   "",
   "The legacy SDK root is intentionally retained for external compatibility. Dwarfium's current protocol uses the separately generated `dwarfCurrent` root; legacy and current types do not overwrite one another.",
   "",

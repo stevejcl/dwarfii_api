@@ -690,3 +690,99 @@ test("float and boolean parameter echoes correlate by exact ID and wire value", 
     kind("invalid-parameter"),
   );
 });
+
+test("observed peer headers are preserved independently of the outbound profile and cleared on reconnect", (t) => {
+  const { session, sent } = harness(t, 2);
+  assert.equal(getCurrentProfile(2).minorVersion, 20);
+  assert.equal(session.state.peerProtocolVersion, undefined);
+  session.receive(createCurrentPacket(getCurrentProfile(2), "getDeviceState"));
+  assert.equal(session.state.peerProtocolVersion, undefined);
+  const incoming = CurrentDwarfSchema.WsPacket.encode({
+    majorVersion: 1,
+    minorVersion: 8,
+    deviceId: 4,
+    moduleId: 14,
+    cmd: 16405,
+    type: 1,
+    clientId: "peer",
+    data: encodeCurrentMessage("ResGetDeviceStateInfo", {
+      deviceStateInfo: { batteryInfo: { percentage: 70 } },
+    }),
+  }).finish();
+  const decoded = session.receive(incoming);
+  assert.equal(decoded.majorVersion, 1);
+  assert.equal(decoded.minorVersion, 8);
+  assert.equal(decoded.clientId, "peer");
+  assert.deepEqual(session.state.peerProtocolVersion, {
+    majorVersion: 1,
+    minorVersion: 8,
+  });
+  assert.equal(session.profile.minorVersion, 20);
+  session.close();
+  assert.equal(session.state.peerProtocolVersion, undefined);
+  session.receive(incoming);
+  assert.equal(session.state.peerProtocolVersion, undefined);
+  session.open((bytes) => sent.push(bytes));
+  assert.equal(session.state.peerProtocolVersion, undefined);
+});
+
+test("session subscriber exceptions cannot corrupt packet handling or hide disconnects", async (t) => {
+  const errors = [];
+  const session = new CurrentSession(getCurrentProfile(2), {
+    onListenerError: (error) => errors.push(error),
+  });
+  t.after(() => session.close());
+  session.subscribe(() => {
+    throw new Error("consumer failure");
+  });
+  const phases = [];
+  session.subscribe((state) => phases.push(state.phase));
+  session.open(() => {});
+  const pending = session.request("getDeviceState");
+  session.receive(
+    response("getDeviceState", {
+      deviceStateInfo: { batteryInfo: { percentage: 75 } },
+    }),
+  );
+  await pending;
+  assert.equal(session.state.phase, "ready");
+  session.close();
+  assert.deepEqual(phases, [
+    "disconnected",
+    "transport-open",
+    "ready",
+    "disconnected",
+  ]);
+  assert.equal(errors.length, phases.length);
+});
+
+test("the Android3.4.3 major2 envelope retains the same canonical payload and actual peer identity", (t) => {
+  const { session } = harness(t, 2);
+  const frame = CurrentDwarfSchema.WsPacket.encode({
+    majorVersion: 2,
+    minorVersion: 7,
+    deviceId: 2,
+    moduleId: 14,
+    cmd: 16405,
+    type: 3,
+    data: encodeCurrentMessage("ResGetDeviceStateInfo", {
+      deviceStateInfo: { batteryInfo: { percentage: 70 } },
+    }),
+  }).finish();
+  const packet = session.receive(frame);
+  assert.equal(packet.majorVersion, 2);
+  assert.equal(packet.minorVersion, 7);
+  assert.equal(packet.deviceId, 2);
+  assert.deepEqual(session.state.peerProtocolVersion, {
+    majorVersion: 2,
+    minorVersion: 7,
+  });
+  assert.equal(session.state.phase, "ready");
+  const invalid = CurrentDwarfSchema.WsPacket.encode({
+    majorVersion: 99,
+    moduleId: 14,
+    cmd: 16405,
+    type: 1,
+  }).finish();
+  assert.throws(() => session.receive(invalid), kind("decode"));
+});

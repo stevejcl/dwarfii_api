@@ -1835,6 +1835,70 @@
         }
       }
     },
+    "CameraId": {
+      "values": {
+        "CAMERA_ID_UNKNOWN": 0,
+        "CAMERA_ID_TELE": 1,
+        "CAMERA_ID_WIDE": 2,
+        "CAMERA_ID_GUIDE": 3
+      }
+    },
+    "CfaType": {
+      "values": {
+        "CFA_TYPE_UNKNOWN": 0,
+        "CFA_TYPE_NONE": 1,
+        "CFA_TYPE_BAYER": 2
+      }
+    },
+    "RawFormat": {
+      "values": {
+        "RAW_FORMAT_UNKNOWN": 0,
+        "RAW_FORMAT_RAW8": 1,
+        "RAW_FORMAT_RAW10": 2,
+        "RAW_FORMAT_RAW12": 3
+      }
+    },
+    "BayerPattern": {
+      "values": {
+        "BAYER_PATTERN_UNKNOWN": 0,
+        "BAYER_PATTERN_NONE": 1,
+        "BAYER_PATTERN_BGGR": 2,
+        "BAYER_PATTERN_RGGB": 3,
+        "BAYER_PATTERN_GBRG": 4,
+        "BAYER_PATTERN_GRBG": 5
+      }
+    },
+    "RawStorage": {
+      "values": {
+        "RAW_STORAGE_UNKNOWN": 0,
+        "RAW_STORAGE_RAW8": 1,
+        "RAW_STORAGE_PACKED10": 2,
+        "RAW_STORAGE_PACKED12": 3,
+        "RAW_STORAGE_UNPACKED16": 4
+      }
+    },
+    "ByteOrder": {
+      "values": {
+        "BYTE_ORDER_UNKNOWN": 0,
+        "BYTE_ORDER_LITTLE_ENDIAN": 1,
+        "BYTE_ORDER_BIG_ENDIAN": 2
+      }
+    },
+    "CameraFocusType": {
+      "values": {
+        "FOCUS_TYPE_UNKNOWN": 0,
+        "FOCUS_TYPE_STEPPER": 1,
+        "FOCUS_TYPE_VCM": 2
+      }
+    },
+    "FocusId": {
+      "values": {
+        "FOCUS_ID_UNKNOWN": 0,
+        "FOCUS_ID_TELE": 1,
+        "FOCUS_ID_GUIDE": 2,
+        "FOCUS_ID_WIDE": 3
+      }
+    },
     "ReqOpenCamera": {
       "fields": {
         "binning": {
@@ -2226,6 +2290,103 @@
         "quality": {
           "type": "uint32",
           "id": 2
+        }
+      }
+    },
+    "ReqGetCameraAndFocusInfo": {
+      "fields": {}
+    },
+    "SensorInfo": {
+      "fields": {
+        "cameraId": {
+          "type": "CameraId",
+          "id": 1
+        },
+        "cmosModel": {
+          "type": "string",
+          "id": 2
+        },
+        "imageWidth": {
+          "type": "int32",
+          "id": 3
+        },
+        "imageHeight": {
+          "type": "int32",
+          "id": 4
+        },
+        "cfaType": {
+          "type": "CfaType",
+          "id": 5
+        },
+        "rawFormat": {
+          "type": "RawFormat",
+          "id": 6
+        },
+        "bayerPattern": {
+          "type": "BayerPattern",
+          "id": 7
+        },
+        "rawStorage": {
+          "type": "RawStorage",
+          "id": 8
+        },
+        "rowStrideBytes": {
+          "type": "int32",
+          "id": 9
+        },
+        "byteOrder": {
+          "type": "ByteOrder",
+          "id": 10
+        }
+      }
+    },
+    "FocusInfo": {
+      "fields": {
+        "focusId": {
+          "type": "FocusId",
+          "id": 1
+        },
+        "focusType": {
+          "type": "CameraFocusType",
+          "id": 2
+        },
+        "totalTravelUm": {
+          "type": "double",
+          "id": 3
+        },
+        "umPerStep": {
+          "type": "double",
+          "id": 4
+        },
+        "minCode": {
+          "type": "int32",
+          "id": 5
+        },
+        "maxCode": {
+          "type": "int32",
+          "id": 6
+        }
+      }
+    },
+    "ResGetCameraAndFocusInfo": {
+      "fields": {
+        "code": {
+          "type": "int32",
+          "id": 1
+        },
+        "schemaVersion": {
+          "type": "string",
+          "id": 2
+        },
+        "sensorInfos": {
+          "rule": "repeated",
+          "type": "SensorInfo",
+          "id": 3
+        },
+        "focusInfos": {
+          "rule": "repeated",
+          "type": "FocusInfo",
+          "id": 4
         }
       }
     },
@@ -3731,7 +3892,8 @@
             "ProgressType": {
               "values": {
                 "PROGRESS_TYPE_INITING": 0,
-                "PROGRESS_TYPE_MOSAIC_MOVING": 1
+                "PROGRESS_TYPE_MOSAIC_MOVING": 1,
+                "PROGRESS_TYPE_CAPTURING_DARK_FRAME": 2
               }
             }
           }
@@ -4157,6 +4319,10 @@
               "rule": "repeated",
               "type": "int32",
               "id": 5
+            },
+            "resolutionAspectRatio": {
+              "type": "int32",
+              "id": 6
             }
           }
         },
@@ -6059,6 +6225,78 @@
         }
       }
     },
+    "ReqSwitchCameraHdr": {
+      "fields": {
+        "cameraType": {
+          "type": "int32",
+          "id": 1
+        },
+        "hdrMode": {
+          "type": "int32",
+          "id": 2
+        }
+      }
+    },
+    "ResSwitchCameraHdr": {
+      "fields": {
+        "code": {
+          "type": "int32",
+          "id": 1
+        },
+        "cameraType": {
+          "type": "int32",
+          "id": 2
+        },
+        "hdrMode": {
+          "type": "int32",
+          "id": 3
+        }
+      }
+    },
+    "ReqSetDigitalZoom": {
+      "fields": {
+        "cameraType": {
+          "type": "int32",
+          "id": 1
+        },
+        "zoomRatio": {
+          "type": "float",
+          "id": 2
+        },
+        "centerX": {
+          "type": "float",
+          "id": 3
+        },
+        "centerY": {
+          "type": "float",
+          "id": 4
+        }
+      }
+    },
+    "ResSetDigitalZoom": {
+      "fields": {
+        "code": {
+          "type": "int32",
+          "id": 1
+        },
+        "cameraType": {
+          "type": "int32",
+          "id": 2
+        },
+        "zoomRatio": {
+          "type": "float",
+          "id": 3
+        },
+        "centerX": {
+          "type": "float",
+          "id": 4
+        },
+        "centerY": {
+          "type": "float",
+          "id": 5
+        }
+      }
+    },
     "ReqGetDeviceStateInfo": {
       "fields": {}
     },
@@ -6151,6 +6389,14 @@
           "options": {
             "proto3_optional": true
           }
+        },
+        "hdrEnabled": {
+          "type": "bool",
+          "id": 8
+        },
+        "resolutionAspectRatio": {
+          "type": "int32",
+          "id": 9
         }
       }
     },
@@ -6193,6 +6439,14 @@
           "options": {
             "proto3_optional": true
           }
+        },
+        "hdrEnabled": {
+          "type": "bool",
+          "id": 8
+        },
+        "resolutionAspectRatio": {
+          "type": "int32",
+          "id": 9
         }
       }
     },

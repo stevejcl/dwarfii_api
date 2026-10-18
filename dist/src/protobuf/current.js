@@ -30194,6 +30194,158 @@ $root.DwarfEcho = (function () {
   return DwarfEcho;
 })();
 
+/**
+ * CameraId enum.
+ * @exports CameraId
+ * @enum {number}
+ * @property {number} CAMERA_ID_UNKNOWN=0 CAMERA_ID_UNKNOWN value
+ * @property {number} CAMERA_ID_TELE=1 CAMERA_ID_TELE value
+ * @property {number} CAMERA_ID_WIDE=2 CAMERA_ID_WIDE value
+ * @property {number} CAMERA_ID_GUIDE=3 CAMERA_ID_GUIDE value
+ */
+$root.CameraId = (function () {
+  var valuesById = {},
+    values = Object.create(valuesById);
+  values[(valuesById[0] = "CAMERA_ID_UNKNOWN")] = 0;
+  values[(valuesById[1] = "CAMERA_ID_TELE")] = 1;
+  values[(valuesById[2] = "CAMERA_ID_WIDE")] = 2;
+  values[(valuesById[3] = "CAMERA_ID_GUIDE")] = 3;
+  return values;
+})();
+
+/**
+ * CfaType enum.
+ * @exports CfaType
+ * @enum {number}
+ * @property {number} CFA_TYPE_UNKNOWN=0 CFA_TYPE_UNKNOWN value
+ * @property {number} CFA_TYPE_NONE=1 CFA_TYPE_NONE value
+ * @property {number} CFA_TYPE_BAYER=2 CFA_TYPE_BAYER value
+ */
+$root.CfaType = (function () {
+  var valuesById = {},
+    values = Object.create(valuesById);
+  values[(valuesById[0] = "CFA_TYPE_UNKNOWN")] = 0;
+  values[(valuesById[1] = "CFA_TYPE_NONE")] = 1;
+  values[(valuesById[2] = "CFA_TYPE_BAYER")] = 2;
+  return values;
+})();
+
+/**
+ * RawFormat enum.
+ * @exports RawFormat
+ * @enum {number}
+ * @property {number} RAW_FORMAT_UNKNOWN=0 RAW_FORMAT_UNKNOWN value
+ * @property {number} RAW_FORMAT_RAW8=1 RAW_FORMAT_RAW8 value
+ * @property {number} RAW_FORMAT_RAW10=2 RAW_FORMAT_RAW10 value
+ * @property {number} RAW_FORMAT_RAW12=3 RAW_FORMAT_RAW12 value
+ */
+$root.RawFormat = (function () {
+  var valuesById = {},
+    values = Object.create(valuesById);
+  values[(valuesById[0] = "RAW_FORMAT_UNKNOWN")] = 0;
+  values[(valuesById[1] = "RAW_FORMAT_RAW8")] = 1;
+  values[(valuesById[2] = "RAW_FORMAT_RAW10")] = 2;
+  values[(valuesById[3] = "RAW_FORMAT_RAW12")] = 3;
+  return values;
+})();
+
+/**
+ * BayerPattern enum.
+ * @exports BayerPattern
+ * @enum {number}
+ * @property {number} BAYER_PATTERN_UNKNOWN=0 BAYER_PATTERN_UNKNOWN value
+ * @property {number} BAYER_PATTERN_NONE=1 BAYER_PATTERN_NONE value
+ * @property {number} BAYER_PATTERN_BGGR=2 BAYER_PATTERN_BGGR value
+ * @property {number} BAYER_PATTERN_RGGB=3 BAYER_PATTERN_RGGB value
+ * @property {number} BAYER_PATTERN_GBRG=4 BAYER_PATTERN_GBRG value
+ * @property {number} BAYER_PATTERN_GRBG=5 BAYER_PATTERN_GRBG value
+ */
+$root.BayerPattern = (function () {
+  var valuesById = {},
+    values = Object.create(valuesById);
+  values[(valuesById[0] = "BAYER_PATTERN_UNKNOWN")] = 0;
+  values[(valuesById[1] = "BAYER_PATTERN_NONE")] = 1;
+  values[(valuesById[2] = "BAYER_PATTERN_BGGR")] = 2;
+  values[(valuesById[3] = "BAYER_PATTERN_RGGB")] = 3;
+  values[(valuesById[4] = "BAYER_PATTERN_GBRG")] = 4;
+  values[(valuesById[5] = "BAYER_PATTERN_GRBG")] = 5;
+  return values;
+})();
+
+/**
+ * RawStorage enum.
+ * @exports RawStorage
+ * @enum {number}
+ * @property {number} RAW_STORAGE_UNKNOWN=0 RAW_STORAGE_UNKNOWN value
+ * @property {number} RAW_STORAGE_RAW8=1 RAW_STORAGE_RAW8 value
+ * @property {number} RAW_STORAGE_PACKED10=2 RAW_STORAGE_PACKED10 value
+ * @property {number} RAW_STORAGE_PACKED12=3 RAW_STORAGE_PACKED12 value
+ * @property {number} RAW_STORAGE_UNPACKED16=4 RAW_STORAGE_UNPACKED16 value
+ */
+$root.RawStorage = (function () {
+  var valuesById = {},
+    values = Object.create(valuesById);
+  values[(valuesById[0] = "RAW_STORAGE_UNKNOWN")] = 0;
+  values[(valuesById[1] = "RAW_STORAGE_RAW8")] = 1;
+  values[(valuesById[2] = "RAW_STORAGE_PACKED10")] = 2;
+  values[(valuesById[3] = "RAW_STORAGE_PACKED12")] = 3;
+  values[(valuesById[4] = "RAW_STORAGE_UNPACKED16")] = 4;
+  return values;
+})();
+
+/**
+ * ByteOrder enum.
+ * @exports ByteOrder
+ * @enum {number}
+ * @property {number} BYTE_ORDER_UNKNOWN=0 BYTE_ORDER_UNKNOWN value
+ * @property {number} BYTE_ORDER_LITTLE_ENDIAN=1 BYTE_ORDER_LITTLE_ENDIAN value
+ * @property {number} BYTE_ORDER_BIG_ENDIAN=2 BYTE_ORDER_BIG_ENDIAN value
+ */
+$root.ByteOrder = (function () {
+  var valuesById = {},
+    values = Object.create(valuesById);
+  values[(valuesById[0] = "BYTE_ORDER_UNKNOWN")] = 0;
+  values[(valuesById[1] = "BYTE_ORDER_LITTLE_ENDIAN")] = 1;
+  values[(valuesById[2] = "BYTE_ORDER_BIG_ENDIAN")] = 2;
+  return values;
+})();
+
+/**
+ * CameraFocusType enum.
+ * @exports CameraFocusType
+ * @enum {number}
+ * @property {number} FOCUS_TYPE_UNKNOWN=0 FOCUS_TYPE_UNKNOWN value
+ * @property {number} FOCUS_TYPE_STEPPER=1 FOCUS_TYPE_STEPPER value
+ * @property {number} FOCUS_TYPE_VCM=2 FOCUS_TYPE_VCM value
+ */
+$root.CameraFocusType = (function () {
+  var valuesById = {},
+    values = Object.create(valuesById);
+  values[(valuesById[0] = "FOCUS_TYPE_UNKNOWN")] = 0;
+  values[(valuesById[1] = "FOCUS_TYPE_STEPPER")] = 1;
+  values[(valuesById[2] = "FOCUS_TYPE_VCM")] = 2;
+  return values;
+})();
+
+/**
+ * FocusId enum.
+ * @exports FocusId
+ * @enum {number}
+ * @property {number} FOCUS_ID_UNKNOWN=0 FOCUS_ID_UNKNOWN value
+ * @property {number} FOCUS_ID_TELE=1 FOCUS_ID_TELE value
+ * @property {number} FOCUS_ID_GUIDE=2 FOCUS_ID_GUIDE value
+ * @property {number} FOCUS_ID_WIDE=3 FOCUS_ID_WIDE value
+ */
+$root.FocusId = (function () {
+  var valuesById = {},
+    values = Object.create(valuesById);
+  values[(valuesById[0] = "FOCUS_ID_UNKNOWN")] = 0;
+  values[(valuesById[1] = "FOCUS_ID_TELE")] = 1;
+  values[(valuesById[2] = "FOCUS_ID_GUIDE")] = 2;
+  values[(valuesById[3] = "FOCUS_ID_WIDE")] = 3;
+  return values;
+})();
+
 $root.ReqOpenCamera = (function () {
   /**
    * Properties of a ReqOpenCamera.
@@ -42781,6 +42933,1802 @@ $root.ReqSetPreviewQuality = (function () {
   };
 
   return ReqSetPreviewQuality;
+})();
+
+$root.ReqGetCameraAndFocusInfo = (function () {
+  /**
+   * Properties of a ReqGetCameraAndFocusInfo.
+   * @exports IReqGetCameraAndFocusInfo
+   * @interface IReqGetCameraAndFocusInfo
+   */
+
+  /**
+   * Constructs a new ReqGetCameraAndFocusInfo.
+   * @exports ReqGetCameraAndFocusInfo
+   * @classdesc Represents a ReqGetCameraAndFocusInfo.
+   * @implements IReqGetCameraAndFocusInfo
+   * @constructor
+   * @param {IReqGetCameraAndFocusInfo=} [properties] Properties to set
+   */
+  function ReqGetCameraAndFocusInfo(properties) {
+    if (properties)
+      for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+        if (properties[keys[i]] != null && keys[i] !== "__proto__")
+          this[keys[i]] = properties[keys[i]];
+  }
+
+  /**
+   * Creates a new ReqGetCameraAndFocusInfo instance using the specified properties.
+   * @function create
+   * @memberof ReqGetCameraAndFocusInfo
+   * @static
+   * @param {IReqGetCameraAndFocusInfo=} [properties] Properties to set
+   * @returns {ReqGetCameraAndFocusInfo} ReqGetCameraAndFocusInfo instance
+   */
+  ReqGetCameraAndFocusInfo.create = function create(properties) {
+    return new ReqGetCameraAndFocusInfo(properties);
+  };
+
+  /**
+   * Encodes the specified ReqGetCameraAndFocusInfo message. Does not implicitly {@link ReqGetCameraAndFocusInfo.verify|verify} messages.
+   * @function encode
+   * @memberof ReqGetCameraAndFocusInfo
+   * @static
+   * @param {IReqGetCameraAndFocusInfo} message ReqGetCameraAndFocusInfo message or plain object to encode
+   * @param {$protobuf.Writer} [writer] Writer to encode to
+   * @returns {$protobuf.Writer} Writer
+   */
+  ReqGetCameraAndFocusInfo.encode = function encode(message, writer, q) {
+    if (!writer) writer = $Writer.create();
+    if (q === undefined) q = 0;
+    if (q > $util.recursionLimit) throw Error("max depth exceeded");
+    return writer;
+  };
+
+  /**
+   * Encodes the specified ReqGetCameraAndFocusInfo message, length delimited. Does not implicitly {@link ReqGetCameraAndFocusInfo.verify|verify} messages.
+   * @function encodeDelimited
+   * @memberof ReqGetCameraAndFocusInfo
+   * @static
+   * @param {IReqGetCameraAndFocusInfo} message ReqGetCameraAndFocusInfo message or plain object to encode
+   * @param {$protobuf.Writer} [writer] Writer to encode to
+   * @returns {$protobuf.Writer} Writer
+   */
+  ReqGetCameraAndFocusInfo.encodeDelimited = function encodeDelimited(
+    message,
+    writer,
+  ) {
+    return this.encode(
+      message,
+      writer && writer.len ? writer.fork() : writer,
+    ).ldelim();
+  };
+
+  /**
+   * Decodes a ReqGetCameraAndFocusInfo message from the specified reader or buffer.
+   * @function decode
+   * @memberof ReqGetCameraAndFocusInfo
+   * @static
+   * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+   * @param {number} [length] Message length if known beforehand
+   * @returns {ReqGetCameraAndFocusInfo} ReqGetCameraAndFocusInfo
+   * @throws {Error} If the payload is not a reader or valid buffer
+   * @throws {$protobuf.util.ProtocolError} If required fields are missing
+   */
+  ReqGetCameraAndFocusInfo.decode = function decode(
+    reader,
+    length,
+    error,
+    long,
+  ) {
+    if (!(reader instanceof $Reader)) reader = $Reader.create(reader);
+    if (long === undefined) long = 0;
+    if (long > $Reader.recursionLimit)
+      throw Error("maximum nesting depth exceeded");
+    var end, message;
+    if (length === undefined) end = reader.len;
+    else {
+      end = reader.pos + length;
+      if (end > reader.len) throw RangeError("index out of range");
+      length = reader.len;
+      reader.len = end;
+    }
+    message = new $root.ReqGetCameraAndFocusInfo();
+    while (reader.pos < end) {
+      var tag = reader.uint32();
+      if (tag === error) break;
+      switch (tag >>> 3) {
+        default:
+          reader.skipType(tag & 7, long);
+          break;
+      }
+    }
+    if (length !== undefined) {
+      if (reader.pos !== end) throw RangeError("index out of range");
+      reader.len = length;
+    }
+    return message;
+  };
+
+  /**
+   * Decodes a ReqGetCameraAndFocusInfo message from the specified reader or buffer, length delimited.
+   * @function decodeDelimited
+   * @memberof ReqGetCameraAndFocusInfo
+   * @static
+   * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+   * @returns {ReqGetCameraAndFocusInfo} ReqGetCameraAndFocusInfo
+   * @throws {Error} If the payload is not a reader or valid buffer
+   * @throws {$protobuf.util.ProtocolError} If required fields are missing
+   */
+  ReqGetCameraAndFocusInfo.decodeDelimited = function decodeDelimited(reader) {
+    if (!(reader instanceof $Reader)) reader = new $Reader(reader);
+    return this.decode(reader, reader.uint32());
+  };
+
+  /**
+   * Verifies a ReqGetCameraAndFocusInfo message.
+   * @function verify
+   * @memberof ReqGetCameraAndFocusInfo
+   * @static
+   * @param {Object.<string,*>} message Plain object to verify
+   * @returns {string|null} `null` if valid, otherwise the reason why it is not
+   */
+  ReqGetCameraAndFocusInfo.verify = function verify(message, long) {
+    if (typeof message !== "object" || message === null)
+      return "object expected";
+    if (long === undefined) long = 0;
+    if (long > $util.recursionLimit) return "maximum nesting depth exceeded";
+    return null;
+  };
+
+  /**
+   * Creates a ReqGetCameraAndFocusInfo message from a plain object. Also converts values to their respective internal types.
+   * @function fromObject
+   * @memberof ReqGetCameraAndFocusInfo
+   * @static
+   * @param {Object.<string,*>} object Plain object
+   * @returns {ReqGetCameraAndFocusInfo} ReqGetCameraAndFocusInfo
+   */
+  ReqGetCameraAndFocusInfo.fromObject = function fromObject(object, long) {
+    if (object instanceof $root.ReqGetCameraAndFocusInfo) return object;
+    return new $root.ReqGetCameraAndFocusInfo();
+  };
+
+  /**
+   * Creates a plain object from a ReqGetCameraAndFocusInfo message. Also converts values to other types if specified.
+   * @function toObject
+   * @memberof ReqGetCameraAndFocusInfo
+   * @static
+   * @param {ReqGetCameraAndFocusInfo} message ReqGetCameraAndFocusInfo
+   * @param {$protobuf.IConversionOptions} [options] Conversion options
+   * @returns {Object.<string,*>} Plain object
+   */
+  ReqGetCameraAndFocusInfo.toObject = function toObject() {
+    return {};
+  };
+
+  /**
+   * Converts this ReqGetCameraAndFocusInfo to JSON.
+   * @function toJSON
+   * @memberof ReqGetCameraAndFocusInfo
+   * @instance
+   * @returns {Object.<string,*>} JSON object
+   */
+  ReqGetCameraAndFocusInfo.prototype.toJSON = function toJSON() {
+    return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+  };
+
+  /**
+   * Gets the default type url for ReqGetCameraAndFocusInfo
+   * @function getTypeUrl
+   * @memberof ReqGetCameraAndFocusInfo
+   * @static
+   * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+   * @returns {string} The default type url
+   */
+  ReqGetCameraAndFocusInfo.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+    if (typeUrlPrefix === undefined) {
+      typeUrlPrefix = "type.googleapis.com";
+    }
+    return typeUrlPrefix + "/ReqGetCameraAndFocusInfo";
+  };
+
+  return ReqGetCameraAndFocusInfo;
+})();
+
+$root.SensorInfo = (function () {
+  /**
+   * Properties of a SensorInfo.
+   * @exports ISensorInfo
+   * @interface ISensorInfo
+   * @property {CameraId|null} [cameraId] SensorInfo cameraId
+   * @property {string|null} [cmosModel] SensorInfo cmosModel
+   * @property {number|null} [imageWidth] SensorInfo imageWidth
+   * @property {number|null} [imageHeight] SensorInfo imageHeight
+   * @property {CfaType|null} [cfaType] SensorInfo cfaType
+   * @property {RawFormat|null} [rawFormat] SensorInfo rawFormat
+   * @property {BayerPattern|null} [bayerPattern] SensorInfo bayerPattern
+   * @property {RawStorage|null} [rawStorage] SensorInfo rawStorage
+   * @property {number|null} [rowStrideBytes] SensorInfo rowStrideBytes
+   * @property {ByteOrder|null} [byteOrder] SensorInfo byteOrder
+   */
+
+  /**
+   * Constructs a new SensorInfo.
+   * @exports SensorInfo
+   * @classdesc Represents a SensorInfo.
+   * @implements ISensorInfo
+   * @constructor
+   * @param {ISensorInfo=} [properties] Properties to set
+   */
+  function SensorInfo(properties) {
+    if (properties)
+      for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+        if (properties[keys[i]] != null && keys[i] !== "__proto__")
+          this[keys[i]] = properties[keys[i]];
+  }
+
+  /**
+   * SensorInfo cameraId.
+   * @member {CameraId} cameraId
+   * @memberof SensorInfo
+   * @instance
+   */
+  SensorInfo.prototype.cameraId = 0;
+
+  /**
+   * SensorInfo cmosModel.
+   * @member {string} cmosModel
+   * @memberof SensorInfo
+   * @instance
+   */
+  SensorInfo.prototype.cmosModel = "";
+
+  /**
+   * SensorInfo imageWidth.
+   * @member {number} imageWidth
+   * @memberof SensorInfo
+   * @instance
+   */
+  SensorInfo.prototype.imageWidth = 0;
+
+  /**
+   * SensorInfo imageHeight.
+   * @member {number} imageHeight
+   * @memberof SensorInfo
+   * @instance
+   */
+  SensorInfo.prototype.imageHeight = 0;
+
+  /**
+   * SensorInfo cfaType.
+   * @member {CfaType} cfaType
+   * @memberof SensorInfo
+   * @instance
+   */
+  SensorInfo.prototype.cfaType = 0;
+
+  /**
+   * SensorInfo rawFormat.
+   * @member {RawFormat} rawFormat
+   * @memberof SensorInfo
+   * @instance
+   */
+  SensorInfo.prototype.rawFormat = 0;
+
+  /**
+   * SensorInfo bayerPattern.
+   * @member {BayerPattern} bayerPattern
+   * @memberof SensorInfo
+   * @instance
+   */
+  SensorInfo.prototype.bayerPattern = 0;
+
+  /**
+   * SensorInfo rawStorage.
+   * @member {RawStorage} rawStorage
+   * @memberof SensorInfo
+   * @instance
+   */
+  SensorInfo.prototype.rawStorage = 0;
+
+  /**
+   * SensorInfo rowStrideBytes.
+   * @member {number} rowStrideBytes
+   * @memberof SensorInfo
+   * @instance
+   */
+  SensorInfo.prototype.rowStrideBytes = 0;
+
+  /**
+   * SensorInfo byteOrder.
+   * @member {ByteOrder} byteOrder
+   * @memberof SensorInfo
+   * @instance
+   */
+  SensorInfo.prototype.byteOrder = 0;
+
+  /**
+   * Creates a new SensorInfo instance using the specified properties.
+   * @function create
+   * @memberof SensorInfo
+   * @static
+   * @param {ISensorInfo=} [properties] Properties to set
+   * @returns {SensorInfo} SensorInfo instance
+   */
+  SensorInfo.create = function create(properties) {
+    return new SensorInfo(properties);
+  };
+
+  /**
+   * Encodes the specified SensorInfo message. Does not implicitly {@link SensorInfo.verify|verify} messages.
+   * @function encode
+   * @memberof SensorInfo
+   * @static
+   * @param {ISensorInfo} message SensorInfo message or plain object to encode
+   * @param {$protobuf.Writer} [writer] Writer to encode to
+   * @returns {$protobuf.Writer} Writer
+   */
+  SensorInfo.encode = function encode(message, writer, q) {
+    if (!writer) writer = $Writer.create();
+    if (q === undefined) q = 0;
+    if (q > $util.recursionLimit) throw Error("max depth exceeded");
+    if (
+      message.cameraId != null &&
+      Object.hasOwnProperty.call(message, "cameraId")
+    )
+      writer.uint32(/* id 1, wireType 0 =*/ 8).int32(message.cameraId);
+    if (
+      message.cmosModel != null &&
+      Object.hasOwnProperty.call(message, "cmosModel")
+    )
+      writer.uint32(/* id 2, wireType 2 =*/ 18).string(message.cmosModel);
+    if (
+      message.imageWidth != null &&
+      Object.hasOwnProperty.call(message, "imageWidth")
+    )
+      writer.uint32(/* id 3, wireType 0 =*/ 24).int32(message.imageWidth);
+    if (
+      message.imageHeight != null &&
+      Object.hasOwnProperty.call(message, "imageHeight")
+    )
+      writer.uint32(/* id 4, wireType 0 =*/ 32).int32(message.imageHeight);
+    if (
+      message.cfaType != null &&
+      Object.hasOwnProperty.call(message, "cfaType")
+    )
+      writer.uint32(/* id 5, wireType 0 =*/ 40).int32(message.cfaType);
+    if (
+      message.rawFormat != null &&
+      Object.hasOwnProperty.call(message, "rawFormat")
+    )
+      writer.uint32(/* id 6, wireType 0 =*/ 48).int32(message.rawFormat);
+    if (
+      message.bayerPattern != null &&
+      Object.hasOwnProperty.call(message, "bayerPattern")
+    )
+      writer.uint32(/* id 7, wireType 0 =*/ 56).int32(message.bayerPattern);
+    if (
+      message.rawStorage != null &&
+      Object.hasOwnProperty.call(message, "rawStorage")
+    )
+      writer.uint32(/* id 8, wireType 0 =*/ 64).int32(message.rawStorage);
+    if (
+      message.rowStrideBytes != null &&
+      Object.hasOwnProperty.call(message, "rowStrideBytes")
+    )
+      writer.uint32(/* id 9, wireType 0 =*/ 72).int32(message.rowStrideBytes);
+    if (
+      message.byteOrder != null &&
+      Object.hasOwnProperty.call(message, "byteOrder")
+    )
+      writer.uint32(/* id 10, wireType 0 =*/ 80).int32(message.byteOrder);
+    return writer;
+  };
+
+  /**
+   * Encodes the specified SensorInfo message, length delimited. Does not implicitly {@link SensorInfo.verify|verify} messages.
+   * @function encodeDelimited
+   * @memberof SensorInfo
+   * @static
+   * @param {ISensorInfo} message SensorInfo message or plain object to encode
+   * @param {$protobuf.Writer} [writer] Writer to encode to
+   * @returns {$protobuf.Writer} Writer
+   */
+  SensorInfo.encodeDelimited = function encodeDelimited(message, writer) {
+    return this.encode(
+      message,
+      writer && writer.len ? writer.fork() : writer,
+    ).ldelim();
+  };
+
+  /**
+   * Decodes a SensorInfo message from the specified reader or buffer.
+   * @function decode
+   * @memberof SensorInfo
+   * @static
+   * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+   * @param {number} [length] Message length if known beforehand
+   * @returns {SensorInfo} SensorInfo
+   * @throws {Error} If the payload is not a reader or valid buffer
+   * @throws {$protobuf.util.ProtocolError} If required fields are missing
+   */
+  SensorInfo.decode = function decode(reader, length, error, long) {
+    if (!(reader instanceof $Reader)) reader = $Reader.create(reader);
+    if (long === undefined) long = 0;
+    if (long > $Reader.recursionLimit)
+      throw Error("maximum nesting depth exceeded");
+    var end, message;
+    if (length === undefined) end = reader.len;
+    else {
+      end = reader.pos + length;
+      if (end > reader.len) throw RangeError("index out of range");
+      length = reader.len;
+      reader.len = end;
+    }
+    message = new $root.SensorInfo();
+    while (reader.pos < end) {
+      var tag = reader.uint32();
+      if (tag === error) break;
+      switch (tag >>> 3) {
+        case 1: {
+          message.cameraId = reader.int32();
+          break;
+        }
+        case 2: {
+          message.cmosModel = reader.string();
+          break;
+        }
+        case 3: {
+          message.imageWidth = reader.int32();
+          break;
+        }
+        case 4: {
+          message.imageHeight = reader.int32();
+          break;
+        }
+        case 5: {
+          message.cfaType = reader.int32();
+          break;
+        }
+        case 6: {
+          message.rawFormat = reader.int32();
+          break;
+        }
+        case 7: {
+          message.bayerPattern = reader.int32();
+          break;
+        }
+        case 8: {
+          message.rawStorage = reader.int32();
+          break;
+        }
+        case 9: {
+          message.rowStrideBytes = reader.int32();
+          break;
+        }
+        case 10: {
+          message.byteOrder = reader.int32();
+          break;
+        }
+        default:
+          reader.skipType(tag & 7, long);
+          break;
+      }
+    }
+    if (length !== undefined) {
+      if (reader.pos !== end) throw RangeError("index out of range");
+      reader.len = length;
+    }
+    return message;
+  };
+
+  /**
+   * Decodes a SensorInfo message from the specified reader or buffer, length delimited.
+   * @function decodeDelimited
+   * @memberof SensorInfo
+   * @static
+   * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+   * @returns {SensorInfo} SensorInfo
+   * @throws {Error} If the payload is not a reader or valid buffer
+   * @throws {$protobuf.util.ProtocolError} If required fields are missing
+   */
+  SensorInfo.decodeDelimited = function decodeDelimited(reader) {
+    if (!(reader instanceof $Reader)) reader = new $Reader(reader);
+    return this.decode(reader, reader.uint32());
+  };
+
+  /**
+   * Verifies a SensorInfo message.
+   * @function verify
+   * @memberof SensorInfo
+   * @static
+   * @param {Object.<string,*>} message Plain object to verify
+   * @returns {string|null} `null` if valid, otherwise the reason why it is not
+   */
+  SensorInfo.verify = function verify(message, long) {
+    if (typeof message !== "object" || message === null)
+      return "object expected";
+    if (long === undefined) long = 0;
+    if (long > $util.recursionLimit) return "maximum nesting depth exceeded";
+    if (
+      message.cameraId != null &&
+      Object.hasOwnProperty.call(message, "cameraId")
+    )
+      switch (message.cameraId) {
+        default:
+          return "cameraId: enum value expected";
+        case 0:
+        case 1:
+        case 2:
+        case 3:
+          break;
+      }
+    if (
+      message.cmosModel != null &&
+      Object.hasOwnProperty.call(message, "cmosModel")
+    )
+      if (!$util.isString(message.cmosModel))
+        return "cmosModel: string expected";
+    if (
+      message.imageWidth != null &&
+      Object.hasOwnProperty.call(message, "imageWidth")
+    )
+      if (!$util.isInteger(message.imageWidth))
+        return "imageWidth: integer expected";
+    if (
+      message.imageHeight != null &&
+      Object.hasOwnProperty.call(message, "imageHeight")
+    )
+      if (!$util.isInteger(message.imageHeight))
+        return "imageHeight: integer expected";
+    if (
+      message.cfaType != null &&
+      Object.hasOwnProperty.call(message, "cfaType")
+    )
+      switch (message.cfaType) {
+        default:
+          return "cfaType: enum value expected";
+        case 0:
+        case 1:
+        case 2:
+          break;
+      }
+    if (
+      message.rawFormat != null &&
+      Object.hasOwnProperty.call(message, "rawFormat")
+    )
+      switch (message.rawFormat) {
+        default:
+          return "rawFormat: enum value expected";
+        case 0:
+        case 1:
+        case 2:
+        case 3:
+          break;
+      }
+    if (
+      message.bayerPattern != null &&
+      Object.hasOwnProperty.call(message, "bayerPattern")
+    )
+      switch (message.bayerPattern) {
+        default:
+          return "bayerPattern: enum value expected";
+        case 0:
+        case 1:
+        case 2:
+        case 3:
+        case 4:
+        case 5:
+          break;
+      }
+    if (
+      message.rawStorage != null &&
+      Object.hasOwnProperty.call(message, "rawStorage")
+    )
+      switch (message.rawStorage) {
+        default:
+          return "rawStorage: enum value expected";
+        case 0:
+        case 1:
+        case 2:
+        case 3:
+        case 4:
+          break;
+      }
+    if (
+      message.rowStrideBytes != null &&
+      Object.hasOwnProperty.call(message, "rowStrideBytes")
+    )
+      if (!$util.isInteger(message.rowStrideBytes))
+        return "rowStrideBytes: integer expected";
+    if (
+      message.byteOrder != null &&
+      Object.hasOwnProperty.call(message, "byteOrder")
+    )
+      switch (message.byteOrder) {
+        default:
+          return "byteOrder: enum value expected";
+        case 0:
+        case 1:
+        case 2:
+          break;
+      }
+    return null;
+  };
+
+  /**
+   * Creates a SensorInfo message from a plain object. Also converts values to their respective internal types.
+   * @function fromObject
+   * @memberof SensorInfo
+   * @static
+   * @param {Object.<string,*>} object Plain object
+   * @returns {SensorInfo} SensorInfo
+   */
+  SensorInfo.fromObject = function fromObject(object, long) {
+    if (object instanceof $root.SensorInfo) return object;
+    if (!$util.isObject(object))
+      throw TypeError(".SensorInfo: object expected");
+    if (long === undefined) long = 0;
+    if (long > $util.recursionLimit)
+      throw Error("maximum nesting depth exceeded");
+    var message = new $root.SensorInfo();
+    switch (object.cameraId) {
+      default:
+        if (typeof object.cameraId === "number") {
+          message.cameraId = object.cameraId;
+          break;
+        }
+        break;
+      case "CAMERA_ID_UNKNOWN":
+      case 0:
+        message.cameraId = 0;
+        break;
+      case "CAMERA_ID_TELE":
+      case 1:
+        message.cameraId = 1;
+        break;
+      case "CAMERA_ID_WIDE":
+      case 2:
+        message.cameraId = 2;
+        break;
+      case "CAMERA_ID_GUIDE":
+      case 3:
+        message.cameraId = 3;
+        break;
+    }
+    if (object.cmosModel != null) message.cmosModel = String(object.cmosModel);
+    if (object.imageWidth != null) message.imageWidth = object.imageWidth | 0;
+    if (object.imageHeight != null)
+      message.imageHeight = object.imageHeight | 0;
+    switch (object.cfaType) {
+      default:
+        if (typeof object.cfaType === "number") {
+          message.cfaType = object.cfaType;
+          break;
+        }
+        break;
+      case "CFA_TYPE_UNKNOWN":
+      case 0:
+        message.cfaType = 0;
+        break;
+      case "CFA_TYPE_NONE":
+      case 1:
+        message.cfaType = 1;
+        break;
+      case "CFA_TYPE_BAYER":
+      case 2:
+        message.cfaType = 2;
+        break;
+    }
+    switch (object.rawFormat) {
+      default:
+        if (typeof object.rawFormat === "number") {
+          message.rawFormat = object.rawFormat;
+          break;
+        }
+        break;
+      case "RAW_FORMAT_UNKNOWN":
+      case 0:
+        message.rawFormat = 0;
+        break;
+      case "RAW_FORMAT_RAW8":
+      case 1:
+        message.rawFormat = 1;
+        break;
+      case "RAW_FORMAT_RAW10":
+      case 2:
+        message.rawFormat = 2;
+        break;
+      case "RAW_FORMAT_RAW12":
+      case 3:
+        message.rawFormat = 3;
+        break;
+    }
+    switch (object.bayerPattern) {
+      default:
+        if (typeof object.bayerPattern === "number") {
+          message.bayerPattern = object.bayerPattern;
+          break;
+        }
+        break;
+      case "BAYER_PATTERN_UNKNOWN":
+      case 0:
+        message.bayerPattern = 0;
+        break;
+      case "BAYER_PATTERN_NONE":
+      case 1:
+        message.bayerPattern = 1;
+        break;
+      case "BAYER_PATTERN_BGGR":
+      case 2:
+        message.bayerPattern = 2;
+        break;
+      case "BAYER_PATTERN_RGGB":
+      case 3:
+        message.bayerPattern = 3;
+        break;
+      case "BAYER_PATTERN_GBRG":
+      case 4:
+        message.bayerPattern = 4;
+        break;
+      case "BAYER_PATTERN_GRBG":
+      case 5:
+        message.bayerPattern = 5;
+        break;
+    }
+    switch (object.rawStorage) {
+      default:
+        if (typeof object.rawStorage === "number") {
+          message.rawStorage = object.rawStorage;
+          break;
+        }
+        break;
+      case "RAW_STORAGE_UNKNOWN":
+      case 0:
+        message.rawStorage = 0;
+        break;
+      case "RAW_STORAGE_RAW8":
+      case 1:
+        message.rawStorage = 1;
+        break;
+      case "RAW_STORAGE_PACKED10":
+      case 2:
+        message.rawStorage = 2;
+        break;
+      case "RAW_STORAGE_PACKED12":
+      case 3:
+        message.rawStorage = 3;
+        break;
+      case "RAW_STORAGE_UNPACKED16":
+      case 4:
+        message.rawStorage = 4;
+        break;
+    }
+    if (object.rowStrideBytes != null)
+      message.rowStrideBytes = object.rowStrideBytes | 0;
+    switch (object.byteOrder) {
+      default:
+        if (typeof object.byteOrder === "number") {
+          message.byteOrder = object.byteOrder;
+          break;
+        }
+        break;
+      case "BYTE_ORDER_UNKNOWN":
+      case 0:
+        message.byteOrder = 0;
+        break;
+      case "BYTE_ORDER_LITTLE_ENDIAN":
+      case 1:
+        message.byteOrder = 1;
+        break;
+      case "BYTE_ORDER_BIG_ENDIAN":
+      case 2:
+        message.byteOrder = 2;
+        break;
+    }
+    return message;
+  };
+
+  /**
+   * Creates a plain object from a SensorInfo message. Also converts values to other types if specified.
+   * @function toObject
+   * @memberof SensorInfo
+   * @static
+   * @param {SensorInfo} message SensorInfo
+   * @param {$protobuf.IConversionOptions} [options] Conversion options
+   * @returns {Object.<string,*>} Plain object
+   */
+  SensorInfo.toObject = function toObject(message, options, q) {
+    if (!options) options = {};
+    if (q === undefined) q = 0;
+    if (q > $util.recursionLimit) throw Error("max depth exceeded");
+    var object = {};
+    if (options.defaults) {
+      object.cameraId = options.enums === String ? "CAMERA_ID_UNKNOWN" : 0;
+      object.cmosModel = "";
+      object.imageWidth = 0;
+      object.imageHeight = 0;
+      object.cfaType = options.enums === String ? "CFA_TYPE_UNKNOWN" : 0;
+      object.rawFormat = options.enums === String ? "RAW_FORMAT_UNKNOWN" : 0;
+      object.bayerPattern =
+        options.enums === String ? "BAYER_PATTERN_UNKNOWN" : 0;
+      object.rawStorage = options.enums === String ? "RAW_STORAGE_UNKNOWN" : 0;
+      object.rowStrideBytes = 0;
+      object.byteOrder = options.enums === String ? "BYTE_ORDER_UNKNOWN" : 0;
+    }
+    if (
+      message.cameraId != null &&
+      Object.hasOwnProperty.call(message, "cameraId")
+    )
+      object.cameraId =
+        options.enums === String
+          ? $root.CameraId[message.cameraId] === undefined
+            ? message.cameraId
+            : $root.CameraId[message.cameraId]
+          : message.cameraId;
+    if (
+      message.cmosModel != null &&
+      Object.hasOwnProperty.call(message, "cmosModel")
+    )
+      object.cmosModel = message.cmosModel;
+    if (
+      message.imageWidth != null &&
+      Object.hasOwnProperty.call(message, "imageWidth")
+    )
+      object.imageWidth = message.imageWidth;
+    if (
+      message.imageHeight != null &&
+      Object.hasOwnProperty.call(message, "imageHeight")
+    )
+      object.imageHeight = message.imageHeight;
+    if (
+      message.cfaType != null &&
+      Object.hasOwnProperty.call(message, "cfaType")
+    )
+      object.cfaType =
+        options.enums === String
+          ? $root.CfaType[message.cfaType] === undefined
+            ? message.cfaType
+            : $root.CfaType[message.cfaType]
+          : message.cfaType;
+    if (
+      message.rawFormat != null &&
+      Object.hasOwnProperty.call(message, "rawFormat")
+    )
+      object.rawFormat =
+        options.enums === String
+          ? $root.RawFormat[message.rawFormat] === undefined
+            ? message.rawFormat
+            : $root.RawFormat[message.rawFormat]
+          : message.rawFormat;
+    if (
+      message.bayerPattern != null &&
+      Object.hasOwnProperty.call(message, "bayerPattern")
+    )
+      object.bayerPattern =
+        options.enums === String
+          ? $root.BayerPattern[message.bayerPattern] === undefined
+            ? message.bayerPattern
+            : $root.BayerPattern[message.bayerPattern]
+          : message.bayerPattern;
+    if (
+      message.rawStorage != null &&
+      Object.hasOwnProperty.call(message, "rawStorage")
+    )
+      object.rawStorage =
+        options.enums === String
+          ? $root.RawStorage[message.rawStorage] === undefined
+            ? message.rawStorage
+            : $root.RawStorage[message.rawStorage]
+          : message.rawStorage;
+    if (
+      message.rowStrideBytes != null &&
+      Object.hasOwnProperty.call(message, "rowStrideBytes")
+    )
+      object.rowStrideBytes = message.rowStrideBytes;
+    if (
+      message.byteOrder != null &&
+      Object.hasOwnProperty.call(message, "byteOrder")
+    )
+      object.byteOrder =
+        options.enums === String
+          ? $root.ByteOrder[message.byteOrder] === undefined
+            ? message.byteOrder
+            : $root.ByteOrder[message.byteOrder]
+          : message.byteOrder;
+    return object;
+  };
+
+  /**
+   * Converts this SensorInfo to JSON.
+   * @function toJSON
+   * @memberof SensorInfo
+   * @instance
+   * @returns {Object.<string,*>} JSON object
+   */
+  SensorInfo.prototype.toJSON = function toJSON() {
+    return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+  };
+
+  /**
+   * Gets the default type url for SensorInfo
+   * @function getTypeUrl
+   * @memberof SensorInfo
+   * @static
+   * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+   * @returns {string} The default type url
+   */
+  SensorInfo.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+    if (typeUrlPrefix === undefined) {
+      typeUrlPrefix = "type.googleapis.com";
+    }
+    return typeUrlPrefix + "/SensorInfo";
+  };
+
+  return SensorInfo;
+})();
+
+$root.FocusInfo = (function () {
+  /**
+   * Properties of a FocusInfo.
+   * @exports IFocusInfo
+   * @interface IFocusInfo
+   * @property {FocusId|null} [focusId] FocusInfo focusId
+   * @property {CameraFocusType|null} [focusType] FocusInfo focusType
+   * @property {number|null} [totalTravelUm] FocusInfo totalTravelUm
+   * @property {number|null} [umPerStep] FocusInfo umPerStep
+   * @property {number|null} [minCode] FocusInfo minCode
+   * @property {number|null} [maxCode] FocusInfo maxCode
+   */
+
+  /**
+   * Constructs a new FocusInfo.
+   * @exports FocusInfo
+   * @classdesc Represents a FocusInfo.
+   * @implements IFocusInfo
+   * @constructor
+   * @param {IFocusInfo=} [properties] Properties to set
+   */
+  function FocusInfo(properties) {
+    if (properties)
+      for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+        if (properties[keys[i]] != null && keys[i] !== "__proto__")
+          this[keys[i]] = properties[keys[i]];
+  }
+
+  /**
+   * FocusInfo focusId.
+   * @member {FocusId} focusId
+   * @memberof FocusInfo
+   * @instance
+   */
+  FocusInfo.prototype.focusId = 0;
+
+  /**
+   * FocusInfo focusType.
+   * @member {CameraFocusType} focusType
+   * @memberof FocusInfo
+   * @instance
+   */
+  FocusInfo.prototype.focusType = 0;
+
+  /**
+   * FocusInfo totalTravelUm.
+   * @member {number} totalTravelUm
+   * @memberof FocusInfo
+   * @instance
+   */
+  FocusInfo.prototype.totalTravelUm = 0;
+
+  /**
+   * FocusInfo umPerStep.
+   * @member {number} umPerStep
+   * @memberof FocusInfo
+   * @instance
+   */
+  FocusInfo.prototype.umPerStep = 0;
+
+  /**
+   * FocusInfo minCode.
+   * @member {number} minCode
+   * @memberof FocusInfo
+   * @instance
+   */
+  FocusInfo.prototype.minCode = 0;
+
+  /**
+   * FocusInfo maxCode.
+   * @member {number} maxCode
+   * @memberof FocusInfo
+   * @instance
+   */
+  FocusInfo.prototype.maxCode = 0;
+
+  /**
+   * Creates a new FocusInfo instance using the specified properties.
+   * @function create
+   * @memberof FocusInfo
+   * @static
+   * @param {IFocusInfo=} [properties] Properties to set
+   * @returns {FocusInfo} FocusInfo instance
+   */
+  FocusInfo.create = function create(properties) {
+    return new FocusInfo(properties);
+  };
+
+  /**
+   * Encodes the specified FocusInfo message. Does not implicitly {@link FocusInfo.verify|verify} messages.
+   * @function encode
+   * @memberof FocusInfo
+   * @static
+   * @param {IFocusInfo} message FocusInfo message or plain object to encode
+   * @param {$protobuf.Writer} [writer] Writer to encode to
+   * @returns {$protobuf.Writer} Writer
+   */
+  FocusInfo.encode = function encode(message, writer, q) {
+    if (!writer) writer = $Writer.create();
+    if (q === undefined) q = 0;
+    if (q > $util.recursionLimit) throw Error("max depth exceeded");
+    if (
+      message.focusId != null &&
+      Object.hasOwnProperty.call(message, "focusId")
+    )
+      writer.uint32(/* id 1, wireType 0 =*/ 8).int32(message.focusId);
+    if (
+      message.focusType != null &&
+      Object.hasOwnProperty.call(message, "focusType")
+    )
+      writer.uint32(/* id 2, wireType 0 =*/ 16).int32(message.focusType);
+    if (
+      message.totalTravelUm != null &&
+      Object.hasOwnProperty.call(message, "totalTravelUm")
+    )
+      writer.uint32(/* id 3, wireType 1 =*/ 25).double(message.totalTravelUm);
+    if (
+      message.umPerStep != null &&
+      Object.hasOwnProperty.call(message, "umPerStep")
+    )
+      writer.uint32(/* id 4, wireType 1 =*/ 33).double(message.umPerStep);
+    if (
+      message.minCode != null &&
+      Object.hasOwnProperty.call(message, "minCode")
+    )
+      writer.uint32(/* id 5, wireType 0 =*/ 40).int32(message.minCode);
+    if (
+      message.maxCode != null &&
+      Object.hasOwnProperty.call(message, "maxCode")
+    )
+      writer.uint32(/* id 6, wireType 0 =*/ 48).int32(message.maxCode);
+    return writer;
+  };
+
+  /**
+   * Encodes the specified FocusInfo message, length delimited. Does not implicitly {@link FocusInfo.verify|verify} messages.
+   * @function encodeDelimited
+   * @memberof FocusInfo
+   * @static
+   * @param {IFocusInfo} message FocusInfo message or plain object to encode
+   * @param {$protobuf.Writer} [writer] Writer to encode to
+   * @returns {$protobuf.Writer} Writer
+   */
+  FocusInfo.encodeDelimited = function encodeDelimited(message, writer) {
+    return this.encode(
+      message,
+      writer && writer.len ? writer.fork() : writer,
+    ).ldelim();
+  };
+
+  /**
+   * Decodes a FocusInfo message from the specified reader or buffer.
+   * @function decode
+   * @memberof FocusInfo
+   * @static
+   * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+   * @param {number} [length] Message length if known beforehand
+   * @returns {FocusInfo} FocusInfo
+   * @throws {Error} If the payload is not a reader or valid buffer
+   * @throws {$protobuf.util.ProtocolError} If required fields are missing
+   */
+  FocusInfo.decode = function decode(reader, length, error, long) {
+    if (!(reader instanceof $Reader)) reader = $Reader.create(reader);
+    if (long === undefined) long = 0;
+    if (long > $Reader.recursionLimit)
+      throw Error("maximum nesting depth exceeded");
+    var end, message;
+    if (length === undefined) end = reader.len;
+    else {
+      end = reader.pos + length;
+      if (end > reader.len) throw RangeError("index out of range");
+      length = reader.len;
+      reader.len = end;
+    }
+    message = new $root.FocusInfo();
+    while (reader.pos < end) {
+      var tag = reader.uint32();
+      if (tag === error) break;
+      switch (tag >>> 3) {
+        case 1: {
+          message.focusId = reader.int32();
+          break;
+        }
+        case 2: {
+          message.focusType = reader.int32();
+          break;
+        }
+        case 3: {
+          message.totalTravelUm = reader.double();
+          break;
+        }
+        case 4: {
+          message.umPerStep = reader.double();
+          break;
+        }
+        case 5: {
+          message.minCode = reader.int32();
+          break;
+        }
+        case 6: {
+          message.maxCode = reader.int32();
+          break;
+        }
+        default:
+          reader.skipType(tag & 7, long);
+          break;
+      }
+    }
+    if (length !== undefined) {
+      if (reader.pos !== end) throw RangeError("index out of range");
+      reader.len = length;
+    }
+    return message;
+  };
+
+  /**
+   * Decodes a FocusInfo message from the specified reader or buffer, length delimited.
+   * @function decodeDelimited
+   * @memberof FocusInfo
+   * @static
+   * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+   * @returns {FocusInfo} FocusInfo
+   * @throws {Error} If the payload is not a reader or valid buffer
+   * @throws {$protobuf.util.ProtocolError} If required fields are missing
+   */
+  FocusInfo.decodeDelimited = function decodeDelimited(reader) {
+    if (!(reader instanceof $Reader)) reader = new $Reader(reader);
+    return this.decode(reader, reader.uint32());
+  };
+
+  /**
+   * Verifies a FocusInfo message.
+   * @function verify
+   * @memberof FocusInfo
+   * @static
+   * @param {Object.<string,*>} message Plain object to verify
+   * @returns {string|null} `null` if valid, otherwise the reason why it is not
+   */
+  FocusInfo.verify = function verify(message, long) {
+    if (typeof message !== "object" || message === null)
+      return "object expected";
+    if (long === undefined) long = 0;
+    if (long > $util.recursionLimit) return "maximum nesting depth exceeded";
+    if (
+      message.focusId != null &&
+      Object.hasOwnProperty.call(message, "focusId")
+    )
+      switch (message.focusId) {
+        default:
+          return "focusId: enum value expected";
+        case 0:
+        case 1:
+        case 2:
+        case 3:
+          break;
+      }
+    if (
+      message.focusType != null &&
+      Object.hasOwnProperty.call(message, "focusType")
+    )
+      switch (message.focusType) {
+        default:
+          return "focusType: enum value expected";
+        case 0:
+        case 1:
+        case 2:
+          break;
+      }
+    if (
+      message.totalTravelUm != null &&
+      Object.hasOwnProperty.call(message, "totalTravelUm")
+    )
+      if (typeof message.totalTravelUm !== "number")
+        return "totalTravelUm: number expected";
+    if (
+      message.umPerStep != null &&
+      Object.hasOwnProperty.call(message, "umPerStep")
+    )
+      if (typeof message.umPerStep !== "number")
+        return "umPerStep: number expected";
+    if (
+      message.minCode != null &&
+      Object.hasOwnProperty.call(message, "minCode")
+    )
+      if (!$util.isInteger(message.minCode)) return "minCode: integer expected";
+    if (
+      message.maxCode != null &&
+      Object.hasOwnProperty.call(message, "maxCode")
+    )
+      if (!$util.isInteger(message.maxCode)) return "maxCode: integer expected";
+    return null;
+  };
+
+  /**
+   * Creates a FocusInfo message from a plain object. Also converts values to their respective internal types.
+   * @function fromObject
+   * @memberof FocusInfo
+   * @static
+   * @param {Object.<string,*>} object Plain object
+   * @returns {FocusInfo} FocusInfo
+   */
+  FocusInfo.fromObject = function fromObject(object, long) {
+    if (object instanceof $root.FocusInfo) return object;
+    if (!$util.isObject(object)) throw TypeError(".FocusInfo: object expected");
+    if (long === undefined) long = 0;
+    if (long > $util.recursionLimit)
+      throw Error("maximum nesting depth exceeded");
+    var message = new $root.FocusInfo();
+    switch (object.focusId) {
+      default:
+        if (typeof object.focusId === "number") {
+          message.focusId = object.focusId;
+          break;
+        }
+        break;
+      case "FOCUS_ID_UNKNOWN":
+      case 0:
+        message.focusId = 0;
+        break;
+      case "FOCUS_ID_TELE":
+      case 1:
+        message.focusId = 1;
+        break;
+      case "FOCUS_ID_GUIDE":
+      case 2:
+        message.focusId = 2;
+        break;
+      case "FOCUS_ID_WIDE":
+      case 3:
+        message.focusId = 3;
+        break;
+    }
+    switch (object.focusType) {
+      default:
+        if (typeof object.focusType === "number") {
+          message.focusType = object.focusType;
+          break;
+        }
+        break;
+      case "FOCUS_TYPE_UNKNOWN":
+      case 0:
+        message.focusType = 0;
+        break;
+      case "FOCUS_TYPE_STEPPER":
+      case 1:
+        message.focusType = 1;
+        break;
+      case "FOCUS_TYPE_VCM":
+      case 2:
+        message.focusType = 2;
+        break;
+    }
+    if (object.totalTravelUm != null)
+      message.totalTravelUm = Number(object.totalTravelUm);
+    if (object.umPerStep != null) message.umPerStep = Number(object.umPerStep);
+    if (object.minCode != null) message.minCode = object.minCode | 0;
+    if (object.maxCode != null) message.maxCode = object.maxCode | 0;
+    return message;
+  };
+
+  /**
+   * Creates a plain object from a FocusInfo message. Also converts values to other types if specified.
+   * @function toObject
+   * @memberof FocusInfo
+   * @static
+   * @param {FocusInfo} message FocusInfo
+   * @param {$protobuf.IConversionOptions} [options] Conversion options
+   * @returns {Object.<string,*>} Plain object
+   */
+  FocusInfo.toObject = function toObject(message, options, q) {
+    if (!options) options = {};
+    if (q === undefined) q = 0;
+    if (q > $util.recursionLimit) throw Error("max depth exceeded");
+    var object = {};
+    if (options.defaults) {
+      object.focusId = options.enums === String ? "FOCUS_ID_UNKNOWN" : 0;
+      object.focusType = options.enums === String ? "FOCUS_TYPE_UNKNOWN" : 0;
+      object.totalTravelUm = 0;
+      object.umPerStep = 0;
+      object.minCode = 0;
+      object.maxCode = 0;
+    }
+    if (
+      message.focusId != null &&
+      Object.hasOwnProperty.call(message, "focusId")
+    )
+      object.focusId =
+        options.enums === String
+          ? $root.FocusId[message.focusId] === undefined
+            ? message.focusId
+            : $root.FocusId[message.focusId]
+          : message.focusId;
+    if (
+      message.focusType != null &&
+      Object.hasOwnProperty.call(message, "focusType")
+    )
+      object.focusType =
+        options.enums === String
+          ? $root.CameraFocusType[message.focusType] === undefined
+            ? message.focusType
+            : $root.CameraFocusType[message.focusType]
+          : message.focusType;
+    if (
+      message.totalTravelUm != null &&
+      Object.hasOwnProperty.call(message, "totalTravelUm")
+    )
+      object.totalTravelUm =
+        options.json && !isFinite(message.totalTravelUm)
+          ? String(message.totalTravelUm)
+          : message.totalTravelUm;
+    if (
+      message.umPerStep != null &&
+      Object.hasOwnProperty.call(message, "umPerStep")
+    )
+      object.umPerStep =
+        options.json && !isFinite(message.umPerStep)
+          ? String(message.umPerStep)
+          : message.umPerStep;
+    if (
+      message.minCode != null &&
+      Object.hasOwnProperty.call(message, "minCode")
+    )
+      object.minCode = message.minCode;
+    if (
+      message.maxCode != null &&
+      Object.hasOwnProperty.call(message, "maxCode")
+    )
+      object.maxCode = message.maxCode;
+    return object;
+  };
+
+  /**
+   * Converts this FocusInfo to JSON.
+   * @function toJSON
+   * @memberof FocusInfo
+   * @instance
+   * @returns {Object.<string,*>} JSON object
+   */
+  FocusInfo.prototype.toJSON = function toJSON() {
+    return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+  };
+
+  /**
+   * Gets the default type url for FocusInfo
+   * @function getTypeUrl
+   * @memberof FocusInfo
+   * @static
+   * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+   * @returns {string} The default type url
+   */
+  FocusInfo.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+    if (typeUrlPrefix === undefined) {
+      typeUrlPrefix = "type.googleapis.com";
+    }
+    return typeUrlPrefix + "/FocusInfo";
+  };
+
+  return FocusInfo;
+})();
+
+$root.ResGetCameraAndFocusInfo = (function () {
+  /**
+   * Properties of a ResGetCameraAndFocusInfo.
+   * @exports IResGetCameraAndFocusInfo
+   * @interface IResGetCameraAndFocusInfo
+   * @property {number|null} [code] ResGetCameraAndFocusInfo code
+   * @property {string|null} [schemaVersion] ResGetCameraAndFocusInfo schemaVersion
+   * @property {Array.<ISensorInfo>|null} [sensorInfos] ResGetCameraAndFocusInfo sensorInfos
+   * @property {Array.<IFocusInfo>|null} [focusInfos] ResGetCameraAndFocusInfo focusInfos
+   */
+
+  /**
+   * Constructs a new ResGetCameraAndFocusInfo.
+   * @exports ResGetCameraAndFocusInfo
+   * @classdesc Represents a ResGetCameraAndFocusInfo.
+   * @implements IResGetCameraAndFocusInfo
+   * @constructor
+   * @param {IResGetCameraAndFocusInfo=} [properties] Properties to set
+   */
+  function ResGetCameraAndFocusInfo(properties) {
+    this.sensorInfos = [];
+    this.focusInfos = [];
+    if (properties)
+      for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+        if (properties[keys[i]] != null && keys[i] !== "__proto__")
+          this[keys[i]] = properties[keys[i]];
+  }
+
+  /**
+   * ResGetCameraAndFocusInfo code.
+   * @member {number} code
+   * @memberof ResGetCameraAndFocusInfo
+   * @instance
+   */
+  ResGetCameraAndFocusInfo.prototype.code = 0;
+
+  /**
+   * ResGetCameraAndFocusInfo schemaVersion.
+   * @member {string} schemaVersion
+   * @memberof ResGetCameraAndFocusInfo
+   * @instance
+   */
+  ResGetCameraAndFocusInfo.prototype.schemaVersion = "";
+
+  /**
+   * ResGetCameraAndFocusInfo sensorInfos.
+   * @member {Array.<ISensorInfo>} sensorInfos
+   * @memberof ResGetCameraAndFocusInfo
+   * @instance
+   */
+  ResGetCameraAndFocusInfo.prototype.sensorInfos = $util.emptyArray;
+
+  /**
+   * ResGetCameraAndFocusInfo focusInfos.
+   * @member {Array.<IFocusInfo>} focusInfos
+   * @memberof ResGetCameraAndFocusInfo
+   * @instance
+   */
+  ResGetCameraAndFocusInfo.prototype.focusInfos = $util.emptyArray;
+
+  /**
+   * Creates a new ResGetCameraAndFocusInfo instance using the specified properties.
+   * @function create
+   * @memberof ResGetCameraAndFocusInfo
+   * @static
+   * @param {IResGetCameraAndFocusInfo=} [properties] Properties to set
+   * @returns {ResGetCameraAndFocusInfo} ResGetCameraAndFocusInfo instance
+   */
+  ResGetCameraAndFocusInfo.create = function create(properties) {
+    return new ResGetCameraAndFocusInfo(properties);
+  };
+
+  /**
+   * Encodes the specified ResGetCameraAndFocusInfo message. Does not implicitly {@link ResGetCameraAndFocusInfo.verify|verify} messages.
+   * @function encode
+   * @memberof ResGetCameraAndFocusInfo
+   * @static
+   * @param {IResGetCameraAndFocusInfo} message ResGetCameraAndFocusInfo message or plain object to encode
+   * @param {$protobuf.Writer} [writer] Writer to encode to
+   * @returns {$protobuf.Writer} Writer
+   */
+  ResGetCameraAndFocusInfo.encode = function encode(message, writer, q) {
+    if (!writer) writer = $Writer.create();
+    if (q === undefined) q = 0;
+    if (q > $util.recursionLimit) throw Error("max depth exceeded");
+    if (message.code != null && Object.hasOwnProperty.call(message, "code"))
+      writer.uint32(/* id 1, wireType 0 =*/ 8).int32(message.code);
+    if (
+      message.schemaVersion != null &&
+      Object.hasOwnProperty.call(message, "schemaVersion")
+    )
+      writer.uint32(/* id 2, wireType 2 =*/ 18).string(message.schemaVersion);
+    if (message.sensorInfos != null && message.sensorInfos.length)
+      for (var i = 0; i < message.sensorInfos.length; ++i)
+        $root.SensorInfo.encode(
+          message.sensorInfos[i],
+          writer.uint32(/* id 3, wireType 2 =*/ 26).fork(),
+          q + 1,
+        ).ldelim();
+    if (message.focusInfos != null && message.focusInfos.length)
+      for (var i = 0; i < message.focusInfos.length; ++i)
+        $root.FocusInfo.encode(
+          message.focusInfos[i],
+          writer.uint32(/* id 4, wireType 2 =*/ 34).fork(),
+          q + 1,
+        ).ldelim();
+    return writer;
+  };
+
+  /**
+   * Encodes the specified ResGetCameraAndFocusInfo message, length delimited. Does not implicitly {@link ResGetCameraAndFocusInfo.verify|verify} messages.
+   * @function encodeDelimited
+   * @memberof ResGetCameraAndFocusInfo
+   * @static
+   * @param {IResGetCameraAndFocusInfo} message ResGetCameraAndFocusInfo message or plain object to encode
+   * @param {$protobuf.Writer} [writer] Writer to encode to
+   * @returns {$protobuf.Writer} Writer
+   */
+  ResGetCameraAndFocusInfo.encodeDelimited = function encodeDelimited(
+    message,
+    writer,
+  ) {
+    return this.encode(
+      message,
+      writer && writer.len ? writer.fork() : writer,
+    ).ldelim();
+  };
+
+  /**
+   * Decodes a ResGetCameraAndFocusInfo message from the specified reader or buffer.
+   * @function decode
+   * @memberof ResGetCameraAndFocusInfo
+   * @static
+   * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+   * @param {number} [length] Message length if known beforehand
+   * @returns {ResGetCameraAndFocusInfo} ResGetCameraAndFocusInfo
+   * @throws {Error} If the payload is not a reader or valid buffer
+   * @throws {$protobuf.util.ProtocolError} If required fields are missing
+   */
+  ResGetCameraAndFocusInfo.decode = function decode(
+    reader,
+    length,
+    error,
+    long,
+  ) {
+    if (!(reader instanceof $Reader)) reader = $Reader.create(reader);
+    if (long === undefined) long = 0;
+    if (long > $Reader.recursionLimit)
+      throw Error("maximum nesting depth exceeded");
+    var end, message;
+    if (length === undefined) end = reader.len;
+    else {
+      end = reader.pos + length;
+      if (end > reader.len) throw RangeError("index out of range");
+      length = reader.len;
+      reader.len = end;
+    }
+    message = new $root.ResGetCameraAndFocusInfo();
+    while (reader.pos < end) {
+      var tag = reader.uint32();
+      if (tag === error) break;
+      switch (tag >>> 3) {
+        case 1: {
+          message.code = reader.int32();
+          break;
+        }
+        case 2: {
+          message.schemaVersion = reader.string();
+          break;
+        }
+        case 3: {
+          if (!(message.sensorInfos && message.sensorInfos.length))
+            message.sensorInfos = [];
+          message.sensorInfos.push(
+            $root.SensorInfo.decode(
+              reader,
+              reader.uint32(),
+              undefined,
+              long + 1,
+            ),
+          );
+          break;
+        }
+        case 4: {
+          if (!(message.focusInfos && message.focusInfos.length))
+            message.focusInfos = [];
+          message.focusInfos.push(
+            $root.FocusInfo.decode(
+              reader,
+              reader.uint32(),
+              undefined,
+              long + 1,
+            ),
+          );
+          break;
+        }
+        default:
+          reader.skipType(tag & 7, long);
+          break;
+      }
+    }
+    if (length !== undefined) {
+      if (reader.pos !== end) throw RangeError("index out of range");
+      reader.len = length;
+    }
+    return message;
+  };
+
+  /**
+   * Decodes a ResGetCameraAndFocusInfo message from the specified reader or buffer, length delimited.
+   * @function decodeDelimited
+   * @memberof ResGetCameraAndFocusInfo
+   * @static
+   * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+   * @returns {ResGetCameraAndFocusInfo} ResGetCameraAndFocusInfo
+   * @throws {Error} If the payload is not a reader or valid buffer
+   * @throws {$protobuf.util.ProtocolError} If required fields are missing
+   */
+  ResGetCameraAndFocusInfo.decodeDelimited = function decodeDelimited(reader) {
+    if (!(reader instanceof $Reader)) reader = new $Reader(reader);
+    return this.decode(reader, reader.uint32());
+  };
+
+  /**
+   * Verifies a ResGetCameraAndFocusInfo message.
+   * @function verify
+   * @memberof ResGetCameraAndFocusInfo
+   * @static
+   * @param {Object.<string,*>} message Plain object to verify
+   * @returns {string|null} `null` if valid, otherwise the reason why it is not
+   */
+  ResGetCameraAndFocusInfo.verify = function verify(message, long) {
+    if (typeof message !== "object" || message === null)
+      return "object expected";
+    if (long === undefined) long = 0;
+    if (long > $util.recursionLimit) return "maximum nesting depth exceeded";
+    if (message.code != null && Object.hasOwnProperty.call(message, "code"))
+      if (!$util.isInteger(message.code)) return "code: integer expected";
+    if (
+      message.schemaVersion != null &&
+      Object.hasOwnProperty.call(message, "schemaVersion")
+    )
+      if (!$util.isString(message.schemaVersion))
+        return "schemaVersion: string expected";
+    if (
+      message.sensorInfos != null &&
+      Object.hasOwnProperty.call(message, "sensorInfos")
+    ) {
+      if (!Array.isArray(message.sensorInfos))
+        return "sensorInfos: array expected";
+      for (var i = 0; i < message.sensorInfos.length; ++i) {
+        var error = $root.SensorInfo.verify(message.sensorInfos[i], long + 1);
+        if (error) return "sensorInfos." + error;
+      }
+    }
+    if (
+      message.focusInfos != null &&
+      Object.hasOwnProperty.call(message, "focusInfos")
+    ) {
+      if (!Array.isArray(message.focusInfos))
+        return "focusInfos: array expected";
+      for (var i = 0; i < message.focusInfos.length; ++i) {
+        var error = $root.FocusInfo.verify(message.focusInfos[i], long + 1);
+        if (error) return "focusInfos." + error;
+      }
+    }
+    return null;
+  };
+
+  /**
+   * Creates a ResGetCameraAndFocusInfo message from a plain object. Also converts values to their respective internal types.
+   * @function fromObject
+   * @memberof ResGetCameraAndFocusInfo
+   * @static
+   * @param {Object.<string,*>} object Plain object
+   * @returns {ResGetCameraAndFocusInfo} ResGetCameraAndFocusInfo
+   */
+  ResGetCameraAndFocusInfo.fromObject = function fromObject(object, long) {
+    if (object instanceof $root.ResGetCameraAndFocusInfo) return object;
+    if (!$util.isObject(object))
+      throw TypeError(".ResGetCameraAndFocusInfo: object expected");
+    if (long === undefined) long = 0;
+    if (long > $util.recursionLimit)
+      throw Error("maximum nesting depth exceeded");
+    var message = new $root.ResGetCameraAndFocusInfo();
+    if (object.code != null) message.code = object.code | 0;
+    if (object.schemaVersion != null)
+      message.schemaVersion = String(object.schemaVersion);
+    if (object.sensorInfos) {
+      if (!Array.isArray(object.sensorInfos))
+        throw TypeError(
+          ".ResGetCameraAndFocusInfo.sensorInfos: array expected",
+        );
+      message.sensorInfos = [];
+      for (var i = 0; i < object.sensorInfos.length; ++i) {
+        if (!$util.isObject(object.sensorInfos[i]))
+          throw TypeError(
+            ".ResGetCameraAndFocusInfo.sensorInfos: object expected",
+          );
+        message.sensorInfos[i] = $root.SensorInfo.fromObject(
+          object.sensorInfos[i],
+          long + 1,
+        );
+      }
+    }
+    if (object.focusInfos) {
+      if (!Array.isArray(object.focusInfos))
+        throw TypeError(".ResGetCameraAndFocusInfo.focusInfos: array expected");
+      message.focusInfos = [];
+      for (var i = 0; i < object.focusInfos.length; ++i) {
+        if (!$util.isObject(object.focusInfos[i]))
+          throw TypeError(
+            ".ResGetCameraAndFocusInfo.focusInfos: object expected",
+          );
+        message.focusInfos[i] = $root.FocusInfo.fromObject(
+          object.focusInfos[i],
+          long + 1,
+        );
+      }
+    }
+    return message;
+  };
+
+  /**
+   * Creates a plain object from a ResGetCameraAndFocusInfo message. Also converts values to other types if specified.
+   * @function toObject
+   * @memberof ResGetCameraAndFocusInfo
+   * @static
+   * @param {ResGetCameraAndFocusInfo} message ResGetCameraAndFocusInfo
+   * @param {$protobuf.IConversionOptions} [options] Conversion options
+   * @returns {Object.<string,*>} Plain object
+   */
+  ResGetCameraAndFocusInfo.toObject = function toObject(message, options, q) {
+    if (!options) options = {};
+    if (q === undefined) q = 0;
+    if (q > $util.recursionLimit) throw Error("max depth exceeded");
+    var object = {};
+    if (options.arrays || options.defaults) {
+      object.sensorInfos = [];
+      object.focusInfos = [];
+    }
+    if (options.defaults) {
+      object.code = 0;
+      object.schemaVersion = "";
+    }
+    if (message.code != null && Object.hasOwnProperty.call(message, "code"))
+      object.code = message.code;
+    if (
+      message.schemaVersion != null &&
+      Object.hasOwnProperty.call(message, "schemaVersion")
+    )
+      object.schemaVersion = message.schemaVersion;
+    if (message.sensorInfos && message.sensorInfos.length) {
+      object.sensorInfos = [];
+      for (var j = 0; j < message.sensorInfos.length; ++j)
+        object.sensorInfos[j] = $root.SensorInfo.toObject(
+          message.sensorInfos[j],
+          options,
+          q + 1,
+        );
+    }
+    if (message.focusInfos && message.focusInfos.length) {
+      object.focusInfos = [];
+      for (var j = 0; j < message.focusInfos.length; ++j)
+        object.focusInfos[j] = $root.FocusInfo.toObject(
+          message.focusInfos[j],
+          options,
+          q + 1,
+        );
+    }
+    return object;
+  };
+
+  /**
+   * Converts this ResGetCameraAndFocusInfo to JSON.
+   * @function toJSON
+   * @memberof ResGetCameraAndFocusInfo
+   * @instance
+   * @returns {Object.<string,*>} JSON object
+   */
+  ResGetCameraAndFocusInfo.prototype.toJSON = function toJSON() {
+    return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+  };
+
+  /**
+   * Gets the default type url for ResGetCameraAndFocusInfo
+   * @function getTypeUrl
+   * @memberof ResGetCameraAndFocusInfo
+   * @static
+   * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+   * @returns {string} The default type url
+   */
+  ResGetCameraAndFocusInfo.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+    if (typeUrlPrefix === undefined) {
+      typeUrlPrefix = "type.googleapis.com";
+    }
+    return typeUrlPrefix + "/ResGetCameraAndFocusInfo";
+  };
+
+  return ResGetCameraAndFocusInfo;
 })();
 
 $root.ReqLensDefog = (function () {
@@ -76094,6 +78042,7 @@ $root.notify = (function () {
             return "progressType: enum value expected";
           case 0:
           case 1:
+          case 2:
             break;
         }
       return null;
@@ -76131,6 +78080,10 @@ $root.notify = (function () {
         case "PROGRESS_TYPE_MOSAIC_MOVING":
         case 1:
           message.progressType = 1;
+          break;
+        case "PROGRESS_TYPE_CAPTURING_DARK_FRAME":
+        case 2:
+          message.progressType = 2;
           break;
       }
       return message;
@@ -76209,12 +78162,14 @@ $root.notify = (function () {
      * @enum {number}
      * @property {number} PROGRESS_TYPE_INITING=0 PROGRESS_TYPE_INITING value
      * @property {number} PROGRESS_TYPE_MOSAIC_MOVING=1 PROGRESS_TYPE_MOSAIC_MOVING value
+     * @property {number} PROGRESS_TYPE_CAPTURING_DARK_FRAME=2 PROGRESS_TYPE_CAPTURING_DARK_FRAME value
      */
     CommonProgress.ProgressType = (function () {
       var valuesById = {},
         values = Object.create(valuesById);
       values[(valuesById[0] = "PROGRESS_TYPE_INITING")] = 0;
       values[(valuesById[1] = "PROGRESS_TYPE_MOSAIC_MOVING")] = 1;
+      values[(valuesById[2] = "PROGRESS_TYPE_CAPTURING_DARK_FRAME")] = 2;
       return values;
     })();
 
@@ -83267,6 +85222,7 @@ $root.notify = (function () {
      * @property {number|null} [currentFpsValue] ResolutionParam currentFpsValue
      * @property {Array.<number>|null} [supportedFpsList] ResolutionParam supportedFpsList
      * @property {Array.<number>|null} [supportedResolutionList] ResolutionParam supportedResolutionList
+     * @property {number|null} [resolutionAspectRatio] ResolutionParam resolutionAspectRatio
      */
 
     /**
@@ -83329,6 +85285,14 @@ $root.notify = (function () {
     ResolutionParam.prototype.supportedResolutionList = $util.emptyArray;
 
     /**
+     * ResolutionParam resolutionAspectRatio.
+     * @member {number} resolutionAspectRatio
+     * @memberof notify.ResolutionParam
+     * @instance
+     */
+    ResolutionParam.prototype.resolutionAspectRatio = 0;
+
+    /**
      * Creates a new ResolutionParam instance using the specified properties.
      * @function create
      * @memberof notify.ResolutionParam
@@ -83387,6 +85351,13 @@ $root.notify = (function () {
           writer.int32(message.supportedResolutionList[i]);
         writer.ldelim();
       }
+      if (
+        message.resolutionAspectRatio != null &&
+        Object.hasOwnProperty.call(message, "resolutionAspectRatio")
+      )
+        writer
+          .uint32(/* id 6, wireType 0 =*/ 48)
+          .int32(message.resolutionAspectRatio);
       return writer;
     };
 
@@ -83481,6 +85452,10 @@ $root.notify = (function () {
             } else message.supportedResolutionList.push(reader.int32());
             break;
           }
+          case 6: {
+            message.resolutionAspectRatio = reader.int32();
+            break;
+          }
           default:
             reader.skipType(tag & 7, long);
             break;
@@ -83566,6 +85541,12 @@ $root.notify = (function () {
           if (!$util.isInteger(message.supportedResolutionList[i]))
             return "supportedResolutionList: integer[] expected";
       }
+      if (
+        message.resolutionAspectRatio != null &&
+        Object.hasOwnProperty.call(message, "resolutionAspectRatio")
+      )
+        if (!$util.isInteger(message.resolutionAspectRatio))
+          return "resolutionAspectRatio: integer expected";
       return null;
     };
 
@@ -83620,6 +85601,8 @@ $root.notify = (function () {
           message.supportedResolutionList[i] =
             object.supportedResolutionList[i] | 0;
       }
+      if (object.resolutionAspectRatio != null)
+        message.resolutionAspectRatio = object.resolutionAspectRatio | 0;
       return message;
     };
 
@@ -83661,6 +85644,7 @@ $root.notify = (function () {
                 : 0;
         object.currentResValue = 0;
         object.currentFpsValue = 0;
+        object.resolutionAspectRatio = 0;
       }
       if (
         message.paramId != null &&
@@ -83714,6 +85698,11 @@ $root.notify = (function () {
           object.supportedResolutionList[j] =
             message.supportedResolutionList[j];
       }
+      if (
+        message.resolutionAspectRatio != null &&
+        Object.hasOwnProperty.call(message, "resolutionAspectRatio")
+      )
+        object.resolutionAspectRatio = message.resolutionAspectRatio;
       return object;
     };
 
@@ -114793,6 +116782,1268 @@ $root.ResSwitchShootingTech = (function () {
   return ResSwitchShootingTech;
 })();
 
+$root.ReqSwitchCameraHdr = (function () {
+  /**
+   * Properties of a ReqSwitchCameraHdr.
+   * @exports IReqSwitchCameraHdr
+   * @interface IReqSwitchCameraHdr
+   * @property {number|null} [cameraType] ReqSwitchCameraHdr cameraType
+   * @property {number|null} [hdrMode] ReqSwitchCameraHdr hdrMode
+   */
+
+  /**
+   * Constructs a new ReqSwitchCameraHdr.
+   * @exports ReqSwitchCameraHdr
+   * @classdesc Represents a ReqSwitchCameraHdr.
+   * @implements IReqSwitchCameraHdr
+   * @constructor
+   * @param {IReqSwitchCameraHdr=} [properties] Properties to set
+   */
+  function ReqSwitchCameraHdr(properties) {
+    if (properties)
+      for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+        if (properties[keys[i]] != null && keys[i] !== "__proto__")
+          this[keys[i]] = properties[keys[i]];
+  }
+
+  /**
+   * ReqSwitchCameraHdr cameraType.
+   * @member {number} cameraType
+   * @memberof ReqSwitchCameraHdr
+   * @instance
+   */
+  ReqSwitchCameraHdr.prototype.cameraType = 0;
+
+  /**
+   * ReqSwitchCameraHdr hdrMode.
+   * @member {number} hdrMode
+   * @memberof ReqSwitchCameraHdr
+   * @instance
+   */
+  ReqSwitchCameraHdr.prototype.hdrMode = 0;
+
+  /**
+   * Creates a new ReqSwitchCameraHdr instance using the specified properties.
+   * @function create
+   * @memberof ReqSwitchCameraHdr
+   * @static
+   * @param {IReqSwitchCameraHdr=} [properties] Properties to set
+   * @returns {ReqSwitchCameraHdr} ReqSwitchCameraHdr instance
+   */
+  ReqSwitchCameraHdr.create = function create(properties) {
+    return new ReqSwitchCameraHdr(properties);
+  };
+
+  /**
+   * Encodes the specified ReqSwitchCameraHdr message. Does not implicitly {@link ReqSwitchCameraHdr.verify|verify} messages.
+   * @function encode
+   * @memberof ReqSwitchCameraHdr
+   * @static
+   * @param {IReqSwitchCameraHdr} message ReqSwitchCameraHdr message or plain object to encode
+   * @param {$protobuf.Writer} [writer] Writer to encode to
+   * @returns {$protobuf.Writer} Writer
+   */
+  ReqSwitchCameraHdr.encode = function encode(message, writer, q) {
+    if (!writer) writer = $Writer.create();
+    if (q === undefined) q = 0;
+    if (q > $util.recursionLimit) throw Error("max depth exceeded");
+    if (
+      message.cameraType != null &&
+      Object.hasOwnProperty.call(message, "cameraType")
+    )
+      writer.uint32(/* id 1, wireType 0 =*/ 8).int32(message.cameraType);
+    if (
+      message.hdrMode != null &&
+      Object.hasOwnProperty.call(message, "hdrMode")
+    )
+      writer.uint32(/* id 2, wireType 0 =*/ 16).int32(message.hdrMode);
+    return writer;
+  };
+
+  /**
+   * Encodes the specified ReqSwitchCameraHdr message, length delimited. Does not implicitly {@link ReqSwitchCameraHdr.verify|verify} messages.
+   * @function encodeDelimited
+   * @memberof ReqSwitchCameraHdr
+   * @static
+   * @param {IReqSwitchCameraHdr} message ReqSwitchCameraHdr message or plain object to encode
+   * @param {$protobuf.Writer} [writer] Writer to encode to
+   * @returns {$protobuf.Writer} Writer
+   */
+  ReqSwitchCameraHdr.encodeDelimited = function encodeDelimited(
+    message,
+    writer,
+  ) {
+    return this.encode(
+      message,
+      writer && writer.len ? writer.fork() : writer,
+    ).ldelim();
+  };
+
+  /**
+   * Decodes a ReqSwitchCameraHdr message from the specified reader or buffer.
+   * @function decode
+   * @memberof ReqSwitchCameraHdr
+   * @static
+   * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+   * @param {number} [length] Message length if known beforehand
+   * @returns {ReqSwitchCameraHdr} ReqSwitchCameraHdr
+   * @throws {Error} If the payload is not a reader or valid buffer
+   * @throws {$protobuf.util.ProtocolError} If required fields are missing
+   */
+  ReqSwitchCameraHdr.decode = function decode(reader, length, error, long) {
+    if (!(reader instanceof $Reader)) reader = $Reader.create(reader);
+    if (long === undefined) long = 0;
+    if (long > $Reader.recursionLimit)
+      throw Error("maximum nesting depth exceeded");
+    var end, message;
+    if (length === undefined) end = reader.len;
+    else {
+      end = reader.pos + length;
+      if (end > reader.len) throw RangeError("index out of range");
+      length = reader.len;
+      reader.len = end;
+    }
+    message = new $root.ReqSwitchCameraHdr();
+    while (reader.pos < end) {
+      var tag = reader.uint32();
+      if (tag === error) break;
+      switch (tag >>> 3) {
+        case 1: {
+          message.cameraType = reader.int32();
+          break;
+        }
+        case 2: {
+          message.hdrMode = reader.int32();
+          break;
+        }
+        default:
+          reader.skipType(tag & 7, long);
+          break;
+      }
+    }
+    if (length !== undefined) {
+      if (reader.pos !== end) throw RangeError("index out of range");
+      reader.len = length;
+    }
+    return message;
+  };
+
+  /**
+   * Decodes a ReqSwitchCameraHdr message from the specified reader or buffer, length delimited.
+   * @function decodeDelimited
+   * @memberof ReqSwitchCameraHdr
+   * @static
+   * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+   * @returns {ReqSwitchCameraHdr} ReqSwitchCameraHdr
+   * @throws {Error} If the payload is not a reader or valid buffer
+   * @throws {$protobuf.util.ProtocolError} If required fields are missing
+   */
+  ReqSwitchCameraHdr.decodeDelimited = function decodeDelimited(reader) {
+    if (!(reader instanceof $Reader)) reader = new $Reader(reader);
+    return this.decode(reader, reader.uint32());
+  };
+
+  /**
+   * Verifies a ReqSwitchCameraHdr message.
+   * @function verify
+   * @memberof ReqSwitchCameraHdr
+   * @static
+   * @param {Object.<string,*>} message Plain object to verify
+   * @returns {string|null} `null` if valid, otherwise the reason why it is not
+   */
+  ReqSwitchCameraHdr.verify = function verify(message, long) {
+    if (typeof message !== "object" || message === null)
+      return "object expected";
+    if (long === undefined) long = 0;
+    if (long > $util.recursionLimit) return "maximum nesting depth exceeded";
+    if (
+      message.cameraType != null &&
+      Object.hasOwnProperty.call(message, "cameraType")
+    )
+      if (!$util.isInteger(message.cameraType))
+        return "cameraType: integer expected";
+    if (
+      message.hdrMode != null &&
+      Object.hasOwnProperty.call(message, "hdrMode")
+    )
+      if (!$util.isInteger(message.hdrMode)) return "hdrMode: integer expected";
+    return null;
+  };
+
+  /**
+   * Creates a ReqSwitchCameraHdr message from a plain object. Also converts values to their respective internal types.
+   * @function fromObject
+   * @memberof ReqSwitchCameraHdr
+   * @static
+   * @param {Object.<string,*>} object Plain object
+   * @returns {ReqSwitchCameraHdr} ReqSwitchCameraHdr
+   */
+  ReqSwitchCameraHdr.fromObject = function fromObject(object, long) {
+    if (object instanceof $root.ReqSwitchCameraHdr) return object;
+    if (!$util.isObject(object))
+      throw TypeError(".ReqSwitchCameraHdr: object expected");
+    if (long === undefined) long = 0;
+    if (long > $util.recursionLimit)
+      throw Error("maximum nesting depth exceeded");
+    var message = new $root.ReqSwitchCameraHdr();
+    if (object.cameraType != null) message.cameraType = object.cameraType | 0;
+    if (object.hdrMode != null) message.hdrMode = object.hdrMode | 0;
+    return message;
+  };
+
+  /**
+   * Creates a plain object from a ReqSwitchCameraHdr message. Also converts values to other types if specified.
+   * @function toObject
+   * @memberof ReqSwitchCameraHdr
+   * @static
+   * @param {ReqSwitchCameraHdr} message ReqSwitchCameraHdr
+   * @param {$protobuf.IConversionOptions} [options] Conversion options
+   * @returns {Object.<string,*>} Plain object
+   */
+  ReqSwitchCameraHdr.toObject = function toObject(message, options, q) {
+    if (!options) options = {};
+    if (q === undefined) q = 0;
+    if (q > $util.recursionLimit) throw Error("max depth exceeded");
+    var object = {};
+    if (options.defaults) {
+      object.cameraType = 0;
+      object.hdrMode = 0;
+    }
+    if (
+      message.cameraType != null &&
+      Object.hasOwnProperty.call(message, "cameraType")
+    )
+      object.cameraType = message.cameraType;
+    if (
+      message.hdrMode != null &&
+      Object.hasOwnProperty.call(message, "hdrMode")
+    )
+      object.hdrMode = message.hdrMode;
+    return object;
+  };
+
+  /**
+   * Converts this ReqSwitchCameraHdr to JSON.
+   * @function toJSON
+   * @memberof ReqSwitchCameraHdr
+   * @instance
+   * @returns {Object.<string,*>} JSON object
+   */
+  ReqSwitchCameraHdr.prototype.toJSON = function toJSON() {
+    return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+  };
+
+  /**
+   * Gets the default type url for ReqSwitchCameraHdr
+   * @function getTypeUrl
+   * @memberof ReqSwitchCameraHdr
+   * @static
+   * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+   * @returns {string} The default type url
+   */
+  ReqSwitchCameraHdr.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+    if (typeUrlPrefix === undefined) {
+      typeUrlPrefix = "type.googleapis.com";
+    }
+    return typeUrlPrefix + "/ReqSwitchCameraHdr";
+  };
+
+  return ReqSwitchCameraHdr;
+})();
+
+$root.ResSwitchCameraHdr = (function () {
+  /**
+   * Properties of a ResSwitchCameraHdr.
+   * @exports IResSwitchCameraHdr
+   * @interface IResSwitchCameraHdr
+   * @property {number|null} [code] ResSwitchCameraHdr code
+   * @property {number|null} [cameraType] ResSwitchCameraHdr cameraType
+   * @property {number|null} [hdrMode] ResSwitchCameraHdr hdrMode
+   */
+
+  /**
+   * Constructs a new ResSwitchCameraHdr.
+   * @exports ResSwitchCameraHdr
+   * @classdesc Represents a ResSwitchCameraHdr.
+   * @implements IResSwitchCameraHdr
+   * @constructor
+   * @param {IResSwitchCameraHdr=} [properties] Properties to set
+   */
+  function ResSwitchCameraHdr(properties) {
+    if (properties)
+      for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+        if (properties[keys[i]] != null && keys[i] !== "__proto__")
+          this[keys[i]] = properties[keys[i]];
+  }
+
+  /**
+   * ResSwitchCameraHdr code.
+   * @member {number} code
+   * @memberof ResSwitchCameraHdr
+   * @instance
+   */
+  ResSwitchCameraHdr.prototype.code = 0;
+
+  /**
+   * ResSwitchCameraHdr cameraType.
+   * @member {number} cameraType
+   * @memberof ResSwitchCameraHdr
+   * @instance
+   */
+  ResSwitchCameraHdr.prototype.cameraType = 0;
+
+  /**
+   * ResSwitchCameraHdr hdrMode.
+   * @member {number} hdrMode
+   * @memberof ResSwitchCameraHdr
+   * @instance
+   */
+  ResSwitchCameraHdr.prototype.hdrMode = 0;
+
+  /**
+   * Creates a new ResSwitchCameraHdr instance using the specified properties.
+   * @function create
+   * @memberof ResSwitchCameraHdr
+   * @static
+   * @param {IResSwitchCameraHdr=} [properties] Properties to set
+   * @returns {ResSwitchCameraHdr} ResSwitchCameraHdr instance
+   */
+  ResSwitchCameraHdr.create = function create(properties) {
+    return new ResSwitchCameraHdr(properties);
+  };
+
+  /**
+   * Encodes the specified ResSwitchCameraHdr message. Does not implicitly {@link ResSwitchCameraHdr.verify|verify} messages.
+   * @function encode
+   * @memberof ResSwitchCameraHdr
+   * @static
+   * @param {IResSwitchCameraHdr} message ResSwitchCameraHdr message or plain object to encode
+   * @param {$protobuf.Writer} [writer] Writer to encode to
+   * @returns {$protobuf.Writer} Writer
+   */
+  ResSwitchCameraHdr.encode = function encode(message, writer, q) {
+    if (!writer) writer = $Writer.create();
+    if (q === undefined) q = 0;
+    if (q > $util.recursionLimit) throw Error("max depth exceeded");
+    if (message.code != null && Object.hasOwnProperty.call(message, "code"))
+      writer.uint32(/* id 1, wireType 0 =*/ 8).int32(message.code);
+    if (
+      message.cameraType != null &&
+      Object.hasOwnProperty.call(message, "cameraType")
+    )
+      writer.uint32(/* id 2, wireType 0 =*/ 16).int32(message.cameraType);
+    if (
+      message.hdrMode != null &&
+      Object.hasOwnProperty.call(message, "hdrMode")
+    )
+      writer.uint32(/* id 3, wireType 0 =*/ 24).int32(message.hdrMode);
+    return writer;
+  };
+
+  /**
+   * Encodes the specified ResSwitchCameraHdr message, length delimited. Does not implicitly {@link ResSwitchCameraHdr.verify|verify} messages.
+   * @function encodeDelimited
+   * @memberof ResSwitchCameraHdr
+   * @static
+   * @param {IResSwitchCameraHdr} message ResSwitchCameraHdr message or plain object to encode
+   * @param {$protobuf.Writer} [writer] Writer to encode to
+   * @returns {$protobuf.Writer} Writer
+   */
+  ResSwitchCameraHdr.encodeDelimited = function encodeDelimited(
+    message,
+    writer,
+  ) {
+    return this.encode(
+      message,
+      writer && writer.len ? writer.fork() : writer,
+    ).ldelim();
+  };
+
+  /**
+   * Decodes a ResSwitchCameraHdr message from the specified reader or buffer.
+   * @function decode
+   * @memberof ResSwitchCameraHdr
+   * @static
+   * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+   * @param {number} [length] Message length if known beforehand
+   * @returns {ResSwitchCameraHdr} ResSwitchCameraHdr
+   * @throws {Error} If the payload is not a reader or valid buffer
+   * @throws {$protobuf.util.ProtocolError} If required fields are missing
+   */
+  ResSwitchCameraHdr.decode = function decode(reader, length, error, long) {
+    if (!(reader instanceof $Reader)) reader = $Reader.create(reader);
+    if (long === undefined) long = 0;
+    if (long > $Reader.recursionLimit)
+      throw Error("maximum nesting depth exceeded");
+    var end, message;
+    if (length === undefined) end = reader.len;
+    else {
+      end = reader.pos + length;
+      if (end > reader.len) throw RangeError("index out of range");
+      length = reader.len;
+      reader.len = end;
+    }
+    message = new $root.ResSwitchCameraHdr();
+    while (reader.pos < end) {
+      var tag = reader.uint32();
+      if (tag === error) break;
+      switch (tag >>> 3) {
+        case 1: {
+          message.code = reader.int32();
+          break;
+        }
+        case 2: {
+          message.cameraType = reader.int32();
+          break;
+        }
+        case 3: {
+          message.hdrMode = reader.int32();
+          break;
+        }
+        default:
+          reader.skipType(tag & 7, long);
+          break;
+      }
+    }
+    if (length !== undefined) {
+      if (reader.pos !== end) throw RangeError("index out of range");
+      reader.len = length;
+    }
+    return message;
+  };
+
+  /**
+   * Decodes a ResSwitchCameraHdr message from the specified reader or buffer, length delimited.
+   * @function decodeDelimited
+   * @memberof ResSwitchCameraHdr
+   * @static
+   * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+   * @returns {ResSwitchCameraHdr} ResSwitchCameraHdr
+   * @throws {Error} If the payload is not a reader or valid buffer
+   * @throws {$protobuf.util.ProtocolError} If required fields are missing
+   */
+  ResSwitchCameraHdr.decodeDelimited = function decodeDelimited(reader) {
+    if (!(reader instanceof $Reader)) reader = new $Reader(reader);
+    return this.decode(reader, reader.uint32());
+  };
+
+  /**
+   * Verifies a ResSwitchCameraHdr message.
+   * @function verify
+   * @memberof ResSwitchCameraHdr
+   * @static
+   * @param {Object.<string,*>} message Plain object to verify
+   * @returns {string|null} `null` if valid, otherwise the reason why it is not
+   */
+  ResSwitchCameraHdr.verify = function verify(message, long) {
+    if (typeof message !== "object" || message === null)
+      return "object expected";
+    if (long === undefined) long = 0;
+    if (long > $util.recursionLimit) return "maximum nesting depth exceeded";
+    if (message.code != null && Object.hasOwnProperty.call(message, "code"))
+      if (!$util.isInteger(message.code)) return "code: integer expected";
+    if (
+      message.cameraType != null &&
+      Object.hasOwnProperty.call(message, "cameraType")
+    )
+      if (!$util.isInteger(message.cameraType))
+        return "cameraType: integer expected";
+    if (
+      message.hdrMode != null &&
+      Object.hasOwnProperty.call(message, "hdrMode")
+    )
+      if (!$util.isInteger(message.hdrMode)) return "hdrMode: integer expected";
+    return null;
+  };
+
+  /**
+   * Creates a ResSwitchCameraHdr message from a plain object. Also converts values to their respective internal types.
+   * @function fromObject
+   * @memberof ResSwitchCameraHdr
+   * @static
+   * @param {Object.<string,*>} object Plain object
+   * @returns {ResSwitchCameraHdr} ResSwitchCameraHdr
+   */
+  ResSwitchCameraHdr.fromObject = function fromObject(object, long) {
+    if (object instanceof $root.ResSwitchCameraHdr) return object;
+    if (!$util.isObject(object))
+      throw TypeError(".ResSwitchCameraHdr: object expected");
+    if (long === undefined) long = 0;
+    if (long > $util.recursionLimit)
+      throw Error("maximum nesting depth exceeded");
+    var message = new $root.ResSwitchCameraHdr();
+    if (object.code != null) message.code = object.code | 0;
+    if (object.cameraType != null) message.cameraType = object.cameraType | 0;
+    if (object.hdrMode != null) message.hdrMode = object.hdrMode | 0;
+    return message;
+  };
+
+  /**
+   * Creates a plain object from a ResSwitchCameraHdr message. Also converts values to other types if specified.
+   * @function toObject
+   * @memberof ResSwitchCameraHdr
+   * @static
+   * @param {ResSwitchCameraHdr} message ResSwitchCameraHdr
+   * @param {$protobuf.IConversionOptions} [options] Conversion options
+   * @returns {Object.<string,*>} Plain object
+   */
+  ResSwitchCameraHdr.toObject = function toObject(message, options, q) {
+    if (!options) options = {};
+    if (q === undefined) q = 0;
+    if (q > $util.recursionLimit) throw Error("max depth exceeded");
+    var object = {};
+    if (options.defaults) {
+      object.code = 0;
+      object.cameraType = 0;
+      object.hdrMode = 0;
+    }
+    if (message.code != null && Object.hasOwnProperty.call(message, "code"))
+      object.code = message.code;
+    if (
+      message.cameraType != null &&
+      Object.hasOwnProperty.call(message, "cameraType")
+    )
+      object.cameraType = message.cameraType;
+    if (
+      message.hdrMode != null &&
+      Object.hasOwnProperty.call(message, "hdrMode")
+    )
+      object.hdrMode = message.hdrMode;
+    return object;
+  };
+
+  /**
+   * Converts this ResSwitchCameraHdr to JSON.
+   * @function toJSON
+   * @memberof ResSwitchCameraHdr
+   * @instance
+   * @returns {Object.<string,*>} JSON object
+   */
+  ResSwitchCameraHdr.prototype.toJSON = function toJSON() {
+    return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+  };
+
+  /**
+   * Gets the default type url for ResSwitchCameraHdr
+   * @function getTypeUrl
+   * @memberof ResSwitchCameraHdr
+   * @static
+   * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+   * @returns {string} The default type url
+   */
+  ResSwitchCameraHdr.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+    if (typeUrlPrefix === undefined) {
+      typeUrlPrefix = "type.googleapis.com";
+    }
+    return typeUrlPrefix + "/ResSwitchCameraHdr";
+  };
+
+  return ResSwitchCameraHdr;
+})();
+
+$root.ReqSetDigitalZoom = (function () {
+  /**
+   * Properties of a ReqSetDigitalZoom.
+   * @exports IReqSetDigitalZoom
+   * @interface IReqSetDigitalZoom
+   * @property {number|null} [cameraType] ReqSetDigitalZoom cameraType
+   * @property {number|null} [zoomRatio] ReqSetDigitalZoom zoomRatio
+   * @property {number|null} [centerX] ReqSetDigitalZoom centerX
+   * @property {number|null} [centerY] ReqSetDigitalZoom centerY
+   */
+
+  /**
+   * Constructs a new ReqSetDigitalZoom.
+   * @exports ReqSetDigitalZoom
+   * @classdesc Represents a ReqSetDigitalZoom.
+   * @implements IReqSetDigitalZoom
+   * @constructor
+   * @param {IReqSetDigitalZoom=} [properties] Properties to set
+   */
+  function ReqSetDigitalZoom(properties) {
+    if (properties)
+      for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+        if (properties[keys[i]] != null && keys[i] !== "__proto__")
+          this[keys[i]] = properties[keys[i]];
+  }
+
+  /**
+   * ReqSetDigitalZoom cameraType.
+   * @member {number} cameraType
+   * @memberof ReqSetDigitalZoom
+   * @instance
+   */
+  ReqSetDigitalZoom.prototype.cameraType = 0;
+
+  /**
+   * ReqSetDigitalZoom zoomRatio.
+   * @member {number} zoomRatio
+   * @memberof ReqSetDigitalZoom
+   * @instance
+   */
+  ReqSetDigitalZoom.prototype.zoomRatio = 0;
+
+  /**
+   * ReqSetDigitalZoom centerX.
+   * @member {number} centerX
+   * @memberof ReqSetDigitalZoom
+   * @instance
+   */
+  ReqSetDigitalZoom.prototype.centerX = 0;
+
+  /**
+   * ReqSetDigitalZoom centerY.
+   * @member {number} centerY
+   * @memberof ReqSetDigitalZoom
+   * @instance
+   */
+  ReqSetDigitalZoom.prototype.centerY = 0;
+
+  /**
+   * Creates a new ReqSetDigitalZoom instance using the specified properties.
+   * @function create
+   * @memberof ReqSetDigitalZoom
+   * @static
+   * @param {IReqSetDigitalZoom=} [properties] Properties to set
+   * @returns {ReqSetDigitalZoom} ReqSetDigitalZoom instance
+   */
+  ReqSetDigitalZoom.create = function create(properties) {
+    return new ReqSetDigitalZoom(properties);
+  };
+
+  /**
+   * Encodes the specified ReqSetDigitalZoom message. Does not implicitly {@link ReqSetDigitalZoom.verify|verify} messages.
+   * @function encode
+   * @memberof ReqSetDigitalZoom
+   * @static
+   * @param {IReqSetDigitalZoom} message ReqSetDigitalZoom message or plain object to encode
+   * @param {$protobuf.Writer} [writer] Writer to encode to
+   * @returns {$protobuf.Writer} Writer
+   */
+  ReqSetDigitalZoom.encode = function encode(message, writer, q) {
+    if (!writer) writer = $Writer.create();
+    if (q === undefined) q = 0;
+    if (q > $util.recursionLimit) throw Error("max depth exceeded");
+    if (
+      message.cameraType != null &&
+      Object.hasOwnProperty.call(message, "cameraType")
+    )
+      writer.uint32(/* id 1, wireType 0 =*/ 8).int32(message.cameraType);
+    if (
+      message.zoomRatio != null &&
+      Object.hasOwnProperty.call(message, "zoomRatio")
+    )
+      writer.uint32(/* id 2, wireType 5 =*/ 21).float(message.zoomRatio);
+    if (
+      message.centerX != null &&
+      Object.hasOwnProperty.call(message, "centerX")
+    )
+      writer.uint32(/* id 3, wireType 5 =*/ 29).float(message.centerX);
+    if (
+      message.centerY != null &&
+      Object.hasOwnProperty.call(message, "centerY")
+    )
+      writer.uint32(/* id 4, wireType 5 =*/ 37).float(message.centerY);
+    return writer;
+  };
+
+  /**
+   * Encodes the specified ReqSetDigitalZoom message, length delimited. Does not implicitly {@link ReqSetDigitalZoom.verify|verify} messages.
+   * @function encodeDelimited
+   * @memberof ReqSetDigitalZoom
+   * @static
+   * @param {IReqSetDigitalZoom} message ReqSetDigitalZoom message or plain object to encode
+   * @param {$protobuf.Writer} [writer] Writer to encode to
+   * @returns {$protobuf.Writer} Writer
+   */
+  ReqSetDigitalZoom.encodeDelimited = function encodeDelimited(
+    message,
+    writer,
+  ) {
+    return this.encode(
+      message,
+      writer && writer.len ? writer.fork() : writer,
+    ).ldelim();
+  };
+
+  /**
+   * Decodes a ReqSetDigitalZoom message from the specified reader or buffer.
+   * @function decode
+   * @memberof ReqSetDigitalZoom
+   * @static
+   * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+   * @param {number} [length] Message length if known beforehand
+   * @returns {ReqSetDigitalZoom} ReqSetDigitalZoom
+   * @throws {Error} If the payload is not a reader or valid buffer
+   * @throws {$protobuf.util.ProtocolError} If required fields are missing
+   */
+  ReqSetDigitalZoom.decode = function decode(reader, length, error, long) {
+    if (!(reader instanceof $Reader)) reader = $Reader.create(reader);
+    if (long === undefined) long = 0;
+    if (long > $Reader.recursionLimit)
+      throw Error("maximum nesting depth exceeded");
+    var end, message;
+    if (length === undefined) end = reader.len;
+    else {
+      end = reader.pos + length;
+      if (end > reader.len) throw RangeError("index out of range");
+      length = reader.len;
+      reader.len = end;
+    }
+    message = new $root.ReqSetDigitalZoom();
+    while (reader.pos < end) {
+      var tag = reader.uint32();
+      if (tag === error) break;
+      switch (tag >>> 3) {
+        case 1: {
+          message.cameraType = reader.int32();
+          break;
+        }
+        case 2: {
+          message.zoomRatio = reader.float();
+          break;
+        }
+        case 3: {
+          message.centerX = reader.float();
+          break;
+        }
+        case 4: {
+          message.centerY = reader.float();
+          break;
+        }
+        default:
+          reader.skipType(tag & 7, long);
+          break;
+      }
+    }
+    if (length !== undefined) {
+      if (reader.pos !== end) throw RangeError("index out of range");
+      reader.len = length;
+    }
+    return message;
+  };
+
+  /**
+   * Decodes a ReqSetDigitalZoom message from the specified reader or buffer, length delimited.
+   * @function decodeDelimited
+   * @memberof ReqSetDigitalZoom
+   * @static
+   * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+   * @returns {ReqSetDigitalZoom} ReqSetDigitalZoom
+   * @throws {Error} If the payload is not a reader or valid buffer
+   * @throws {$protobuf.util.ProtocolError} If required fields are missing
+   */
+  ReqSetDigitalZoom.decodeDelimited = function decodeDelimited(reader) {
+    if (!(reader instanceof $Reader)) reader = new $Reader(reader);
+    return this.decode(reader, reader.uint32());
+  };
+
+  /**
+   * Verifies a ReqSetDigitalZoom message.
+   * @function verify
+   * @memberof ReqSetDigitalZoom
+   * @static
+   * @param {Object.<string,*>} message Plain object to verify
+   * @returns {string|null} `null` if valid, otherwise the reason why it is not
+   */
+  ReqSetDigitalZoom.verify = function verify(message, long) {
+    if (typeof message !== "object" || message === null)
+      return "object expected";
+    if (long === undefined) long = 0;
+    if (long > $util.recursionLimit) return "maximum nesting depth exceeded";
+    if (
+      message.cameraType != null &&
+      Object.hasOwnProperty.call(message, "cameraType")
+    )
+      if (!$util.isInteger(message.cameraType))
+        return "cameraType: integer expected";
+    if (
+      message.zoomRatio != null &&
+      Object.hasOwnProperty.call(message, "zoomRatio")
+    )
+      if (typeof message.zoomRatio !== "number")
+        return "zoomRatio: number expected";
+    if (
+      message.centerX != null &&
+      Object.hasOwnProperty.call(message, "centerX")
+    )
+      if (typeof message.centerX !== "number")
+        return "centerX: number expected";
+    if (
+      message.centerY != null &&
+      Object.hasOwnProperty.call(message, "centerY")
+    )
+      if (typeof message.centerY !== "number")
+        return "centerY: number expected";
+    return null;
+  };
+
+  /**
+   * Creates a ReqSetDigitalZoom message from a plain object. Also converts values to their respective internal types.
+   * @function fromObject
+   * @memberof ReqSetDigitalZoom
+   * @static
+   * @param {Object.<string,*>} object Plain object
+   * @returns {ReqSetDigitalZoom} ReqSetDigitalZoom
+   */
+  ReqSetDigitalZoom.fromObject = function fromObject(object, long) {
+    if (object instanceof $root.ReqSetDigitalZoom) return object;
+    if (!$util.isObject(object))
+      throw TypeError(".ReqSetDigitalZoom: object expected");
+    if (long === undefined) long = 0;
+    if (long > $util.recursionLimit)
+      throw Error("maximum nesting depth exceeded");
+    var message = new $root.ReqSetDigitalZoom();
+    if (object.cameraType != null) message.cameraType = object.cameraType | 0;
+    if (object.zoomRatio != null) message.zoomRatio = Number(object.zoomRatio);
+    if (object.centerX != null) message.centerX = Number(object.centerX);
+    if (object.centerY != null) message.centerY = Number(object.centerY);
+    return message;
+  };
+
+  /**
+   * Creates a plain object from a ReqSetDigitalZoom message. Also converts values to other types if specified.
+   * @function toObject
+   * @memberof ReqSetDigitalZoom
+   * @static
+   * @param {ReqSetDigitalZoom} message ReqSetDigitalZoom
+   * @param {$protobuf.IConversionOptions} [options] Conversion options
+   * @returns {Object.<string,*>} Plain object
+   */
+  ReqSetDigitalZoom.toObject = function toObject(message, options, q) {
+    if (!options) options = {};
+    if (q === undefined) q = 0;
+    if (q > $util.recursionLimit) throw Error("max depth exceeded");
+    var object = {};
+    if (options.defaults) {
+      object.cameraType = 0;
+      object.zoomRatio = 0;
+      object.centerX = 0;
+      object.centerY = 0;
+    }
+    if (
+      message.cameraType != null &&
+      Object.hasOwnProperty.call(message, "cameraType")
+    )
+      object.cameraType = message.cameraType;
+    if (
+      message.zoomRatio != null &&
+      Object.hasOwnProperty.call(message, "zoomRatio")
+    )
+      object.zoomRatio =
+        options.json && !isFinite(message.zoomRatio)
+          ? String(message.zoomRatio)
+          : message.zoomRatio;
+    if (
+      message.centerX != null &&
+      Object.hasOwnProperty.call(message, "centerX")
+    )
+      object.centerX =
+        options.json && !isFinite(message.centerX)
+          ? String(message.centerX)
+          : message.centerX;
+    if (
+      message.centerY != null &&
+      Object.hasOwnProperty.call(message, "centerY")
+    )
+      object.centerY =
+        options.json && !isFinite(message.centerY)
+          ? String(message.centerY)
+          : message.centerY;
+    return object;
+  };
+
+  /**
+   * Converts this ReqSetDigitalZoom to JSON.
+   * @function toJSON
+   * @memberof ReqSetDigitalZoom
+   * @instance
+   * @returns {Object.<string,*>} JSON object
+   */
+  ReqSetDigitalZoom.prototype.toJSON = function toJSON() {
+    return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+  };
+
+  /**
+   * Gets the default type url for ReqSetDigitalZoom
+   * @function getTypeUrl
+   * @memberof ReqSetDigitalZoom
+   * @static
+   * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+   * @returns {string} The default type url
+   */
+  ReqSetDigitalZoom.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+    if (typeUrlPrefix === undefined) {
+      typeUrlPrefix = "type.googleapis.com";
+    }
+    return typeUrlPrefix + "/ReqSetDigitalZoom";
+  };
+
+  return ReqSetDigitalZoom;
+})();
+
+$root.ResSetDigitalZoom = (function () {
+  /**
+   * Properties of a ResSetDigitalZoom.
+   * @exports IResSetDigitalZoom
+   * @interface IResSetDigitalZoom
+   * @property {number|null} [code] ResSetDigitalZoom code
+   * @property {number|null} [cameraType] ResSetDigitalZoom cameraType
+   * @property {number|null} [zoomRatio] ResSetDigitalZoom zoomRatio
+   * @property {number|null} [centerX] ResSetDigitalZoom centerX
+   * @property {number|null} [centerY] ResSetDigitalZoom centerY
+   */
+
+  /**
+   * Constructs a new ResSetDigitalZoom.
+   * @exports ResSetDigitalZoom
+   * @classdesc Represents a ResSetDigitalZoom.
+   * @implements IResSetDigitalZoom
+   * @constructor
+   * @param {IResSetDigitalZoom=} [properties] Properties to set
+   */
+  function ResSetDigitalZoom(properties) {
+    if (properties)
+      for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+        if (properties[keys[i]] != null && keys[i] !== "__proto__")
+          this[keys[i]] = properties[keys[i]];
+  }
+
+  /**
+   * ResSetDigitalZoom code.
+   * @member {number} code
+   * @memberof ResSetDigitalZoom
+   * @instance
+   */
+  ResSetDigitalZoom.prototype.code = 0;
+
+  /**
+   * ResSetDigitalZoom cameraType.
+   * @member {number} cameraType
+   * @memberof ResSetDigitalZoom
+   * @instance
+   */
+  ResSetDigitalZoom.prototype.cameraType = 0;
+
+  /**
+   * ResSetDigitalZoom zoomRatio.
+   * @member {number} zoomRatio
+   * @memberof ResSetDigitalZoom
+   * @instance
+   */
+  ResSetDigitalZoom.prototype.zoomRatio = 0;
+
+  /**
+   * ResSetDigitalZoom centerX.
+   * @member {number} centerX
+   * @memberof ResSetDigitalZoom
+   * @instance
+   */
+  ResSetDigitalZoom.prototype.centerX = 0;
+
+  /**
+   * ResSetDigitalZoom centerY.
+   * @member {number} centerY
+   * @memberof ResSetDigitalZoom
+   * @instance
+   */
+  ResSetDigitalZoom.prototype.centerY = 0;
+
+  /**
+   * Creates a new ResSetDigitalZoom instance using the specified properties.
+   * @function create
+   * @memberof ResSetDigitalZoom
+   * @static
+   * @param {IResSetDigitalZoom=} [properties] Properties to set
+   * @returns {ResSetDigitalZoom} ResSetDigitalZoom instance
+   */
+  ResSetDigitalZoom.create = function create(properties) {
+    return new ResSetDigitalZoom(properties);
+  };
+
+  /**
+   * Encodes the specified ResSetDigitalZoom message. Does not implicitly {@link ResSetDigitalZoom.verify|verify} messages.
+   * @function encode
+   * @memberof ResSetDigitalZoom
+   * @static
+   * @param {IResSetDigitalZoom} message ResSetDigitalZoom message or plain object to encode
+   * @param {$protobuf.Writer} [writer] Writer to encode to
+   * @returns {$protobuf.Writer} Writer
+   */
+  ResSetDigitalZoom.encode = function encode(message, writer, q) {
+    if (!writer) writer = $Writer.create();
+    if (q === undefined) q = 0;
+    if (q > $util.recursionLimit) throw Error("max depth exceeded");
+    if (message.code != null && Object.hasOwnProperty.call(message, "code"))
+      writer.uint32(/* id 1, wireType 0 =*/ 8).int32(message.code);
+    if (
+      message.cameraType != null &&
+      Object.hasOwnProperty.call(message, "cameraType")
+    )
+      writer.uint32(/* id 2, wireType 0 =*/ 16).int32(message.cameraType);
+    if (
+      message.zoomRatio != null &&
+      Object.hasOwnProperty.call(message, "zoomRatio")
+    )
+      writer.uint32(/* id 3, wireType 5 =*/ 29).float(message.zoomRatio);
+    if (
+      message.centerX != null &&
+      Object.hasOwnProperty.call(message, "centerX")
+    )
+      writer.uint32(/* id 4, wireType 5 =*/ 37).float(message.centerX);
+    if (
+      message.centerY != null &&
+      Object.hasOwnProperty.call(message, "centerY")
+    )
+      writer.uint32(/* id 5, wireType 5 =*/ 45).float(message.centerY);
+    return writer;
+  };
+
+  /**
+   * Encodes the specified ResSetDigitalZoom message, length delimited. Does not implicitly {@link ResSetDigitalZoom.verify|verify} messages.
+   * @function encodeDelimited
+   * @memberof ResSetDigitalZoom
+   * @static
+   * @param {IResSetDigitalZoom} message ResSetDigitalZoom message or plain object to encode
+   * @param {$protobuf.Writer} [writer] Writer to encode to
+   * @returns {$protobuf.Writer} Writer
+   */
+  ResSetDigitalZoom.encodeDelimited = function encodeDelimited(
+    message,
+    writer,
+  ) {
+    return this.encode(
+      message,
+      writer && writer.len ? writer.fork() : writer,
+    ).ldelim();
+  };
+
+  /**
+   * Decodes a ResSetDigitalZoom message from the specified reader or buffer.
+   * @function decode
+   * @memberof ResSetDigitalZoom
+   * @static
+   * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+   * @param {number} [length] Message length if known beforehand
+   * @returns {ResSetDigitalZoom} ResSetDigitalZoom
+   * @throws {Error} If the payload is not a reader or valid buffer
+   * @throws {$protobuf.util.ProtocolError} If required fields are missing
+   */
+  ResSetDigitalZoom.decode = function decode(reader, length, error, long) {
+    if (!(reader instanceof $Reader)) reader = $Reader.create(reader);
+    if (long === undefined) long = 0;
+    if (long > $Reader.recursionLimit)
+      throw Error("maximum nesting depth exceeded");
+    var end, message;
+    if (length === undefined) end = reader.len;
+    else {
+      end = reader.pos + length;
+      if (end > reader.len) throw RangeError("index out of range");
+      length = reader.len;
+      reader.len = end;
+    }
+    message = new $root.ResSetDigitalZoom();
+    while (reader.pos < end) {
+      var tag = reader.uint32();
+      if (tag === error) break;
+      switch (tag >>> 3) {
+        case 1: {
+          message.code = reader.int32();
+          break;
+        }
+        case 2: {
+          message.cameraType = reader.int32();
+          break;
+        }
+        case 3: {
+          message.zoomRatio = reader.float();
+          break;
+        }
+        case 4: {
+          message.centerX = reader.float();
+          break;
+        }
+        case 5: {
+          message.centerY = reader.float();
+          break;
+        }
+        default:
+          reader.skipType(tag & 7, long);
+          break;
+      }
+    }
+    if (length !== undefined) {
+      if (reader.pos !== end) throw RangeError("index out of range");
+      reader.len = length;
+    }
+    return message;
+  };
+
+  /**
+   * Decodes a ResSetDigitalZoom message from the specified reader or buffer, length delimited.
+   * @function decodeDelimited
+   * @memberof ResSetDigitalZoom
+   * @static
+   * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+   * @returns {ResSetDigitalZoom} ResSetDigitalZoom
+   * @throws {Error} If the payload is not a reader or valid buffer
+   * @throws {$protobuf.util.ProtocolError} If required fields are missing
+   */
+  ResSetDigitalZoom.decodeDelimited = function decodeDelimited(reader) {
+    if (!(reader instanceof $Reader)) reader = new $Reader(reader);
+    return this.decode(reader, reader.uint32());
+  };
+
+  /**
+   * Verifies a ResSetDigitalZoom message.
+   * @function verify
+   * @memberof ResSetDigitalZoom
+   * @static
+   * @param {Object.<string,*>} message Plain object to verify
+   * @returns {string|null} `null` if valid, otherwise the reason why it is not
+   */
+  ResSetDigitalZoom.verify = function verify(message, long) {
+    if (typeof message !== "object" || message === null)
+      return "object expected";
+    if (long === undefined) long = 0;
+    if (long > $util.recursionLimit) return "maximum nesting depth exceeded";
+    if (message.code != null && Object.hasOwnProperty.call(message, "code"))
+      if (!$util.isInteger(message.code)) return "code: integer expected";
+    if (
+      message.cameraType != null &&
+      Object.hasOwnProperty.call(message, "cameraType")
+    )
+      if (!$util.isInteger(message.cameraType))
+        return "cameraType: integer expected";
+    if (
+      message.zoomRatio != null &&
+      Object.hasOwnProperty.call(message, "zoomRatio")
+    )
+      if (typeof message.zoomRatio !== "number")
+        return "zoomRatio: number expected";
+    if (
+      message.centerX != null &&
+      Object.hasOwnProperty.call(message, "centerX")
+    )
+      if (typeof message.centerX !== "number")
+        return "centerX: number expected";
+    if (
+      message.centerY != null &&
+      Object.hasOwnProperty.call(message, "centerY")
+    )
+      if (typeof message.centerY !== "number")
+        return "centerY: number expected";
+    return null;
+  };
+
+  /**
+   * Creates a ResSetDigitalZoom message from a plain object. Also converts values to their respective internal types.
+   * @function fromObject
+   * @memberof ResSetDigitalZoom
+   * @static
+   * @param {Object.<string,*>} object Plain object
+   * @returns {ResSetDigitalZoom} ResSetDigitalZoom
+   */
+  ResSetDigitalZoom.fromObject = function fromObject(object, long) {
+    if (object instanceof $root.ResSetDigitalZoom) return object;
+    if (!$util.isObject(object))
+      throw TypeError(".ResSetDigitalZoom: object expected");
+    if (long === undefined) long = 0;
+    if (long > $util.recursionLimit)
+      throw Error("maximum nesting depth exceeded");
+    var message = new $root.ResSetDigitalZoom();
+    if (object.code != null) message.code = object.code | 0;
+    if (object.cameraType != null) message.cameraType = object.cameraType | 0;
+    if (object.zoomRatio != null) message.zoomRatio = Number(object.zoomRatio);
+    if (object.centerX != null) message.centerX = Number(object.centerX);
+    if (object.centerY != null) message.centerY = Number(object.centerY);
+    return message;
+  };
+
+  /**
+   * Creates a plain object from a ResSetDigitalZoom message. Also converts values to other types if specified.
+   * @function toObject
+   * @memberof ResSetDigitalZoom
+   * @static
+   * @param {ResSetDigitalZoom} message ResSetDigitalZoom
+   * @param {$protobuf.IConversionOptions} [options] Conversion options
+   * @returns {Object.<string,*>} Plain object
+   */
+  ResSetDigitalZoom.toObject = function toObject(message, options, q) {
+    if (!options) options = {};
+    if (q === undefined) q = 0;
+    if (q > $util.recursionLimit) throw Error("max depth exceeded");
+    var object = {};
+    if (options.defaults) {
+      object.code = 0;
+      object.cameraType = 0;
+      object.zoomRatio = 0;
+      object.centerX = 0;
+      object.centerY = 0;
+    }
+    if (message.code != null && Object.hasOwnProperty.call(message, "code"))
+      object.code = message.code;
+    if (
+      message.cameraType != null &&
+      Object.hasOwnProperty.call(message, "cameraType")
+    )
+      object.cameraType = message.cameraType;
+    if (
+      message.zoomRatio != null &&
+      Object.hasOwnProperty.call(message, "zoomRatio")
+    )
+      object.zoomRatio =
+        options.json && !isFinite(message.zoomRatio)
+          ? String(message.zoomRatio)
+          : message.zoomRatio;
+    if (
+      message.centerX != null &&
+      Object.hasOwnProperty.call(message, "centerX")
+    )
+      object.centerX =
+        options.json && !isFinite(message.centerX)
+          ? String(message.centerX)
+          : message.centerX;
+    if (
+      message.centerY != null &&
+      Object.hasOwnProperty.call(message, "centerY")
+    )
+      object.centerY =
+        options.json && !isFinite(message.centerY)
+          ? String(message.centerY)
+          : message.centerY;
+    return object;
+  };
+
+  /**
+   * Converts this ResSetDigitalZoom to JSON.
+   * @function toJSON
+   * @memberof ResSetDigitalZoom
+   * @instance
+   * @returns {Object.<string,*>} JSON object
+   */
+  ResSetDigitalZoom.prototype.toJSON = function toJSON() {
+    return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+  };
+
+  /**
+   * Gets the default type url for ResSetDigitalZoom
+   * @function getTypeUrl
+   * @memberof ResSetDigitalZoom
+   * @static
+   * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+   * @returns {string} The default type url
+   */
+  ResSetDigitalZoom.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+    if (typeUrlPrefix === undefined) {
+      typeUrlPrefix = "type.googleapis.com";
+    }
+    return typeUrlPrefix + "/ResSetDigitalZoom";
+  };
+
+  return ResSetDigitalZoom;
+})();
+
 $root.ReqGetDeviceStateInfo = (function () {
   /**
    * Properties of a ReqGetDeviceStateInfo.
@@ -115721,6 +118972,8 @@ $root.TeleCameraStateInfo = (function () {
    * @property {number|null} [resolutionWidth] TeleCameraStateInfo resolutionWidth
    * @property {number|null} [resolutionHeight] TeleCameraStateInfo resolutionHeight
    * @property {notify.ICmosTemperature|null} [cmosTemperature] TeleCameraStateInfo cmosTemperature
+   * @property {boolean|null} [hdrEnabled] TeleCameraStateInfo hdrEnabled
+   * @property {number|null} [resolutionAspectRatio] TeleCameraStateInfo resolutionAspectRatio
    */
 
   /**
@@ -115793,6 +119046,22 @@ $root.TeleCameraStateInfo = (function () {
    * @instance
    */
   TeleCameraStateInfo.prototype.cmosTemperature = null;
+
+  /**
+   * TeleCameraStateInfo hdrEnabled.
+   * @member {boolean} hdrEnabled
+   * @memberof TeleCameraStateInfo
+   * @instance
+   */
+  TeleCameraStateInfo.prototype.hdrEnabled = false;
+
+  /**
+   * TeleCameraStateInfo resolutionAspectRatio.
+   * @member {number} resolutionAspectRatio
+   * @memberof TeleCameraStateInfo
+   * @instance
+   */
+  TeleCameraStateInfo.prototype.resolutionAspectRatio = 0;
 
   // OneOf field names bound to virtual getters and setters
   var $oneOfFields;
@@ -115871,6 +119140,18 @@ $root.TeleCameraStateInfo = (function () {
         writer.uint32(/* id 7, wireType 2 =*/ 58).fork(),
         q + 1,
       ).ldelim();
+    if (
+      message.hdrEnabled != null &&
+      Object.hasOwnProperty.call(message, "hdrEnabled")
+    )
+      writer.uint32(/* id 8, wireType 0 =*/ 64).bool(message.hdrEnabled);
+    if (
+      message.resolutionAspectRatio != null &&
+      Object.hasOwnProperty.call(message, "resolutionAspectRatio")
+    )
+      writer
+        .uint32(/* id 9, wireType 0 =*/ 72)
+        .int32(message.resolutionAspectRatio);
     return writer;
   };
 
@@ -115965,6 +119246,14 @@ $root.TeleCameraStateInfo = (function () {
           );
           break;
         }
+        case 8: {
+          message.hdrEnabled = reader.bool();
+          break;
+        }
+        case 9: {
+          message.resolutionAspectRatio = reader.int32();
+          break;
+        }
         default:
           reader.skipType(tag & 7, long);
           break;
@@ -116052,6 +119341,18 @@ $root.TeleCameraStateInfo = (function () {
         if (error) return "cmosTemperature." + error;
       }
     }
+    if (
+      message.hdrEnabled != null &&
+      Object.hasOwnProperty.call(message, "hdrEnabled")
+    )
+      if (typeof message.hdrEnabled !== "boolean")
+        return "hdrEnabled: boolean expected";
+    if (
+      message.resolutionAspectRatio != null &&
+      Object.hasOwnProperty.call(message, "resolutionAspectRatio")
+    )
+      if (!$util.isInteger(message.resolutionAspectRatio))
+        return "resolutionAspectRatio: integer expected";
     return null;
   };
 
@@ -116103,6 +119404,10 @@ $root.TeleCameraStateInfo = (function () {
         long + 1,
       );
     }
+    if (object.hdrEnabled != null)
+      message.hdrEnabled = Boolean(object.hdrEnabled);
+    if (object.resolutionAspectRatio != null)
+      message.resolutionAspectRatio = object.resolutionAspectRatio | 0;
     return message;
   };
 
@@ -116127,6 +119432,8 @@ $root.TeleCameraStateInfo = (function () {
       object.vFov = 0;
       object.resolutionWidth = 0;
       object.resolutionHeight = 0;
+      object.hdrEnabled = false;
+      object.resolutionAspectRatio = 0;
     }
     if (
       message.exclusiveState != null &&
@@ -116177,6 +119484,16 @@ $root.TeleCameraStateInfo = (function () {
       );
       if (options.oneofs) object._cmosTemperature = "cmosTemperature";
     }
+    if (
+      message.hdrEnabled != null &&
+      Object.hasOwnProperty.call(message, "hdrEnabled")
+    )
+      object.hdrEnabled = message.hdrEnabled;
+    if (
+      message.resolutionAspectRatio != null &&
+      Object.hasOwnProperty.call(message, "resolutionAspectRatio")
+    )
+      object.resolutionAspectRatio = message.resolutionAspectRatio;
     return object;
   };
 
@@ -116221,6 +119538,8 @@ $root.WideCameraStateInfo = (function () {
    * @property {number|null} [resolutionWidth] WideCameraStateInfo resolutionWidth
    * @property {number|null} [resolutionHeight] WideCameraStateInfo resolutionHeight
    * @property {notify.ICmosTemperature|null} [cmosTemperature] WideCameraStateInfo cmosTemperature
+   * @property {boolean|null} [hdrEnabled] WideCameraStateInfo hdrEnabled
+   * @property {number|null} [resolutionAspectRatio] WideCameraStateInfo resolutionAspectRatio
    */
 
   /**
@@ -116293,6 +119612,22 @@ $root.WideCameraStateInfo = (function () {
    * @instance
    */
   WideCameraStateInfo.prototype.cmosTemperature = null;
+
+  /**
+   * WideCameraStateInfo hdrEnabled.
+   * @member {boolean} hdrEnabled
+   * @memberof WideCameraStateInfo
+   * @instance
+   */
+  WideCameraStateInfo.prototype.hdrEnabled = false;
+
+  /**
+   * WideCameraStateInfo resolutionAspectRatio.
+   * @member {number} resolutionAspectRatio
+   * @memberof WideCameraStateInfo
+   * @instance
+   */
+  WideCameraStateInfo.prototype.resolutionAspectRatio = 0;
 
   // OneOf field names bound to virtual getters and setters
   var $oneOfFields;
@@ -116371,6 +119706,18 @@ $root.WideCameraStateInfo = (function () {
         writer.uint32(/* id 7, wireType 2 =*/ 58).fork(),
         q + 1,
       ).ldelim();
+    if (
+      message.hdrEnabled != null &&
+      Object.hasOwnProperty.call(message, "hdrEnabled")
+    )
+      writer.uint32(/* id 8, wireType 0 =*/ 64).bool(message.hdrEnabled);
+    if (
+      message.resolutionAspectRatio != null &&
+      Object.hasOwnProperty.call(message, "resolutionAspectRatio")
+    )
+      writer
+        .uint32(/* id 9, wireType 0 =*/ 72)
+        .int32(message.resolutionAspectRatio);
     return writer;
   };
 
@@ -116465,6 +119812,14 @@ $root.WideCameraStateInfo = (function () {
           );
           break;
         }
+        case 8: {
+          message.hdrEnabled = reader.bool();
+          break;
+        }
+        case 9: {
+          message.resolutionAspectRatio = reader.int32();
+          break;
+        }
         default:
           reader.skipType(tag & 7, long);
           break;
@@ -116552,6 +119907,18 @@ $root.WideCameraStateInfo = (function () {
         if (error) return "cmosTemperature." + error;
       }
     }
+    if (
+      message.hdrEnabled != null &&
+      Object.hasOwnProperty.call(message, "hdrEnabled")
+    )
+      if (typeof message.hdrEnabled !== "boolean")
+        return "hdrEnabled: boolean expected";
+    if (
+      message.resolutionAspectRatio != null &&
+      Object.hasOwnProperty.call(message, "resolutionAspectRatio")
+    )
+      if (!$util.isInteger(message.resolutionAspectRatio))
+        return "resolutionAspectRatio: integer expected";
     return null;
   };
 
@@ -116603,6 +119970,10 @@ $root.WideCameraStateInfo = (function () {
         long + 1,
       );
     }
+    if (object.hdrEnabled != null)
+      message.hdrEnabled = Boolean(object.hdrEnabled);
+    if (object.resolutionAspectRatio != null)
+      message.resolutionAspectRatio = object.resolutionAspectRatio | 0;
     return message;
   };
 
@@ -116627,6 +119998,8 @@ $root.WideCameraStateInfo = (function () {
       object.vFov = 0;
       object.resolutionWidth = 0;
       object.resolutionHeight = 0;
+      object.hdrEnabled = false;
+      object.resolutionAspectRatio = 0;
     }
     if (
       message.exclusiveState != null &&
@@ -116677,6 +120050,16 @@ $root.WideCameraStateInfo = (function () {
       );
       if (options.oneofs) object._cmosTemperature = "cmosTemperature";
     }
+    if (
+      message.hdrEnabled != null &&
+      Object.hasOwnProperty.call(message, "hdrEnabled")
+    )
+      object.hdrEnabled = message.hdrEnabled;
+    if (
+      message.resolutionAspectRatio != null &&
+      Object.hasOwnProperty.call(message, "resolutionAspectRatio")
+    )
+      object.resolutionAspectRatio = message.resolutionAspectRatio;
     return object;
   };
 

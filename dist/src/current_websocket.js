@@ -27,7 +27,9 @@ export class CurrentWebSocketHandler {
             ...(options.reconnectDelaysMs ?? [1000, 3000]),
         ].map((delay) => duration(delay, "reconnect delay", true));
         this.onListenerError = options.onListenerError;
-        this.session = new CurrentSession(profile);
+        this.session = new CurrentSession(profile, {
+            onListenerError: options.onListenerError,
+        });
         this.session.subscribe((state, packet) => {
             if (state.phase === "ready") {
                 this.clearReadinessTimer();

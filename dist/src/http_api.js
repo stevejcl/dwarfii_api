@@ -1,4 +1,7 @@
 import { parseCurrentJsonLossless } from "./current_json.js";
+import { CurrentProtocolError } from "./current_errors.js";
+/** @typedef {{majorVersion:number, minorVersion:number, [key:string]:unknown}} DefaultParamsConfigData */
+/** @typedef {{code:number, data:DefaultParamsConfigData, [key:string]:unknown}} DefaultParamsConfigResponse */
 /** @module http_api */
 // HTTP API wrapper for DWARF mini / II / 3 file download and album management.
 //
@@ -156,15 +159,34 @@ export async function getDeviceActivateInfo(IP) {
  * Note: Named fetchDefaultParamsConfig to avoid conflict with the URL builder
  * in api_codes.js which exports getDefaultParamsConfig.
  * @param {string} IP - Device IP address
- * @returns {Promise<Object>}
+ * @returns {Promise<DefaultParamsConfigResponse>}
  */
 export async function fetchDefaultParamsConfig(IP) {
     const url = `${apiBaseUrl(IP)}/getDefaultParamsConfig`;
-    const response = await fetch(url);
+    const response = await fetch(url, { method: "GET" });
     if (!response.ok) {
         throw new Error(`fetchDefaultParamsConfig failed: ${response.status} ${response.statusText}`);
     }
-    return response.json();
+    const result = parseCurrentJsonLossless(await response.text());
+    if (!result ||
+        typeof result !== "object" ||
+        Array.isArray(result) ||
+        !("code" in result) ||
+        typeof result.code !== "number")
+        throw new CurrentProtocolError("decode", "Invalid default parameter configuration response");
+    if (result.code !== 0)
+        throw new CurrentProtocolError("device", `Default parameter configuration failed (${result.code})`, result.code);
+    if (!("data" in result) ||
+        !result.data ||
+        typeof result.data !== "object" ||
+        !("majorVersion" in result.data) ||
+        !("minorVersion" in result.data) ||
+        !Number.isSafeInteger(result.data.majorVersion) ||
+        !Number.isSafeInteger(result.data.minorVersion) ||
+        Number(result.data.majorVersion) < 0 ||
+        Number(result.data.minorVersion) < 0)
+        throw new CurrentProtocolError("decode", "Default parameter configuration has no valid protocol version");
+    return /** @type {DefaultParamsConfigResponse} */ (result);
 }
 /**
  * Get firmware version.

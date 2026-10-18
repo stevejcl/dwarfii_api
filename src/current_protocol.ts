@@ -91,6 +91,13 @@ import { CurrentProtocolError } from "./current_errors.js";
 // module, command, canonical request, canonical response. Registry presence is
 // schema/API evidence, not hardware certification or permission to execute.
 export const CurrentCommands = {
+  // APK3.4.3 WsCmd15860 -> MODULE_FACTORY_TEST12; read-only camera metadata.
+  getCameraAndFocusInfo: [
+    12,
+    15860,
+    "ReqGetCameraAndFocusInfo",
+    "ResGetCameraAndFocusInfo",
+  ],
   getDeviceState: [14, 16405, "ReqGetDeviceStateInfo", "ResGetDeviceStateInfo"],
   enterCamera: [14, 16404, "ReqEnterCamera", "ResEnterCamera"],
   switchShootingMode: [
@@ -590,6 +597,11 @@ function validateCurrentOperation(
 }
 
 export interface CurrentPacket {
+  /** Received envelope metadata; outbound profile settings are not peer capabilities. */
+  majorVersion?: number;
+  minorVersion?: number;
+  deviceId?: number;
+  clientId?: string;
   moduleId: number;
   cmd: number;
   type: number;
@@ -602,7 +614,7 @@ export function decodeCurrentPacket(bytes: Uint8Array): CurrentPacket {
   try {
     const envelope = schema.WsPacket.decode(bytes);
     if (
-      envelope.majorVersion !== 1 ||
+      ![1, 2].includes(envelope.majorVersion) ||
       ![0, 1, 2, 3].includes(envelope.type) ||
       !envelope.moduleId ||
       !envelope.cmd
@@ -627,6 +639,10 @@ export function decodeCurrentPacket(bytes: Uint8Array): CurrentPacket {
     } else if (descriptor) messageName = descriptor[type === 0 ? 2 : 3];
     const rawData = new Uint8Array(envelope.data);
     return {
+      majorVersion: envelope.majorVersion,
+      minorVersion: envelope.minorVersion,
+      deviceId: envelope.deviceId,
+      clientId: envelope.clientId,
       moduleId,
       cmd,
       type,

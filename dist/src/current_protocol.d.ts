@@ -22,6 +22,7 @@ export declare function getCurrentProfile(hardwareId: number): CurrentProfile;
 export type ProtocolErrorKind = "unsupported" | "invalid-parameter" | "decode" | "busy" | "transport" | "timeout" | "device";
 export { CurrentProtocolError } from "./current_errors.js";
 export declare const CurrentCommands: {
+    readonly getCameraAndFocusInfo: readonly [12, 15860, "ReqGetCameraAndFocusInfo", "ResGetCameraAndFocusInfo"];
     readonly getDeviceState: readonly [14, 16405, "ReqGetDeviceStateInfo", "ResGetDeviceStateInfo"];
     readonly enterCamera: readonly [14, 16404, "ReqEnterCamera", "ResEnterCamera"];
     readonly switchShootingMode: readonly [14, 16402, "ReqSwitchShootingMode", "ResSwitchShootingMode"];
@@ -97,6 +98,11 @@ export declare function decodeCurrentMessage(name: string, bytes: Uint8Array): R
 export declare function encodeCurrentMessage(name: string, values?: Record<string, unknown>): Uint8Array;
 export declare function createCurrentPacket(profile: CurrentProfile, operation: CurrentCommand, values?: Record<string, unknown>): Uint8Array;
 export interface CurrentPacket {
+    /** Received envelope metadata; outbound profile settings are not peer capabilities. */
+    majorVersion?: number;
+    minorVersion?: number;
+    deviceId?: number;
+    clientId?: string;
     moduleId: number;
     cmd: number;
     type: number;

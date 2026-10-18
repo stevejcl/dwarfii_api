@@ -147,6 +147,12 @@ export interface ApiResponse<T = unknown> {
   data: T;
 }
 
+export interface DefaultParamsConfigData extends Record<string, unknown> {
+  majorVersion: number;
+  minorVersion: number;
+}
+export type DefaultParamsConfigResponse = ApiResponse<DefaultParamsConfigData>;
+
 /** Response from /album/list/mediaCounts */
 export type MediaCountsResponse = ApiResponse<MediaCount[]>;
 
@@ -205,7 +211,7 @@ export declare function getDeviceInfo(IP: string): Promise<ApiResponse>;
 export declare function getDeviceActivateInfo(IP: string): Promise<ApiResponse>;
 export declare function fetchDefaultParamsConfig(
   IP: string,
-): Promise<ApiResponse>;
+): Promise<DefaultParamsConfigResponse>;
 export declare function getFirmwareVersion(IP: string): Promise<ApiResponse>;
 
 // Shooting mode

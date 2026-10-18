@@ -64,6 +64,13 @@ import { CurrentProtocolError } from "./current_errors.js";
 // module, command, canonical request, canonical response. Registry presence is
 // schema/API evidence, not hardware certification or permission to execute.
 export const CurrentCommands = {
+    // APK3.4.3 WsCmd15860 -> MODULE_FACTORY_TEST12; read-only camera metadata.
+    getCameraAndFocusInfo: [
+        12,
+        15860,
+        "ReqGetCameraAndFocusInfo",
+        "ResGetCameraAndFocusInfo",
+    ],
     getDeviceState: [14, 16405, "ReqGetDeviceStateInfo", "ResGetDeviceStateInfo"],
     enterCamera: [14, 16404, "ReqEnterCamera", "ResEnterCamera"],
     switchShootingMode: [
@@ -492,7 +499,7 @@ function validateCurrentOperation(profile, operation, values) {
 export function decodeCurrentPacket(bytes) {
     try {
         const envelope = schema.WsPacket.decode(bytes);
-        if (envelope.majorVersion !== 1 ||
+        if (![1, 2].includes(envelope.majorVersion) ||
             ![0, 1, 2, 3].includes(envelope.type) ||
             !envelope.moduleId ||
             !envelope.cmd) {
@@ -515,6 +522,10 @@ export function decodeCurrentPacket(bytes) {
             messageName = descriptor[type === 0 ? 2 : 3];
         const rawData = new Uint8Array(envelope.data);
         return {
+            majorVersion: envelope.majorVersion,
+            minorVersion: envelope.minorVersion,
+            deviceId: envelope.deviceId,
+            clientId: envelope.clientId,
             moduleId,
             cmd,
             type,

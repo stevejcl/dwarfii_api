@@ -3,8 +3,9 @@
  */
 import { CurrentCommands, CurrentProtocolError, assertCurrentSuccess, createCurrentPacket, decodeCurrentPacket, } from "./current_protocol.js";
 export class CurrentSession {
-    constructor(profile) {
+    constructor(profile, options = {}) {
         this.profile = profile;
+        this.options = options;
         this.pending = new Map();
         this.timedOut = new Set();
         this.listeners = new Set();
@@ -97,6 +98,19 @@ export class CurrentSession {
         const packet = decodeCurrentPacket(bytes);
         if (!this.send)
             return packet; // Frames from a disposed session have no authority.
+        if (packet.known &&
+            [1, 3].includes(packet.type) &&
+            !this.current.peerProtocolVersion &&
+            packet.majorVersion !== undefined &&
+            packet.minorVersion !== undefined) {
+            this.current = {
+                ...this.current,
+                peerProtocolVersion: Object.freeze({
+                    majorVersion: packet.majorVersion,
+                    minorVersion: packet.minorVersion,
+                }),
+            };
+        }
         const key = `${packet.moduleId}:${packet.cmd}`;
         let requestKey = key;
         // Ownership can be returned as15223 from module4 or9 instead of13004.
@@ -184,7 +198,20 @@ export class CurrentSession {
         this.current = { ...this.current, ownership };
     }
     emit(packet) {
-        for (const listener of this.listeners)
-            listener(this.current, packet);
+        for (const listener of this.listeners) {
+            try {
+                listener(this.current, packet);
+            }
+            catch (error) {
+                // A UI/state consumer must not interrupt frame handling or prevent
+                // another subscriber from seeing an authoritative disconnect.
+                try {
+                    this.options.onListenerError?.(error);
+                }
+                catch {
+                    /* Not a protocol failure. */
+                }
+            }
+        }
     }
 }

@@ -14,6 +14,13 @@ import {
 
 export type SessionPhase = "disconnected" | "transport-open" | "ready";
 export interface CurrentSessionState {
+  /** Actual WebSocket response version, independent of the Android parameter
+   * configuration version returned by /getDefaultParamsConfig. Diagnostic
+   * metadata only: neither version may be inferred from outbound profile1.20. */
+  peerProtocolVersion?: Readonly<{
+    majorVersion: number;
+    minorVersion: number;
+  }>;
   phase: SessionPhase;
   ownership: "unknown" | "control" | "slave";
   snapshot?: Record<string, any>;
@@ -28,6 +35,10 @@ type Pending = {
   reject: (error: Error) => void;
   timer: ReturnType<typeof setTimeout>;
 };
+
+export interface CurrentSessionOptions {
+  onListenerError?: (error: unknown) => void;
+}
 
 export class CurrentSession {
   private pending = new Map<string, Pending>();
@@ -44,7 +55,10 @@ export class CurrentSession {
     generation: 0,
   };
 
-  constructor(public readonly profile: CurrentProfile) {}
+  constructor(
+    public readonly profile: CurrentProfile,
+    private readonly options: CurrentSessionOptions = {},
+  ) {}
   get state(): CurrentSessionState {
     return this.current;
   }
@@ -155,6 +169,21 @@ export class CurrentSession {
   receive(bytes: Uint8Array): CurrentPacket {
     const packet = decodeCurrentPacket(bytes);
     if (!this.send) return packet; // Frames from a disposed session have no authority.
+    if (
+      packet.known &&
+      [1, 3].includes(packet.type) &&
+      !this.current.peerProtocolVersion &&
+      packet.majorVersion !== undefined &&
+      packet.minorVersion !== undefined
+    ) {
+      this.current = {
+        ...this.current,
+        peerProtocolVersion: Object.freeze({
+          majorVersion: packet.majorVersion,
+          minorVersion: packet.minorVersion,
+        }),
+      };
+    }
     const key = `${packet.moduleId}:${packet.cmd}`;
     let requestKey = key;
     // Ownership can be returned as15223 from module4 or9 instead of13004.
@@ -258,6 +287,18 @@ export class CurrentSession {
   }
 
   private emit(packet?: CurrentPacket): void {
-    for (const listener of this.listeners) listener(this.current, packet);
+    for (const listener of this.listeners) {
+      try {
+        listener(this.current, packet);
+      } catch (error) {
+        // A UI/state consumer must not interrupt frame handling or prevent
+        // another subscriber from seeing an authoritative disconnect.
+        try {
+          this.options.onListenerError?.(error);
+        } catch {
+          /* Not a protocol failure. */
+        }
+      }
+    }
   }
 }
