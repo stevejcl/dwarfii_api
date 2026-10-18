@@ -69,12 +69,21 @@ export declare function supportsCurrentNativeSchedules(hardwareId: number, peer:
  * This prepares data only; submitCurrentTimedSchedule checks live capability.
  */
 export declare function buildCurrentTimedSchedule(identity: CurrentScheduleIdentity, catalog: CurrentCameraCatalog, input: CurrentTimedScheduleInput, nowSeconds?: number): CurrentNativeSchedule;
-/** Explicit submission, never ownership acquisition or automatic replacement.
- * A successful ACK is insufficient: the device must return the exact queued
- * plan on readback. Errors after sync can mean uncertain submission; callers
- * must inspect device schedules before deciding what to do next.
- */
+/** Submit a caller-assigned ID with existing-list preflight and list readback. */
 export declare function submitCurrentTimedSchedule(client: CurrentScheduleTransport, identity: CurrentScheduleIdentity, catalog: CurrentCameraCatalog, input: CurrentTimedScheduleInput, now?: () => number): Promise<{
+    status: "queued";
+    schedule: CurrentNativeSchedule;
+}>;
+export type CurrentTimedScheduleDraft = Omit<CurrentTimedScheduleInput, "id" | "tasks"> & {
+    tasks: readonly Omit<CurrentTimedTaskInput, "id">[];
+};
+/** Explicit first-job creation without relying on the firmware's broken empty
+ * list response. IDs are generated internally with a fresh cryptographic UUID;
+ * caller IDs are never reused. Native conflict checks remain authoritative,
+ * replacement is never requested, and exact per-ID readback is mandatory.
+ * This is not an automatic fallback from a timed-out or failed list request.
+ */
+export declare function createCurrentTimedSchedule(client: CurrentScheduleTransport, identity: CurrentScheduleIdentity, catalog: CurrentCameraCatalog, draft: CurrentTimedScheduleDraft, now?: () => number): Promise<{
     status: "queued";
     schedule: CurrentNativeSchedule;
 }>;

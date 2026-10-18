@@ -166,7 +166,7 @@ function matchingJson(actual, expected) {
  * plan on readback. Errors after sync can mean uncertain submission; callers
  * must inspect device schedules before deciding what to do next.
  */
-export async function submitCurrentTimedSchedule(client, identity, catalog, input, now = () => Math.floor(Date.now() / 1000)) {
+async function submitTimedSchedule(client, identity, catalog, input, now, readback) {
     if (submitting.has(client))
         throw new CurrentProtocolError("busy", "A schedule submission is pending");
     const schedule = buildCurrentTimedSchedule(identity, catalog, input, now());
@@ -210,9 +210,11 @@ export async function submitCurrentTimedSchedule(client, identity, catalog, inpu
     check();
     submitting.add(client);
     try {
-        const before = await list();
-        if (before.some((row) => row.scheduleId === schedule.scheduleId))
-            invalid("That schedule ID already exists; nothing was replaced");
+        if (readback === "list") {
+            const before = await list();
+            if (before.some((row) => row.scheduleId === schedule.scheduleId))
+                invalid("That schedule ID already exists; nothing was replaced");
+        }
         check();
         const response = await client.request("syncShootingSchedule", {
             shootingSchedule: schedule,
@@ -221,8 +223,20 @@ export async function submitCurrentTimedSchedule(client, identity, catalog, inpu
         assertCurrentSuccess(response);
         if (response.data.timeConflictScheduleIds?.length)
             throw new CurrentProtocolError("busy", "Device reported conflicting schedules; no replacement was requested");
-        const confirmed = (await list()).find((row) => row.scheduleId === schedule.scheduleId);
+        let confirmed;
+        if (readback === "list") {
+            confirmed = (await list()).find((row) => row.scheduleId === schedule.scheduleId);
+        }
+        else {
+            const packet = await client.request("getShootingScheduleById", {
+                id: schedule.scheduleId,
+            });
+            check();
+            assertCurrentSuccess(packet);
+            confirmed = packet.data.shootingSchedule;
+        }
         if (!confirmed ||
+            confirmed.scheduleId !== schedule.scheduleId ||
             confirmed.deviceId !== identity.hardwareId ||
             mac(confirmed.macAddress) !== mac(identity.macAddress) ||
             confirmed.state !== 1 ||
@@ -240,4 +254,27 @@ export async function submitCurrentTimedSchedule(client, identity, catalog, inpu
     finally {
         submitting.delete(client);
     }
+}
+/** Submit a caller-assigned ID with existing-list preflight and list readback. */
+export function submitCurrentTimedSchedule(client, identity, catalog, input, now = () => Math.floor(Date.now() / 1000)) {
+    return submitTimedSchedule(client, identity, catalog, input, now, "list");
+}
+/** Explicit first-job creation without relying on the firmware's broken empty
+ * list response. IDs are generated internally with a fresh cryptographic UUID;
+ * caller IDs are never reused. Native conflict checks remain authoritative,
+ * replacement is never requested, and exact per-ID readback is mandatory.
+ * This is not an automatic fallback from a timed-out or failed list request.
+ */
+export function createCurrentTimedSchedule(client, identity, catalog, draft, now = () => Math.floor(Date.now() / 1000)) {
+    const prefix = crypto.randomUUID();
+    const timestamp = now() * 1000;
+    const input = {
+        ...draft,
+        id: `${prefix}${timestamp}.Android`,
+        tasks: draft.tasks.map((task, index) => ({
+            ...task,
+            id: `${prefix}${timestamp + index + 1}`,
+        })),
+    };
+    return submitTimedSchedule(client, identity, catalog, input, now, "id");
 }

@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import { test } from "node:test";
 import {
   buildCurrentTimedSchedule,
+  createCurrentTimedSchedule,
   submitCurrentTimedSchedule,
   supportsCurrentNativeSchedules,
 } from "../../dist/src/current_schedule.js";
@@ -173,7 +174,9 @@ function transport(options = {}) {
         data:
           operation === "syncShootingSchedule"
             ? { timeConflictScheduleIds: options.conflict ? ["other"] : [] }
-            : { shootingSchedule: rows },
+            : operation === "getShootingScheduleById"
+              ? { shootingSchedule: rows[0], code: options.lookupCode ?? 0 }
+              : { shootingSchedule: rows },
       };
     },
   };
@@ -266,4 +269,28 @@ test("a start that expires during list preparation is never written", async () =
     kind("invalid-parameter"),
   );
   assert.deepEqual(calls, ["getAllShootingSchedule"]);
+});
+
+test("fresh-ID creation verifies by ID without assuming a silent list is empty", async () => {
+  const { client, calls } = transport();
+  const result = await createCurrentTimedSchedule(
+    client,
+    identity,
+    catalog,
+    input(),
+    () => now,
+  );
+  assert.equal(result.status, "queued");
+  assert.notEqual(result.schedule.scheduleId, "plan-1");
+  assert.notEqual(result.schedule.shootingTasks[0].scheduleTaskId, "task-1");
+  assert.deepEqual(calls, ["syncShootingSchedule", "getShootingScheduleById"]);
+});
+
+test("a database error in per-ID readback is never accepted as a queued plan", async () => {
+  const { client, calls } = transport({ lookupCode: -16305 });
+  await assert.rejects(
+    createCurrentTimedSchedule(client, identity, catalog, input(), () => now),
+    kind("device"),
+  );
+  assert.deepEqual(calls, ["syncShootingSchedule", "getShootingScheduleById"]);
 });
