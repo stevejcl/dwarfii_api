@@ -38,6 +38,7 @@ const result = await submitCurrentTimedSchedule(client, identity, catalog, {
   name: "Evening target",
   latitude: observingLatitude,
   longitude: observingLongitude,
+  timezone: "Europe/Berlin", // observing site's IANA timezone
   autofocus: false,
   skipCalibration: false,
   planningTimeSeconds: now, // observing-date anchor, independent of task start
@@ -46,8 +47,8 @@ const result = await submitCurrentTimedSchedule(client, identity, catalog, {
     target: targetName,
     rightAscensionHours: raHours,
     declinationDegrees: decDegrees,
-    startTimeSeconds: now + 1800,
-    endTimeSeconds: now + 2400,
+    startTimeSeconds: Math.ceil((now + 1800) / 60) * 60,
+    endTimeSeconds: Math.ceil((now + 1800) / 60) * 60 + 600,
     exposureSeconds: desiredExposureSeconds,
     gain: desiredGain,
     filterIndex: desiredScienceFilterIndex,
@@ -62,10 +63,15 @@ that format was used in the controlled Mini acceptance test. UUID-only IDs have
 not been physically certified by this test. Do not reuse an existing plan ID to
 edit it through the create helper.
 
-Every task must start in the future, last at least 600 seconds, and not overlap
+Every task must start in the future within 12 hours, use whole-minute boundaries,
+last at least 600 seconds, and not overlap
 another task in the same plan. RA is hours in [0,24), declination is degrees in
 [-90,90], and time values are integer UNIX seconds. Convert local calendar time
-once; do not add a timezone offset to the resulting epoch. Desired exposure and
+once; do not add a timezone offset to the resulting epoch. Explicit submission
+initializes the device clock with UNIX seconds and the site's current UTC offset,
+then sets its IANA timezone before writing the plan. A failed clock command
+blocks submission. Passive connection/reconnection never changes the clock.
+Desired exposure and
 gain must be supported by the actual camera catalog. Count/stacked are progress,
 so this API does not promise a frame quota or prepare a separate EQ/dark recipe.
 
@@ -100,8 +106,7 @@ retry if a write may have been accepted.
 This is an explicit creation API, not an automatic retry/fallback after a failed
 submission. The application must keep ownership and the physical destination
 bound throughout the operation, and persist the returned schedule ID for later
-query/cancel operations. D3 hardware acceptance of this path is still pending
-because that device became unreachable during the investigation.
+query/cancel operations.
 
 ## Physical acceptance on 2026-10-18
 
@@ -111,11 +116,14 @@ completed history was preserved. No test task executed.
 This acceptance was repeated separately through the fresh-ID/per-ID-readback
 creation API, with the same queue, cancellation and history-preservation results.
 
-DWARF 3 1.5.3.9 / HTTP configuration 2.6: native list command 13:16102 remained
-silent with ownership held and working state heartbeats. Comparisons included
-the exact APK 3.4.3 request envelope (2.7, hardware ID 2), legacy headers and
-confirmed DSO mode 2. Both devices replied with envelope 1.8, which is a separate
-version source. The DWARF 3 cause remains unresolved; the helper stops at its
-failed list preflight and sends no blind job. Use an explicitly connected local
-scheduler only if its own execution path has been accepted; this audit does not
-certify a DWARF 3 on-device timed job.
+DWARF 3 1.5.3.9 / HTTP configuration 2.6: a future whole-minute 600-second job
+initially failed with -16301. After clock/timezone initialization, fresh-ID
+creation succeeded, exact per-ID readback confirmed pending state, and the full
+list returned the stored job. Cancellation returned success and per-ID readback
+confirmed removal (-16305). Control was released and no test task executed.
+This certifies queue/readback/cancel, not unattended execution or calibration.
+
+The comparison used Steve's [session application](https://github.com/stevejcl/astro_dwarf_session/tree/7b2e8b6e34d90c2806fd1ba49268c80f2827db82)
+and its [Python API](https://github.com/stevejcl/dwarf_python_api/tree/93ec09fff6b6dc6afffdf0d1cb2c78d2baf419ca).
+Its clock-initialization fix, whole-minute windows, 12-hour submission limit,
+and direct creation path guided independently implemented checks here.

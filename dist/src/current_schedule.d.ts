@@ -30,6 +30,8 @@ export interface CurrentTimedScheduleInput {
     name: string;
     latitude: number;
     longitude: number;
+    /** IANA timezone of the observing site; used to initialize the device clock. */
+    timezone: string;
     autofocus: boolean;
     /** True skips calibration when the scheduled job runs. */
     skipCalibration?: boolean;

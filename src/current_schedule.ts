@@ -44,6 +44,8 @@ export interface CurrentTimedScheduleInput {
   name: string;
   latitude: number;
   longitude: number;
+  /** IANA timezone of the observing site; used to initialize the device clock. */
+  timezone: string;
   autofocus: boolean;
   /** True skips calibration when the scheduled job runs. */
   skipCalibration?: boolean;
@@ -98,6 +100,27 @@ function seconds(value: number) {
     invalid("Schedule timestamps must be UNIX seconds, not milliseconds");
 }
 
+function timezoneOffset(timezone: string, epochSeconds: number): number {
+  if (typeof timezone !== "string" || !timezone.trim())
+    invalid("Choose the observing site's IANA timezone before scheduling");
+  try {
+    const label = new Intl.DateTimeFormat("en-US", {
+      timeZone: timezone,
+      timeZoneName: "longOffset",
+    })
+      .formatToParts(new Date(epochSeconds * 1000))
+      .find((part) => part.type === "timeZoneName")?.value;
+    if (label === "GMT" || label === "UTC") return 0;
+    const match = /^GMT([+-])(\d{2}):(\d{2})$/.exec(label ?? "");
+    if (!match) invalid("Cannot resolve the observing site's timezone offset");
+    return (
+      (match[1] === "-" ? -1 : 1) * (Number(match[2]) + Number(match[3]) / 60)
+    );
+  } catch {
+    return invalid("Choose a valid IANA timezone for the observing site");
+  }
+}
+
 /** APK HTTP config ProtocolVersion: D3 >=1.9; D2/Mini >=1.7.
  * A WS packet header is not a capability source. Unknown config is unsupported.
  */
@@ -134,6 +157,7 @@ export function buildCurrentTimedSchedule(
   if (catalog.modeId !== 2)
     invalid("Native deep-sky schedules require the mode-2 camera catalog");
   seconds(nowSeconds);
+  timezoneOffset(input.timezone, nowSeconds);
   const planningTime = input.planningTimeSeconds ?? nowSeconds;
   seconds(planningTime);
   if (
@@ -161,9 +185,13 @@ export function buildCurrentTimedSchedule(
     seconds(task.endTimeSeconds);
     if (
       task.startTimeSeconds <= nowSeconds ||
-      task.endTimeSeconds - task.startTimeSeconds < 600
+      task.endTimeSeconds - task.startTimeSeconds < 600 ||
+      task.startTimeSeconds % 60 !== 0 ||
+      task.endTimeSeconds % 60 !== 0
     )
-      invalid("Each task needs a future start and at least 600 seconds");
+      invalid(
+        "Each task needs a future whole-minute window of at least 10 minutes",
+      );
     finiteRange(task.rightAscensionHours, 0, 24, "Right ascension hours");
     if (task.rightAscensionHours === 24)
       invalid("Right ascension must be <24h");
@@ -218,6 +246,10 @@ export function buildCurrentTimedSchedule(
   });
   const start = Math.min(...windows.map((window) => window.start));
   const end = Math.max(...windows.map((window) => window.end));
+  if (start - nowSeconds > 12 * 3600)
+    invalid(
+      "The device accepts native schedules within 12 hours of the start; submit later",
+    );
   return {
     scheduleId: input.id,
     scheduleName: input.name.trim(),
@@ -284,6 +316,7 @@ async function submitTimedSchedule(
   if (submitting.has(client))
     throw new CurrentProtocolError("busy", "A schedule submission is pending");
   const schedule = buildCurrentTimedSchedule(identity, catalog, input, now());
+  const siteTimezone = input.timezone;
   identity = {
     ...identity,
     protocolVersion: identity.protocolVersion && {
@@ -354,6 +387,22 @@ async function submitTimedSchedule(
         invalid("That schedule ID already exists; nothing was replaced");
     }
     check();
+    // A booted device can reject an otherwise valid plan with -16301 until its
+    // clock is initialized. This is part of explicit submission, never passive
+    // connect/reconnect. Offset is for the site's timezone NOW, not the PC's.
+    const clockNow = now();
+    seconds(clockNow);
+    const time = await client.request("setTime", {
+      timestamp: String(clockNow),
+      timezoneOffset: timezoneOffset(siteTimezone, clockNow),
+    });
+    check();
+    assertCurrentSuccess(time);
+    const zone = await client.request("setTimezone", {
+      timezone: siteTimezone,
+    });
+    check();
+    assertCurrentSuccess(zone);
     const response = await client.request("syncShootingSchedule", {
       shootingSchedule: schedule,
     });

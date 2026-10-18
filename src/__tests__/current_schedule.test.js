@@ -46,6 +46,7 @@ const input = (overrides = {}) => ({
   name: "Offline fixture",
   latitude: 52,
   longitude: 13,
+  timezone: "Europe/Berlin",
   autofocus: false,
   tasks: [
     {
@@ -164,6 +165,8 @@ function transport(options = {}) {
     },
     async request(operation, values) {
       calls.push(operation);
+      if (options.failClock && operation === "setTime")
+        throw new CurrentProtocolError("device", "Clock rejected", -1);
       if (operation === "syncShootingSchedule")
         stored = structuredClone(values.shootingSchedule);
       if (options.reconnect && operation === "getAllShootingSchedule")
@@ -205,6 +208,8 @@ test("submission confirms queued plan by readback rather than ACK; JSON key orde
   assert.equal(result.status, "queued");
   assert.deepEqual(calls, [
     "getAllShootingSchedule",
+    "setTime",
+    "setTimezone",
     "syncShootingSchedule",
     "getAllShootingSchedule",
   ]);
@@ -247,7 +252,12 @@ test("conflict never triggers replacement or retry", async () => {
     submitCurrentTimedSchedule(client, identity, catalog, input(), () => now),
     kind("busy"),
   );
-  assert.deepEqual(calls, ["getAllShootingSchedule", "syncShootingSchedule"]);
+  assert.deepEqual(calls, [
+    "getAllShootingSchedule",
+    "setTime",
+    "setTimezone",
+    "syncShootingSchedule",
+  ]);
 });
 
 test("scheduled preparation flags require the HTTP configuration's 2.5 feature gate", async () => {
@@ -293,7 +303,12 @@ test("fresh-ID creation verifies by ID without assuming a silent list is empty",
   assert.equal(result.status, "queued");
   assert.notEqual(result.schedule.scheduleId, "plan-1");
   assert.notEqual(result.schedule.shootingTasks[0].scheduleTaskId, "task-1");
-  assert.deepEqual(calls, ["syncShootingSchedule", "getShootingScheduleById"]);
+  assert.deepEqual(calls, [
+    "setTime",
+    "setTimezone",
+    "syncShootingSchedule",
+    "getShootingScheduleById",
+  ]);
 });
 
 test("a database error in per-ID readback is never accepted as a queued plan", async () => {
@@ -302,5 +317,90 @@ test("a database error in per-ID readback is never accepted as a queued plan", a
     createCurrentTimedSchedule(client, identity, catalog, input(), () => now),
     kind("device"),
   );
-  assert.deepEqual(calls, ["syncShootingSchedule", "getShootingScheduleById"]);
+  assert.deepEqual(calls, [
+    "setTime",
+    "setTimezone",
+    "syncShootingSchedule",
+    "getShootingScheduleById",
+  ]);
+});
+
+test("site timezone controls clock offset and initialization precedes sync", async () => {
+  const { client, calls } = transport();
+  const original = client.request;
+  let clockValues;
+  client.request = async (operation, values) => {
+    if (operation === "setTime") clockValues = values;
+    return original(operation, values);
+  };
+  await createCurrentTimedSchedule(
+    client,
+    identity,
+    catalog,
+    input({ timezone: "Asia/Kathmandu" }),
+    () => now,
+  );
+  assert.deepEqual(clockValues, {
+    timestamp: String(now),
+    timezoneOffset: 5.75,
+  });
+  assert.equal(
+    calls.indexOf("setTime") < calls.indexOf("syncShootingSchedule"),
+    true,
+  );
+});
+
+test("failed clock preparation never submits a job", async () => {
+  const { client, calls } = transport({ failClock: true });
+  await assert.rejects(
+    createCurrentTimedSchedule(client, identity, catalog, input(), () => now),
+    kind("device"),
+  );
+  assert.deepEqual(calls, ["setTime"]);
+});
+
+test("invalid site timezone, sub-minute windows and starts beyond twelve hours fail before writes", async () => {
+  for (const change of [
+    { timezone: "invalid/site" },
+    {
+      tasks: [
+        {
+          ...input().tasks[0],
+          startTimeSeconds: now + 3601,
+          endTimeSeconds: now + 4201,
+        },
+      ],
+    },
+    {
+      tasks: [
+        {
+          ...input().tasks[0],
+          startTimeSeconds: now + 3600,
+          endTimeSeconds: now + 4201,
+        },
+      ],
+    },
+    {
+      tasks: [
+        {
+          ...input().tasks[0],
+          startTimeSeconds: now + 13 * 3600,
+          endTimeSeconds: now + 13 * 3600 + 600,
+        },
+      ],
+    },
+  ]) {
+    const { client, calls } = transport();
+    await assert.rejects(
+      createCurrentTimedSchedule(
+        client,
+        identity,
+        catalog,
+        input(change),
+        () => now,
+      ),
+      kind("invalid-parameter"),
+    );
+    assert.deepEqual(calls, []);
+  }
 });
