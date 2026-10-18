@@ -108,6 +108,16 @@ test("builder creates pending-shoot state1 and preserves UNIX seconds on the wir
 });
 
 test("invalid units, short windows, coordinates, duplicate IDs and unsupported filters fail before transport", () => {
+  assert.throws(
+    () =>
+      buildCurrentTimedSchedule(
+        identity,
+        { ...catalog, modeId: 1 },
+        input(),
+        now,
+      ),
+    kind("invalid-parameter"),
+  );
   const base = input();
   for (const change of [
     { startTimeSeconds: now * 1000 },

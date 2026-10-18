@@ -44,6 +44,8 @@ export function supportsCurrentNativeSchedules(hardwareId, peer) {
 export function buildCurrentTimedSchedule(identity, catalog, input, nowSeconds = Math.floor(Date.now() / 1000)) {
     const profile = getCurrentProfile(identity.hardwareId);
     mac(identity.macAddress);
+    if (catalog.modeId !== 2)
+        invalid("Native deep-sky schedules require the mode-2 camera catalog");
     seconds(nowSeconds);
     const planningTime = input.planningTimeSeconds ?? nowSeconds;
     seconds(planningTime);
@@ -202,7 +204,7 @@ async function submitTimedSchedule(client, identity, catalog, input, now, readba
         assertCurrentSuccess(packet);
         const rows = packet.data.shootingSchedule ?? [];
         if (!Array.isArray(rows) ||
-            rows.some((row) => !row || !row.scheduleId) ||
+            rows.some((row) => !row || typeof row.scheduleId !== "string" || !row.scheduleId) ||
             new Set(rows.map((row) => row.scheduleId)).size !== rows.length)
             invalid("The device returned an invalid native schedule list");
         return rows;
