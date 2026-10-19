@@ -99,6 +99,44 @@ async function ready(client, socket) {
   assert.equal(client.ready, true);
 }
 
+test("foreground state reads share the pending bootstrap/poll snapshot without duplicate sends", async (t) => {
+  const { client, sockets } = harness(t);
+  client.connect("ws://offline.test");
+  const socket = sockets[0];
+  socket.emit("open");
+  const foreground = client.request("getDeviceState");
+  assert.deepEqual(commandIds(socket), [16405]);
+  socket.message(snapshot());
+  assert.equal((await foreground).cmd, 16405);
+  await flush();
+  const poll = client.request("getDeviceState");
+  const preview = client.request("getDeviceState");
+  assert.strictEqual(poll, preview);
+  assert.deepEqual(commandIds(socket), [16405, 16405]);
+  socket.message(snapshot(80));
+  assert.strictEqual(await poll, await preview);
+});
+
+test("shared state reads reject together on disconnect and never cross connection generations", async (t) => {
+  const { client, sockets } = harness(t);
+  client.connect("ws://offline.test");
+  await ready(client, sockets[0]);
+  const first = client.request("getDeviceState");
+  const second = client.request("getDeviceState");
+  const rejected = Promise.all([
+    assert.rejects(first, /closed/i),
+    assert.rejects(second, /closed/i),
+  ]);
+  client.close();
+  await rejected;
+  client.connect("ws://offline.test");
+  sockets[1].emit("open");
+  const fresh = client.request("getDeviceState");
+  assert.notStrictEqual(first, fresh);
+  sockets[1].message(snapshot());
+  assert.equal((await fresh).cmd, 16405);
+});
+
 test("construction has no network effects and duplicate connect is idempotent", (t) => {
   const { client, sockets } = harness(t);
   assert.equal(sockets.length, 0);

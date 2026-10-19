@@ -196,8 +196,26 @@ export class CurrentWebSocketHandler {
         ),
       );
     }
+    // State has no request arguments or wire correlation ID. Monitoring and a
+    // foreground operation can safely share this in-flight snapshot, rather
+    // than making the foreground operation fail with "already pending".
+    if (operation === "getDeviceState" && Object.keys(values).length === 0) {
+      const generation = this.session.state.generation;
+      if (this.stateRead?.generation === generation)
+        return this.stateRead.promise;
+      const promise = this.session.request(operation, values, timeoutMs);
+      const read = { generation, promise };
+      this.stateRead = read;
+      const clear = () => {
+        if (this.stateRead === read) this.stateRead = undefined;
+      };
+      void promise.then(clear, clear);
+      return promise;
+    }
     return this.session.request(operation, values, timeoutMs);
   }
+
+  private stateRead?: { generation: number; promise: Promise<CurrentPacket> };
 
   close(reason = "Connection closed"): void {
     this.desiredUrl = undefined;
@@ -251,8 +269,7 @@ export class CurrentWebSocketHandler {
         Date.now() - lastActivity >= this.heartbeatIntervalMs
       ) {
         probing = true;
-        this.session
-          .request("getDeviceState", {}, this.heartbeatTimeoutMs)
+        this.request("getDeviceState", {}, this.heartbeatTimeoutMs)
           .catch((error) => {
             // A caller's already-pending state query owns the same wire key.
             if (
@@ -300,15 +317,15 @@ export class CurrentWebSocketHandler {
         this.heartbeatTimer = setTimeout(heartbeat, this.heartbeatIntervalMs);
       // Only read state. Camera entry, mode, ownership, focus and capture require
       // explicit application requests after the connection is protocol-ready.
-      this.session
-        .request("getDeviceState", {}, this.requestTimeoutMs)
-        .catch((error) => {
+      this.request("getDeviceState", {}, this.requestTimeoutMs).catch(
+        (error) => {
           if (active())
             this.fail(
               epoch,
               this.asTransportError(error, "DWARF state bootstrap failed"),
             );
-        });
+        },
+      );
     };
     const onMessage = (event: { data: unknown }) => {
       if (!active()) return;
