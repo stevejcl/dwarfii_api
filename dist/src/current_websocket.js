@@ -11,6 +11,7 @@ export class CurrentWebSocketHandler {
         this.epoch = 0;
         this.attemptsUsed = 0;
         this.transport = "disconnected";
+        this.stateReadRevision = 0;
         const duration = (value, label, zeroAllowed = false) => {
             if (!Number.isFinite(value) || value < (zeroAllowed ? 0 : 1)) {
                 throw new CurrentProtocolError("invalid-parameter", `${label} must be a finite ${zeroAllowed ? "non-negative" : "positive"} duration`);
@@ -97,10 +98,24 @@ export class CurrentWebSocketHandler {
         // than making the foreground operation fail with "already pending".
         if (operation === "getDeviceState" && Object.keys(values).length === 0) {
             const generation = this.session.state.generation;
-            if (this.stateRead?.generation === generation)
-                return this.stateRead.promise;
+            if (this.stateRead?.generation === generation) {
+                const read = this.stateRead;
+                if (read.revision === this.stateReadRevision)
+                    return read.promise;
+                // A command crossed the read: drain the older poll, then request a
+                // fresh snapshot on this generation within the caller's deadline.
+                const deadline = Date.now() + timeoutMs;
+                return read.promise.then(() => {
+                    if (this.session.state.generation !== generation)
+                        throw new CurrentProtocolError("transport", "State read connection changed");
+                    const remaining = deadline - Date.now();
+                    if (remaining <= 0)
+                        throw new CurrentProtocolError("timeout", "State read deadline expired");
+                    return this.request(operation, values, remaining);
+                });
+            }
             const promise = this.session.request(operation, values, timeoutMs);
-            const read = { generation, promise };
+            const read = { generation, promise, revision: this.stateReadRevision };
             this.stateRead = read;
             const clear = () => {
                 if (this.stateRead === read)
@@ -109,6 +124,8 @@ export class CurrentWebSocketHandler {
             void promise.then(clear, clear);
             return promise;
         }
+        if (operation !== "getDeviceState")
+            this.stateReadRevision++;
         return this.session.request(operation, values, timeoutMs);
     }
     close(reason = "Connection closed") {

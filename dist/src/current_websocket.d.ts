@@ -68,6 +68,7 @@ export declare class CurrentWebSocketHandler {
     connect(url: string): void;
     request(operation: CurrentCommand, values?: Record<string, unknown>, timeoutMs?: number): Promise<CurrentPacket>;
     private stateRead?;
+    private stateReadRevision;
     close(reason?: string): void;
     private startAttempt;
     private binaryBytes;

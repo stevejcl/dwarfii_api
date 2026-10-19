@@ -137,6 +137,33 @@ test("shared state reads reject together on disconnect and never cross connectio
   assert.equal((await fresh).cmd, 16405);
 });
 
+test("a read after a command waits for a fresh snapshot rather than borrowing an older poll", async (t) => {
+  const { client, sockets } = harness(t);
+  client.connect("ws://offline.test");
+  const socket = sockets[0];
+  await ready(client, socket);
+  const poll = client.request("getDeviceState");
+  const enter = client.request("enterCamera", {
+    clientParam: { encodeType: 1 },
+  });
+  socket.message(response("enterCamera"));
+  await enter;
+  const afterWrite = client.request("getDeviceState");
+  socket.message(snapshot(30));
+  await poll;
+  await flush();
+  assert.deepEqual(commandIds(socket), [16405, 16405, 16404, 16405]);
+  let finished = false;
+  void afterWrite.then(() => {
+    finished = true;
+  });
+  await flush();
+  assert.equal(finished, false);
+  socket.message(snapshot(90));
+  const result = await afterWrite;
+  assert.equal(result.data.deviceStateInfo.batteryInfo.percentage, 90);
+});
+
 test("construction has no network effects and duplicate connect is idempotent", (t) => {
   const { client, sockets } = harness(t);
   assert.equal(sockets.length, 0);
