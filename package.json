@@ -1,21 +1,35 @@
 {
   "name": "dwarfii_api",
-  "version": "2.0.17",
+  "version": "3.0.0",
   "description": "wrapper for Dwarf II telescope API",
   "main": "dist/index.js",
+  "files": [
+    "dist/",
+    "src/",
+    "scripts/",
+    "wrapper/",
+    "index.js",
+    "tsconfig.json",
+    "eslint.config.mjs",
+    "jsdoc.json"
+  ],
   "scripts": {
-    "lint": "eslint src/**/*",
+    "lint": "eslint src index.js",
     "format": "prettier --check \"src/**/*.{ts,js}\"",
     "format:fix": "prettier --write \"src/**/*.{ts,js}\"",
     "CI": "npm run lint && npm run format && npm run typecheck",
     "generate-docs": "jsdoc -c jsdoc.json  -R README.md",
-    "ts": "tsc -p ./tsconfig.json",
+    "ts": "tsc -p ./tsconfig.json && npm run copy-current",
+    "copy-current": "copyfiles src/protobuf/current.js src/protobuf/current.d.ts src/protobuf/current-fields.js src/protobuf/current-descriptor.json src/current_proto/* src/current_proto/releases/dwarf3-1.5.3.9-mini-1.1.4.4/* dist/",
     "typecheck": "tsc -p ./tsconfig.json",
-    "compile-proto": "npx pbjs -t static-module -w ./wrapper/wrapper.js --dependency protobufjs/minimal.js -o ./src/protobuf/protobuf.js ./src/proto/*.proto && prettier --write \"./src/protobuf/protobuf.js\"",
-    "compile-protoJS": "npx pbjs -t static-module -w ./wrapper/wrapper.js --dependency ./minimal.js -o ./dist_js/src/protobuf/protobuf.js ./src/proto/*.proto && prettier --write \"./dist_js/src/protobuf/protobuf.js\" && eslint ./dist_js/src/protobuf/protobuf.js",
-    "generate-types": "npx pbts -o dist/src/protobuf/protobuf.d.ts ./dist/src/protobuf/protobuf.js",
+    "test": "npm run ts && node src/__tests__/v3_camera_params.test.js && node src/__tests__/tele_mosaic.test.js && node src/__tests__/current_schema.test.js && node src/__tests__/current_session.test.js && node src/__tests__/current_catalog.test.js && node src/__tests__/current_websocket.test.js && node src/__tests__/current_capture.test.js && node src/__tests__/current_schedule.test.js",
+    "generate-current": "node scripts/current-schema-generate.mjs",
+    "audit-current": "node scripts/current-schema-compare.mjs",
+    "compile-proto": "pbjs -t static-module -w ./wrapper/wrapper.js --dependency protobufjs/minimal.js -o ./src/protobuf/protobuf.js ./src/proto/*.proto && prettier --write \"./src/protobuf/protobuf.js\"",
+    "compile-protoJS": "pbjs -t static-module -w ./wrapper/wrapper.js --dependency ./minimal.js -o ./dist_js/src/protobuf/protobuf.js ./src/proto/*.proto && prettier --write \"./dist_js/src/protobuf/protobuf.js\"",
+    "generate-types": "pbts -o dist/src/protobuf/protobuf.d.ts ./src/protobuf/protobuf.js",
     "copy-files": "copyfiles -u 1 src/proto/*.proto dist/src/",
-    "build": "npm run compile-proto && npm run compile-protoJS && npm run CI && npm run ts && npm run generate-types && npm run copy-files && npm run generate-docs"
+    "build": "npm run generate-current && npm run compile-proto && npm run compile-protoJS && npm run CI && npm run ts && npm run generate-types && npm run copy-files && npm run generate-docs"
   },
   "type": "module",
   "author": "wykhuh & stevejcl",
@@ -24,17 +38,20 @@
     "url": "https://github.com/DwarfTelescopeUsers/dwarfii_api"
   },
   "license": "ISC",
-  "devDependencies": {
-    "docdash": "^2.0.1",
-    "eslint": "^8.40.0",
-    "eslint-config-prettier": "^8.8.0",
-    "jsdoc": "^4.0.2",
-    "prettier": "^2.8.8",
-    "typescript": "^5.1.6"
-  },
   "dependencies": {
+    "protobufjs": "^7.6.6"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
     "copyfiles": "^2.4.1",
-    "protobufjs": "^7.2.6",
-    "protobufjs-cli": "^1.1.2"
+    "docdash": "^2.0.2",
+    "eslint": "^10.9.1",
+    "eslint-config-prettier": "^10.1.8",
+    "globals": "^17.11.0",
+    "jsdoc": "^4.0.5",
+    "prettier": "^3.9.6",
+    "protobufjs-cli": "^1.3.3",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "8.69.0"
   }
 }

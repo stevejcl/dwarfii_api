@@ -44,6 +44,28 @@ export function setDwarfDeviceID(deviceID) {
         return false;
     }
 }
+var DwarfMinorVersion = Dwarfii_Api.WsMinorVersion.WS_MINOR_VERSION_NUMBER; // V2 default
+/** Set the protocol minor version for outgoing packets
+ * @param {number} version - Protocol minor version (9 for V2, 20 for V3)
+ * @returns {boolean}
+ */
+export function setDwarfMinorVersion(version) {
+    const supportedVersions = [
+        Dwarfii_Api.WsMinorVersion.WS_MINOR_VERSION_NUMBER, // 9 (V2)
+        Dwarfii_Api.WsMinorVersion.WS_MINOR_VERSION_V3, // 20 (V3)
+    ];
+    if (typeof version === "number" && supportedVersions.includes(version)) {
+        DwarfMinorVersion = version;
+        return true;
+    }
+    return false;
+}
+/** Get the current protocol minor version
+ * @returns {number}
+ */
+export function getDwarfMinorVersion() {
+    return DwarfMinorVersion;
+}
 /**
  * Returns the now UTC time as 'yyyy-mm-dd hh:mm:ss'
  * @returns {string}
@@ -94,7 +116,6 @@ export function nowLocalFileName() {
  * @returns {Object}
  */
 export function decodePacket(WS_Packet, classDecode) {
-    // eslint-disable-next-line no-undef
     // Obtain a message type
     let decoded = classDecode.decode(WS_Packet);
     console.log(`decoded data = ${JSON.stringify(decoded)}`);
@@ -111,7 +132,7 @@ export function decodePacket(WS_Packet, classDecode) {
  */
 export function createPacket(message, class_message, module_id, interface_id, type_id) {
     let major_version = Dwarfii_Api.WsMajorVersion.WS_MAJOR_VERSION_NUMBER;
-    let minor_version = Dwarfii_Api.WsMinorVersion.WS_MINOR_VERSION_NUMBER;
+    let minor_version = DwarfMinorVersion;
     let device_id = DwarfDeviceID;
     // message
     let message_buffer = undefined;
@@ -139,8 +160,6 @@ export function createPacket(message, class_message, module_id, interface_id, ty
     // Encode Final Buffer
     let buffer = Dwarfii_Api.WsPacket.encode(message_payload).finish();
     console.debug(`buffer to Send = ${Array.prototype.toString.call(buffer)}`);
-    // For Testing Only : try to decode it
-    let result_buffer = analyzePacket(buffer, false);
     return buffer;
 }
 /**
@@ -252,6 +271,48 @@ export function analyzePacket(message_buffer, input_data_log = true) {
             decoded_message.data[key] = Response_message[key];
         }
     }
+    // Convert Long objects (protobuf int64) to strings to preserve 64-bit precision
+    // in JSON.stringify output (e.g. paramId in V3 camera param notifications)
+    function convertLongs(obj) {
+        if (!obj || typeof obj !== "object")
+            return;
+        for (let key in obj) {
+            const val = obj[key];
+            if (val &&
+                typeof val === "object" &&
+                typeof val.low === "number" &&
+                typeof val.high === "number") {
+                obj[key] =
+                    val.toNumber !== undefined
+                        ? val.high === 0 && val.low >= 0
+                            ? val.toNumber()
+                            : val.toString()
+                        : String(val);
+            }
+            else if (Array.isArray(val)) {
+                val.forEach((item, i) => {
+                    if (item &&
+                        typeof item === "object" &&
+                        typeof item.low === "number" &&
+                        typeof item.high === "number") {
+                        val[i] =
+                            item.toNumber !== undefined
+                                ? item.high === 0 && item.low >= 0
+                                    ? item.toNumber()
+                                    : item.toString()
+                                : String(item);
+                    }
+                    else if (item && typeof item === "object") {
+                        convertLongs(item);
+                    }
+                });
+            }
+            else if (val && typeof val === "object") {
+                convertLongs(val);
+            }
+        }
+    }
+    convertLongs(decoded_message.data);
     // add command in plain text
     let value = "";
     if (decoded_message.cmd) {
@@ -290,7 +351,7 @@ export function analyzePacket(message_buffer, input_data_log = true) {
                 stateTxtMapping[decoded_message.data.state];
     }
     // add error code in plain text
-    if (decoded_message.data.hasOwnProperty("code")) {
+    if (Object.prototype.hasOwnProperty.call(decoded_message.data, "code")) {
         decoded_message.data.errorTxt = {};
         if (Dwarfii_Api.DwarfErrorCode[decoded_message.data.code])
             decoded_message.data.errorTxt =

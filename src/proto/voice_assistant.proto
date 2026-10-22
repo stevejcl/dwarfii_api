@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+enum VoiceCommandType {
+    VOICE_CMD_UNKNOWN = 0;
+    VOICE_CMD_GET_STATUS = 1;
+    VOICE_CMD_TAKE_PHOTO = 2;
+    VOICE_CMD_START_RECORD = 3;
+    VOICE_CMD_STOP_RECORD = 4;
+    VOICE_CMD_START_TIMELAPSE = 5;
+    VOICE_CMD_STOP_TIMELAPSE = 6;
+    VOICE_CMD_START_BURST = 7;
+    VOICE_CMD_STOP_BURST = 8;
+    VOICE_CMD_START_ASTRO = 9;
+    VOICE_CMD_STOP_ASTRO = 10;
+    VOICE_CMD_START_SENTRY = 11;
+    VOICE_CMD_STOP_SENTRY = 12;
+    VOICE_CMD_MOVE = 13;
+    VOICE_CMD_GOTO_TARGET = 14;
+    VOICE_CMD_CALIBRATION = 15;
+    VOICE_CMD_AUTO_FOCUS = 16;
+    VOICE_CMD_STOP_FOCUS = 17;
+    VOICE_CMD_STOP_ALL = 18;
+}
+
+// APK 3.4.1 status-query subset. Other voice commands carry additional fields
+// whose nested parameter schemas have not yet been independently verified.
+message ReqVoiceCommand {
+    VoiceCommandType command_type = 1;
+}

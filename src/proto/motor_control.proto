@@ -81,3 +81,19 @@ message ReqDualCameraLinkage {
     int32 x = 1;
     int32 y = 2;
 }
+
+// APK 3.4.1 level-calibration request payloads.
+enum MotorLevelCalibrationDirection {
+    MOTOR_LEVEL_CALIBRATION_DIRECTION_CW = 0;
+    MOTOR_LEVEL_CALIBRATION_DIRECTION_CCW = 1;
+}
+
+message ReqMotorLevelCalibrationMove {
+    MotorLevelCalibrationDirection direction = 1;
+}
+
+message ReqMotorLevelCalibrationSave {
+}
+
+message ReqMotorLevelCalibrationResetDefault {
+}

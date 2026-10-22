@@ -1,0 +1,100 @@
+syntax = "proto3";
+
+enum MotorLevelCalibrationDirection {
+    MOTOR_LEVEL_CALIBRATION_DIRECTION_CW = 0;
+    MOTOR_LEVEL_CALIBRATION_DIRECTION_CCW = 1;
+}
+
+message ReqMotorServiceJoystick {
+    double vector_angle = 1;
+    double vector_length = 2;
+}
+
+message ReqMotorServiceJoystickFixedAngle {
+    double vector_angle = 1;
+    double vector_length = 2;
+}
+
+message ReqMotorServiceJoystickStop {
+}
+
+message ReqMotorRun {
+    int32 id = 1;
+    double speed = 2;
+    bool direction = 3;
+    int32 speed_ramping = 4;
+    int32 resolution_level = 5;
+}
+
+message ReqMotorRunInPulse {
+    int32 id = 1;
+    int32 frequency = 2;
+    bool direction = 3;
+    int32 speed_ramping = 4;
+    int32 resolution = 5;
+    int32 pulse = 6;
+    bool mode = 7;
+}
+
+message ReqMotorRunTo {
+    int32 id = 1;
+    double end_position = 2;
+    double speed = 3;
+    int32 speed_ramping = 4;
+    int32 resolution_level = 5;
+}
+
+message ReqMotorGetPosition {
+    int32 id = 1;
+}
+
+message ReqMotorStop {
+    int32 id = 1;
+}
+
+message ReqMotorReset {
+    int32 id = 1;
+    bool direction = 2;
+}
+
+message ReqMotorChangeSpeed {
+    int32 id = 1;
+    double speed = 2;
+}
+
+message ReqMotorChangeDirection {
+    int32 id = 1;
+    bool direction = 2;
+}
+
+message ResMotor {
+    int32 id = 1;
+    int32 code = 2;
+}
+
+message ResMotorPosition {
+    int32 id = 1;
+    int32 code = 2;
+    double position = 3;
+}
+
+message ReqMotorLevelCalibrationMove {
+    MotorLevelCalibrationDirection direction = 1;
+}
+
+message ReqMotorLevelCalibrationSave {
+}
+
+message ReqMotorLevelCalibrationResetDefault {
+}
+
+message ReqDualCameraLinkage {
+    int32 x = 1;
+    int32 y = 2;
+}
+
+message ReqMotorStartDeviceAttitudeNotify {
+}
+
+message ReqMotorStopDeviceAttitudeNotify {
+}

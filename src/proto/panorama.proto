@@ -67,3 +67,15 @@ message ResGetStitchUploadState{
     uint64 uploaded_size = 9;
     uint32 step = 10;
 }
+
+// APK 3.4.1 panorama compression requests.
+message ReqGetUploadPredict {
+    string panorama_name = 1;
+}
+
+message ReqCompressPanorama {
+    string panorama_name = 1;
+}
+
+message ReqStopCompressPanorama {
+}

@@ -1,0 +1,4 @@
+# Provenance hashes refer to exact upstream Git blobs, also on Windows checkout.
+*.proto text eol=lf
+provenance.json text eol=lf
+LICENSE.upstream text eol=lf

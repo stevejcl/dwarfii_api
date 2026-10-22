@@ -89,7 +89,6 @@ export function testEncode() {
  * @returns {Object}
  */
 export function decodePacketBle(buffer, classDecode) {
-    // eslint-disable-next-line no-undef
     // Obtain a message type
     let decoded = classDecode.decode(buffer);
     console.log(`decoded data = ${JSON.stringify(decoded)}`);
@@ -169,7 +168,6 @@ export function analyzePacketBle(message_buffer, input_data = true) {
     // Obtain a message type
     let decoded_message = {};
     let Response_message = {};
-    let data_class = "";
     // Decoding buffer received
     let cmd = data_rcv[2];
     let data_length = data_rcv[7] * 256 + data_rcv[8];
@@ -187,7 +185,6 @@ export function analyzePacketBle(message_buffer, input_data = true) {
     // Get Response Class Object
     if (input_data) {
         console.debug(`cmdClass: ${cmdClass}`);
-        data_class = "Dwarfii_Api." + cmdClass;
         Response_message = eval(`new Dwarfii_Api.${cmdClass}()`);
         Response_message = decodePacketBle(data_buffer, eval(`Dwarfii_Api.${cmdClass}`));
         console.debug(`Not all Data!>> ${JSON.stringify(Response_message)}`);
@@ -195,7 +192,6 @@ export function analyzePacketBle(message_buffer, input_data = true) {
     else {
         // Response
         console.debug(`responseClass: ${responseClass}`);
-        data_class = "Dwarfii_Api." + responseClass;
         Response_message = eval(`new Dwarfii_Api.${responseClass}()`);
         Response_message = decodePacketBle(data_buffer, eval(`Dwarfii_Api.${responseClass}`));
         console.debug(`Not all Data!>> ${JSON.stringify(Response_message)}`);

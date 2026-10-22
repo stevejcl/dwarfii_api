@@ -11,9 +11,11 @@ import { cmdMapping } from "./cmd_mapping.js";
 /**
  * 4.10.2 Start calibration
  * Create Encoded Packet for the command CMD_ASTRO_START_CALIBRATION
+ * @param {number} lon Observer longitude in decimal degrees
+ * @param {number} lat Observer latitude in decimal degrees
  * @returns {Uint8Array}
  */
-export function messageAstroStartCalibration() {
+export function messageAstroStartCalibration(lon, lat) {
   let module_id = Dwarfii_Api.ModuleId.MODULE_ASTRO;
   let interface_id = Dwarfii_Api.DwarfCMD.CMD_ASTRO_START_CALIBRATION;
   let type_id = Dwarfii_Api.MessageTypeId.TYPE_REQUEST;
@@ -21,9 +23,9 @@ export function messageAstroStartCalibration() {
   const cmdClass = cmdMapping[interface_id];
   let class_message = eval(`Dwarfii_Api.${cmdClass}`);
   // Encode message
-  let message = class_message.create({});
+  let message = class_message.create({ lon, lat });
   console.log(
-    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`
+    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`,
   );
   // return encoded Message Packet
   return createPacket(message, class_message, module_id, interface_id, type_id);
@@ -43,7 +45,7 @@ export function messageAstroStopCalibration() {
   // Encode message
   let message = class_message.create({});
   console.log(
-    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`
+    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`,
   );
   // return encoded Message Packet
   return createPacket(message, class_message, module_id, interface_id, type_id);
@@ -70,7 +72,7 @@ export function messageAstroStartGotoDso(ra, dec, target_name) {
     targetName: target_name,
   });
   console.log(
-    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`
+    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`,
   );
   // return encoded Message Packet
   return createPacket(message, class_message, module_id, interface_id, type_id);
@@ -100,7 +102,7 @@ export function messageAstroStartGotoSolarSystem(index, lon, lat, targetName) {
     targetName: targetName,
   });
   console.log(
-    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`
+    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`,
   );
   // return encoded Message Packet
   return createPacket(message, class_message, module_id, interface_id, type_id);
@@ -121,7 +123,7 @@ export function messageAstroStopGoto() {
   // Encode message
   let message = class_message.create({});
   console.log(
-    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`
+    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`,
   );
   // return encoded Message Packet
   return createPacket(message, class_message, module_id, interface_id, type_id);
@@ -146,7 +148,7 @@ export function messageAstroStartTrackSpecialTarget(index, lon, lat) {
     lat: lat,
   });
   console.log(
-    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`
+    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`,
   );
   // return encoded Message Packet
   return createPacket(message, class_message, module_id, interface_id, type_id);
@@ -167,7 +169,7 @@ export function messageAstroStopTrackSpecialTarget() {
   // Encode message
   let message = class_message.create({});
   console.log(
-    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`
+    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`,
   );
   // return encoded Message Packet
   return createPacket(message, class_message, module_id, interface_id, type_id);
@@ -189,9 +191,47 @@ export function messageAstroStartCaptureRawLiveStacking() {
   // Encode message
   let message = class_message.create({});
   console.log(
-    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`
+    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`,
   );
   // return encoded Message Packet
+  return createPacket(message, class_message, module_id, interface_id, type_id);
+}
+
+/**
+ * Start a direct Tele Mosaic astronomy capture.
+ *
+ * This uses CMD_ASTRO_START_TELE_MOSAIC (11031), not the Panorama module.
+ * APK 3.4.1 represents scale as fixed-point hundredths (100 = 1.0x) and its
+ * UI offers 100 through 180 in steps of 10. The raw protocol values are kept
+ * here so callers can use values supported by their device firmware.
+ *
+ * @param {number} horizontalScale Horizontal field-of-view scale value
+ * @param {number} verticalScale Vertical field-of-view scale value
+ * @param {number} rotation Protocol rotation value
+ * @param {number} irIndex Filter/IR index
+ * @param {boolean} [forceStart=false] Continue despite a recoverable warning
+ * @returns {Uint8Array}
+ */
+export function messageStartTeleMosaic(
+  horizontalScale,
+  verticalScale,
+  rotation,
+  irIndex,
+  forceStart = false,
+) {
+  const module_id = Dwarfii_Api.ModuleId.MODULE_ASTRO;
+  const interface_id = Dwarfii_Api.DwarfCMD.CMD_ASTRO_START_TELE_MOSAIC;
+  const type_id = Dwarfii_Api.MessageTypeId.TYPE_REQUEST;
+  const cmdClass = cmdMapping[interface_id];
+  const class_message = Dwarfii_Api[cmdClass];
+  const message = class_message.create({
+    horizontalScale,
+    verticalScale,
+    rotation,
+    irIndex,
+    forceStart,
+  });
+
   return createPacket(message, class_message, module_id, interface_id, type_id);
 }
 /**
@@ -211,7 +251,7 @@ export function messageAstroStopCaptureRawLiveStacking() {
   // Encode message
   let message = class_message.create({});
   console.log(
-    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`
+    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`,
   );
   // return encoded Message Packet
   return createPacket(message, class_message, module_id, interface_id, type_id);
@@ -233,7 +273,7 @@ export function messageAstroStartWideCaptureLiveStacking() {
   // Encode message
   let message = class_message.create({});
   console.log(
-    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`
+    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`,
   );
   // return encoded Message Packet
   return createPacket(message, class_message, module_id, interface_id, type_id);
@@ -255,7 +295,7 @@ export function messageAstroStopWideCaptureLiveStacking() {
   // Encode message
   let message = class_message.create({});
   console.log(
-    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`
+    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`,
   );
   // return encoded Message Packet
   return createPacket(message, class_message, module_id, interface_id, type_id);
@@ -276,7 +316,7 @@ export function messageAstroCheckGotDark() {
   // Encode message
   let message = class_message.create({});
   console.log(
-    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`
+    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`,
   );
   // return encoded Message Packet
   return createPacket(message, class_message, module_id, interface_id, type_id);
@@ -298,7 +338,7 @@ export function messageAstroStartCaptureRawDark(reshoot) {
   // Encode message
   let message = class_message.create({ reshoot: reshoot });
   console.log(
-    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`
+    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`,
   );
   // return encoded Message Packet
   return createPacket(message, class_message, module_id, interface_id, type_id);
@@ -319,7 +359,7 @@ export function messageAstroStopCaptureRawDark() {
   // Encode message
   let message = class_message.create({});
   console.log(
-    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`
+    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`,
   );
   // return encoded Message Packet
   return createPacket(message, class_message, module_id, interface_id, type_id);
@@ -340,7 +380,7 @@ export function messageAstroGoLive() {
   // Encode message
   let message = class_message.create({});
   console.log(
-    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`
+    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`,
   );
   // return encoded Message Packet
   return createPacket(message, class_message, module_id, interface_id, type_id);
@@ -348,12 +388,26 @@ export function messageAstroGoLive() {
 /**
  * 4.10.17 One-click GOTO deep space celestial body
  * Create Encoded Packet for the command CMD_ASTRO_START_ONE_CLICK_GOTO_DSO
- * @param {number} ra Right Ascension
+ * @param {number} ra Right Ascension in hours
  * @param {number} dec Declination
  * @param {string} target_name
+ * @param {number} lon Observer longitude in degrees
+ * @param {number} lat Observer latitude in degrees
+ * @param {number} shootingMode Shooting mode (2 for Deep Sky)
+ * @param {boolean} gotoOnly Skip calibration when true
+ * @param {number} [rotation] Optional target rotation
  * @returns {Uint8Array}
  */
-export function messageAstroStartOneClickGotoDso(ra, dec, target_name) {
+export function messageAstroStartOneClickGotoDso(
+  ra,
+  dec,
+  target_name,
+  lon,
+  lat,
+  shootingMode,
+  gotoOnly = false,
+  rotation,
+) {
   let module_id = Dwarfii_Api.ModuleId.MODULE_ASTRO;
   let interface_id = Dwarfii_Api.DwarfCMD.CMD_ASTRO_START_ONE_CLICK_GOTO_DSO;
   let type_id = Dwarfii_Api.MessageTypeId.TYPE_REQUEST;
@@ -361,13 +415,19 @@ export function messageAstroStartOneClickGotoDso(ra, dec, target_name) {
   const cmdClass = cmdMapping[interface_id];
   let class_message = eval(`Dwarfii_Api.${cmdClass}`);
   // Encode message
-  let message = class_message.create({
+  const payload = {
     ra: ra,
     dec: dec,
     targetName: target_name,
-  });
+    lon: lon,
+    lat: lat,
+    shootingMode: shootingMode,
+    gotoOnly: gotoOnly,
+  };
+  if (rotation !== undefined && rotation !== null) payload.rotation = rotation;
+  let message = class_message.create(payload);
   console.log(
-    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`
+    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`,
   );
   // return encoded Message Packet
   return createPacket(message, class_message, module_id, interface_id, type_id);
@@ -379,13 +439,17 @@ export function messageAstroStartOneClickGotoDso(ra, dec, target_name) {
  * @param {number} lon Longitude
  * @param {number} lat Lattitude
  * @param {string} targetName
+ * @param {number} shootingMode Shooting mode
+ * @param {boolean} forceStart Force the workflow to start
  * @returns {Uint8Array}
  */
 export function messageAstroStartOneClickGotoSolarSystem(
   index,
   lon,
   lat,
-  targetName
+  targetName,
+  shootingMode,
+  forceStart = false,
 ) {
   let module_id = Dwarfii_Api.ModuleId.MODULE_ASTRO;
   let interface_id =
@@ -401,9 +465,11 @@ export function messageAstroStartOneClickGotoSolarSystem(
     lon: lon,
     lat: lat,
     targetName: targetName,
+    shootingMode: shootingMode,
+    forceStart: forceStart,
   });
   console.log(
-    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`
+    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`,
   );
   // return encoded Message Packet
   return createPacket(message, class_message, module_id, interface_id, type_id);
@@ -424,7 +490,7 @@ export function messageAstroStopOneClickGoto() {
   // Encode message
   let message = class_message.create({});
   console.log(
-    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`
+    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`,
   );
   // return encoded Message Packet
   return createPacket(message, class_message, module_id, interface_id, type_id);
@@ -450,7 +516,7 @@ export function messageAstroStartEqSolving(lon, lat) {
     lat: lat,
   });
   console.log(
-    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`
+    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`,
   );
   // return encoded Message Packet
   return createPacket(message, class_message, module_id, interface_id, type_id);
@@ -471,7 +537,7 @@ export function messageAstroStopEqSolving() {
   // Encode message
   let message = class_message.create({});
   console.log(
-    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`
+    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`,
   );
   // return encoded Message Packet
   return createPacket(message, class_message, module_id, interface_id, type_id);
@@ -489,7 +555,7 @@ export function messageAstroCaptureDarkFrameWithParam(
   exp_index,
   gain_index,
   bin_index,
-  cap_size
+  cap_size,
 ) {
   let module_id = Dwarfii_Api.ModuleId.MODULE_ASTRO;
   let interface_id =
@@ -507,7 +573,7 @@ export function messageAstroCaptureDarkFrameWithParam(
     capSize: cap_size,
   });
   console.log(
-    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`
+    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`,
   );
   // return encoded Message Packet
   return createPacket(message, class_message, module_id, interface_id, type_id);
@@ -529,7 +595,7 @@ export function messageAstroStopCaptureDarkFrameWithParam() {
   // Encode message
   let message = class_message.create({});
   console.log(
-    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`
+    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`,
   );
   // return encoded Message Packet
   return createPacket(message, class_message, module_id, interface_id, type_id);
@@ -550,7 +616,7 @@ export function messageAstroGetDarkFrameList() {
   // Encode message
   let message = class_message.create({});
   console.log(
-    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`
+    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`,
   );
   // return encoded Message Packet
   return createPacket(message, class_message, module_id, interface_id, type_id);
@@ -578,7 +644,7 @@ export function messageAstroDelDarkFrameList(exp_index, gain_index, bin_index) {
     binIndex: bin_index,
   });
   console.log(
-    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`
+    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`,
   );
   // return encoded Message Packet
   return createPacket(message, class_message, module_id, interface_id, type_id);
@@ -596,7 +662,7 @@ export function messageAstroCaptureWideDarkFrameWithParam(
   exp_index,
   gain_index,
   bin_index,
-  cap_size
+  cap_size,
 ) {
   let module_id = Dwarfii_Api.ModuleId.MODULE_ASTRO;
   let interface_id =
@@ -614,7 +680,7 @@ export function messageAstroCaptureWideDarkFrameWithParam(
     capSize: cap_size,
   });
   console.log(
-    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`
+    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`,
   );
   // return encoded Message Packet
   return createPacket(message, class_message, module_id, interface_id, type_id);
@@ -636,7 +702,7 @@ export function messageAstroStopCaptureWideDarkFrameWithParam() {
   // Encode message
   let message = class_message.create({});
   console.log(
-    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`
+    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`,
   );
   // return encoded Message Packet
   return createPacket(message, class_message, module_id, interface_id, type_id);
@@ -657,7 +723,7 @@ export function messageAstroGetWideDarkFrameList() {
   // Encode message
   let message = class_message.create({});
   console.log(
-    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`
+    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`,
   );
   // return encoded Message Packet
   return createPacket(message, class_message, module_id, interface_id, type_id);
@@ -673,7 +739,7 @@ export function messageAstroGetWideDarkFrameList() {
 export function messageAstroDelWideDarkFrameList(
   exp_index,
   gain_index,
-  bin_index
+  bin_index,
 ) {
   let module_id = Dwarfii_Api.ModuleId.MODULE_ASTRO;
   let interface_id = Dwarfii_Api.DwarfCMD.CMD_ASTRO_DEL_WIDE_DARK_FRAME_LIST;
@@ -689,7 +755,7 @@ export function messageAstroDelWideDarkFrameList(
     binIndex: bin_index,
   });
   console.log(
-    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`
+    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`,
   );
   // return encoded Message Packet
   return createPacket(message, class_message, module_id, interface_id, type_id);

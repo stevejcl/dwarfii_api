@@ -118,6 +118,7 @@ export function messageFocusStartManualContinuFocus(direction) {
  * @returns {Uint8Array}
  */
 export function messageFocusStopManualContinuFocus(binning = false) {
+    void binning;
     let module_id = Dwarfii_Api.ModuleId.MODULE_FOCUS;
     let interface_id = Dwarfii_Api.DwarfCMD.CMD_FOCUS_STOP_MANUAL_CONTINU_FOCUS;
     let type_id = Dwarfii_Api.MessageTypeId.TYPE_REQUEST;

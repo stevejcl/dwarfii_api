@@ -8,6 +8,7 @@ enum WsMajorVersion {
 enum WsMinorVersion {
     WS_MINOR_VERSION_UNKNOWN = 0;
     WS_MINOR_VERSION_NUMBER = 9;
+    WS_MINOR_VERSION_V3 = 20;
 }
 
 message WsPacket {

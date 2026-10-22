@@ -83,6 +83,13 @@ message ResNotifyStateAstroCalibration {
     int32 plate_solving_times = 2;
 }
 
+// Successful V3 mount-calibration result for DWARF 2, DWARF 3 and DWARF mini.
+// APK 3.4.1 embedded notify.proto descriptor; notification CMD 15256.
+message CalibrationResult {
+    double azi = 1;
+    double alt = 2;
+}
+
 // 天文GOTO状态
 message ResNotifyStateAstroGoto {
     AstroState state = 1;  
@@ -109,6 +116,22 @@ message ResNotifyProgressCaptureRawLiveStacking {
     int32 exp_index = 5;
     int32 gain_index = 6;
     string target_name = 7;
+}
+
+// APK 3.4.1: Tele Mosaic capture progress, notification CMD 15263.
+message ProgressCaptureMosaic {
+    int32 total_count = 1;
+    int32 update_type = 2;
+    int32 current_count = 3;
+    int32 stacked_count = 4;
+    int32 exp_index = 5;
+    int32 gain_index = 6;
+    string target_name = 7;
+    int32 horizontal_scale = 8;
+    int32 vertical_scale = 9;
+    int32 rotation = 10;
+    int32 fov_id = 11;
+    int32 fov_total = 12;
 }
 
 // 参数回显
@@ -190,8 +213,18 @@ message ResNotifyStateSentryMode {
 }
 
 // 一键GOTO状态
+message OneClickGotoPhaseState {
+    int32 state = 1;
+    string target_name = 2;
+}
+
+// Legacy firmware uses field 1. V3 firmware reports the slew phase in field 3
+// and the tracking phase in field 4.
 message ResNotifyOneClickGotoState {
-    OperationState state = 1;  
+    OperationState state = 1;
+    OneClickGotoPhaseState phase_2 = 2;
+    OneClickGotoPhaseState goto_state = 3;
+    OneClickGotoPhaseState tracking_state = 4;
 }
 
 // 图传类型通知

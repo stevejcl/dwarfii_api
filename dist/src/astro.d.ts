@@ -4,9 +4,11 @@
 /**
  * 4.10.2 Start calibration
  * Create Encoded Packet for the command CMD_ASTRO_START_CALIBRATION
+ * @param {number} lon Observer longitude in decimal degrees
+ * @param {number} lat Observer latitude in decimal degrees
  * @returns {Uint8Array}
  */
-export function messageAstroStartCalibration(): Uint8Array;
+export function messageAstroStartCalibration(lon: number, lat: number): Uint8Array;
 /**
  * 4.10.3 Stop calibration
  * Create Encoded Packet for the command CMD_ASTRO_STOP_CALIBRATION
@@ -57,6 +59,22 @@ export function messageAstroStopTrackSpecialTarget(): Uint8Array;
  */
 export function messageAstroStartCaptureRawLiveStacking(): Uint8Array;
 /**
+ * Start a direct Tele Mosaic astronomy capture.
+ *
+ * This uses CMD_ASTRO_START_TELE_MOSAIC (11031), not the Panorama module.
+ * APK 3.4.1 represents scale as fixed-point hundredths (100 = 1.0x) and its
+ * UI offers 100 through 180 in steps of 10. The raw protocol values are kept
+ * here so callers can use values supported by their device firmware.
+ *
+ * @param {number} horizontalScale Horizontal field-of-view scale value
+ * @param {number} verticalScale Vertical field-of-view scale value
+ * @param {number} rotation Protocol rotation value
+ * @param {number} irIndex Filter/IR index
+ * @param {boolean} [forceStart=false] Continue despite a recoverable warning
+ * @returns {Uint8Array}
+ */
+export function messageStartTeleMosaic(horizontalScale: number, verticalScale: number, rotation: number, irIndex: number, forceStart?: boolean): Uint8Array;
+/**
  * 4.10.10 stop stack
  * Create Encoded Packet for the command CMD_ASTRO_STOP_CAPTURE_RAW_LIVE_STACKING
  * @returns {Uint8Array}
@@ -102,12 +120,17 @@ export function messageAstroGoLive(): Uint8Array;
 /**
  * 4.10.17 One-click GOTO deep space celestial body
  * Create Encoded Packet for the command CMD_ASTRO_START_ONE_CLICK_GOTO_DSO
- * @param {number} ra Right Ascension
+ * @param {number} ra Right Ascension in hours
  * @param {number} dec Declination
  * @param {string} target_name
+ * @param {number} lon Observer longitude in degrees
+ * @param {number} lat Observer latitude in degrees
+ * @param {number} shootingMode Shooting mode (2 for Deep Sky)
+ * @param {boolean} gotoOnly Skip calibration when true
+ * @param {number} [rotation] Optional target rotation
  * @returns {Uint8Array}
  */
-export function messageAstroStartOneClickGotoDso(ra: number, dec: number, target_name: string): Uint8Array;
+export function messageAstroStartOneClickGotoDso(ra: number, dec: number, target_name: string, lon: number, lat: number, shootingMode: number, gotoOnly?: boolean, rotation?: number): Uint8Array;
 /**
  * 4.10.18 One-click GOTO solar system target
  * Create Encoded Packet for the command CMD_ASTRO_START_ONE_CLICK_GOTO_SOLAR_SYSTEM
@@ -115,9 +138,11 @@ export function messageAstroStartOneClickGotoDso(ra: number, dec: number, target
  * @param {number} lon Longitude
  * @param {number} lat Lattitude
  * @param {string} targetName
+ * @param {number} shootingMode Shooting mode
+ * @param {boolean} forceStart Force the workflow to start
  * @returns {Uint8Array}
  */
-export function messageAstroStartOneClickGotoSolarSystem(index: number, lon: number, lat: number, targetName: string): Uint8Array;
+export function messageAstroStartOneClickGotoSolarSystem(index: number, lon: number, lat: number, targetName: string, shootingMode: number, forceStart?: boolean): Uint8Array;
 /**
  * 4.10.19 Stop one-click GOTO
  * Create Encoded Packet for the command CMD_ASTRO_STOP_ONE_CLICK_GOTO

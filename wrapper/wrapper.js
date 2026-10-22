@@ -3,4 +3,5 @@ import $protobuf from $DEPENDENCY;
 
 $OUTPUT;
 
-export default $root;
+const typedRoot = /** @type {any} */ ($root);
+export default typedRoot;

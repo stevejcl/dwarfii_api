@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+// APK 3.4.1 device-service requests. State is 0 (off) or 1 (on).
+message ReqLensDefog {
+    int32 state = 1;
+}
+
+message ReqAutoCooling {
+    int32 state = 1;
+}
+
+message ReqAutoShutdown {
+    int32 state = 1;
+}

@@ -1,0 +1,55 @@
+syntax = "proto3";
+
+message ReqManualSingleStepFocus {
+    uint32 direction = 1;
+}
+
+message ReqManualContinuFocus {
+    uint32 direction = 1;
+}
+
+message ReqStopManualContinuFocus {
+}
+
+message ReqNormalAutoFocus {
+    uint32 mode = 1;
+    uint32 center_x = 2;
+    uint32 center_y = 3;
+}
+
+message ReqAstroAutoFocus {
+    uint32 mode = 1;
+}
+
+message ReqStopAstroAutoFocus {
+}
+
+message ReqManualSingleStepFocusForFactory {
+    uint32 direction = 1;
+    uint32 resolution_level = 2;
+}
+
+message ReqGetUserInfinityPos {
+}
+
+message ReqSetUserInfinityPos {
+    int32 pos = 1;
+}
+
+message ResUserInfinityPos {
+    int32 code = 1;
+    int32 pos = 2;
+}
+
+message ReqSfrAutoFocusForFactory {
+    uint32 mode = 1;
+    optional int32 fast_spos = 2;
+    optional int32 fast_pulse = 3;
+    optional int32 fast_scope = 4;
+    optional int32 slow_pulse = 5;
+    optional int32 slow_scope = 6;
+}
+
+message ReqSetVcmCode {
+    int32 code_value = 1;
+}

@@ -28,7 +28,7 @@ export function messageTrackStartTrack(x, y, w, h) {
   // Encode message
   let message = class_message.create({ x: x, y: y, w: w, h: h });
   console.log(
-    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`
+    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`,
   );
   // return encoded Message Packet
   return createPacket(message, class_message, module_id, interface_id, type_id);
@@ -49,7 +49,7 @@ export function messageTrackStopTrack() {
   // Encode message
   let message = class_message.create({});
   console.log(
-    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`
+    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`,
   );
   // return encoded Message Packet
   return createPacket(message, class_message, module_id, interface_id, type_id);
@@ -71,7 +71,7 @@ export function messageSentryModeStart(mode = 0) {
   // Encode message
   let message = class_message.create({ mode: mode });
   console.log(
-    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`
+    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`,
   );
   // return encoded Message Packet
   return createPacket(message, class_message, module_id, interface_id, type_id);
@@ -92,7 +92,7 @@ export function messageSentryModeStop() {
   // Encode message
   let message = class_message.create({});
   console.log(
-    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`
+    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`,
   );
   // return encoded Message Packet
   return createPacket(message, class_message, module_id, interface_id, type_id);
@@ -113,7 +113,7 @@ export function messageMOTStart() {
   // Encode message
   let message = class_message.create({});
   console.log(
-    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`
+    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`,
   );
   // return encoded Message Packet
   return createPacket(message, class_message, module_id, interface_id, type_id);
@@ -135,7 +135,7 @@ export function messageMOTStartOne(id) {
   // Encode message
   let message = class_message.create({ id: id });
   console.log(
-    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`
+    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`,
   );
   // return encoded Message Packet
   return createPacket(message, class_message, module_id, interface_id, type_id);
@@ -157,7 +157,7 @@ export function messageUFOTrackModeStart(mode = 0) {
   // Encode message
   let message = class_message.create({ mode: mode });
   console.log(
-    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`
+    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`,
   );
   // return encoded Message Packet
   return createPacket(message, class_message, module_id, interface_id, type_id);
@@ -178,7 +178,7 @@ export function messageUFOTrackModeStop() {
   // Encode message
   let message = class_message.create({});
   console.log(
-    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`
+    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`,
   );
   // return encoded Message Packet
   return createPacket(message, class_message, module_id, interface_id, type_id);

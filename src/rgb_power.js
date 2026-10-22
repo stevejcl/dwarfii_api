@@ -24,7 +24,7 @@ export function messageRgbPowerOpenRGB() {
   // Encode message
   let message = class_message.create({});
   console.log(
-    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`
+    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`,
   );
   // return encoded Message Packet
   return createPacket(message, class_message, module_id, interface_id, type_id);
@@ -45,7 +45,7 @@ export function messageRgbPowerCloseRGB() {
   // Encode message
   let message = class_message.create({});
   console.log(
-    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`
+    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`,
   );
   // return encoded Message Packet
   return createPacket(message, class_message, module_id, interface_id, type_id);
@@ -66,7 +66,7 @@ export function messageRgbPowerPowerIndON() {
   // Encode message
   let message = class_message.create({});
   console.log(
-    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`
+    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`,
   );
   // return encoded Message Packet
   return createPacket(message, class_message, module_id, interface_id, type_id);
@@ -87,7 +87,7 @@ export function messageRgbPowerPowerIndOFF() {
   // Encode message
   let message = class_message.create({});
   console.log(
-    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`
+    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`,
   );
   // return encoded Message Packet
   return createPacket(message, class_message, module_id, interface_id, type_id);
@@ -108,7 +108,7 @@ export function messageRgbPowerDown() {
   // Encode message
   let message = class_message.create({});
   console.log(
-    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`
+    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`,
   );
   // return encoded Message Packet
   return createPacket(message, class_message, module_id, interface_id, type_id);
@@ -129,7 +129,7 @@ export function messageRgbPowerReboot() {
   // Encode message
   let message = class_message.create({});
   console.log(
-    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`
+    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`,
   );
   // return encoded Message Packet
   return createPacket(message, class_message, module_id, interface_id, type_id);

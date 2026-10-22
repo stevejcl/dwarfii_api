@@ -18,7 +18,7 @@ import { cmdMapping } from "./cmd_mapping.js";
  */
 export function messageCameraTeleOpenCamera(
   binning = binning1x1,
-  rtsp_encode_type = 0
+  rtsp_encode_type = 0,
 ) {
   let module_id = Dwarfii_Api.ModuleId.MODULE_CAMERA_TELE;
   let interface_id = Dwarfii_Api.DwarfCMD.CMD_CAMERA_TELE_OPEN_CAMERA;
@@ -33,7 +33,7 @@ export function messageCameraTeleOpenCamera(
     rtspEncodeType: rtsp_encode_type,
   });
   console.log(
-    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`
+    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`,
   );
   // return encoded Message Packet
   return createPacket(message, class_message, module_id, interface_id, type_id);
@@ -54,7 +54,7 @@ export function messageCameraTeleCloseCamera() {
   // Encode message
   let message = class_message.create({});
   console.log(
-    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`
+    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`,
   );
   // return encoded Message Packet
   return createPacket(message, class_message, module_id, interface_id, type_id);
@@ -92,7 +92,7 @@ export function messageCameraTeleSetAllParams(
   hue,
   saturation,
   sharpness,
-  jpg_quality
+  jpg_quality,
 ) {
   let module_id = Dwarfii_Api.ModuleId.MODULE_CAMERA_TELE;
   let interface_id = Dwarfii_Api.DwarfCMD.CMD_CAMERA_TELE_SET_ALL_PARAMS;
@@ -118,7 +118,7 @@ export function messageCameraTeleSetAllParams(
     jpgQuality: jpg_quality,
   });
   console.log(
-    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`
+    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`,
   );
   // return encoded Message Packet
   return createPacket(message, class_message, module_id, interface_id, type_id);
@@ -138,7 +138,7 @@ export function messageCameraTeleGetAllParams() {
   // Encode message
   let message = class_message.create({});
   console.log(
-    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`
+    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`,
   );
   // return encoded Message Packet
   return createPacket(message, class_message, module_id, interface_id, type_id);
@@ -160,7 +160,7 @@ export function messageCameraTeleSetFeatureParams(
   id,
   mode_index,
   index,
-  continue_value
+  continue_value,
 ) {
   let module_id = Dwarfii_Api.ModuleId.MODULE_CAMERA_TELE;
   let interface_id = Dwarfii_Api.DwarfCMD.CMD_CAMERA_TELE_SET_FEATURE_PARAM;
@@ -181,7 +181,7 @@ export function messageCameraTeleSetFeatureParams(
     param: param,
   });
   console.log(
-    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`
+    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`,
   );
   // return encoded Message Packet
   return createPacket(message, class_message, module_id, interface_id, type_id);
@@ -202,7 +202,7 @@ export function messageCameraTeleGetAllFeatureParams() {
   // Encode message
   let message = class_message.create({});
   console.log(
-    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`
+    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`,
   );
   // return encoded Message Packet
   return createPacket(message, class_message, module_id, interface_id, type_id);
@@ -223,7 +223,7 @@ export function messageCameraTeleGetSystemWorkingState() {
   // Encode message
   let message = class_message.create({});
   console.log(
-    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`
+    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`,
   );
   // return encoded Message Packet
   return createPacket(message, class_message, module_id, interface_id, type_id);
@@ -244,7 +244,7 @@ export function messageCameraTelePhotograph() {
   // Encode message
   let message = class_message.create({});
   console.log(
-    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`
+    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`,
   );
   // return encoded Message Packet
   return createPacket(message, class_message, module_id, interface_id, type_id);
@@ -265,7 +265,7 @@ export function messageCameraTeleStartBurst() {
   // Encode message
   let message = class_message.create({});
   console.log(
-    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`
+    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`,
   );
   // return encoded Message Packet
   return createPacket(message, class_message, module_id, interface_id, type_id);
@@ -286,7 +286,7 @@ export function messageCameraTeleStopBurst() {
   // Encode message
   let message = class_message.create({});
   console.log(
-    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`
+    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`,
   );
   // return encoded Message Packet
   return createPacket(message, class_message, module_id, interface_id, type_id);
@@ -307,7 +307,7 @@ export function messageCameraTeleStartRecord() {
   // Encode message
   let message = class_message.create({});
   console.log(
-    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`
+    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`,
   );
   // return encoded Message Packet
   return createPacket(message, class_message, module_id, interface_id, type_id);
@@ -328,7 +328,7 @@ export function messageCameraTeleStopRecord() {
   // Encode message
   let message = class_message.create({});
   console.log(
-    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`
+    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`,
   );
   // return encoded Message Packet
   return createPacket(message, class_message, module_id, interface_id, type_id);
@@ -349,7 +349,7 @@ export function messageCameraTeleStartTimeLapsePhoto() {
   // Encode message
   let message = class_message.create({});
   console.log(
-    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`
+    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`,
   );
   // return encoded Message Packet
   return createPacket(message, class_message, module_id, interface_id, type_id);
@@ -370,7 +370,7 @@ export function messageCameraTeleStopTimeLapsePhoto() {
   // Encode message
   let message = class_message.create({});
   console.log(
-    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`
+    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`,
   );
   // return encoded Message Packet
   return createPacket(message, class_message, module_id, interface_id, type_id);
@@ -391,7 +391,7 @@ export function messageCameraTeleSetExpMode(mode) {
   // Encode message
   let message = class_message.create({ mode: mode });
   console.log(
-    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`
+    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`,
   );
   // return encoded Message Packet
   return createPacket(message, class_message, module_id, interface_id, type_id);
@@ -411,7 +411,7 @@ export function messageCameraTeleGetExpMode() {
   // Encode message
   let message = class_message.create({});
   console.log(
-    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`
+    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`,
   );
   // return encoded Message Packet
   return createPacket(message, class_message, module_id, interface_id, type_id);
@@ -432,7 +432,7 @@ export function messageCameraTeleSetExp(index) {
   // Encode message
   let message = class_message.create({ index: index });
   console.log(
-    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`
+    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`,
   );
   // return encoded Message Packet
   return createPacket(message, class_message, module_id, interface_id, type_id);
@@ -452,7 +452,7 @@ export function messageCameraTeleGetExp() {
   // Encode message
   let message = class_message.create({});
   console.log(
-    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`
+    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`,
   );
   // return encoded Message Packet
   return createPacket(message, class_message, module_id, interface_id, type_id);
@@ -473,7 +473,7 @@ export function messageCameraTeleSetGainMode(mode) {
   // Encode message
   let message = class_message.create({ mode: mode });
   console.log(
-    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`
+    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`,
   );
   // return encoded Message Packet
   return createPacket(message, class_message, module_id, interface_id, type_id);
@@ -493,7 +493,7 @@ export function messageCameraTeleGetGainMode() {
   // Encode message
   let message = class_message.create({});
   console.log(
-    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`
+    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`,
   );
   // return encoded Message Packet
   return createPacket(message, class_message, module_id, interface_id, type_id);
@@ -514,7 +514,7 @@ export function messageCameraTeleSetGain(index) {
   // Encode message
   let message = class_message.create({ index: index });
   console.log(
-    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`
+    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`,
   );
   // return encoded Message Packet
   return createPacket(message, class_message, module_id, interface_id, type_id);
@@ -534,7 +534,7 @@ export function messageCameraTeleGetGain() {
   // Encode message
   let message = class_message.create({});
   console.log(
-    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`
+    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`,
   );
   // return encoded Message Packet
   return createPacket(message, class_message, module_id, interface_id, type_id);
@@ -555,7 +555,7 @@ export function messageCameraTeleSetIRCut(value) {
   // Encode message
   let message = class_message.create({ value: value });
   console.log(
-    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`
+    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`,
   );
   // return encoded Message Packet
   return createPacket(message, class_message, module_id, interface_id, type_id);
@@ -575,7 +575,7 @@ export function messageCameraTeleGetIRCut() {
   // Encode message
   let message = class_message.create({});
   console.log(
-    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`
+    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`,
   );
   // return encoded Message Packet
   return createPacket(message, class_message, module_id, interface_id, type_id);
@@ -596,7 +596,7 @@ export function messageCameraTeleSetWBMode(mode) {
   // Encode message
   let message = class_message.create({ mode: mode });
   console.log(
-    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`
+    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`,
   );
   // return encoded Message Packet
   return createPacket(message, class_message, module_id, interface_id, type_id);
@@ -616,7 +616,7 @@ export function messageCameraTeleGetWBMode() {
   // Encode message
   let message = class_message.create({});
   console.log(
-    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`
+    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`,
   );
   // return encoded Message Packet
   return createPacket(message, class_message, module_id, interface_id, type_id);
@@ -637,7 +637,7 @@ export function messageCameraTeleSetWBScene(value) {
   // Encode message
   let message = class_message.create({ value: value });
   console.log(
-    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`
+    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`,
   );
   // return encoded Message Packet
   return createPacket(message, class_message, module_id, interface_id, type_id);
@@ -657,7 +657,7 @@ export function messageCameraTeleGetWBScene() {
   // Encode message
   let message = class_message.create({});
   console.log(
-    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`
+    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`,
   );
   // return encoded Message Packet
   return createPacket(message, class_message, module_id, interface_id, type_id);
@@ -678,7 +678,7 @@ export function messageCameraTeleSetWBColorTemp(index) {
   // Encode message
   let message = class_message.create({ index: index });
   console.log(
-    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`
+    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`,
   );
   // return encoded Message Packet
   return createPacket(message, class_message, module_id, interface_id, type_id);
@@ -698,7 +698,7 @@ export function messageCameraTeleGetWBColorTemp() {
   // Encode message
   let message = class_message.create({});
   console.log(
-    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`
+    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`,
   );
   // return encoded Message Packet
   return createPacket(message, class_message, module_id, interface_id, type_id);
@@ -719,7 +719,7 @@ export function messageCameraTeleSetBrightness(value) {
   // Encode message
   let message = class_message.create({ value: value });
   console.log(
-    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`
+    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`,
   );
   // return encoded Message Packet
   return createPacket(message, class_message, module_id, interface_id, type_id);
@@ -739,7 +739,7 @@ export function messageCameraTeleGetBrightness() {
   // Encode message
   let message = class_message.create({});
   console.log(
-    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`
+    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`,
   );
   // return encoded Message Packet
   return createPacket(message, class_message, module_id, interface_id, type_id);
@@ -761,7 +761,7 @@ export function messageCameraTeleSetContrast(value) {
   // Encode message
   let message = class_message.create({ value: value });
   console.log(
-    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`
+    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`,
   );
   // return encoded Message Packet
   return createPacket(message, class_message, module_id, interface_id, type_id);
@@ -781,7 +781,7 @@ export function messageCameraTeleGetContrast() {
   // Encode message
   let message = class_message.create({});
   console.log(
-    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`
+    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`,
   );
   // return encoded Message Packet
   return createPacket(message, class_message, module_id, interface_id, type_id);
@@ -803,7 +803,7 @@ export function messageCameraTeleSetSaturation(value) {
   // Encode message
   let message = class_message.create({ value: value });
   console.log(
-    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`
+    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`,
   );
   // return encoded Message Packet
   return createPacket(message, class_message, module_id, interface_id, type_id);
@@ -823,7 +823,7 @@ export function messageCameraTeleGetSaturation() {
   // Encode message
   let message = class_message.create({});
   console.log(
-    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`
+    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`,
   );
   // return encoded Message Packet
   return createPacket(message, class_message, module_id, interface_id, type_id);
@@ -845,7 +845,7 @@ export function messageCameraTeleSetHue(value) {
   // Encode message
   let message = class_message.create({ value: value });
   console.log(
-    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`
+    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`,
   );
   // return encoded Message Packet
   return createPacket(message, class_message, module_id, interface_id, type_id);
@@ -865,7 +865,7 @@ export function messageCameraTeleGetHue() {
   // Encode message
   let message = class_message.create({});
   console.log(
-    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`
+    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`,
   );
   // return encoded Message Packet
   return createPacket(message, class_message, module_id, interface_id, type_id);
@@ -887,7 +887,7 @@ export function messageCameraTeleSetSharpness(value) {
   // Encode message
   let message = class_message.create({ value: value });
   console.log(
-    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`
+    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`,
   );
   // return encoded Message Packet
   return createPacket(message, class_message, module_id, interface_id, type_id);
@@ -907,7 +907,7 @@ export function messageCameraTeleGetSharpness() {
   // Encode message
   let message = class_message.create({});
   console.log(
-    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`
+    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`,
   );
   // return encoded Message Packet
   return createPacket(message, class_message, module_id, interface_id, type_id);
@@ -928,7 +928,7 @@ export function messageCameraTeleSetJPGQuality(quality) {
   // Encode message
   let message = class_message.create({ quality: quality });
   console.log(
-    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`
+    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`,
   );
   // return encoded Message Packet
   return createPacket(message, class_message, module_id, interface_id, type_id);
@@ -948,7 +948,7 @@ export function messageCameraTelePhotoRaw() {
   // Encode message
   let message = class_message.create({});
   console.log(
-    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`
+    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`,
   );
   // return encoded Message Packet
   return createPacket(message, class_message, module_id, interface_id, type_id);
@@ -969,7 +969,7 @@ export function messageCameraTeleSetRTSPPreviewBitsRate(bitrate_type) {
   // Encode message
   let message = class_message.create({ bitrateType: bitrate_type });
   console.log(
-    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`
+    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`,
   );
   // return encoded Message Packet
   return createPacket(message, class_message, module_id, interface_id, type_id);

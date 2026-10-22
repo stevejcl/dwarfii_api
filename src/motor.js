@@ -33,7 +33,7 @@ export function messageStepMotorMotion(
   speed,
   direction,
   speed_ramping,
-  resolution_level
+  resolution_level,
 ) {
   let module_id = Dwarfii_Api.ModuleId.MODULE_MOTOR;
   let interface_id = Dwarfii_Api.DwarfCMD.CMD_STEP_MOTOR_RUN;
@@ -51,7 +51,7 @@ export function messageStepMotorMotion(
     resolutionLevel: resolution_level,
   });
   console.log(
-    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`
+    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`,
   );
   // return encoded Message Packet
   return createPacket(message, class_message, module_id, interface_id, type_id);
@@ -73,7 +73,7 @@ export function messageStepMotorStop(id) {
   // Encode message
   let message = class_message.create({ id: id });
   console.log(
-    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`
+    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`,
   );
   // return encoded Message Packet
   return createPacket(message, class_message, module_id, interface_id, type_id);
@@ -90,7 +90,7 @@ export function messageStepMotorStop(id) {
 export function messageStepMotorServiceJoystick(
   vector_angle,
   vector_length,
-  speed
+  speed,
 ) {
   let module_id = Dwarfii_Api.ModuleId.MODULE_MOTOR;
   let interface_id = Dwarfii_Api.DwarfCMD.CMD_STEP_MOTOR_SERVICE_JOYSTICK;
@@ -106,7 +106,7 @@ export function messageStepMotorServiceJoystick(
     speed: speed,
   });
   console.log(
-    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`
+    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`,
   );
   // return encoded Message Packet
   return createPacket(message, class_message, module_id, interface_id, type_id);
@@ -122,7 +122,7 @@ export function messageStepMotorServiceJoystick(
 export function messageStepMotorServiceJoystickFixedAngle(
   vector_angle,
   vector_length,
-  speed
+  speed,
 ) {
   let module_id = Dwarfii_Api.ModuleId.MODULE_MOTOR;
   let interface_id =
@@ -139,7 +139,7 @@ export function messageStepMotorServiceJoystickFixedAngle(
     speed: speed,
   });
   console.log(
-    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`
+    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`,
   );
   // return encoded Message Packet
   return createPacket(message, class_message, module_id, interface_id, type_id);
@@ -160,7 +160,7 @@ export function messageStepMotorServiceJoystickStop() {
   // Encode message
   let message = class_message.create({});
   console.log(
-    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`
+    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`,
   );
   // return encoded Message Packet
   return createPacket(message, class_message, module_id, interface_id, type_id);
@@ -184,7 +184,7 @@ export function messageStepMotorServiceDualCameraLinkage(x, y) {
   // Encode message
   let message = class_message.create({ x: x, y: y });
   console.log(
-    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`
+    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`,
   );
   // return encoded Message Packet
   return createPacket(message, class_message, module_id, interface_id, type_id);
@@ -204,7 +204,7 @@ export function messageStepMotorMotionTo(
   end_position,
   speed,
   speed_ramping,
-  resolution_level
+  resolution_level,
 ) {
   let module_id = Dwarfii_Api.ModuleId.MODULE_MOTOR;
   let interface_id = Dwarfii_Api.DwarfCMD.CMD_STEP_MOTOR_RUN_TO;
@@ -222,7 +222,7 @@ export function messageStepMotorMotionTo(
     resolutionLevel: resolution_level,
   });
   console.log(
-    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`
+    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`,
   );
   // return encoded Message Packet
   return createPacket(message, class_message, module_id, interface_id, type_id);
@@ -248,7 +248,7 @@ export function messageStepMotorReset(id, direction) {
     direction: direction,
   });
   console.log(
-    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`
+    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`,
   );
   // return encoded Message Packet
   return createPacket(message, class_message, module_id, interface_id, type_id);
@@ -274,7 +274,7 @@ export function messageStepMotorChangeSpeed(id, speed) {
     speed: speed,
   });
   console.log(
-    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`
+    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`,
   );
   // return encoded Message Packet
   return createPacket(message, class_message, module_id, interface_id, type_id);
@@ -300,7 +300,7 @@ export function messageStepMotorChangeDirection(id, direction) {
     direction: direction,
   });
   console.log(
-    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`
+    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`,
   );
   // return encoded Message Packet
   return createPacket(message, class_message, module_id, interface_id, type_id);
@@ -324,7 +324,7 @@ export function messageStepMotorGetPosition(id) {
     id: id,
   });
   console.log(
-    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`
+    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`,
   );
   // return encoded Message Packet
   return createPacket(message, class_message, module_id, interface_id, type_id);

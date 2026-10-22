@@ -84,6 +84,27 @@ export const IRCut = 0;
 export const IRPass = 1;
 export const binning1x1 = 0;
 export const binning2x2 = 1;
+// Device IDs
+export const DwarfDeviceIdDwarfII = 1;
+export const DwarfDeviceIdDwarf3 = 2;
+export const DwarfDeviceIdDwarfMini = 4;
+export const DwarfClientIdDwarfMini = "0000DAF4-0000-1000-8000-00805F9B34FB";
+// WebSocket protocol minor versions
+export const WsMinorVersionV2 = 9;
+export const WsMinorVersionV3 = 20;
+// DWARF mini filter indices used by CMD 11005 / calibration capture.
+// Only Astro and Duo-Band are normal Deep Sky stacking filters.
+export const MiniFilterAstro = 1;
+export const MiniFilterDuoBand = 2;
+export const MiniFilterDark = 3;
+// DWARF mini calibration-frame values confirmed from DWARFLAB 3.4.1.
+export const CaliFrameTypeDark = 0;
+export const CaliFrameCameraTele = 0;
+export const CaliFrameSceneSetting = 0;
+export const CaliFrameSceneShooting = 1;
+export const CaliFrameResolution4K = 0;
+export const CaliFrameResolution1080P = 1;
+export const CaliFrameResolution720P = 2;
 export const fileFits = 0;
 export const fileTiff = 1;
 // raw preview

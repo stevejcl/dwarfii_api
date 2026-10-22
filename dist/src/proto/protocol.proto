@@ -12,7 +12,14 @@ enum ModuleId {
     MODULE_FOCUS = 8; // 15000-15099 Focusing module
     MODULE_NOTIFY = 9; // 15200-15499 Notification module
     MODULE_PANORAMA = 10; // 15500-15599 Panoramic module
+    MODULE_ITIPS = 11; // 15700-15799 iTips module (APK 3.4.1)
+    MODULE_FACTORY_TEST = 12; // Factory-test module (APK 3.4.1)
     MODULE_SHOOTING_SCHEDULE = 13; // 16100-16300 Shooting schedule module
+    MODULE_DEVICE_CONFIG = 14; // Existing name; APK 3.4.1 calls module 14 TASK_CENTER
+    MODULE_CAMERA_PARAMS = 15; // Existing name; APK 3.4.1 calls module 15 PARAM
+    MODULE_VOICE_ASSISTANT = 16; // 16800-16899 Voice assistant module
+    MODULE_CAMERA_GUIDE = 17; // 16900-16999 Guide camera module
+    MODULE_DEVICE = 18; // 17000-17099 Device services module
 }
 
 enum MessageTypeId {
@@ -23,6 +30,8 @@ enum MessageTypeId {
 }
 
 enum DwarfCMD {
+    option allow_alias = true;
+
     NO_CMD = 0; // No Cmd
 
     CMD_CAMERA_TELE_OPEN_CAMERA = 10000; // Turn on the camera
@@ -69,6 +78,16 @@ enum DwarfCMD {
 
     CMD_CAMERA_TELE_PHOTO_RAW = 10041; // Shoot RAW image
     CMD_CAMERA_TELE_SET_RTSP_BITRATE_TYPE = 10042; // Set rtsp preview bit rate type
+    CMD_CAMERA_TELE_DISABLE_ALL_ISP_PROCESSING = 10043; // APK 3.4.1 registry; hardware unverified
+    CMD_CAMERA_TELE_ENABLE_ALL_ISP_PROCESSING = 10044; // APK 3.4.1 registry; hardware unverified
+    CMD_CAMERA_TELE_SET_ISP_MODULE_STATE = 10045; // APK 3.4.1 registry; hardware unverified
+    CMD_CAMERA_TELE_GET_ISP_MODULE_STATE = 10046; // APK 3.4.1 registry; hardware unverified
+    CMD_CAMERA_TELE_SWITCH_RESOLUTION = 10047; // APK 3.4.1 registry; hardware unverified
+    CMD_CAMERA_TELE_SWITCH_FRAMERATE = 10048; // APK 3.4.1 registry; hardware unverified
+    CMD_CAMERA_TELE_SWITCH_CROP_RATIO = 10049; // APK 3.4.1 registry; hardware unverified
+
+    CMD_V3_CAMERA_TELE_OPEN_CAMERA = 10050; // Pcap-derived V3 open/close; APK 3.4.1 registry calls 10050 SET_PREVIEW_QUALITY
+    CMD_CAMERA_TELE_SET_ND_FILTER = 10051; // APK 3.4.1 registry; hardware unverified
 
     CMD_ASTRO_START_CALIBRATION = 11000; // Start calibration
     CMD_ASTRO_STOP_CALIBRATION = 11001; // Stop calibration
@@ -101,6 +120,29 @@ enum DwarfCMD {
     CMD_ASTRO_STOP_CAPTURE_WIDE_RAW_DARK_WITH_PARAM = 11026; // Stop shooting dark field with wide-angle specified parameters
     CMD_ASTRO_GET_WIDE_DARK_FRAME_LIST = 11027; // Query the list of wide-angle dark scenes taken
     CMD_ASTRO_DEL_WIDE_DARK_FRAME_LIST = 11028; // Delete the specified wide-angle dark field list
+    CMD_ASTRO_START_AI_ENHANCE = 11029; // APK 3.4.1 registry; hardware unverified
+    CMD_ASTRO_STOP_AI_ENHANCE = 11030; // APK 3.4.1 registry; hardware unverified
+    CMD_ASTRO_START_TELE_MOSAIC = 11031; // APK 3.4.1 registry; hardware unverified
+    CMD_ASTRO_CHECK_IF_RESTACKABLE = 11032; // APK 3.4.1 registry; hardware unverified
+
+    CMD_V3_ASTRO_SAVE_STACKED_IMAGE = 11033; // V3: Save stacked image
+    CMD_V3_ASTRO_LIST_SAVED_IMAGES = 11034; // V3: List saved images
+    CMD_ASTRO_START_RESTACKED = 11035; // APK 3.4.1 registry; hardware unverified
+    CMD_V3_ASTRO_SAVE_COMPLETE = 11036; // V3: Save complete notification response
+    CMD_ASTRO_FAST_STOP_CAPTURE_RAW_LIVE_STACKING = 11037; // APK 3.4.1 registry; hardware unverified
+    CMD_ASTRO_FAST_STOP_WIDE_CAPTURE_LIVE_STACKING = 11038; // APK 3.4.1 registry; hardware unverified
+    CMD_V3_ASTRO_STATUS_POLLING = 11039; // V3: Status polling
+    CMD_V3_ASTRO_GET_PARAMS = 11040; // V3: Get astro parameters
+    CMD_V3_ASTRO_SET_PARAMS = 11041; // V3: Set astro parameters
+    CMD_ASTRO_START_ONE_CLICK_SHOOTING = 11042; // APK 3.4.1 request builder recovered
+    CMD_V3_ASTRO_GET_PRESETS = 11043; // V3: provisional; APK 3.4.1 names this GET_CALI_FRAME_LIST
+    CMD_ASTRO_DEL_CALI_FRAME_LIST = 11044; // APK 3.4.1 request builder recovered
+    CMD_V3_ASTRO_START_CAPTURE_CALI_FRAME = 11045; // V3: Start calibration-frame capture
+    CMD_V3_ASTRO_STOP_CAPTURE_CALI_FRAME = 11046; // V3: Stop calibration-frame capture
+    CMD_V3_ASTRO_SET_LOCATION = 11047; // V3: Set observation location
+    CMD_V3_ASTRO_CONFIRM = 11048; // V3: Confirm observation
+    CMD_ASTRO_GET_GYRO_ATTITUDE = 11049; // APK 3.4.1 registry; hardware unverified
+    CMD_ASTRO_CONTINUE_SHOOTING = 11050; // APK 3.4.1 registry; hardware unverified
 
     CMD_CAMERA_WIDE_OPEN_CAMERA = 12000; // Turn on the camera
     CMD_CAMERA_WIDE_CLOSE_CAMERA = 12001; // Turn off the camera
@@ -131,15 +173,27 @@ enum DwarfCMD {
     CMD_CAMERA_WIDE_STOP_TIMELAPSE_PHOTO = 12026; // Stop time-lapse photography
     CMD_CAMERA_WIDE_GET_ALL_PARAMS = 12027; // Get all parameters
     CMD_CAMERA_WIDE_SET_ALL_PARAMS = 12028; // Set all parameters
+    CMD_CAMERA_WIDE_PHOTO_RAW = 12029; // APK 3.4.1 registry; hardware unverified
 
     CMD_CAMERA_WIDE_START_RECORD = 12030; // Start wide recording
     CMD_CAMERA_WIDE_STOP_RECORD = 12031; // Stop wide recording
+    CMD_CAMERA_WIDE_SET_RTSP_BITRATE_TYPE = 12032; // APK 3.4.1 request builder recovered
+    CMD_CAMERA_WIDE_SET_WB_SCENE = 12035; // APK 3.4.1 request builder recovered
+
+    CMD_V3_CAMERA_WIDE_OPEN_CAMERA = 12036; // V3: Open/close wide camera
+    CMD_CAMERA_WIDE_SET_ND_FILTER = 12038; // APK 3.4.1 request builder recovered; schema not yet imported
 
     CMD_SYSTEM_SET_TIME = 13000; // Set the system time
     CMD_SYSTEM_SET_TIME_ZONE = 13001; // Set the time zone
     CMD_SYSTEM_SET_MTP_MODE = 13002; // Set MTP mode
     CMD_SYSTEM_SET_CPU_MODE = 13003; // Set CPU mode
     CMD_SYSTEM_SET_MASTERLOCK = 13004; // Set HOST mode
+    CMD_SYSTEM_GET_DEVICE_ACTIVATE_INFO = 13005; // APK 3.4.1 registry; hardware unverified
+    CMD_SYSTEM_DEVICE_ACTIVATE_WRITE_FILE = 13006; // APK 3.4.1 registry; hardware unverified
+    CMD_SYSTEM_DEVICE_ACTIVATE_NOTIFY_ACTIVATE_SUCCESSFULL = 13007; // APK 3.4.1 registry; spelling preserved
+    CMD_SYSTEM_FACTORY_TEST_UN_ACTIVATE = 13008; // APK 3.4.1 registry; hardware unverified
+    CMD_SYSTEM_SET_LOW_TEMP_PROTECTION_MODE = 13009; // APK 3.4.1 registry; hardware unverified
+    CMD_V3_SYSTEM_SET_GPS_LOCATION = 13010; // V3: Set GPS location
 
     CMD_RGB_POWER_OPEN_RGB = 13500; // Turn on the ring light
     CMD_RGB_POWER_CLOSE_RGB = 13501; // Turn off the ring light
@@ -161,6 +215,11 @@ enum DwarfCMD {
 
     CMD_STEP_MOTOR_RUN_IN_PULSE = 14010; // Motor run in pulse
     CMD_STEP_MOTOR_GET_POSITION = 14011; // Motor get Position
+    CMD_STEP_MOTOR_START_ATTITUDE_NOTIFY = 14012; // APK 3.4.1 registry; hardware unverified
+    CMD_STEP_MOTOR_STOP_ATTITUDE_NOTIFY = 14013; // APK 3.4.1 registry; hardware unverified
+    CMD_STEP_MOTOR_LEVEL_CALIBRATION_MOVE = 14014; // APK 3.4.1 request builder recovered
+    CMD_STEP_MOTOR_SAVE_LEVEL_CALIBRATION_OFFSET = 14015; // APK 3.4.1 empty request recovered
+    CMD_STEP_MOTOR_RESET_LEVEL_CALIBRATION_DEFAULT = 14016; // APK 3.4.1 empty request recovered
 
     CMD_TRACK_START_TRACK = 14800; // Started tracking
     CMD_TRACK_STOP_TRACK = 14801; // Stop tracking
@@ -174,6 +233,8 @@ enum DwarfCMD {
     CMD_MOT_WIDE_TRACK_ONE = 14808; // Wide-angle: "Multi-Object Tracking" starts tracking a specific target (firmware will return an identification box and ID, confirm tracking target based on user clicks)
     CMD_WIDE_TELE_TRACK_SWITCH = 14809; // Object Detection with 30 classes for post-production non-sentinel mode. Choose between wide-angle and telephoto tracking button instructions
     CMD_UFO_HAND_AOTO_MODE = 14810; // Used for post-UFO mode selection manual or automatic
+    CMD_SENTRY_SCENE_SELECT = 14811; // APK 3.4.1 registry; hardware unverified
+    CMD_TRACK_START_CLICK = 14812; // APK 3.4.1 registry; hardware unverified
 
     CMD_FOCUS_AUTO_FOCUS = 15000; // Normal mode autofocus
     CMD_FOCUS_MANUAL_SINGLE_STEP_FOCUS = 15001; // Manual single-step focusing
@@ -181,6 +242,24 @@ enum DwarfCMD {
     CMD_FOCUS_STOP_MANUAL_CONTINU_FOCUS = 15003; // Stop manual continuous focus
     CMD_FOCUS_START_ASTRO_AUTO_FOCUS = 15004; // Start astronomical autofocus
     CMD_FOCUS_STOP_ASTRO_AUTO_FOCUS = 15005; // Stop astronomical autofocus
+    CMD_FOCUS_AUTO_INFINITY_FOCUS = 15006; // APK 3.4.1 registry; hardware unverified
+    CMD_V3_FOCUS_INIT = 15011; // V3: Focus init
+    CMD_FOCUS_SET_USER_INFINITY_POS = 15012; // APK 3.4.1 registry; hardware unverified
+    CMD_WIDE_FOCUS_AUTO_FOCUS = 15014; // APK 3.4.1 request builder recovered
+    CMD_WIDE_FOCUS_MANUAL_SINGLE_STEP_FOCUS = 15015; // APK 3.4.1 registry; hardware unverified
+    CMD_WIDE_FOCUS_START_MANUAL_CONTINU_FOCUS = 15016; // APK 3.4.1 registry; hardware unverified
+    CMD_WIDE_FOCUS_STOP_MANUAL_CONTINU_FOCUS = 15017; // APK 3.4.1 request builder recovered
+    CMD_WIDE_FOCUS_START_ASTRO_AUTO_FOCUS = 15018; // APK 3.4.1 registry; hardware unverified
+    CMD_WIDE_FOCUS_STOP_ASTRO_AUTO_FOCUS = 15019; // APK 3.4.1 registry; hardware unverified
+    CMD_WIDE_FOCUS_AUTO_INFINITY_FOCUS = 15020; // APK 3.4.1 registry; hardware unverified
+    CMD_GUIDE_FOCUS_SET_USER_INFINITY_POS = 15027; // APK 3.4.1 registry; hardware unverified
+    CMD_GUIDE_FOCUS_GET_USER_INFINITY_POS = 15028; // APK 3.4.1 registry; hardware unverified
+    CMD_GUIDE_FOCUS_MANUAL_SINGLE_STEP_FOCUS = 15029; // APK 3.4.1 registry; hardware unverified
+    CMD_GUIDE_FOCUS_START_MANUAL_CONTINU_FOCUS = 15030; // APK 3.4.1 registry; hardware unverified
+    CMD_GUIDE_FOCUS_STOP_MANUAL_CONTINU_FOCUS = 15031; // APK 3.4.1 registry; hardware unverified
+    CMD_GUIDE_FOCUS_START_ASTRO_AUTO_FOCUS = 15032; // APK 3.4.1 request builder recovered
+    CMD_GUIDE_FOCUS_AUTO_INFINITY_FOCUS = 15033; // APK 3.4.1 registry; hardware unverified
+    CMD_GUIDE_FOCUS_STOP_ASTRO_AUTO_FOCUS = 15034; // APK 3.4.1 request builder recovered
 
     CMD_NOTIFY_TELE_WIDI_PICTURE_MATCHING = 15200; // Telephoto wide-angle image matching
     CMD_NOTIFY_ELE = 15201; // Battery Notification
@@ -229,36 +308,153 @@ enum DwarfCMD {
     CMD_NOTIFY_TEMPERATURE = 15243; // Movement temperature
     CMD_NOTIFY_PANORAMA_UPLOAD_COMPRESS_PROGRESS = 15244; // 
     CMD_NOTIFY_PANORAMA_UPLOAD_UPLOAD_PROGRESS = 15245; // 
-    CMD_NOTIFY_PANORAMA_UPLOAD_COMPLETE = 15246; // 
+    CMD_NOTIFY_PANORAMA_UPLOAD_COMPLETE = 15245; // APK 3.4.1 aliases upload progress and completion to the same ID
     CMD_NOTIFY_STATE_CAPTURE_WIDE_RAW_DARK = 15247; // Wide-angle dark field shooting state
     CMD_NOTIFY_SHOOTING_SCHEDULE_RESULT_AND_STATE = 15248; // 
     CMD_NOTIFY_SHOOTING_TASK_STATE = 15249; // 
     CMD_NOTIFY_SKY_SEACHER_STATE = 15250; // Sky detection status
     CMD_NOTIFY_WIDE_MULTI_TRACK_RESULT = 15251; // Wide-angle multi-target box result notification
     CMD_NOTIFY_WIDE_TRACK_RESULT = 15252; // Wide-angle single target box result notification
+    CMD_NOTIFY_STATE_AI_ENHANCE = 15253; // APK 3.4.1 registry; hardware unverified
+    CMD_NOTIFY_PROGRESS_AI_ENHANCE = 15254; // APK 3.4.1 registry; hardware unverified
 
+    CMD_NOTIFY_CALIBRATION_RESULT = 15256; // V3: successful mount calibration (azi/alt)
     CMD_NOTIFY_FOCUS = 15257; // Focus Position
+    CMD_NOTIFY_UFO_AUTO_HAND_MODE = 15258; // APK 3.4.1 registry; hardware unverified
+    CMD_NOTIFY_CURRENT_PANORAMA_UPLOAD_STATE = 15259; // APK 3.4.1 registry; hardware unverified
+    CMD_NOTIFY_LOW_TEMP_PROTECTION_MODE = 15260; // APK 3.4.1 registry; hardware unverified
+
+    CMD_V3_NOTIFY_EXPOSURE_PROGRESS = 15255; // V3: Per-frame exposure countdown
+    CMD_V3_NOTIFY_DEVICE_STATE = 15261; // V3: Device state notification
+    CMD_V3_NOTIFY_STATE_LATCH = 15262; // V3: State latch (pcap-discovered)
+    CMD_NOTIFY_PROGRESS_CAPTURE_MOSAIC = 15263; // APK 3.4.1 registry; hardware unverified
+    CMD_V3_NOTIFY_CAMERA_PARAM_STATE = 15264; // V3: Camera parameter state
+    CMD_NOTIFY_GENERAL_FLOAT_PARAM = 15265; // APK 3.4.1 registry; hardware unverified
+    CMD_NOTIFY_GENERAL_BOOL_PARAM = 15266; // APK 3.4.1 registry; hardware unverified
+    CMD_V3_NOTIFY_MODE_CHANGE = 15267; // V3: Mode change notification
+    CMD_NOTIFY_TELE_SWITCH_CROP_RATIO = 15268; // APK 3.4.1 registry; hardware unverified
+    CMD_NOTIFY_TELE_SHOOTING_TECH_STATE = 15269; // APK 3.4.1 registry; hardware unverified
+    CMD_V3_NOTIFY_STACKING_DATA = 15270; // V3: Stacking data notification
+    CMD_NOTIFY_WIDE_SHOOTING_TECH_STATE = 15271; // APK 3.4.1 registry; hardware unverified
+    CMD_NOTIFY_RESOLUTION_PARAM = 15272; // APK 3.4.1 registry; hardware unverified
+    CMD_V3_NOTIFY_PHOTO_STATE = 15273; // V3: Normal photo state
+    CMD_V3_NOTIFY_BURST_STATE = 15274; // V3: Burst capture state
+    CMD_V3_NOTIFY_VIDEO_STATE = 15275; // V3: Video recording state
+    CMD_V3_NOTIFY_TIMELAPSE_STATE = 15276; // V3: Timelapse state
+    CMD_NOTIFY_PANORAMA_STATE = 15277; // APK 3.4.1 registry; hardware unverified
+    CMD_V3_NOTIFY_AUTOFOCUS_STATE = 15278; // V3: AutoFocus state
+    CMD_NOTIFY_NORMAL_AUTO_FOCUS_STATE = 15279; // APK 3.4.1 registry; hardware unverified
+    CMD_V3_NOTIFY_AUTOFOCUS_STATE_ALT = 15280; // V3: AutoFocus state (alternate, no proto in official firmware)
+    CMD_NOTIFY_AREA_AUTO_FOCUS_STATE = 15281; // APK 3.4.1 registry; hardware unverified
+    CMD_NOTIFY_DUAL_CAMERA_LINKAGE_STATE = 15282; // APK 3.4.1 registry; hardware unverified
+    CMD_NOTIFY_RESOLUTION_FPS_STATE = 15283; // APK 3.4.1 registry; hardware unverified
+    CMD_NOTIFY_NORMAL_TRACK_STATE = 15284; // APK 3.4.1 registry; hardware unverified
+    CMD_V3_NOTIFY_PHOTO_BURST_PROGRESS = 15285; // V3: Photo/burst progress
+    CMD_V3_NOTIFY_VIDEO_PROGRESS = 15286; // V3: Video recording progress
+    CMD_V3_NOTIFY_TIMELAPSE_PROGRESS = 15287; // V3: Timelapse progress
+    CMD_V3_NOTIFY_EXPOSURE_DURATION = 15288; // V3: Exposure duration telemetry (pcap-discovered)
+    CMD_NOTIFY_SENTRY_MOTOR_STATE = 15289; // APK 3.4.1 registry; hardware unverified
+    CMD_V3_NOTIFY_CALI_FRAME_STATE = 15290; // APK 3.4.1: calibration-frame capture state
+    CMD_V3_NOTIFY_CALI_FRAME_PROGRESS = 15291; // APK 3.4.1: calibration-frame capture progress
+    CMD_V3_NOTIFY_TEMPERATURE2 = 15292; // V3: Temperature2
+    CMD_NOTIFY_PANORAMA_COMPRESS_PROGRESS = 15293; // APK 3.4.1 registry; hardware unverified
+    CMD_NOTIFY_PANORAMA_COMPRESS_COMPLETE = 15294; // APK 3.4.1 registry; hardware unverified
+    CMD_NOTIFY_DEVICE_ATTITUDE = 15295; // APK 3.4.1 registry; hardware unverified
+    CMD_V3_NOTIFY_OBSERVATION_STATE = 15296; // V3: Observation state
+    CMD_NOTIFY_PANO_FRAMING_RECT_UPDATE = 15297; // APK 3.4.1 registry; hardware unverified
+    CMD_NOTIFY_PANO_FRAMING_THUMBNAIL_UPDATE = 15298; // APK 3.4.1 registry; hardware unverified
+    CMD_NOTIFY_PANO_FRAMING_STATE = 15299; // APK 3.4.1 registry; hardware unverified
+    CMD_NOTIFY_WIDE_FOCUS_POSITION = 15300; // APK 3.4.1 registry; hardware unverified
+    CMD_NOTIFY_LENS_DEFOG_STATE = 15301; // APK 3.4.1 registry; hardware unverified
+    CMD_NOTIFY_AUTO_COOLING_STATE = 15302; // APK 3.4.1 registry; hardware unverified
+    CMD_NOTIFY_AUTO_SHUTDOWN_STATE = 15303; // APK 3.4.1 registry; hardware unverified
+    CMD_NOTIFY_ROLL_LEVEL_CALIBRATION_ANGLE = 15304; // APK 3.4.1 registry; hardware unverified
+    CMD_NOTIFY_GUIDE_FOCUS_POSITION = 15305; // APK 3.4.1 registry; hardware unverified
 
     CMD_PANORAMA_START_GRID = 15500; // Start panorama
     CMD_PANORAMA_STOP = 15501; // Stop panorama
     CMD_PANORAMA_START_EULER_RANGE = 15502; // Start panorama Euler Range
+    CMD_PANORAMA_START_STITCH_UPLOAD = 15503; // APK 3.4.1 request builder recovered
+    CMD_PANORAMA_STOP_STITCH_UPLOAD = 15504; // APK 3.4.1 request builder recovered
+    CMD_PANORAMA_GET_CURRENT_UPLOAD_STATE = 15505; // APK 3.4.1 registry; hardware unverified
+    CMD_PANORAMA_GET_UPLOAD_PREDICT = 15506; // APK 3.4.1 request builder recovered
+    CMD_PANORAMA_START_COMPRESS = 15507; // APK 3.4.1 request builder recovered
+    CMD_PANORAMA_STOP_COMPRESS = 15508; // APK 3.4.1 empty request recovered
+    CMD_PANORAMA_START_FRAMING = 15509; // APK 3.4.1 registry; hardware unverified
+    CMD_PANORAMA_STOP_FRAMING = 15510; // APK 3.4.1 registry; hardware unverified
+    CMD_PANORAMA_RESET_FRAMING = 15511; // APK 3.4.1 registry; hardware unverified
+    CMD_PANORAMA_UPDATE_FRAMING_RECT = 15512; // APK 3.4.1 registry; hardware unverified
+    CMD_PANORAMA_STOP_FRAMEING_AND_START_GRID = 15513; // APK 3.4.1 registry; spelling preserved
+
+    CMD_ITIPS_GET = 15700; // APK 3.4.1 registry; hardware unverified
+
+    CMD_SYNC_SHOOTING_SCHEDULE = 16100; // APK 3.4.1 registry; hardware unverified
+    CMD_CANCEL_SHOOTING_SCHEDULE = 16101; // APK 3.4.1 registry; hardware unverified
+    CMD_V3_SCHEDULE_GET = 16102; // V3: Get shooting schedule
+    CMD_GET_SHOOTING_SCHEDULE_BY_ID = 16103; // APK 3.4.1 registry; hardware unverified
+    CMD_REPLACE_SHOOTING_SCHEDULE = 16105; // APK 3.4.1 registry; hardware unverified
+    CMD_UNLOCK_SHOOTING_SCHEDULE = 16106; // APK 3.4.1 registry; hardware unverified
+    CMD_LOCK_SHOOTING_SCHEDULE = 16107; // APK 3.4.1 registry; hardware unverified
+    CMD_DELETE_SHOOTING_SCHEDULE = 16108; // APK 3.4.1 registry; hardware unverified
+
+    CMD_GLOBAL_TASK_MANAGER_START_TASK = 16400; // APK 3.4.1 registry; hardware unverified
+    CMD_GLOBAL_TASK_MANAGER_STOP_TASK = 16401; // APK 3.4.1 registry; hardware unverified
+    CMD_V3_DEVICE_CONFIG_MODE_QUERY = 16402; // V3: Mode query
+    CMD_V3_DEVICE_CONFIG_SHOOTING_MODE = 16403; // V3: Shooting mode switch
+    CMD_V3_DEVICE_CONFIG_MODE_SWITCH = 16404; // V3: Mode switch
+    CMD_V3_DEVICE_CONFIG_GET_CONFIG = 16405; // V3: Get device config
+    CMD_GLOBAL_VOICE_ASSISTANT_TASK = 16406; // APK 3.4.1 registry; hardware unverified
+
+    CMD_V3_CAMERA_PARAMS_SET_PARAM = 16700; // V3: Set camera param
+    CMD_V3_CAMERA_PARAMS_SET_EXP_GAIN = 16701; // V3: Set exposure/gain
+    CMD_V3_CAMERA_PARAMS_UNKNOWN_16702 = 16702; // V3: Unknown camera param command (pcap-discovered)
+    CMD_V3_CAMERA_PARAMS_ADJUST = 16703; // V3: Adjust camera param
+    CMD_PARAM_SET_GENERAL_FLOAT_PARAM = 16704; // APK 3.4.1 registry; hardware unverified
+    CMD_PARAM_SET_GENERAL_BOOL_PARAM = 16705; // APK 3.4.1 request builder recovered
+    CMD_V3_CAMERA_PARAMS_STREAM_CTRL = 16706; // V3: Stream control
+
+    CMD_VOICE_ASSISTANT_TASK = 16800; // APK 3.4.1 status request builder recovered
+
+    CMD_CAMERA_GUIDE_SET_EXP = 16900; // APK 3.4.1 registry; hardware unverified
+    CMD_CAMERA_GUIDE_GET_EXP = 16901; // APK 3.4.1 registry; hardware unverified
+    CMD_CAMERA_GUIDE_SET_GAIN = 16902; // APK 3.4.1 registry; hardware unverified
+    CMD_CAMERA_GUIDE_GET_GAIN = 16903; // APK 3.4.1 registry; hardware unverified
+
+    CMD_DEVICE_LENS_DEFOG = 17000; // APK 3.4.1 symbolic value resolved to 17000; request builder recovered
+    CMD_DEVICE_AUTO_COOLING = 17001; // APK 3.4.1 request builder recovered
+    CMD_DEVICE_AUTO_SHUTDOWN = 17002; // APK 3.4.1 symbolic value resolved to 17002; request builder recovered
 }
 
 enum DwarfErrorCode {
-    OK = 0; // OK : No Error
+    option allow_alias = true;
+    OK = 0; // Compatibility alias used by existing clients.
+    WS_OK = 0;
     WS_PARSE_PROTOBUF_ERROR = -1; // Protobuf parsing failed
     WS_SDCARD_NOT_EXIST = -2; // SD card not detected
-    WS_INVALID_PARAM = -3; // Invalid parameter
+    WS_INVAID_PARAM = -3; // Name is misspelled in the vendor API.
     WS_SDCARD_WRITE_ERROR = -4; // Image writing to SD card failed (maybe the card is full)
+    WS_DEVICE_NOT_ACTIVATED = -5;
+    WS_SDCARD_FULL_ERROR = -6;
 
     CODE_CAMERA_TELE_OPENED = -10500; // Camera is turned on
     CODE_CAMERA_TELE_CLOSED = -10501; // Camera is off
     CODE_CAMERA_TELE_ISP_SET_FAILED = -10502; // ISP parameter settings failed
-    CODE_CAMERA_TELE_OPEN_FAILED = -10504; // Camera failed to open
-    CODE_CAMERA_TELE_RECORDING = -10506; // Recording
-    CODE_CAMERA_TELE_WORKING_BUSY_STACK = -10507; // The telephoto camera is busy.
-    CODE_CAMERA_TELE_CAPTURE_RAW_FAILED = -10510; // Failed to catch RAW image
-    CODE_CAMERA_TELE_WORKING_BUSY = -10511; // The telephoto camera is busy with work
+    CODE_CAMERA_TELE_OPEN_FAILED = -10503;
+    CODE_CAMERA_TELE_START_RECORD_FAILED = -10504;
+    CODE_CAMERA_TELE_STOP_RECORD_FAILED = -10505;
+    CODE_CAMERA_TELE_CAPTURE_RAW_FAILED = -10506;
+    CODE_CAMERA_TELE_WORKING_BUSY = -10507;
+    CODE_CAMERA_TELE_GET_IMAGE_FAILED = -10508;
+    CODE_CAMERA_TELE_RUNNING_PHOTO = -10509;
+    CODE_CAMERA_TELE_RUNNING_RECORD = -10510;
+    CODE_CAMERA_TELE_RUNNING_PANORAMA = -10511;
+    CODE_CAMERA_TELE_RUNNING_TIMELAPSE = -10512;
+    CODE_CAMERA_TELE_RUNNING_CAPTURE_DARK = -10513;
+    CODE_CAMERA_TELE_RUNNING_CAPTURE_LIVE_STACKING = -10514;
+    CODE_CAMERA_TELE_EXP_TOO_LONG = -10515;
+    CODE_CAMERA_TELE_SWITCH_WORK_MODE_FAILED = -10516;
+    CODE_CAMERA_TELE_RUNNING_TRACK = -10517;
+    CODE_CAMERA_TELE_RECORD_FILE_ERROR = -10518;
 
     CODE_ASTRO_PLATE_SOLVING_FAILED = -11500; // Plate solving failed
     CODE_ASTRO_FUNCTION_BUSY = -11501; // Astronomical function busy
@@ -266,11 +462,34 @@ enum DwarfErrorCode {
     CODE_ASTRO_DARK_NOT_FOUND = -11503; // Darkfield not found
     CODE_ASTRO_CALIBRATION_FAILED = -11504; // Calibration failed
     CODE_ASTRO_GOTO_FAILED = -11505; // GOTO failed
+    CODE_ASTRO_DARK_RUNNING = -11506; // Dark-frame capture is already running
+    CODE_ASTRO_CALIBRATION_RUNNING = -11507; // Calibration is already running
+    CODE_ASTRO_GOTO_RUNNING = -11508; // GOTO is already running
+    CODE_ASTRO_LIVE_STACKING_RUNNING = -11509; // Live stacking is already running
+    CODE_ASTRO_RESET_PITCH_MOTOR_FAILED = -11510; // Pitch motor reset failed
+    CODE_ASTRO_NEED_CALIBRATION = -11511; // Calibration is required
+    CODE_ASTRO_GOTO_READ_MOTOR_POSITION_AND_PLATE_SOLVING_FAILED = -11512; // GOTO preparation failed
     CODE_ASTRO_NEED_GOTO = -11513; // No GOTO
     CODE_ASTRO_NEED_ADJUST_SHOOT_PARAM = -11514; // Parameters are not suitable
-    
+    CODE_ASTRO_CALIBRATION_PLATE_SOLVING_FAILED_TOO_MUCH = -11515; // Too many calibration plate-solve failures
     CODE_ASTRO_EQ_SOLVING_FAILED = -11516; // EQ calculation failed (only calculation failed to return)
     CODE_ASTRO_SKY_SEARCH_FAILED = -11517; // Sky detection failed
+    CODE_ASTRO_NEED_GOTO_DSO = -11518; // A DSO GOTO is required
+    CODE_ASTRO_RESTACK_CAMERA_MISMATCH = -11519; // Restack camera mismatch
+    CODE_ASTRO_RESTACK_BINNING_MISMATCH = -11520; // Restack binning mismatch
+    CODE_ASTRO_RESTACK_FILTER_MISMATCH = -11521; // Restack filter mismatch
+    CODE_ASTRO_RESTACK_TARGET_MISMATCH = -11522; // Restack target mismatch
+    CODE_ASTRO_RESTACK_DARKFRAME_MISMATCH = -11523; // Restack dark-frame mismatch
+    CODE_ASTRO_RESTACK_FAILED = -11524; // Restack failed
+    CODE_ASTRO_RESTACK_INVALID_DATA = -11525; // Restack input data is invalid
+    CODE_ASTRO_OVEREXPOSURE_WARNING = -11526; // Exposure may be overexposed
+    CODE_ASTRO_EXP_TOO_LONG = -11527; // Exposure is too long
+    CODE_ASTRO_NEED_EQ = -11528; // Equatorial mode is required
+    CODE_ASTRO_STAR_TOO_FEW = -11529; // Too few stars were detected
+    CODE_ASTRO_DARK_TEMP_MISMATCH = -11530; // Matching dark temperature differs from current sensor temperature
+    CODE_ASTRO_SUN_MOON_NOT_FOUND = -11531; // Sun or Moon was not found
+    CODE_ASTRO_GUIDING_FAILED_LOWER_EXPOSURE = -11532; // Guiding failed; lower exposure
+    CODE_ASTRO_GUIDING_FAILED_TARGET_BLOCKED = -11533; // Guiding target is blocked
 
     CODE_CAMERA_WIDE_OPENED = -12500; // Wide-angle camera turned on
     CODE_CAMERA_WIDE_CLOSED = -12501; // The wide-angle camera is turned off
@@ -279,27 +498,68 @@ enum DwarfErrorCode {
     CODE_CAMERA_WIDE_CLOSE_FAILED = -12504; // Failed to turn off camera
     CODE_CAMERA_WIDE_SET_ISP_FAILED = -12505; // Failed to set ISP parameters
     CODE_CAMERA_WIDE_PHOTOGRAPHING = -12506; // Taking pictures
+    CODE_CAMERA_WIDE_TIMELAPSE_RECORDING = -12507;
     CODE_CAMERA_WIDE_EXP_TOO_LONG = -12508; // The exposure time is too long, and recording is not supported.
+    CODE_CAMERA_WIDE_RECORD_FILE_ERROR = -12509;
 
     CODE_SYSTEM_SET_TIME_FAILED = -13300; // Set time failed
     CODE_SYSTEM_SET_TIMEZONE_FAILED = -13301; // Failed to set time zone
-    CODE_SYSTEM_SETTING_TIMEZONE_FAILED = -13302; // Time zone setting failed
-
     CODE_RGB_POWER_UART_INIT_FAILED = -13800; // Serial port Initialization failed
+    CODE_RGB_POWER_UART_SEND_FAILED = -13801;
 
+    CODE_STEP_MOTOR_IS_RUNNING = -14500;
+    CODE_STEP_MOTOR_IS_STOPPED = -14501;
+    CODE_STEP_MOTOR_PARALLEL_IN = -14502;
+    CODE_STEP_MOTOR_PARALLEL_END = -14503;
     CODE_STEP_MOTOR_INVALID_PARAMETER_ID = -14504; // Motor Invalid Id Parameter
+    CODE_STEP_MOTOR_INVALID_PARAMETER_ANGLE = -14505;
+    CODE_STEP_MOTOR_INVALID_PARAMETER_SPEED = -14506;
+    CODE_STEP_MOTOR_INVALID_PARAMETER_SPEED_RAMPING = -14507;
+    CODE_STEP_MOTOR_INVALID_PARAMETER_RESOLUTION = -14508;
+    CODE_STEP_MOTOR_INVALID_PARAMETER_POSITION = -14509;
+    CODE_STEP_MOTOR_OVERTIME_GET_LIMIT_RETURN = -14510;
+    CODE_STEP_MOTOR_OVERTIME_GET_RESET_RETURN = -14511;
+    CODE_STEP_MOTOR_OVERTIME_GET_ABSOLUTE_POSITION_RETURN = -14512;
+    CODE_STEP_MOTOR_OVERTIME_GET_RELATIVE_POSITION_RETURN = -14513;
+    CODE_STEP_MOTOR_OVERTIME_WAIT_TO_STOP = -14514;
+    CODE_STEP_MOTOR_OVERTIME_WAIT_TO_RUN = -14515;
+    CODE_STEP_MOTOR_LIMIT_SPEED_TO_MAX = -14516;
+    CODE_STEP_MOTOR_LIMIT_SPEED_TO_MIN = -14517;
     CODE_STEP_MOTOR_LIMIT_POSITION_WARNING = -14518; // GOTO limit warning
-    CODE_STEP_MOTOR_LIMIT_POSITION_HITTED = -14519; // Star collision limit
-    CODE_STEP_MOTOR_POSITION_NEED_RESET = -14520; // Motor Position need Reset
+    CODE_STEP_MOTOR_LIMIT_POSITION_HIT = -14519;
+    CODE_STEP_MOTOR_NEED_RESET = -14520;
+    CODE_STEP_MOTOR_OVERTIME_GET_PE_SWITCH_RETURN = -14521;
+    CODE_STEP_MOTOR_OVERTIME_TO_RESET = -14522;
+    CODE_STEP_MOTOR_ROLL_LIMIT_ANGLE_WARNING = -14523;
 
     CODE_TRACK_TRACKER_INITING = -14900; // Tracking is initializing
     CODE_TRACK_TRACKER_FAILED = -14901; // Trace failed
+    CODE_TRACK_SENTRY_MODE_INITING = -14902;
+    CODE_TRACK_SENTRY_MODE_FAILED = -14903;
+    CODE_UFOTRACK_MODE_INITING = -14904;
+    CODE_UFO_DAY_AUTO_MODE = -14906;
 
     CODE_FOCUS_ASTRO_AUTO_FOCUS_SLOW_ERROR = -15100; // Slow astronomical autofocus failed
     CODE_FOCUS_ASTRO_AUTO_FOCUS_FAST_ERROR = -15101; // Fast astronomical autofocus failed, you need to perform a slow astronomical autofocus first
+    CODE_FOCUS_EXP_TOO_LONG = -15106;
 
-    CODE_PANORAMA_PHOTO_FAILED = -15600; // Panoramic shooting failed
     CODE_PANORAMA_MOTOR_RESET_FAILED = -15601; // Panoramic shooting motor reset failed
+    CODE_PANORAMA_UPLOAD_USER_STOP = -15602;
+    CODE_PANORAMA_UPLOAD_FILE_CHECK_FAILED = -15603;
+    CODE_PANORAMA_UPLOAD_COMPRESS_FAILED = -15604;
+    CODE_PANORAMA_UPLOAD_UPLOAD_FAILED = -15605;
+    CODE_PANORAMA_UPLOAD_IS_RUNNING = -15607;
+    CODE_PANORAMA_UPLOAD_CAMERA_BUSY = -15608;
+    CODE_PANORAMA_UPLOAD_NOT_IN_STA = -15609;
+    CODE_PANORAMA_COMPOSE_IS_RUNNING = -15615;
+
+    CODE_SHOOTING_SCHEDULE_DEVICE_ID_NOT_MATCH = -16300;
+    CODE_SHOOTING_SCHEDULE_INVALID_SHOOTING_DURATION = -16301;
+    CODE_SHOOTING_SCHEDULE_TIME_CONFLICT = -16302;
+    CODE_SHOOTING_SCHEDULE_DATABASE_OPERATION_FAILED = -16305;
+    CODE_SHOOTING_SCHEDULE_PASSWORD_ERROR = -16306;
+    CODE_SHOOTING_SCHEDULE_INTERRUPTED = -16310;
+    CODE_SHOOTING_SCHEDULE_NOT_SYNCED = -16311;
 }
 
 enum AstroTrackingSpecial {

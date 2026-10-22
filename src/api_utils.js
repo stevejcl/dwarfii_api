@@ -62,6 +62,31 @@ export function setDwarfDeviceID(deviceID) {
   }
 }
 
+var DwarfMinorVersion = Dwarfii_Api.WsMinorVersion.WS_MINOR_VERSION_NUMBER; // V2 default
+
+/** Set the protocol minor version for outgoing packets
+ * @param {number} version - Protocol minor version (9 for V2, 20 for V3)
+ * @returns {boolean}
+ */
+export function setDwarfMinorVersion(version) {
+  const supportedVersions = [
+    Dwarfii_Api.WsMinorVersion.WS_MINOR_VERSION_NUMBER, // 9 (V2)
+    Dwarfii_Api.WsMinorVersion.WS_MINOR_VERSION_V3, // 20 (V3)
+  ];
+  if (typeof version === "number" && supportedVersions.includes(version)) {
+    DwarfMinorVersion = version;
+    return true;
+  }
+  return false;
+}
+
+/** Get the current protocol minor version
+ * @returns {number}
+ */
+export function getDwarfMinorVersion() {
+  return DwarfMinorVersion;
+}
+
 /**
  * Returns the now UTC time as 'yyyy-mm-dd hh:mm:ss'
  * @returns {string}
@@ -83,7 +108,7 @@ export function nowLocal() {
   let second = date.getSeconds();
   let pad = (num) => num.toString().padStart(2, "0");
   return `${year}-${pad(month)}-${pad(day)} ${pad(hour)}:${pad(minute)}:${pad(
-    second
+    second,
   )}`;
 }
 /**
@@ -114,7 +139,6 @@ export function nowLocalFileName() {
  * @returns {Object}
  */
 export function decodePacket(WS_Packet, classDecode) {
-  // eslint-disable-next-line no-undef
   // Obtain a message type
   let decoded = classDecode.decode(WS_Packet);
   console.log(`decoded data = ${JSON.stringify(decoded)}`);
@@ -134,16 +158,16 @@ export function createPacket(
   class_message,
   module_id,
   interface_id,
-  type_id
+  type_id,
 ) {
   let major_version = Dwarfii_Api.WsMajorVersion.WS_MAJOR_VERSION_NUMBER;
-  let minor_version = Dwarfii_Api.WsMinorVersion.WS_MINOR_VERSION_NUMBER;
+  let minor_version = DwarfMinorVersion;
   let device_id = DwarfDeviceID;
   // message
   let message_buffer = undefined;
   message_buffer = class_message.encode(message).finish();
   console.debug(
-    `message_buffer = ${Array.prototype.toString.call(message_buffer)}`
+    `message_buffer = ${Array.prototype.toString.call(message_buffer)}`,
   );
   // payload
   let payload = {
@@ -168,9 +192,6 @@ export function createPacket(
   // Encode Final Buffer
   let buffer = Dwarfii_Api.WsPacket.encode(message_payload).finish();
   console.debug(`buffer to Send = ${Array.prototype.toString.call(buffer)}`);
-
-  // For Testing Only : try to decode it
-  let result_buffer = analyzePacket(buffer, false);
 
   return buffer;
 }
@@ -209,10 +230,10 @@ export function analyzePacket(message_buffer, input_data_log = true) {
   // Decoding buffer received
   WsPacket_message = decodePacket(data_rcv, Dwarfii_Api.WsPacket);
   console.debug(
-    `receive message.majorVersion = ${WsPacket_message.majorVersion}`
+    `receive message.majorVersion = ${WsPacket_message.majorVersion}`,
   );
   console.debug(
-    `receive message.minorVersion = ${WsPacket_message.minorVersion}`
+    `receive message.minorVersion = ${WsPacket_message.minorVersion}`,
   );
   console.debug(`receive message.deviceId = ${WsPacket_message.deviceId}`);
   console.debug(`receive message.moduleId = ${WsPacket_message.moduleId}`);
@@ -246,7 +267,7 @@ export function analyzePacket(message_buffer, input_data_log = true) {
   if (WsPacket_message.type == 0) {
     // Request
     console.debug(
-      `Decoding Request Frame => ${Dwarfii_Api.DwarfCMD[WsPacket_message.cmd]}`
+      `Decoding Request Frame => ${Dwarfii_Api.DwarfCMD[WsPacket_message.cmd]}`,
     );
     // Get Response Class Object
     console.debug(`cmdClass: ${cmdClass}`);
@@ -254,7 +275,7 @@ export function analyzePacket(message_buffer, input_data_log = true) {
     Response_message = eval(`new Dwarfii_Api.${cmdClass}()`);
     Response_message = decodePacket(
       WsPacket_message.data,
-      eval(`Dwarfii_Api.${cmdClass}`)
+      eval(`Dwarfii_Api.${cmdClass}`),
     );
     console.debug(`Not all Data!>> ${JSON.stringify(Response_message)}`);
   } else if (WsPacket_message.type == 1) {
@@ -262,14 +283,14 @@ export function analyzePacket(message_buffer, input_data_log = true) {
     console.debug(
       `Decoding Response Request Frame => ${
         Dwarfii_Api.DwarfCMD[WsPacket_message.cmd]
-      }`
+      }`,
     );
     console.debug(`responseClass: ${responseClass}`);
     data_class = "Dwarfii_Api." + responseClass;
     Response_message = eval(`new Dwarfii_Api.${responseClass}()`);
     Response_message = decodePacket(
       WsPacket_message.data,
-      eval(`Dwarfii_Api.${responseClass}`)
+      eval(`Dwarfii_Api.${responseClass}`),
     );
     console.debug(`Not all Data!>> ${JSON.stringify(Response_message)}`);
   } else if (WsPacket_message.type == 2) {
@@ -277,14 +298,14 @@ export function analyzePacket(message_buffer, input_data_log = true) {
     console.debug(
       `Decoding Notification Frame => ${
         Dwarfii_Api.DwarfCMD[WsPacket_message.cmd]
-      }`
+      }`,
     );
     console.debug(`notifyClass: ${notifyClass}`);
     data_class = "Dwarfii_Api." + notifyClass;
     Response_message = eval(`new Dwarfii_Api.${notifyClass}()`);
     Response_message = decodePacket(
       WsPacket_message.data,
-      eval(`Dwarfii_Api.${notifyClass}`)
+      eval(`Dwarfii_Api.${notifyClass}`),
     );
     console.debug(`Not all Data!>> ${JSON.stringify(Response_message)}`);
   } else if (WsPacket_message.type == 3) {
@@ -292,14 +313,14 @@ export function analyzePacket(message_buffer, input_data_log = true) {
     console.debug(
       `Decoding Notification Response Frame => ${
         Dwarfii_Api.DwarfCMD[WsPacket_message.cmd]
-      }`
+      }`,
     );
     console.debug(`notifyResponseClass: ${notifyResponseClass}`);
     data_class = "Dwarfii_Api." + notifyResponseClass;
     Response_message = eval(`new Dwarfii_Api.${notifyResponseClass}()`);
     Response_message = decodePacket(
       WsPacket_message.data,
-      eval(`Dwarfii_Api.${notifyResponseClass}`)
+      eval(`Dwarfii_Api.${notifyResponseClass}`),
     );
     console.debug(`Not all Data!>> ${JSON.stringify(Response_message)}`);
   }
@@ -314,6 +335,48 @@ export function analyzePacket(message_buffer, input_data_log = true) {
       decoded_message.data[key] = Response_message[key];
     }
   }
+  // Convert Long objects (protobuf int64) to strings to preserve 64-bit precision
+  // in JSON.stringify output (e.g. paramId in V3 camera param notifications)
+  function convertLongs(obj) {
+    if (!obj || typeof obj !== "object") return;
+    for (let key in obj) {
+      const val = obj[key];
+      if (
+        val &&
+        typeof val === "object" &&
+        typeof val.low === "number" &&
+        typeof val.high === "number"
+      ) {
+        obj[key] =
+          val.toNumber !== undefined
+            ? val.high === 0 && val.low >= 0
+              ? val.toNumber()
+              : val.toString()
+            : String(val);
+      } else if (Array.isArray(val)) {
+        val.forEach((item, i) => {
+          if (
+            item &&
+            typeof item === "object" &&
+            typeof item.low === "number" &&
+            typeof item.high === "number"
+          ) {
+            val[i] =
+              item.toNumber !== undefined
+                ? item.high === 0 && item.low >= 0
+                  ? item.toNumber()
+                  : item.toString()
+                : String(item);
+          } else if (item && typeof item === "object") {
+            convertLongs(item);
+          }
+        });
+      } else if (val && typeof val === "object") {
+        convertLongs(val);
+      }
+    }
+  }
+  convertLongs(decoded_message.data);
   // add command in plain text
   let value = "";
   if (decoded_message.cmd) {
@@ -351,7 +414,7 @@ export function analyzePacket(message_buffer, input_data_log = true) {
         stateTxtMapping[decoded_message.data.state];
   }
   // add error code in plain text
-  if (decoded_message.data.hasOwnProperty("code")) {
+  if (Object.prototype.hasOwnProperty.call(decoded_message.data, "code")) {
     decoded_message.data.errorTxt = {};
     if (Dwarfii_Api.DwarfErrorCode[decoded_message.data.code])
       decoded_message.data.errorTxt =
@@ -366,11 +429,11 @@ export function analyzePacket(message_buffer, input_data_log = true) {
   }
   if (input_data_log)
     console.log(
-      `End Analyze Input Packet >> ${JSON.stringify(decoded_message)}`
+      `End Analyze Input Packet >> ${JSON.stringify(decoded_message)}`,
     );
   else
     console.log(
-      `End Analyze Output Packet >> ${JSON.stringify(decoded_message)}`
+      `End Analyze Output Packet >> ${JSON.stringify(decoded_message)}`,
     );
 
   return JSON.stringify(decoded_message);

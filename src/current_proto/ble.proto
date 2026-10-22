@@ -1,0 +1,195 @@
+syntax = "proto3";
+
+enum VocalType {
+    VT_UNKNOWN = 0;
+    VT_PING = 1;
+    VT_ECHO = 2;
+}
+
+message ReqGetconfig {
+    int32 cmd = 1;
+    string ble_psd = 2;
+    string client_id = 3;
+}
+
+message ReqAp {
+    int32 cmd = 1;
+    int32 wifi_type = 2;
+    int32 auto_start = 3;
+    int32 country_list = 4;
+    string country = 5;
+    string ble_psd = 6;
+    string client_id = 7;
+    bool force_restart = 8;
+}
+
+message ReqSta {
+    int32 cmd = 1;
+    int32 auto_start = 2;
+    string ble_psd = 3;
+    string ssid = 4;
+    string psd = 5;
+    string client_id = 6;
+}
+
+message ReqSetblewifi {
+    int32 cmd = 1;
+    int32 mode = 2;
+    string ble_psd = 3;
+    string value = 4;
+    string client_id = 5;
+}
+
+message ReqReset {
+    int32 cmd = 1;
+    string client_id = 2;
+}
+
+message ReqGetwifilist {
+    int32 cmd = 1;
+    string client_id = 2;
+}
+
+message ReqGetsysteminfo {
+    int32 cmd = 1;
+    string client_id = 2;
+}
+
+message ReqCheckFile {
+    int32 cmd = 1;
+    string file_path = 2;
+    string md5 = 3;
+}
+
+message ResCommon {
+    int32 cmd = 1;
+    int32 code = 2;
+}
+
+message ResGetconfig {
+    int32 cmd = 1;
+    int32 code = 2;
+    int32 state = 3;
+    int32 wifi_mode = 4;
+    int32 ap_mode = 5;
+    int32 auto_start = 6;
+    int32 ap_country_list = 7;
+    string ssid = 8;
+    string psd = 9;
+    string ip = 10;
+    string ap_country = 11;
+}
+
+message ResAp {
+    int32 cmd = 1;
+    int32 code = 2;
+    int32 mode = 3;
+    string ssid = 4;
+    string psd = 5;
+}
+
+message ResSta {
+    int32 cmd = 1;
+    int32 code = 2;
+    string ssid = 3;
+    string psd = 4;
+    string ip = 5;
+}
+
+message ResSetblewifi {
+    int32 cmd = 1;
+    int32 code = 2;
+    int32 mode = 3;
+    string value = 4;
+}
+
+message ResReset {
+    int32 cmd = 1;
+    int32 code = 2;
+}
+
+message WifiInfo {
+    int32 signal_level = 1;
+    string ssid = 2;
+    string security_capability = 3;
+}
+
+message ResWifilist {
+    int32 cmd = 1;
+    int32 code = 2;
+    repeated string ssid = 4;
+    repeated WifiInfo wifi_info_list = 5;
+}
+
+message ResGetsysteminfo {
+    int32 cmd = 1;
+    int32 code = 2;
+    int32 protocol_version = 3;
+    string device = 4;
+    string mac_address = 5;
+    string dwarf_ota_version = 6;
+}
+
+message ResReceiveDataError {
+    int32 cmd = 1;
+    int32 code = 2;
+}
+
+message ResCheckFile {
+    int32 cmd = 1;
+    int32 code = 2;
+}
+
+message ComDwarfMsg {
+    VocalType vocaltype = 1;
+}
+
+message DwarfPing {
+    VocalType vocaltype = 1;
+    uint64 timestamp = 2;
+    bytes magic = 3;
+    repeated bytes vocals = 4;
+    repeated bytes mutes = 5;
+}
+
+message StationModel {
+    uint32 family = 1;
+    uint32 revision = 2;
+}
+
+message NifAP {
+    string ifname = 1;
+    int32 mode = 2;
+    string country_code = 3;
+    string ssid = 4;
+    string sec = 5;
+    string psw = 6;
+    bytes ipv4 = 7;
+    optional bytes ipv6 = 8;
+}
+
+message NifSTA {
+    string ifname = 1;
+    optional string ssid = 2;
+    optional string psw = 3;
+    optional int32 rssi = 4;
+    optional bytes ipv4 = 5;
+    optional bytes ipv6 = 6;
+}
+
+message DwarfEcho {
+    VocalType vocaltype = 1;
+    uint64 timestamp = 2;
+    bytes magic = 3;
+    uint64 ts_ping = 4;
+    bytes mac_address = 5;
+    StationModel model = 6;
+    string sn = 7;
+    string name = 8;
+    string psw = 9;
+    string fw_version = 10;
+    string ws_scheme = 11;
+    uint32 session = 12;
+    NifAP ap = 13;
+    NifSTA sta = 14;
+}

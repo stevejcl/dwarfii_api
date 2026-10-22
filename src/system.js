@@ -30,7 +30,7 @@ export function messageSystemSetTime() {
     timezoneOffset: roundedTimezoneOffset,
   });
   console.log(
-    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`
+    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`,
   );
   // return encoded Message Packet
   return createPacket(message, class_message, module_id, interface_id, type_id);
@@ -51,7 +51,7 @@ export function messageSystemSetTimezone(timezone) {
   // Encode message
   let message = class_message.create({ timezone: timezone });
   console.log(
-    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`
+    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`,
   );
   // return encoded Message Packet
   return createPacket(message, class_message, module_id, interface_id, type_id);
@@ -72,7 +72,7 @@ export function messageSystemSetMtpMode(mode) {
   // Encode message
   let message = class_message.create({ mode: mode });
   console.log(
-    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`
+    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`,
   );
   // return encoded Message Packet
   return createPacket(message, class_message, module_id, interface_id, type_id);
@@ -93,7 +93,7 @@ export function messageSystemSetCpuMode(mode) {
   // Encode message
   let message = class_message.create({ mode: mode });
   console.log(
-    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`
+    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`,
   );
   // return encoded Message Packet
   return createPacket(message, class_message, module_id, interface_id, type_id);
@@ -114,7 +114,7 @@ export function messageSystemSetMasterLock(lock) {
   // Encode message
   let message = class_message.create({ lock: lock });
   console.log(
-    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`
+    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`,
   );
   // return encoded Message Packet
   return createPacket(message, class_message, module_id, interface_id, type_id);

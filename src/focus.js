@@ -31,7 +31,7 @@ export function messageFocusAutoFocus(mode, center_x, center_y) {
     centerY: center_y,
   });
   console.log(
-    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`
+    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`,
   );
   // return encoded Message Packet
   return createPacket(message, class_message, module_id, interface_id, type_id);
@@ -53,7 +53,7 @@ export function messageFocusStartAstroAutoFocus(mode) {
   // Encode message
   let message = class_message.create({ mode: mode });
   console.log(
-    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`
+    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`,
   );
   // return encoded Message Packet
   return createPacket(message, class_message, module_id, interface_id, type_id);
@@ -74,7 +74,7 @@ export function messageFocusStopAstroAutoFocus() {
   // Encode message
   let message = class_message.create({});
   console.log(
-    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`
+    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`,
   );
   // return encoded Message Packet
   return createPacket(message, class_message, module_id, interface_id, type_id);
@@ -96,7 +96,7 @@ export function messageFocusManualSingleStepFocus(direction) {
   // Encode message
   let message = class_message.create({ direction: direction });
   console.log(
-    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`
+    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`,
   );
   // return encoded Message Packet
   return createPacket(message, class_message, module_id, interface_id, type_id);
@@ -118,7 +118,7 @@ export function messageFocusStartManualContinuFocus(direction) {
   // Encode message
   let message = class_message.create({ direction: direction });
   console.log(
-    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`
+    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`,
   );
   // return encoded Message Packet
   return createPacket(message, class_message, module_id, interface_id, type_id);
@@ -129,6 +129,7 @@ export function messageFocusStartManualContinuFocus(direction) {
  * @returns {Uint8Array}
  */
 export function messageFocusStopManualContinuFocus(binning = false) {
+  void binning;
   let module_id = Dwarfii_Api.ModuleId.MODULE_FOCUS;
   let interface_id = Dwarfii_Api.DwarfCMD.CMD_FOCUS_STOP_MANUAL_CONTINU_FOCUS;
   let type_id = Dwarfii_Api.MessageTypeId.TYPE_REQUEST;
@@ -139,7 +140,7 @@ export function messageFocusStopManualContinuFocus(binning = false) {
   // Encode message
   let message = class_message.create({});
   console.log(
-    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`
+    `class Message = ${cmdClass} created message = ${JSON.stringify(message)}`,
   );
   // return encoded Message Packet
   return createPacket(message, class_message, module_id, interface_id, type_id);

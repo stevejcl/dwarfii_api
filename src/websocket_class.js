@@ -6,7 +6,11 @@ function sleep(ms) {
 }
 
 import { wsURL } from "./api_codes.js";
-import { setDwarfDeviceID, analyzePacket } from "./api_utils.js";
+import {
+  setDwarfDeviceID,
+  setDwarfMinorVersion,
+  analyzePacket,
+} from "./api_utils.js";
 
 class Queue {
   constructor(...elements) {
@@ -112,7 +116,7 @@ export class WebSocketHandler {
     if (IPDwarf != this.IPDwarf) {
       console.debug(
         "websocket_class : new IP received, closing old one: ",
-        this.IPDwarf
+        this.IPDwarf,
       );
       this.close();
       await sleep(1000);
@@ -133,7 +137,7 @@ export class WebSocketHandler {
     if (proxyURL != this.proxyURL) {
       console.debug(
         "websocket_class : new Proxy Url received, closing connection: ",
-        this.proxyURL
+        this.proxyURL,
       );
       this.close();
       await sleep(1000);
@@ -154,7 +158,7 @@ export class WebSocketHandler {
     if (useHttps !== this.useHttps) {
       console.debug(
         "websocket_class : change Https mode, closing connection. Previous  mode : ",
-        this.useHttps ? "on" : "off"
+        this.useHttps ? "on" : "off",
       );
       this.close();
       await sleep(1000);
@@ -162,7 +166,7 @@ export class WebSocketHandler {
     this.useHttps = useHttps;
     console.debug(
       "websocket_class : Updated HTTPS mode : ",
-      this.useHttps ? "on" : "off"
+      this.useHttps ? "on" : "off",
     );
   }
 
@@ -176,13 +180,35 @@ export class WebSocketHandler {
     if (setDwarfDeviceID(deviceIdDwarf)) {
       console.debug(
         "websocket_class : success setting the device ID of the Dwarf : ",
-        deviceIdDwarf
+        deviceIdDwarf,
       );
       return true;
     } else {
       console.error(
         "websocket_class : error setting the device ID of the Dwarf : ",
-        deviceIdDwarf
+        deviceIdDwarf,
+      );
+      return false;
+    }
+  }
+
+  /**
+   * Set the protocol minor version used for outgoing packets
+   * @param {number} minorVersion ; Set the protocol minor version (9 for V2, 20 for V3).
+   * @returns {boolean} status
+   */
+  setMinorVersionDwarf(minorVersion) {
+    console.debug("websocket_class : setMinorVersionDwarf : ", minorVersion);
+    if (setDwarfMinorVersion(minorVersion)) {
+      console.debug(
+        "websocket_class : success setting the minor version : ",
+        minorVersion,
+      );
+      return true;
+    } else {
+      console.error(
+        "websocket_class : error setting the minor version : ",
+        minorVersion,
       );
       return false;
     }
@@ -275,7 +301,7 @@ export class WebSocketHandler {
         this.socket = undefined;
         let new_socket = undefined;
         new_socket = new WebSocket(
-          wsURL(this.IPDwarf, this.proxyURL, this.useHttps)
+          wsURL(this.IPDwarf, this.proxyURL, this.useHttps),
         );
         console.log("Launch open new Socket");
 
@@ -290,13 +316,13 @@ export class WebSocketHandler {
 
             if (!this.proxyURL)
               console.debug(
-                `websocket_class : open... on IP : ${this.IPDwarf}`
+                `websocket_class : open... on IP : ${this.IPDwarf}`,
               );
             else {
               console.debug(
                 `websocket_class: open... on IP: ${this.IPDwarf} using proxy: ${
                   this.proxyURL || "none"
-                }${this.useHttps ? " (HTTPS on)" : ""}`
+                }${this.useHttps ? " (HTTPS on)" : ""}`,
               );
             }
             console.debug("class instance open:", this);
@@ -334,11 +360,6 @@ export class WebSocketHandler {
           }
           // Cleanup event handlers after disconnection
           await this.cleanup();
-          if (false && new_socket) {
-            new_socket.onopen = null;
-            new_socket.onerror = null;
-            new_socket.onclose = null;
-          }
         };
       }
       console.debug("class instance :", this);
@@ -347,7 +368,7 @@ export class WebSocketHandler {
     } catch (error) {
       console.error(
         "websocket_class Exception Error creating WebSocket:",
-        error
+        error,
       );
       this.socket = undefined;
       return false;
@@ -388,7 +409,7 @@ export class WebSocketHandler {
     callbackMessage = function () {},
     callbackConnectState = function () {},
     callbackError = function () {},
-    callbackReconnect = undefined
+    callbackReconnect = undefined,
   ) {
     console.debug("websocket_class : prepare function...");
 
@@ -433,7 +454,7 @@ export class WebSocketHandler {
         this.callbackReconnectFunction = callbackReconnect;
 
         console.log(
-          ` -> Add a callbackReconnect function => ${callbackReconnect}`
+          ` -> Add a callbackReconnect function => ${callbackReconnect}`,
         );
       }
       this.verifyCallBacks();
@@ -469,12 +490,12 @@ export class WebSocketHandler {
     console.debug("websocket_class : is_stopping...", this.is_stopping);
     console.debug(
       "websocket_class : signal_ping_stop...",
-      this.signal_ping_stop
+      this.signal_ping_stop,
     );
     console.debug("websocket_class : is_stopping...", this.is_stopping);
     console.debug(
       "websocket_class : is_pong_received...",
-      this.is_pong_received
+      this.is_pong_received,
     );
 
     this.is_sending = false;
@@ -522,7 +543,7 @@ export class WebSocketHandler {
           console.error(
             `websocket_class : no pong received after sending Ping ${
               this.nb_ping_error_default - this.nb_ping_error
-            }`
+            }`,
           );
         } else if (this.is_pong_received) {
           // OK or stop reset
@@ -545,12 +566,12 @@ export class WebSocketHandler {
             console.error(
               `websocket_class : no pong received after sending Ping ${
                 this.nb_ping_error_default - this.nb_ping_error
-              }`
+              }`,
             );
 
             if (this.nb_ping_error <= 0) {
               console.error(
-                `websocket_class : no pong received after ${this.nb_ping_error_default} tries: deconnect!`
+                `websocket_class : no pong received after ${this.nb_ping_error_default} tries: deconnect!`,
               );
               this.signal_ping_stop = true;
               this.cleanup(true);
@@ -605,13 +626,13 @@ export class WebSocketHandler {
           this.socket.send(this.WS_Packet);
           console.log(
             `websocket_class : sending buffer = ${Array.prototype.toString.call(
-              this.WS_Packet
-            )}`
+              this.WS_Packet,
+            )}`,
           );
           await sleep(100);
         } else {
           console.error(
-            `websocket_class : sending buffer empty : lenqueue = ${lenQueue}`
+            `websocket_class : sending buffer empty : lenqueue = ${lenQueue}`,
           );
         }
         this.is_sending = false;
@@ -679,7 +700,7 @@ export class WebSocketHandler {
           console.log(" -> Sending back data to callbackState....");
           callbacksConnectStates[0](state);
         }
-      }
+      },
     );
   }
 
@@ -755,11 +776,11 @@ export class WebSocketHandler {
             ) {
               // Call the callback function with the received data
               console.log(
-                ` -> Sending back data to callbackInfo.... for ${sender}`
+                ` -> Sending back data to callbackInfo.... for ${sender}`,
               );
               callbacksMessageCmd[0](sender, result_data);
             }
-          }
+          },
         );
       }
     }
@@ -860,7 +881,7 @@ export class WebSocketHandler {
     if (initial_running) {
       console.log(
         "WebSocketHandler max try connection: %d",
-        this.nb_reconnect_default
+        this.nb_reconnect_default,
       );
     }
 
@@ -869,7 +890,7 @@ export class WebSocketHandler {
       this.nb_reconnect -= 1;
       console.log(
         "WebSocketHandler retry connection: %d",
-        this.nb_reconnect_default - this.nb_reconnect
+        this.nb_reconnect_default - this.nb_reconnect,
       );
 
       continue_cleanup = false;
